@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="servicioTecnico" class="laboratorio.servicio.ServicioTecnicoImpl">
+    	<property name="tecnicoDAO" ref="tecnicoDAO"/>
+    	<property name="tecnicoCustomDAO" ref="tecnicoDAOIbatis" />
+    </bean>
+    
+    <bean id="servicioSupervisor" class="laboratorio.servicio.ServicioSupervisorImpl">
+    	<property name="supervisorDAO" ref="supervisorDAO"/>
+    	<property name="tecnicoDAO" ref="tecnicoDAO"/>
+    	<property name="tareaDAO" ref="tareaDAO"/>
+    </bean>
+    
+    <bean id="servicioArea" class="laboratorio.servicio.ServicioAreaImpl">
+    	<property name="areaDAO" ref="areaDAO"/>
+    	<property name="areaCustomDAO" ref="areaDAOIbatis" />
+    </bean>
+
+    <bean id="servicioPlan" class="clinica.servicio.ServicioPlanImpl">
+    	<property name="planDAO" ref="planDAO"/>
+    </bean>
+    
+    <bean id="servicioRegla" class="clinica.servicio.ServicioReglaImpl"/>
+
+    <bean id="servicioPaciente" class="clinica.servicio.ServicioPacienteImpl">
+    	<property name="pacienteDAO" ref="pacienteDAO"/>
+    </bean>
+
+    <bean id="servicioMedico" class="clinica.servicio.ServicioMedicoImpl">
+    	<property name="medicoDAO" ref="medicoDAO"/>
+    </bean>
+    
+    <bean id="servicioPractica" class="general.servicio.ServicioPracticaImpl">
+    	<property name="practicaDAO" ref="practicaDAO"/>
+    	<property name="practicaCustomDAO" ref="practicaDAOIbatis" />
+    </bean>
+
+    <bean id="servicioOrdenMedica" class="general.servicio.ServicioOrdenMedicaImpl">
+    	<property name="ordenMedicaDAO" ref="ordenMedicaDAO"/>
+    	<property name="pacienteDAO" ref="pacienteDAO"/>
+    	<property name="prestacionDAO" ref="prestacionDAO"/>
+    </bean>
+
+    <bean id="servicioPrestacion" class="clinica.servicio.ServicioPrestacionImpl">
+    	<property name="prestacionDAO" ref="prestacionDAO"/>
+    </bean>
+    
+    <bean id="servicioCobertura" class="clinica.servicio.ServicioCoberturaImpl">
+    	<property name="coberturaDAO" ref="coberturaDAO"/>
+    	<property name="reglaDAO" ref="reglaDAO"/>
+    </bean>
+</beans>

@@ -1,0 +1,139 @@
+BODY { SCROLLBAR-FACE-COLOR: #DBD2CF; SCROLLBAR-HIGHLIGHT-COLOR: #E7E1DE; SCROLLBAR-SHADOW-COLOR: #D3C9C6; SCROLLBAR-3DLIGHT-COLOR: #C5B8B3; SCROLLBAR-ARROW-COLOR: #FAF9F6; SCROLLBAR-TRACK-COLOR: #E6E0DB; SCROLLBAR-DARKSHADOW-COLOR: #C5B8B3; SCROLLBAR-BASE-COLOR: #789789
+}
+
+.txt { 
+	color: #AAA192;
+	text-decoration: none;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+}
+
+.txt a:link { 
+	color: #41A2B9;
+	font-weight: bold;
+	text-decoration: none;
+}
+.txt a:visited {
+	color: #41A2B9;
+	font-weight: bold;
+	text-decoration: none;
+}
+.txt a:hover {
+	color: #54BACD;
+	font-weight: bold;
+	text-decoration: none;
+}
+.txt a:active {
+	color: #54BACD;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+.txtFooter{ 
+	color: #C0C0C0;
+	text-decoration: none;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+}
+
+.txtFooter a:link { 
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+.txtFooter a:visited {
+	color: #C0C0C0;
+	text-decoration: none;
+}
+.txtFooter a:hover {
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+.txtFooter a:active {
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+
+
+
+.titulo {
+	color: #AAA192;
+	text-decoration: none;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+	font-weight: bold;
+}
+
+.red {
+	color: #FF0000;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.form {COLOR: #FFFFFF; FONT-SIZE: 10px; COLOR: #AAA192; FONT-FAMILY: verdana, geneva, arial; BACKGROUND-COLOR: #FFFFFF}
+
+TABLE.cats {
+	MARGIN: 0px;
+}
+
+TABLE.cats TD {
+	PADDING-RIGHT: 3px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 3px;
+	VERTICAL-ALIGN: top;
+	PADDING-TOP: 3px;
+	BORDER-BOTTOM: #ffffff 1px solid;
+}
+
+TABLE.form2 {
+	MARGIN: 0px;
+}
+
+TABLE.form2 TD {
+	PADDING-RIGHT: 4px;
+	PADDING-LEFT: 1px;
+	PADDING-BOTTOM: 2px;
+	VERTICAL-ALIGN: middle;
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: #ffffff 1px solid;
+}
+
+.txt9 { 
+	color: #AAA192;
+	text-decoration: none;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 9px;
+	line-height: 12px;
+}
+
+.submenu { 
+	color: #AAA192;
+	text-decoration: none;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+}
+
+.submenu a:link {
+	color: #41A2B9;
+	text-decoration: none;
+	font-weight: normal;
+}
+.submenu a:visited {
+	color: #41A2B9;
+	text-decoration: none;
+    font-weight: normal;
+}
+.submenu a:hover {
+	color: #54BACD;
+	text-decoration: none;
+    font-weight: normal;
+}
+.submenu a:active {
+	color: #54BACD;
+	text-decoration: none;
+    font-weight: normal;
+}

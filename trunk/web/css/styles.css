@@ -1,0 +1,315 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	scrollbar-face-color: #DBD2CF;
+	scrollbar-shadow-color: #D3C9C6; 
+	scrollbar-highlight-color: #C5B8B3;
+	scrollbar-3dlight-color: #E7E1DE; 
+	scrollbar-darkshadow-color: #C5B8B3;
+	scrollbar-track-color: #E6E0DB; 
+	scrollbar-arrow-color: #FFFFFF;
+}
+
+.txt_verd-10 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.txt_verd-10 a:link {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.txt_verd-10 a:visited {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.txt_verd-10 a:active {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.txt_verd-10 a:hover {
+	color: #2C6A7A;
+	font-weight: bold;
+}
+.txt_verd-10-bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-weight: bold;
+}
+
+.txt_titulos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #3c4f5a;
+}
+.txt_subtitulos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-weight: bold;
+}
+.textbox {
+	color: #016FA9;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 10px;
+	width: 150 px;
+	background-image: url(../images/form_fondo1.jpg);
+}
+
+button {
+	font-size: 10px;
+	color: #F0EEEB;
+	font-family: verdana, helvetica, arial;
+	background-color: #9D8C79;
+	font-weight: bold;
+}
+.form_boton_cubo {
+	font-size: 10px;
+	color: #F0EEEB;
+	font-family: verdana, helvetica, arial;
+	background-color: #9D8C79;
+	font-weight: bold;
+	width: 140px;
+}
+.ficha {
+	padding: 10px;
+}
+
+.tabla {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7461;
+}
+.tabla a:link {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.tabla a:visited {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.tabla a:active {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.tabla a:hover {
+	color: #2C6A7A;
+	font-weight: bold;
+}
+.tabla td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7461;
+	height: 16px;
+	padding-left: 4px;
+	border-top: 1px solid #FFFFFF;
+}
+
+#encabezado {
+	background-color: #EFEBE7;
+	font-weight: bold;
+}
+
+
+#tr1 {
+	background-color: #F6F2F1;
+	vertical-align: top;
+}
+#tr2 {
+	background-color: #FFFFFF;
+	vertical-align: top;
+}
+
+div#contenedorFecha {
+	float: right;	
+	position: relative;
+	height:100%;
+	width: 16.5%;
+}
+
+
+div#fecha {
+	position: absolute;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: white; 
+	right: 0px;
+	top:2px;
+}
+
+div#logo{
+	margin-left: 6px;
+	margin-top:4px;
+	position:absolute;
+	float: left;
+}
+
+div#fondoTop{
+	float:right;
+	bottom: 0;
+}
+
+select {
+	color: #016FA9;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 10px;
+	background-image: url(../images/form_fondo1.jpg);
+	width: 150px;
+}
+
+.menubot {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-image: url(../images/menubot_fondo.png);
+	height: 15px;
+	vertical-align: text-center;
+	padding: 2px;
+	text-align: center;
+}
+.menubot a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.menubot a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.menubot a:active {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.menubot a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.menu-encabezado {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000000;
+}
+.menu-encabezado a:link {
+	color: #000000;
+	text-decoration: none;
+}
+.menu-encabezado a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+.menu-encabezado a:active {
+	color: #000000;
+	text-decoration: none;
+}
+.menu-encabezado a:hover {
+	color: #000000;
+}
+.menu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.menu a:link {
+	color: #000000;
+	text-decoration: none;
+}
+.menu a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+.menu a:active {
+	color: #000000;
+	text-decoration: none;
+}
+.menu a:hover {
+	color: #2E7283;
+}
+
+.solapas {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7461;
+}
+
+
+/**********************************************************/
+/*					INICIO PANEL AREA					  */
+/**********************************************************/
+
+div#dvPanelArea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;	
+	font-size: 13px;
+	padding-left:19px;	
+}
+
+div#dvPanelAreaPrincipal {
+	font-weight: bold;
+}
+
+div#dvPanelArea a:hover {
+	color: #4169E1;
+}
+
+div#dvPanelArea div.panelIzquierdo {
+	float: left;
+}
+
+div#dvPanelArea div.panelDerecho {
+	margin: 0px 0px 0px 400px;
+}
+
+div#dvPanelArea div.seccionTecnico {
+	margin: 0px 0px 0px 30px;
+}
+
+div#dvPanelArea div.seccionTareas {
+	margin:5px 0 15px 30px;
+	min-height: 10px;
+}
+
+div#dvPanelArea div.divTecnicos {
+	margin: 5px 0 0px 30px;
+	min-height: 10px;	
+}
+
+div#dvPanelArea div.listaTareas {
+	margin: 0px 0px 0px 30px;
+}
+
+div#dvPanelArea div.divDrop {
+	min-height: 10px;
+}
+
+div#dvPanelArea div.panelEstrategias {
+	clear: both;
+}
+
+div#dvPanelArea a.desplegable {
+	width: 12px;
+	height: 12px;
+	padding-right: 16px;
+	background: url(../images/icons/mas_menu.png) left no-repeat;
+}
+
+div#dvPanelArea a.plegable {
+	width: 12px;
+	height: 12px;
+	padding-right: 16px;
+	background: url(../images/icons/menos_menu.png) left no-repeat;
+}
+
+/**********************************************************/
+/*					FIN PANEL AREA						  */
+/**********************************************************/
+
+div#feedbak div.feedbak {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-weight: bold;
+}

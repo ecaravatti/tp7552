@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE sqlMap PUBLIC "-//IBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+
+	<typeAlias alias="area" type="laboratorio.vo.AreaVO" />
+	
+   	<resultMap id="resultadoArea" class="area">
+	   	<result property="id" column="id"/>
+	   	<result property="nombre" column="nombre"/>
+	</resultMap>
+
+	<select id="areasPorSupervisor" resultMap="resultadoArea" parameterClass="java.lang.Integer">
+		SELECT DISTINCT a.id as id, a.nombre as nombre		
+		FROM area a 
+		JOIN tecnico_area ta ON ta.area_id = a.id
+		JOIN supervisor_tecnico st ON ta.tecnico_id = st.tecnico_id
+		WHERE st.supervisor_id = #supervisorId#
+		ORDER BY a.nombre
+	</select>
+
+</sqlMap>

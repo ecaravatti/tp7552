@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+     
+     <!-- IBatis configuration -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ibatis/sqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+     
+       
+	<!-- Hibernate configuration -->
+	
+	<!--  The Hibernate SessionFactory with XML -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=${hibernate.dialect}
+				hibernate.show_sql=t${hibernate.show_sql}
+				hibernate.hbm2ddl.auto=${hibernate.hbm2ddl.auto}
+			</value>
+		</property>
+		<property name="annotatedClasses">
+     		<list>
+     			<value>general.dominio.Practica</value>
+     			<value>clinica.dominio.Prestacion</value>
+     			<value>clinica.dominio.Plan</value>
+     			<value>clinica.dominio.Cobertura</value>
+     			<value>clinica.dominio.Medico</value>
+     			<value>clinica.dominio.OrdenMedica</value>
+     			<value>clinica.dominio.paciente.HistoriaClinica</value>
+     			<value>clinica.dominio.paciente.Paciente</value>
+     			<value>clinica.dominio.reglas.Regla</value>
+     			<value>clinica.dominio.reglas.ReglaCompuesta</value>
+     			<value>clinica.dominio.reglas.Condicion</value>
+     			<value>clinica.dominio.reglas.condiciones.CondicionCarencia</value>
+     			<value>clinica.dominio.reglas.condiciones.CondicionCantidad</value>
+     			<value>clinica.dominio.reglas.condiciones.CondicionCombinacion</value>
+     			<value>clinica.dominio.reglas.Comportamiento</value>
+     			<value>clinica.dominio.reglas.comportamientos.ComportamientoAND</value>
+     			<value>clinica.dominio.reglas.comportamientos.ComportamientoOR</value>
+     			<value>laboratorio.dominio.Supervisor</value>
+     			<value>laboratorio.dominio.Tecnico</value>
+     			<value>laboratorio.dominio.Area</value>
+     			<value>laboratorio.dominio.tarea.Tarea</value>
+     			<value>laboratorio.dominio.practica.resultado.Resultado</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultado</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultadoBooleano</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultadoCadena</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultadoDecimal</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultadoEntero</value>
+     			<value>laboratorio.dominio.practica.resultado.TipoResultadoPorcentual</value>     			     			
+     		</list>
+   		</property>
+	</bean>
+
+    <!-- enable the configuration of transactional behavior based on annotations -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- Hibernate Transaction Manager-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+</beans>

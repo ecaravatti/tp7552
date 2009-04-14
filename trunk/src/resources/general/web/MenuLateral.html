@@ -1,0 +1,56 @@
+<html>
+<head>
+	<meta name="pragma" content="no-cache" />
+	<script type="text/javascript"><!--
+		function cambiafondo(fondo)
+		{
+			parent.aboveFooter.document.getElementById("abovePageFooter").style.backgroundImage="url(../images/" + fondo + ".png)";
+		
+		} 
+	--></script>
+	
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/styles_menu.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<script type="text/javascript" src="wz_dragdrop.js"></script> 
+	<div id="pageHeader"></div>
+	<div id="pageContainer">
+	
+	<div id="menu">
+		<div id="opcionesOM">
+			<div class="opcion">
+				<a href="?wicket:bookmarkablePage=:clinica.web.GestionarPlanes" target="right" onclick="cambiafondo('backgroundGP');">Gesti&oacute;n de planes</a>
+			</div>
+			
+			<div class="opcion">
+				<a href="?wicket:bookmarkablePage=:clinica.web.EmitirOrdenes" target="right" onclick="cambiafondo('backgroundEO');">Emisi&oacute;n de &oacute;rdenes</a>
+			</div>
+		</div>
+		
+		<div id="opcionesL">
+			<div class="opcion">
+				<a href="?wicket:bookmarkablePage=:laboratorio.web.AsignarTareas" target="right" onclick="cambiafondo('backgroundAT');">Asignaci&oacute;n de tareas</a>
+			</div>
+			
+			<div class="opcion">
+				<a href="?wicket:bookmarkablePage=:laboratorio.web.VisualizarOrdenes" target="right" onclick="cambiafondo('backgroundVO');">Visualizar &oacute;rdenes</a>
+			</div>
+			
+			<div class="opcion">
+				<a href="?wicket:bookmarkablePage=:laboratorio.web.RegistrarResultados" target="right" onclick="cambiafondo('backgroundRR');">Registrar resultados</a>
+			</div>
+		</div>
+	</div>
+	</div> 
+
+<script type="text/javascript">
+<!--
+
+SET_DHTML("menu");
+
+//-->
+</script> 
+</body>
+</html>

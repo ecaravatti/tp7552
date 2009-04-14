@@ -1,0 +1,97 @@
+<wicket:extend>
+<table border="0" align="center" cellspacing="0" cellpadding="0" width="98%">
+	<tr>
+		<td colspan="3">
+			<img src="../images/spacer.gif" width="1" height="10" />
+		</td>
+	</tr>
+	<tr> 
+		<td nowrap class="txt_titulos">
+			<img src="images/titulos_izq.gif" width="20" height="35" align="absmiddle" />
+			<wicket:message key="titulo" />
+			<img src="images/titulos_der.gif" width="20" height="35" align="absmiddle" />
+		</td>
+		<td width="100%" background="../images/titulos_fondo.gif">&nbsp;</td>
+		<td nowrap class="txt_verd-10">&nbsp;</td>
+	</tr>
+</table>
+<br/>	
+<form wicket:id="form">	
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="datosOrden" />	
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<table border="0" cellpadding="0" cellspacing="10" class="txt_verd-10" width="100%">
+				<tr>
+					<td width="15%"><wicket:message key="nroOrden" /></td>
+					<td width="20%" class="txt_verd-10-bold"><label wicket:id="numeroOrdenMedica" /></td>
+					<td width="5%"><wicket:message key="estado" /></td>
+					<td width="65%" class="txt_verd-10-bold"><label wicket:id="estadoOrdenMedica"/></td>
+				</tr>	
+				<tr>
+					<td width="15%"><wicket:message key="paciente" /></td>
+					<td width="20%"><select wicket:id="pacientes" /></td>
+					<td width="5%"><label wicket:id="labelCosto"/></td>
+					<td width="65%"><label wicket:id="costoOrdenMedica"/></td>					
+				</tr>	
+				<tr>
+					<td width="15%"><wicket:message key="medico" /></td>
+					<td width="20%"><select wicket:id="medicos" /></td>
+					<td width="5%"><wicket:message key="labelEspecialidad"/></td>
+					<td width="65%"><label wicket:id="especialidadMedico"/></td>	
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- Lista de Practicas -->
+<br/>
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="agregarPractica" />	
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td colspan="2">
+			<table border="0" cellpadding="0" cellspacing="10" class="txt_verd-10" width="100%">
+				<tr>
+					<td width="15%"><wicket:message key="practica" /></td>
+					<td width="85%"><select wicket:id="prestaciones" /></td>
+				</tr>	
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td width="20%">
+			<button wicket:id="btnAgregarPractica" type="submit" >
+				<wicket:message key="btnAgregarPractica" />
+			</button>
+		</td>
+		<td width="80%" align="right">
+			<button wicket:id="btnAutorizar" type="submit" >
+				<wicket:message key="autorizar" />
+			</button>
+		</td>
+	</tr>
+</table>
+</form>
+<br/>
+<div class="tablaBase">
+	<table wicket:id="tablaPracticas" ></table>
+</div>
+<div>
+	<table>
+		<tr>
+			<td><label wicket:id="resultadoOrdenMedica"/></td>
+		</tr>
+	</table>	
+</div>
+<div wicket:id="feedback" id="feedback" class="feedback"/>
+</wicket:extend>

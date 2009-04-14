@@ -1,0 +1,33 @@
+.solapas {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7461;
+}
+.solapas a:link {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.solapas a:visited {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.solapas a:active {
+	color: #41A2B9;
+	font-weight: bold;
+}
+.solapas a:hover {
+	color: #2C6A7A;
+	font-weight: bold;
+}
+.solapas td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7461;
+	height: 19px;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-weight: bold;
+}
+#separador {
+	width: 1px;
+}

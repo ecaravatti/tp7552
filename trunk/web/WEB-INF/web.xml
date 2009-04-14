@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+      PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+      "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<display-name>Clinica Guerrini</display-name>
+
+	<context-param>
+	  <param-name>configuration</param-name>
+	  <param-value>development</param-value>
+	</context-param>
+ 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+ 			classpath:spring/applicationcontext.xml,
+			classpath:spring/applicationcontext-dao.xml,
+			classpath:spring/applicationcontext-persistence.xml,
+			classpath:spring/applicationcontext-presenter.xml,
+			classpath:spring/applicationcontext-servicio.xml,
+			classpath:spring/datasource.xml
+		</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>AplicacionClinica</servlet-name>
+		<servlet-class>org.apache.wicket.protocol.http.WicketServlet</servlet-class>
+		<init-param>
+		  	<param-name>applicationClassName</param-name>
+		  	<param-value>general.web.AplicacionClinica</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AplicacionClinica</servlet-name>
+		<url-pattern>/clinica/*</url-pattern>
+	</servlet-mapping>
+</web-app>

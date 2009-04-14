@@ -1,0 +1,36 @@
+<wicket:panel>
+<div wicket:id="ordenMedicaDetalles" >
+<br/>
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="datosOrdenMedica" />
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<table border="0" cellpadding="0" cellspacing="10" class="txt_verd-10" width="100%">
+				<tr>
+					<td width="15%"><wicket:message key="nombrePaciente" /></td>
+					<td width="85%" class="txt_verd-10-bold"><label wicket:id="pacienteNombreMostrar" /></td>
+				</tr>
+				<tr>
+					<td width="15%"><wicket:message key="apellidoPaciente" /></td>
+    				<td width="85%" class="txt_verd-10-bold"><label wicket:id="pacienteApellidoMostrar" /></td>
+				</tr>
+				<tr>
+				    <td width="15%"><wicket:message key="nombreMedico" /></td>
+				    <td width="85%" class="txt_verd-10-bold"><label wicket:id="medicoNombreMostrar" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>	
+<br/>
+<div class="tablaBase">
+	<table wicket:id="tablaPracticas" width="97%" cellspacing="1"></table>
+</div>
+</div>
+<div wicket:id="feedback"/>
+</wicket:panel>

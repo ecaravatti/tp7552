@@ -1,0 +1,10 @@
+body {
+	margin-top:1px;
+	background-color:#71bd43;
+}
+
+div#pageFooter {
+	margin:0 auto;
+	text-align: center;
+	width:100%;
+}

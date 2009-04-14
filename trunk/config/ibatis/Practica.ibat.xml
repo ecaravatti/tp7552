@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE sqlMap PUBLIC "-//IBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+
+	<typeAlias alias="practica" type="clinica.vo.PracticaVO" />
+	
+   	<resultMap id="resultadoPractica" class="practica">
+	   	<result property="id" column="id" />
+	   	<result property="nombre" column="nombreCol" />
+	   	<result property="ordenMedica" column="ordenMedicaCol" />
+	   	<result property="paciente" column="pacienteCol" />
+	</resultMap>
+
+	<select id="listaPracticas" resultMap="resultadoPractica" parameterClass="java.util.HashMap">
+		SELECT
+			pra.id as id,
+			pre.descripcion as nombreCol,
+			om.id as ordenMedicaCol,
+			p.apellido as pacienteCol		
+		FROM
+			practica pra, 
+			paciente p, 
+			orden_medica om, 
+			orden_medica_practica om_pra, 
+			prestacion pre
+		WHERE
+			pra.id = om_pra.practica_id
+			AND	om.id = om_pra.orden_medica_id
+			AND	pra.prestacion = pre.codigo
+			AND	om.paciente_id = p.id
+		ORDER BY $ordenarPor$ $orden$ LIMIT
+		$cantidad$ OFFSET $desde$
+	</select>
+	
+	<select id="cantidadPracticas" resultClass="java.lang.Integer" >
+		SELECT COUNT(pra.id)
+		FROM
+			practica pra, 
+			paciente p, 
+			orden_medica om, 
+			orden_medica_practica om_pra, 
+			prestacion pre
+		WHERE
+			pra.id = om_pra.practica_id
+			AND	om.id = om_pra.orden_medica_id
+			AND	pra.prestacion = pre.codigo
+			AND	om.paciente_id = p.id
+	</select>
+
+	<select id="costoOrdenMedica" resultClass="java.lang.Double" >
+		SELECT IFNULL(SUM(pre.`costo_adicional`), 0)
+		FROM 
+			orden_medica om
+			INNER JOIN orden_medica_practica omp
+			ON om.`id` = omp.`orden_medica_id`
+			INNER JOIN practica p
+			ON p.`id` = omp.`practica_id`
+			INNER JOIN prestacion pre
+			ON p.`prestacion` = pre.`codigo`
+			WHERE p.`aprobada` = false
+			AND om.`id` = #orden_medica_id#
+</select>
+
+</sqlMap>

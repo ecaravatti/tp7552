@@ -1,0 +1,295 @@
+2008-12-05 14:01:53,244 INFO  [org.springframework.web.context.ContextLoader] Root WebApplicationContext: initialization started 
+2008-12-05 14:01:53,353 INFO  [org.springframework.core.CollectionFactory] JDK 1.4+ collections available 
+2008-12-05 14:01:53,401 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/applicationcontext.xml] 
+2008-12-05 14:01:53,515 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/applicationcontext-dao.xml] 
+2008-12-05 14:01:53,554 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/applicationcontext-persistence.xml] 
+2008-12-05 14:01:53,748 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/applicationcontext-presenter.xml] 
+2008-12-05 14:01:53,785 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/applicationcontext-servicio.xml] 
+2008-12-05 14:01:53,823 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring/datasource.xml] 
+2008-12-05 14:01:53,842 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] Bean factory for application context [Root WebApplicationContext]: org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [propertyConfigurer,reporter.Base.SqlMapClient,areaDAOIbatis,tecnicoDAOIbatis,practicaDAOIbatis,abstractRepository,tecnicoDAO,tareaDAO,areaDAO,supervisorDAO,planDAO,pacienteDAO,medicoDAO,practicaDAO,ordenMedicaDAO,prestacionDAO,reglaDAO,coberturaDAO,sqlMapClient,sessionFactory,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor,transactionManager,asignarTareaPresenter,panelAreaPresenter,tareasTecnicoPresenter,gestionarPlanesPresenter,emitirOrdenesPresenter,visualizarOrdenesPresenter,registrarResultadosPresenter,resultadoPracticaPresenter,servicioTecnico,servicioSupervisor,servicioArea,servicioPlan,servicioRegla,servicioPaciente,servicioMedico,servicioPractica,servicioOrdenMedica,servicioPrestacion,servicioCobertura,dataSource]; root of BeanFactory hierarchy 
+2008-12-05 14:01:53,862 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] 43 beans defined in application context [Root WebApplicationContext] 
+2008-12-05 14:01:54,125 INFO  [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer] Loading properties file from class path resource [spring/application.local.properties] 
+2008-12-05 14:01:54,197 INFO  [org.springframework.aop.framework.DefaultAopProxyFactory] CGLIB2 available: proxyTargetClass feature enabled 
+2008-12-05 14:01:54,222 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] Bean 'org.springframework.aop.config.internalAutoProxyCreator' is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2008-12-05 14:01:54,226 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@1bf68a9] 
+2008-12-05 14:01:54,235 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@1ca209e] 
+2008-12-05 14:01:54,240 INFO  [org.springframework.ui.context.support.UiApplicationContextUtils] Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@98bbf6] 
+2008-12-05 14:01:54,257 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] Pre-instantiating singletons in factory [org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [propertyConfigurer,reporter.Base.SqlMapClient,areaDAOIbatis,tecnicoDAOIbatis,practicaDAOIbatis,abstractRepository,tecnicoDAO,tareaDAO,areaDAO,supervisorDAO,planDAO,pacienteDAO,medicoDAO,practicaDAO,ordenMedicaDAO,prestacionDAO,reglaDAO,coberturaDAO,sqlMapClient,sessionFactory,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor,transactionManager,asignarTareaPresenter,panelAreaPresenter,tareasTecnicoPresenter,gestionarPlanesPresenter,emitirOrdenesPresenter,visualizarOrdenesPresenter,registrarResultadosPresenter,resultadoPracticaPresenter,servicioTecnico,servicioSupervisor,servicioArea,servicioPlan,servicioRegla,servicioPaciente,servicioMedico,servicioPractica,servicioOrdenMedica,servicioPrestacion,servicioCobertura,dataSource]; root of BeanFactory hierarchy] 
+2008-12-05 14:01:54,651 INFO  [org.hibernate.cfg.annotations.Version] Hibernate Annotations 3.3.1.GA 
+2008-12-05 14:01:54,670 INFO  [org.hibernate.cfg.Environment] Hibernate 3.2.6 
+2008-12-05 14:01:54,676 INFO  [org.hibernate.cfg.Environment] hibernate.properties not found 
+2008-12-05 14:01:54,682 INFO  [org.hibernate.cfg.Environment] Bytecode provider name : cglib 
+2008-12-05 14:01:54,688 INFO  [org.hibernate.cfg.Environment] using JDK 1.4 java.sql.Timestamp handling 
+2008-12-05 14:01:54,841 INFO  [org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean] Building new Hibernate SessionFactory 
+2008-12-05 14:01:55,139 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: general.dominio.Practica 
+2008-12-05 14:01:55,370 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity general.dominio.Practica on table practica 
+2008-12-05 14:01:55,487 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.Prestacion 
+2008-12-05 14:01:55,487 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.Prestacion on table prestacion 
+2008-12-05 14:01:55,534 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.Plan 
+2008-12-05 14:01:55,535 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.Plan on table plan 
+2008-12-05 14:01:55,563 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.Cobertura 
+2008-12-05 14:01:55,563 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.Cobertura on table cobertura 
+2008-12-05 14:01:55,571 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.Medico 
+2008-12-05 14:01:55,572 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.Medico on table medico 
+2008-12-05 14:01:55,582 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.OrdenMedica 
+2008-12-05 14:01:55,583 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.OrdenMedica on table orden_medica 
+2008-12-05 14:01:55,593 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.paciente.HistoriaClinica 
+2008-12-05 14:01:55,593 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.paciente.HistoriaClinica on table historia_clinica 
+2008-12-05 14:01:55,599 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.paciente.Paciente 
+2008-12-05 14:01:55,600 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.paciente.Paciente on table paciente 
+2008-12-05 14:01:55,606 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.Regla 
+2008-12-05 14:01:55,607 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.Regla on table regla 
+2008-12-05 14:01:55,609 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.ReglaCompuesta 
+2008-12-05 14:01:55,611 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.ReglaCompuesta on table regla_compuesta 
+2008-12-05 14:01:55,639 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.Condicion 
+2008-12-05 14:01:55,640 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.Condicion on table condicion 
+2008-12-05 14:01:55,641 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.condiciones.CondicionCarencia 
+2008-12-05 14:01:55,641 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.condiciones.CondicionCarencia on table condicion_carencia 
+2008-12-05 14:01:55,644 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.condiciones.CondicionCantidad 
+2008-12-05 14:01:55,644 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.condiciones.CondicionCantidad on table condicion_cantidad 
+2008-12-05 14:01:55,647 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.condiciones.CondicionCombinacion 
+2008-12-05 14:01:55,647 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.condiciones.CondicionCombinacion on table condicion_combinacion 
+2008-12-05 14:01:55,650 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.Comportamiento 
+2008-12-05 14:01:55,651 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity clinica.dominio.reglas.Comportamiento on table comportamiento 
+2008-12-05 14:01:55,761 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.comportamientos.ComportamientoAND 
+2008-12-05 14:01:55,765 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: clinica.dominio.reglas.comportamientos.ComportamientoOR 
+2008-12-05 14:01:55,766 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.Supervisor 
+2008-12-05 14:01:55,767 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.Supervisor on table supervisor 
+2008-12-05 14:01:55,780 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.Tecnico 
+2008-12-05 14:01:55,781 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.Tecnico on table tecnico 
+2008-12-05 14:01:55,799 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.Area 
+2008-12-05 14:01:55,800 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.Area on table area 
+2008-12-05 14:01:55,805 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.tarea.Tarea 
+2008-12-05 14:01:55,806 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.tarea.Tarea on table tarea 
+2008-12-05 14:01:55,822 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.Resultado 
+2008-12-05 14:01:55,823 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.practica.resultado.Resultado on table resultado 
+2008-12-05 14:01:55,827 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultado 
+2008-12-05 14:01:55,828 INFO  [org.hibernate.cfg.annotations.EntityBinder] Bind entity laboratorio.dominio.practica.resultado.TipoResultado on table tipo_resultado 
+2008-12-05 14:01:55,833 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultadoBooleano 
+2008-12-05 14:01:55,834 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultadoCadena 
+2008-12-05 14:01:55,836 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultadoDecimal 
+2008-12-05 14:01:55,837 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultadoEntero 
+2008-12-05 14:01:55,839 INFO  [org.hibernate.cfg.AnnotationBinder] Binding entity from annotated class: laboratorio.dominio.practica.resultado.TipoResultadoPorcentual 
+2008-12-05 14:01:55,892 INFO  [org.hibernate.cfg.AnnotationConfiguration] Hibernate Validator not found: ignoring 
+2008-12-05 14:01:55,912 INFO  [org.hibernate.connection.ConnectionProviderFactory] Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider 
+2008-12-05 14:01:56,498 INFO  [org.hibernate.cfg.SettingsFactory] RDBMS: MySQL, version: 5.0.45-Debian_1ubuntu3.4-log 
+2008-12-05 14:01:56,499 INFO  [org.hibernate.cfg.SettingsFactory] JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.0.4 ( $Date: 2006-10-19 17:47:48 +0200 (Thu, 19 Oct 2006) $, $Revision: 5908 $ ) 
+2008-12-05 14:01:56,525 INFO  [org.hibernate.dialect.Dialect] Using dialect: org.hibernate.dialect.MySQLInnoDBDialect 
+2008-12-05 14:01:56,532 INFO  [org.hibernate.transaction.TransactionFactoryFactory] Using default transaction strategy (direct JDBC transactions) 
+2008-12-05 14:01:56,535 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended) 
+2008-12-05 14:01:56,535 INFO  [org.hibernate.cfg.SettingsFactory] Automatic flush during beforeCompletion(): disabled 
+2008-12-05 14:01:56,535 INFO  [org.hibernate.cfg.SettingsFactory] Automatic session close at end of transaction: disabled 
+2008-12-05 14:01:56,535 INFO  [org.hibernate.cfg.SettingsFactory] JDBC batch size: 15 
+2008-12-05 14:01:56,535 INFO  [org.hibernate.cfg.SettingsFactory] JDBC batch updates for versioned data: disabled 
+2008-12-05 14:01:56,536 INFO  [org.hibernate.cfg.SettingsFactory] Scrollable result sets: enabled 
+2008-12-05 14:01:56,536 INFO  [org.hibernate.cfg.SettingsFactory] JDBC3 getGeneratedKeys(): enabled 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Connection release mode: on_close 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Maximum outer join fetch depth: 2 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Default batch fetch size: 1 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Generate SQL with comments: disabled 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Order SQL updates by primary key: disabled 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Order SQL inserts for batching: disabled 
+2008-12-05 14:01:56,537 INFO  [org.hibernate.cfg.SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory 
+2008-12-05 14:01:56,540 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory 
+2008-12-05 14:01:56,540 INFO  [org.hibernate.cfg.SettingsFactory] Query language substitutions: {} 
+2008-12-05 14:01:56,540 INFO  [org.hibernate.cfg.SettingsFactory] JPA-QL strict compliance: disabled 
+2008-12-05 14:01:56,540 INFO  [org.hibernate.cfg.SettingsFactory] Second-level cache: enabled 
+2008-12-05 14:01:56,541 INFO  [org.hibernate.cfg.SettingsFactory] Query cache: disabled 
+2008-12-05 14:01:56,541 INFO  [org.hibernate.cfg.SettingsFactory] Cache provider: org.hibernate.cache.NoCacheProvider 
+2008-12-05 14:01:56,541 INFO  [org.hibernate.cfg.SettingsFactory] Optimize cache for minimal puts: disabled 
+2008-12-05 14:01:56,541 INFO  [org.hibernate.cfg.SettingsFactory] Structured second-level cache entries: disabled 
+2008-12-05 14:01:56,548 INFO  [org.hibernate.cfg.SettingsFactory] Statistics: disabled 
+2008-12-05 14:01:56,549 INFO  [org.hibernate.cfg.SettingsFactory] Deleted entity synthetic identifier rollback: disabled 
+2008-12-05 14:01:56,550 INFO  [org.hibernate.cfg.SettingsFactory] Default entity-mode: pojo 
+2008-12-05 14:01:56,550 INFO  [org.hibernate.cfg.SettingsFactory] Named query checking : enabled 
+2008-12-05 14:01:56,600 INFO  [org.hibernate.impl.SessionFactoryImpl] building session factory 
+2008-12-05 14:01:57,435 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] Not binding factory to JNDI, no JNDI name configured 
+2008-12-05 14:01:57,442 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] Running hbm2ddl schema update 
+2008-12-05 14:01:57,442 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] fetching database metadata 
+2008-12-05 14:01:57,447 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] updating schema 
+2008-12-05 14:01:57,478 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.area 
+2008-12-05 14:01:57,479 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [nombre, id] 
+2008-12-05 14:01:57,479 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,480 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,500 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.area_tarea 
+2008-12-05 14:01:57,501 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [tarea_id, area_id] 
+2008-12-05 14:01:57,501 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk460d4ccfc8fb55ea, fk460d4ccfe7a9f43d] 
+2008-12-05 14:01:57,502 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [tarea_id, primary, fk460d4ccfc8fb55ea, fk460d4ccfe7a9f43d] 
+2008-12-05 14:01:57,515 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.cobertura 
+2008-12-05 14:01:57,515 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [prestacion_id, costo_adicional, id, regla_id] 
+2008-12-05 14:01:57,516 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [cobertura_prestacion_fk, cobertura_regla_fk] 
+2008-12-05 14:01:57,516 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, cobertura_prestacion_fk, cobertura_regla_fk] 
+2008-12-05 14:01:57,526 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.comportamiento 
+2008-12-05 14:01:57,527 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [descripcion, id] 
+2008-12-05 14:01:57,527 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,528 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,561 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.condicion 
+2008-12-05 14:01:57,561 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [id] 
+2008-12-05 14:01:57,562 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fkcca1b2cc9edbdcf6] 
+2008-12-05 14:01:57,562 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fkcca1b2cc9edbdcf6] 
+2008-12-05 14:01:57,573 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.condicion_cantidad 
+2008-12-05 14:01:57,574 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [cantidad_pruebas, frecuencia, id] 
+2008-12-05 14:01:57,574 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk92abab35ee77e5b9] 
+2008-12-05 14:01:57,575 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk92abab35ee77e5b9] 
+2008-12-05 14:01:57,586 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.condicion_carencia 
+2008-12-05 14:01:57,587 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [meses_carencia, id] 
+2008-12-05 14:01:57,588 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk98adf031ee77e5b9] 
+2008-12-05 14:01:57,588 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk98adf031ee77e5b9] 
+2008-12-05 14:01:57,599 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.condicion_combinacion 
+2008-12-05 14:01:57,599 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [cantidad_practicas, id] 
+2008-12-05 14:01:57,600 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fkc244bf8dee77e5b9] 
+2008-12-05 14:01:57,600 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fkc244bf8dee77e5b9] 
+2008-12-05 14:01:57,633 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.condicion_combinacion_lCodigoPractica 
+2008-12-05 14:01:57,633 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [element, condicion_combinacion_id] 
+2008-12-05 14:01:57,634 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk608239ca74665803] 
+2008-12-05 14:01:57,635 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [fk608239ca74665803] 
+2008-12-05 14:01:57,644 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.historia_clinica 
+2008-12-05 14:01:57,644 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [id] 
+2008-12-05 14:01:57,645 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,645 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,656 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.historia_clinica_practica 
+2008-12-05 14:01:57,657 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [historia_clinica_id, practica_id] 
+2008-12-05 14:01:57,657 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fkfcb7fddfbd5b80d8, fkfcb7fddf9a3c9e41] 
+2008-12-05 14:01:57,657 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [practica_id, fkfcb7fddfbd5b80d8, fkfcb7fddf9a3c9e41] 
+2008-12-05 14:01:57,669 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.medico 
+2008-12-05 14:01:57,669 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [nombre, especialidad, edad, sexo, id] 
+2008-12-05 14:01:57,670 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,670 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,708 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.orden_medica 
+2008-12-05 14:01:57,708 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [medico_emisor_id, paciente_id, fecha_emision, id, aprobada] 
+2008-12-05 14:01:57,709 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [orden_medica_paciente_fk, orden_medica_medico_fk] 
+2008-12-05 14:01:57,709 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, orden_medica_paciente_fk, orden_medica_medico_fk] 
+2008-12-05 14:01:57,722 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.orden_medica_practica 
+2008-12-05 14:01:57,723 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [orden_medica_id, practica_id] 
+2008-12-05 14:01:57,723 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk667ae0c69a3c9e41, fk667ae0c68de048d9] 
+2008-12-05 14:01:57,723 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [fk667ae0c69a3c9e41, practica_id, fk667ae0c68de048d9] 
+2008-12-05 14:01:57,738 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.paciente 
+2008-12-05 14:01:57,739 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [historia_clinica_id, nombre, numero_documento, fecha_ingreso, apellido, sexo, id, plan_id] 
+2008-12-05 14:01:57,739 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [paciente_plan_fk, paciente_historia_clinia_fk] 
+2008-12-05 14:01:57,739 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, paciente_plan_fk, paciente_historia_clinia_fk] 
+2008-12-05 14:01:57,772 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.plan 
+2008-12-05 14:01:57,773 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [costo_mensual, descripcion, codigo] 
+2008-12-05 14:01:57,774 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,774 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,786 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.plan_cobertura 
+2008-12-05 14:01:57,786 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [cobertura_id, plan_id] 
+2008-12-05 14:01:57,787 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [plan_fk, cobertura_fk] 
+2008-12-05 14:01:57,787 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [plan_fk, cobertura_id, cobertura_fk] 
+2008-12-05 14:01:57,802 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.practica 
+2008-12-05 14:01:57,802 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [practica_resultado, prestacion, fecha_realizacion, id, fecha_resultado, aprobada] 
+2008-12-05 14:01:57,803 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [resultado_fk, practica_prestacion_fk] 
+2008-12-05 14:01:57,804 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, resultado_fk, practica_prestacion_fk] 
+2008-12-05 14:01:57,836 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.prestacion 
+2008-12-05 14:01:57,838 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [descripcion, costo_adicional, codigo] 
+2008-12-05 14:01:57,838 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,839 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,852 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.prestacion_tipo_resultado 
+2008-12-05 14:01:57,852 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [mapkey, parametrosaevaluar_id, prestacion_codigo] 
+2008-12-05 14:01:57,853 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fkf67f632158c1e23f, fkf67f6321b02dd86e] 
+2008-12-05 14:01:57,853 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fkf67f6321b02dd86e, fkf67f632158c1e23f, parametrosaevaluar_id] 
+2008-12-05 14:01:57,863 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.regla 
+2008-12-05 14:01:57,863 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [nombre, id] 
+2008-12-05 14:01:57,864 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,864 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,876 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.regla_compuesta 
+2008-12-05 14:01:57,876 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [comportamiento_id, id] 
+2008-12-05 14:01:57,877 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk14a7bc2b9edbdcf6, regla_compuesta_comportamiento_fk] 
+2008-12-05 14:01:57,877 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [fk14a7bc2b9edbdcf6, primary, regla_compuesta_comportamiento_fk] 
+2008-12-05 14:01:57,912 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.regla_compuesta_regla 
+2008-12-05 14:01:57,913 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [regla_compuesta_id, regla_id] 
+2008-12-05 14:01:57,914 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk5a2903f514a67ff5, fk5a2903f575d9c7ec] 
+2008-12-05 14:01:57,914 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [fk5a2903f514a67ff5, fk5a2903f575d9c7ec, regla_id] 
+2008-12-05 14:01:57,924 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.resultado 
+2008-12-05 14:01:57,925 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [id] 
+2008-12-05 14:01:57,925 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,925 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,937 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.resultado_resultados 
+2008-12-05 14:01:57,937 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [element, mapkey, resultado_id] 
+2008-12-05 14:01:57,938 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk8b77d9b4d2d43cc7] 
+2008-12-05 14:01:57,938 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk8b77d9b4d2d43cc7] 
+2008-12-05 14:01:57,972 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.supervisor 
+2008-12-05 14:01:57,972 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [nombre, salario, edad, id] 
+2008-12-05 14:01:57,973 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:57,973 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:57,985 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.supervisor_tecnico 
+2008-12-05 14:01:57,985 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [supervisor_id, tecnico_id] 
+2008-12-05 14:01:57,986 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk78310a25c3ac297, fk78310a2fb8b3c1d] 
+2008-12-05 14:01:57,986 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk78310a25c3ac297, tecnico_id, fk78310a2fb8b3c1d] 
+2008-12-05 14:01:58,001 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.tarea 
+2008-12-05 14:01:58,002 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [descripcion, practica_id, estado, area_id, id] 
+2008-12-05 14:01:58,002 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [tarea_practica_fk, tarea_area_fk] 
+2008-12-05 14:01:58,002 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, tarea_area_fk, tarea_practica_fk] 
+2008-12-05 14:01:58,013 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.tecnico 
+2008-12-05 14:01:58,014 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [nombre, salario, edad, id] 
+2008-12-05 14:01:58,015 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:58,015 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:58,050 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.tecnico_area 
+2008-12-05 14:01:58,050 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [tecnico_id, area_id] 
+2008-12-05 14:01:58,051 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk3bbeae935c3ac297, fk3bbeae93e7a9f43d] 
+2008-12-05 14:01:58,051 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk3bbeae935c3ac297, fk3bbeae93e7a9f43d] 
+2008-12-05 14:01:58,063 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.tecnico_tarea 
+2008-12-05 14:01:58,064 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [tarea_id, tecnico_id] 
+2008-12-05 14:01:58,064 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [fk3d1b59bbc8fb55ea, fk3d1b59bb5c3ac297] 
+2008-12-05 14:01:58,064 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary, fk3d1b59bb5c3ac297, fk3d1b59bbc8fb55ea] 
+2008-12-05 14:01:58,074 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] table found: tecnicas_tp3.tipo_resultado 
+2008-12-05 14:01:58,075 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] columns: [descripcion, id] 
+2008-12-05 14:01:58,076 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] foreign keys: [] 
+2008-12-05 14:01:58,076 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] indexes: [primary] 
+2008-12-05 14:01:58,078 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] schema update complete 
+2008-12-05 14:01:58,189 INFO  [org.springframework.orm.hibernate3.HibernateTransactionManager] Using DataSource [org.apache.commons.dbcp.BasicDataSource@81b83c] of Hibernate SessionFactory for HibernateTransactionManager 
+2008-12-05 14:01:59,071 INFO  [org.springframework.web.context.ContextLoader] Using context class [org.springframework.web.context.support.XmlWebApplicationContext] for root WebApplicationContext 
+2008-12-05 14:01:59,072 INFO  [org.springframework.web.context.ContextLoader] Root WebApplicationContext: initialization completed in 5829 ms 
+2008-12-05 14:01:59,516 INFO  [org.apache.wicket.Application] [AplicacionClinica] init: Wicket core library initializer 
+2008-12-05 14:01:59,523 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,524 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,526 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IFormSubmitListener, method=public abstract void org.apache.wicket.markup.html.form.IFormSubmitListener.onFormSubmitted()] 
+2008-12-05 14:01:59,527 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IFormSubmitListener, method=public abstract void org.apache.wicket.markup.html.form.IFormSubmitListener.onFormSubmitted()] 
+2008-12-05 14:01:59,528 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=ILinkListener, method=public abstract void org.apache.wicket.markup.html.link.ILinkListener.onLinkClicked()] 
+2008-12-05 14:01:59,529 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=ILinkListener, method=public abstract void org.apache.wicket.markup.html.link.ILinkListener.onLinkClicked()] 
+2008-12-05 14:01:59,531 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IOnChangeListener, method=public abstract void org.apache.wicket.markup.html.form.IOnChangeListener.onSelectionChanged()] 
+2008-12-05 14:01:59,532 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IOnChangeListener, method=public abstract void org.apache.wicket.markup.html.form.IOnChangeListener.onSelectionChanged()] 
+2008-12-05 14:01:59,534 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IRedirectListener, method=public abstract void org.apache.wicket.IRedirectListener.onRedirect()] 
+2008-12-05 14:01:59,534 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IRedirectListener, method=public abstract void org.apache.wicket.IRedirectListener.onRedirect()] 
+2008-12-05 14:01:59,537 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IResourceListener, method=public abstract void org.apache.wicket.IResourceListener.onResourceRequested()] 
+2008-12-05 14:01:59,537 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IResourceListener, method=public abstract void org.apache.wicket.IResourceListener.onResourceRequested()] 
+2008-12-05 14:01:59,541 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IActivePageBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,541 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IActivePageBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,542 INFO  [org.apache.wicket.Application] [AplicacionClinica] init: Wicket core library initializer 
+2008-12-05 14:01:59,542 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,543 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IFormSubmitListener, method=public abstract void org.apache.wicket.markup.html.form.IFormSubmitListener.onFormSubmitted()] 
+2008-12-05 14:01:59,543 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=ILinkListener, method=public abstract void org.apache.wicket.markup.html.link.ILinkListener.onLinkClicked()] 
+2008-12-05 14:01:59,543 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IOnChangeListener, method=public abstract void org.apache.wicket.markup.html.form.IOnChangeListener.onSelectionChanged()] 
+2008-12-05 14:01:59,544 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IRedirectListener, method=public abstract void org.apache.wicket.IRedirectListener.onRedirect()] 
+2008-12-05 14:01:59,544 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IResourceListener, method=public abstract void org.apache.wicket.IResourceListener.onResourceRequested()] 
+2008-12-05 14:01:59,545 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=IActivePageBehaviorListener, method=public abstract void org.apache.wicket.behavior.IBehaviorListener.onRequest()] 
+2008-12-05 14:01:59,545 INFO  [org.apache.wicket.Application] [AplicacionClinica] init: Wicket extensions initializer 
+2008-12-05 14:01:59,556 INFO  [org.apache.wicket.Application] [AplicacionClinica] init: Wicket extensions initializer 
+2008-12-05 14:01:59,557 INFO  [org.apache.wicket.protocol.http.WebApplication] [AplicacionClinica] Started Wicket version 1.3.4 in deployment mode 
+2008-12-05 14:02:29,645 INFO  [org.springframework.jdbc.datasource.JdbcTransactionObjectSupport] JDBC 3.0 Savepoint class is available 
+2008-12-05 14:02:30,132 INFO  [org.apache.wicket.resource.PropertiesFactory] Loading properties files from file:/home/damian/workspace/tecnicas_tp3/bin/laboratorio/web/AsignarTareas.properties 
+2008-12-05 14:02:30,134 INFO  [org.apache.wicket.resource.PropertiesFactory] Loading properties files from file:/home/damian/workspace/tecnicas_tp3/bin/general/web/PaginaBase.properties 
+2008-12-05 14:02:30,195 INFO  [org.apache.wicket.resource.PropertiesFactory] Loading properties files from file:/home/damian/workspace/tecnicas_tp3/bin/general/web/AplicacionClinica.properties 
+2008-12-05 14:02:30,204 INFO  [org.apache.wicket.resource.PropertiesFactory] Loading properties files from jar:file:/home/damian/workspace/tecnicas_tp3/lib/wicket-1.3.4-sources.jar!/org/apache/wicket/Application.properties 
+2008-12-05 14:02:36,125 INFO  [org.apache.wicket.RequestListenerInterface] registered listener interface [RequestListenerInterface name=INewBrowserWindowListener, method=public abstract void org.apache.wicket.markup.html.INewBrowserWindowListener.onNewBrowserWindow()] 
+2008-12-05 14:02:36,160 DEBUG [java.sql.Connection] {conn-100000} Connection 
+2008-12-05 14:02:36,173 DEBUG [java.sql.Connection] {conn-100000} Preparing Statement:    SELECT DISTINCT a.id as id, a.nombre as nombre     FROM area a    JOIN tecnico_area ta ON ta.area_id = a.id   JOIN supervisor_tecnico st ON ta.tecnico_id = st.tecnico_id   WHERE st.supervisor_id = ?   ORDER BY a.nombre   
+2008-12-05 14:02:36,200 DEBUG [java.sql.PreparedStatement] {pstm-100001} Executing Statement:    SELECT DISTINCT a.id as id, a.nombre as nombre     FROM area a    JOIN tecnico_area ta ON ta.area_id = a.id   JOIN supervisor_tecnico st ON ta.tecnico_id = st.tecnico_id   WHERE st.supervisor_id = ?   ORDER BY a.nombre   
+2008-12-05 14:02:36,200 DEBUG [java.sql.PreparedStatement] {pstm-100001} Parameters: [5] 
+2008-12-05 14:02:36,201 DEBUG [java.sql.PreparedStatement] {pstm-100001} Types: [java.lang.Integer] 
+2008-12-05 14:02:36,204 DEBUG [java.sql.ResultSet] {rset-100002} ResultSet 
+2008-12-05 14:02:36,225 DEBUG [java.sql.ResultSet] {rset-100002} Header: [id, nombre] 
+2008-12-05 14:02:36,225 DEBUG [java.sql.ResultSet] {rset-100002} Result: [1, Análisis Clínicos] 
+2008-12-05 14:02:36,226 DEBUG [java.sql.ResultSet] {rset-100002} Result: [2, Ecografías] 
+2008-12-05 14:02:36,226 DEBUG [java.sql.ResultSet] {rset-100002} Result: [3, Radiología] 
+2008-12-05 14:02:36,226 DEBUG [java.sql.ResultSet] {rset-100002} Result: [5, Tomografías] 
+2008-12-05 14:02:38,229 DEBUG [java.sql.Connection] {conn-100003} Connection 
+2008-12-05 14:02:38,233 DEBUG [java.sql.Connection] {conn-100003} Preparing Statement:    SELECT t.id as id, t.nombre as nombre   FROM tecnico t    JOIN tecnico_area ta ON ta.tecnico_id = t.id   JOIN supervisor_tecnico st ON st.tecnico_id = t.id   WHERE ta.area_id = ? AND st.supervisor_id = ?   ORDER BY t.nombre   
+2008-12-05 14:02:38,234 DEBUG [java.sql.PreparedStatement] {pstm-100004} Executing Statement:    SELECT t.id as id, t.nombre as nombre   FROM tecnico t    JOIN tecnico_area ta ON ta.tecnico_id = t.id   JOIN supervisor_tecnico st ON st.tecnico_id = t.id   WHERE ta.area_id = ? AND st.supervisor_id = ?   ORDER BY t.nombre   
+2008-12-05 14:02:38,234 DEBUG [java.sql.PreparedStatement] {pstm-100004} Parameters: [3, 5] 
+2008-12-05 14:02:38,234 DEBUG [java.sql.PreparedStatement] {pstm-100004} Types: [java.lang.Integer, java.lang.Integer] 
+2008-12-05 14:02:38,235 DEBUG [java.sql.ResultSet] {rset-100005} ResultSet 
+2008-12-05 14:02:38,236 DEBUG [java.sql.ResultSet] {rset-100005} Header: [id, nombre] 
+2008-12-05 14:02:38,236 DEBUG [java.sql.ResultSet] {rset-100005} Result: [10, Isabel Coca Sarli] 
+2008-12-05 14:02:38,237 DEBUG [java.sql.ResultSet] {rset-100005} Result: [8, Maria Laura Ciruelanga] 
+2008-12-05 14:02:38,237 DEBUG [java.sql.ResultSet] {rset-100005} Result: [9, Rodrigo Hiena Barrios] 
+2008-12-05 14:02:38,510 INFO  [org.apache.wicket.resource.PropertiesFactory] Loading properties files from file:/home/damian/workspace/tecnicas_tp3/bin/laboratorio/web/PanelArea.properties 

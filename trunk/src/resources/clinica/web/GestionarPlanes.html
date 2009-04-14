@@ -1,0 +1,148 @@
+<wicket:extend>
+<!-- Titulo de la Pagina -->
+<table border="0" align="center" cellspacing="0" cellpadding="0" width="98%">
+	<tr>
+		<td colspan="3"><img src="../images/spacer.gif" width="1" height="10" /></td>
+	</tr>
+	<tr> 
+		<td nowrap class="txt_titulos">
+			<img src="images/titulos_izq.gif" width="20" height="35" align="absmiddle" />
+			<wicket:message key="titulo" />
+			<img src="images/titulos_der.gif" width="20" height="35" align="absmiddle" />
+		</td>
+		<td width="100%" background="../images/titulos_fondo.gif">&nbsp;</td>
+		<td nowrap class="txt_verd-10">&nbsp;</td>
+	</tr>
+</table>
+<!-- Fin Titulo de la Pagina -->
+<form wicket:id="form2">
+<form wicket:id="form1">
+<br/>	
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="filtro" />	
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<table border="0" cellpadding="0" cellspacing="10" class="txt_verd-10">
+				<tr>
+					<td width="30%"><wicket:message key="plan" /></td>
+					<td width="70%"><select wicket:id="planes" /></td>
+				</tr>	
+				<tr>
+					<td width="30%"><wicket:message key="prestacion" /></td>
+					<td width="70%"><select wicket:id="prestaciones" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>		
+</table>
+<!-- Inicio de Reglas -->
+<br/>
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="reglas" />
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<table border="0" cellpadding="0" cellspacing="10" class="txt_verd-10" width="100%">
+				<tr>
+					<td width="100%"><label wicket:id="regla" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="97%" border="0" cellpadding="0" cellspacing="1" style="padding-bottom:10px" align="center">
+	<tr>
+		<td>
+			<button wicket:id="btnEliminarRegla" type="submit" >
+				<wicket:message key="eliminarRegla" />
+			</button>
+		</td>
+	</tr>
+</table>
+</form>
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#EAE6E1">
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<table width="50%" border="0" cellpadding="0" cellspacing="10" class="txt_verd-10">
+				<tr>
+					<td width="25%"><wicket:message key="composicion" /></td>
+					<td width="25%"><select wicket:id="comportamientos" /></td>
+					<td width="25%"><wicket:message key="condiciones" /></td>
+					<td width="25%"><select wicket:id="condiciones" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- Fin de Reglas -->
+<!-- Inicio de Condiciones -->
+<br/>
+<table width="97%" border="0" align="center" cellpadding="0" cellspacing="1	" bgcolor="#EAE6E1">
+	<tr>  
+    	<td height="18" class="txt_subtitulos" colspan="2" bgcolor="#F8F7F5">
+    		<img src="images/misc02.gif" width="14" height="8" />
+    		<wicket:message key="caracteristicasCondiciones" />
+    	</td>
+  	</tr>
+	<tr bgcolor="#FDFDFD" class="ficha">
+		<td>
+			<div wicket:id="condicionesContainer">
+				<div wicket:id="cantidadContainer">
+					<table width="50%" border="0" cellpadding="0" cellspacing="10" class="txt_verd-10">
+						<tr>
+							<td width="25%"><wicket:message key="cantidadPeriodo" /></td>
+							<td width="25%"><input wicket:id="cantidadCantidad"/></td>
+						</tr>
+				 		<tr>
+							<td width="25%"><wicket:message key="tiempo" /></td>
+							<td width="25%"><select wicket:id="cantidadFrecuencia"/></td>
+						</tr> 
+					</table>
+				</div>
+				<div wicket:id="carenciaContainer">
+					<table width="50%" border="0" cellpadding="0" cellspacing="10" class="txt_verd-10">
+						<tr>
+							<td width="25%"><wicket:message key="registracion" /></td>
+							<td width="25%"><input wicket:id="carenciaMeses"/></td>
+						</tr>
+					</table>
+				</div>
+				<div wicket:id="combinacionContainer">
+					<table width="50%" border="0" cellpadding="0" cellspacing="10" class="txt_verd-10">
+						<tr>
+							<td width="25%"><wicket:message key="cantidadMensual" /></td>
+							<td width="25%"><input wicket:id="combinacionCantidad"/></td>
+						</tr>
+				 		<tr>
+							<td width="25%"><wicket:message key="prestaciones" /></td>
+							<td width="25%"><select wicket:id="combinacionPrestaciones"/></td>
+						</tr> 
+					</table>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+<table width="97%" border="0" cellpadding="0" cellspacing="1" align="center">
+	<tr>
+		<td>
+			<button wicket:id="btnAniadirCondicion" type="submit" >
+				<wicket:message key="aniadirCondicion" />
+			</button>
+		</td>	
+	</tr>														
+</table>
+</form>
+<!-- Fin de Condiciones -->
+<br/>
+<div wicket:id="feedback"/>
+</wicket:extend>
