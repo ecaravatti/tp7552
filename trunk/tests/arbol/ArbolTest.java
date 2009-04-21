@@ -1,8 +1,8 @@
 package arbol;
 
+import junit.framework.TestCase;
 import arbol.altura.BSTree;
 import arbol.altura.BTData;
-import junit.framework.TestCase;
 
 public class ArbolTest extends TestCase {
 	
