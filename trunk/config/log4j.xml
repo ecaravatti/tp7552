@@ -68,16 +68,8 @@
       <priority value="INFO"/>
    </category>
    
-   <category name="org.hibernate.sql">
-     <priority value="DEBUG"/>
-   </category>
-
    <category name="wicket">
       <priority value="INFO"/>
-   </category>
-
-   <category name="java.sql">
-	  <priority value="DEBUG"/>
    </category>
       	 
    <!-- ======================= -->

@@ -16,11 +16,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
  			classpath:spring/applicationcontext.xml,
-			classpath:spring/applicationcontext-dao.xml,
-			classpath:spring/applicationcontext-persistence.xml,
 			classpath:spring/applicationcontext-presenter.xml,
-			classpath:spring/applicationcontext-servicio.xml,
-			classpath:spring/datasource.xml
+			classpath:spring/applicationcontext-servicio.xml
 		</param-value>
 	</context-param>
 	

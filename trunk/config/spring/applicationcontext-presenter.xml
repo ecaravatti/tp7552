@@ -3,46 +3,9 @@
 
 <beans>
 
-    <bean id="asignarTareaPresenter" class="laboratorio.presenter.AsignarTareaPresenterImpl">
-    	<property name="servicioSupervisor" ref="servicioSupervisor"/>
-    	<property name="servicioArea" ref="servicioArea"/>
-    </bean>
-    
-    <bean id="panelAreaPresenter" class="laboratorio.presenter.PanelAreaPresenterImpl">
-    	<property name="servicioArea" ref="servicioArea"/>
-    	<property name="servicioTecnico" ref="servicioTecnico"/>
-    	<property name="servicioSupervisor" ref="servicioSupervisor"/>
-    </bean>
-    
-    <bean id="tareasTecnicoPresenter" class="laboratorio.presenter.TareasTecnicoPresenterImpl" singleton="false">
-    	<property name="servicioSupervisor" ref="servicioSupervisor"/>
-    	<property name="servicioTecnico" ref="servicioTecnico"/>
-    </bean>
-    
-    <bean id="gestionarPlanesPresenter" class="clinica.presenter.GestionarPlanesPresenterImpl">
-    	<property name="servicioPlan" ref="servicioPlan"/>
-    	<property name="servicioRegla" ref="servicioRegla"/>
-    	<property name="servicioCobertura" ref="servicioCobertura"/>
-    </bean>
-
-    <bean id="emitirOrdenesPresenter" class="clinica.presenter.EmitirOrdenesPresenterImpl">
-    	<property name="servicioPaciente" ref="servicioPaciente"/>
-    	<property name="servicioMedico" ref="servicioMedico"/>
-    	<property name="servicioPractica" ref="servicioPractica"/>
-    	<property name="servicioOrdenMedica" ref="servicioOrdenMedica"/>
-    	<property name="servicioPrestacion" ref="servicioPrestacion"/>
-    </bean>
-    
-    <bean id="visualizarOrdenesPresenter" class="laboratorio.presenter.VisualizarOrdenesPresenterImpl">    	
-    	<property name="servicioOrdenMedica" ref="servicioOrdenMedica"/>
-    </bean>
-	
-	<bean id="registrarResultadosPresenter" class="laboratorio.presenter.RegistrarResultadosPresenterImpl">
-		<property name="servicioPractica" ref="servicioPractica"/>
-	</bean>
-	
-	<bean id="resultadoPracticaPresenter" class="laboratorio.presenter.ResultadoPracticaPresenterImpl">
-		<property name="servicioPractica" ref="servicioPractica"/>
-	</bean>
+<!--    <bean id="asignarTareaPresenter" class="laboratorio.presenter.AsignarTareaPresenterImpl">-->
+<!--    	<property name="servicioSupervisor" ref="servicioSupervisor"/>-->
+<!--    	<property name="servicioArea" ref="servicioArea"/>-->
+<!--    </bean>-->
 	
 </beans>
