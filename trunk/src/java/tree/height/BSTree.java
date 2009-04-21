@@ -1,4 +1,4 @@
-package arbol.altura;
+package tree.height;
 
 public class BSTree {
 

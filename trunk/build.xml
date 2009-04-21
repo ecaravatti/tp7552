@@ -4,14 +4,14 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
-<project basedir="." default="build" name="tecnicas_tp3">
+<project basedir="." default="build" name="tp_taller2">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
 	<property name="sql.dir" value="etc/db"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
-    <path id="tecnicas_tp3.classpath">
+    <path id="tp_taller2.classpath">
         <pathelement location="bin"/>
         <pathelement location="lib/antlr-2.7.6.jar"/>
         <pathelement location="lib/asm-1.5.3.jar"/>
@@ -82,28 +82,28 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="tests"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="src/java"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="src/resources"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="config"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target name="Clinica">
         <java classname="general.web.Start" failonerror="true" fork="yes">
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </java>
     </target>
-    <target name="tecnicas_tp3">
+    <target name="tp_taller2">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
@@ -113,12 +113,12 @@
             <test name="laboratorio.ResultadosPracticaTest" todir="${junit.output.dir}"/>
             <test name="laboratorio.SupervisorTest" todir="${junit.output.dir}"/>
             <test name="laboratorio.TecnicoTest" todir="${junit.output.dir}"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </junit>
     </target>
 	<target name="sql">	
 	  <sql driver="com.mysql.jdbc.Driver"
-	       url="jdbc:mysql://localhost:3306/tecnicas_tp3?useUnicode=true&amp;characterEncoding=UTF-8"
+	       url="jdbc:mysql://localhost:3306/tp_taller2?useUnicode=true&amp;characterEncoding=UTF-8"
 	       userid="root" password="" >
 	    <classpath>
 	      <pathelement location="lib/mysql-connector-java-5.0.4-bin.jar"/>
@@ -138,7 +138,7 @@
             <test name="laboratorio.ResultadosPracticaTest" todir="${junit.output.dir}"/>
             <test name="laboratorio.SupervisorTest" todir="${junit.output.dir}"/>
             <test name="laboratorio.TecnicoTest" todir="${junit.output.dir}"/>
-            <classpath refid="tecnicas_tp3.classpath"/>
+            <classpath refid="tp_taller2.classpath"/>
         </junit>
     </target>
     <target name="junitreport">

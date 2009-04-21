@@ -1,4 +1,4 @@
-package arbol.altura;
+package tree.height;
 
 // class BTNode defines the tree node data structure
 // and provides a collection of get/set methods protecting private data

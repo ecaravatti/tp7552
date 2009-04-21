@@ -40,7 +40,7 @@
   <!-- + Set Virtual Hosts. A Null host or empty array means all hosts -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <Call name="addWebApplication">
-    <Arg>/tecnicas_tp3</Arg>
+    <Arg>/tp_taller2</Arg>
     <Arg>web</Arg>
   </Call>
 

@@ -1,4 +1,4 @@
-package arbol.altura;
+package tree.height;
 
 //BTData class is a wrapper for the actual data
 //It must provide a method for comparing values

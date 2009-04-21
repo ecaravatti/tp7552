@@ -1,10 +1,10 @@
-package arbol;
+package tree;
 
+import tree.height.BSTree;
+import tree.height.BTData;
 import junit.framework.TestCase;
-import arbol.altura.BSTree;
-import arbol.altura.BTData;
 
-public class ArbolTest extends TestCase {
+public class TreeTest extends TestCase {
 	
 	public void treeTest() {
 		BSTree tree = new BSTree();
