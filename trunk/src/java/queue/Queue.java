@@ -11,6 +11,7 @@ public class Queue<T> {
 	private int fullSize = 0; 
 	
 	public Queue(int capacity){
+		this.capacity = capacity;
 		queue = new ArrayList<T>(capacity);
 	}
 	
