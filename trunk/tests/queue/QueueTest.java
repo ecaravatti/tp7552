@@ -18,7 +18,6 @@ public class QueueTest extends TestCase {
 	}
 	
 	public void testQueue(){
-		queue = new Queue<Integer>(5);
 		queue.offer(new Integer(1));
 		queue.offer(new Integer(2));
 		queue.offer(new Integer(3));
@@ -73,7 +72,6 @@ public class QueueTest extends TestCase {
 	}
 	
 	public void testOverflow(){
-		queue = new Queue<Integer>(5);
 		assertTrue(queue.offer(new Integer(1)));
 		assertTrue(queue.offer(new Integer(2)));
 		assertTrue(queue.offer(new Integer(3)));
@@ -106,7 +104,6 @@ public class QueueTest extends TestCase {
 	}
 	
 	private void fillQueue(){
-		queue = new Queue<Integer>(5);
 		queue.offer(new Integer(1));
 		queue.offer(new Integer(2));
 		queue.offer(new Integer(3));
