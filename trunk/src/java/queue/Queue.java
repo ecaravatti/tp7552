@@ -93,4 +93,8 @@ public class Queue<T> {
 		return this.queue.get(0);
 	}
 	
+	public void destroy(){
+		this.queue.clear();
+	}
+	
 }
