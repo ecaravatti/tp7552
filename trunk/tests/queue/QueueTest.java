@@ -49,21 +49,21 @@ public class QueueTest extends TestCase {
 		// Insert a single element
 		queue.offer(new Integer(1));
 		// The queue head at this moment is 1
-		assertEquals(1, queue.poll().intValue());
+		assertEquals(1, queue.peek().intValue());
 		// Insert a single element
 		queue.offer(new Integer(2));
 		// The queue head at this moment is still 1
-		assertEquals(1, queue.poll().intValue());
+		assertEquals(1, queue.peek().intValue());
 		// Insert a single element
 		queue.offer(new Integer(3));
 		// The queue head at this moment is still 1
-		assertEquals(1, queue.poll().intValue());
+		assertEquals(1, queue.peek().intValue());
 		
 		// Remove the current head
 		queue.remove();
 		
 		// The queue head at this moment is 3
-		assertEquals(3, queue.poll().intValue());
+		assertEquals(2, queue.poll().intValue());
 		// Remove the current head
 		queue.remove();
 		
