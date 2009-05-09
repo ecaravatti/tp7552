@@ -9,12 +9,16 @@ public class Stack<T> {
 	private int top = -1;
 	private int capacity;
 	private ArrayList<T> stack;
-	
+
 	public Stack() {
 		stack = new ArrayList<T>(DEFAULT_CAPACITY);
 	}
-	
-	public Stack(int capacity){
+
+	public void destroy() {
+		stack.clear();
+	}
+
+	public Stack(int capacity) {
 		this.capacity = capacity;
 		stack = new ArrayList<T>(capacity);
 	}
@@ -22,52 +26,50 @@ public class Stack<T> {
 	/**
 	 * Pushes an item onto the top of this stack.
 	 * */
-	public void push(T element) throws Exception{
-		if(isFull()){
+	public void push(T element) throws Exception {
+		if (isFull()) {
 			throw new Exception();
-		}
-		else{
+		} else {
 			stack.add(element);
 			top++;
-		}		
-	}
-	
-	
-	/**
-	 * Looks at the object at the top of this stack without removing it from the stack. 
-	 * */
-	public T peek(){
-		if(isEmpty()){
-			throw new EmptyStackException();
 		}
-		else{		
+	}
+
+	/**
+	 * Looks at the object at the top of this stack without removing it from the
+	 * stack.
+	 * */
+	public T peek() {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		} else {
 			T element = stack.get(top);
-			
+
 			return element;
 		}
 	}
-	
+
 	/**
-	 * Removes the object at the top of this stack and returns that object as the value of this function.
+	 * Removes the object at the top of this stack and returns that object as
+	 * the value of this function.
 	 * */
-	public T pop() throws EmptyStackException{
-		if(isEmpty()){
+	public T pop() throws EmptyStackException {
+		if (isEmpty()) {
 			throw new EmptyStackException();
-		}
-		else{		
+		} else {
 			T element = stack.get(top);
 			stack.remove(top);
 			top--;
-			
+
 			return element;
 		}
 	}
-	
-	private boolean isEmpty(){
-		return(top == -1);
+
+	private boolean isEmpty() {
+		return (top == -1);
 	}
-	
-	private boolean isFull(){
-		return(top == (capacity - 1));
+
+	private boolean isFull() {
+		return (top == (capacity - 1));
 	}
 }
