@@ -19,6 +19,9 @@ public class Stack<T> {
 		stack = new ArrayList<T>(capacity);
 	}
 
+	/**
+	 * Pushes an item onto the top of this stack.
+	 * */
 	public void push(T element) throws Exception{
 		if(isFull()){
 			throw new Exception();
@@ -29,6 +32,24 @@ public class Stack<T> {
 		}		
 	}
 	
+	
+	/**
+	 * Looks at the object at the top of this stack without removing it from the stack. 
+	 * */
+	public T peek(){
+		if(isEmpty()){
+			throw new EmptyStackException();
+		}
+		else{		
+			T element = stack.get(top);
+			
+			return element;
+		}
+	}
+	
+	/**
+	 * Removes the object at the top of this stack and returns that object as the value of this function.
+	 * */
 	public T pop() throws EmptyStackException{
 		if(isEmpty()){
 			throw new EmptyStackException();
@@ -47,6 +68,6 @@ public class Stack<T> {
 	}
 	
 	private boolean isFull(){
-		return(top == capacity);
+		return(top == (capacity - 1));
 	}
 }
