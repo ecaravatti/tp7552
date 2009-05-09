@@ -64,8 +64,9 @@ public class HeightBTree extends BTree {
 		if (node == null)
 			return null;
 
-		if (node.hasTwoChildren())
+		if (node.hasTwoChildren()) {
 			node = swap(node, minmax);
+		}
 
 		side = node.getSide();
 		node = remove(node);
@@ -75,10 +76,15 @@ public class HeightBTree extends BTree {
 	
 	private void rebalance(BTNode node, int side, int in) {
 		int newBalance;
+		boolean aumentaBalanceo;
+		boolean huboRotaciones;
 		for (; node != null; node = node.getParent()) {
 			newBalance = node.getBalance() + in * side;
+			aumentaBalanceo = Math.abs(newBalance) - Math.abs(node.getBalance()) < 0;
+			huboRotaciones = false;
 			node.setBalance(newBalance);
 			if (Math.abs(newBalance) > variacionMaxima) {
+				huboRotaciones = true;
 				if (newBalance < 0) {
 					if (node.getChild(BTNode.LEFT).getBalance() > 0) {
 						rotateLeftAndSetBalance(node.getChild(BTNode.LEFT));
@@ -92,7 +98,7 @@ public class HeightBTree extends BTree {
 				}
 			}
 
-			if (in == INSERT && node.getBalance() == 0 || in == DELETE && node.getBalance() != 0) {
+			if (in == INSERT && aumentaBalanceo || (in == DELETE && (!aumentaBalanceo && !huboRotaciones))) {
 				break;
 			}
 			side = node.getSide();
