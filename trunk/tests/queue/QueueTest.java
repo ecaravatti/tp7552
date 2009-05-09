@@ -86,13 +86,13 @@ public class QueueTest extends TestCase {
 	public void testUnderflow(){
 		// The queue is filled with 5 elements
 		fillQueue();
-		for (int i = 0; i < 5 ; i++){
+		for (int i = 0; i < 5; i++) {
 			queue.remove();
 		}
-		try{
+		try {
 			queue.remove();
 			fail("The NoSuchElementException was not thrown");
-		}catch(NoSuchElementException e){
+		} catch (NoSuchElementException e) {
 			// Expected exception
 		}
 		
