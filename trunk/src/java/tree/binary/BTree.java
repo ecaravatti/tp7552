@@ -70,25 +70,45 @@ public abstract class BTree {
 		return parent;
 	}
 
-	// rotate() links the participating nodes and
-	// returns the node which is on top after the rotation.
-	// the 'node' is rotated down and to the specified 'side'
-	public BTNode rotate(BTNode node, int side) {
-		BTNode parent = node.getParent(); // may be null
-		BTNode child = node.getChild(-side); // never null
-		BTNode grand = child.getChild(side); // may be null
+	/**
+	 * Realiza la rotación a derecha del nodo recibido, y devuelve el nodo que queda arriba luego de la rotación
+	 */
+	public BTNode rotateRight(BTNode node) {
+		BTNode parent = node.getParent(); //Puede ser null
+		BTNode child = node.getChild(BTNode.LEFT); //Nunca es null
+		BTNode grand = child.getChild(BTNode.RIGHT); //Puede ser null
 
-		link(node, -side, grand);
+		link(node, BTNode.LEFT, grand);
 		link(parent, node.getSide(), child);
-		link(child, side, node);
+		link(child, BTNode.RIGHT, node);
 		if (node == root) {
 			root = child;
 		}
+		
+		return child;
+	}
+	
+	/**
+	 * Realiza la rotación a izquierda del nodo recibido, y devuelve el nodo que queda arriba luego de la rotación
+	 */
+	public BTNode rotateLeft(BTNode node) {
+		BTNode parent = node.getParent(); //Puede ser null
+		BTNode child = node.getChild(BTNode.RIGHT); //Nunca es null
+		BTNode grand = child.getChild(BTNode.LEFT); //Puede ser null
+
+		link(node, BTNode.RIGHT, grand);
+		link(parent, node.getSide(), child);
+		link(child, BTNode.LEFT, node);
+		if (node == root) {
+			root = child;
+		}
+		
 		return child;
 	}
 
-	// link() method is used by add(), remove() and rotate()
-	// handles null pointers and updates root pointer when needed
+	/**
+	 * Asocia un padre a un hijo y viceversa
+	 */
 	public void link(BTNode parent, int side, BTNode child) {
 		if (child != null) {
 			child.setParent(parent);
@@ -109,13 +129,15 @@ public abstract class BTree {
 	
 	private void inOrderPrint(BTNode node, StringBuffer buffer) {
 		if (node.getChild(BTNode.LEFT) != null) inOrderPrint(node.getChild(BTNode.LEFT), buffer);
-		buffer.append(node.toString() + "\n");
+		//buffer.append(node.toString() + "\n");
+		buffer.append("Yo: " + node);
+		buffer.append(" Izq: " + node.getChild(BTNode.LEFT));
+		buffer.append(" Der: " + node.getChild(BTNode.RIGHT) + "\n");
 		if (node.getChild(BTNode.RIGHT) != null) inOrderPrint(node.getChild(BTNode.RIGHT), buffer);
 	}
 
 	public abstract BTNode insert(BTData data);
 	
-	//TODO [manugarciacab] el minmax creo que es solo para AVL, pero como aun no lo vi lo dejo aca.
 	public abstract BTNode delete(BTData data, int minmax);
 
 }

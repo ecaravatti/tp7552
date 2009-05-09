@@ -5,7 +5,19 @@ import tree.binary.BTNode;
 import tree.binary.BTree;
 
 
-public class HeightBTree extends BTree{
+public class HeightBTree extends BTree {
+	
+	private int variacionMaxima;
+	
+	public HeightBTree(int variacionMaxima) {
+		super();
+		this.variacionMaxima = variacionMaxima;
+	}
+	
+	public HeightBTree() {
+		super();
+		this.variacionMaxima = 1; //Valor por defecto
+	}
 	
 	// if the node has two children
 	// swap the nodes before delete()
@@ -36,7 +48,7 @@ public class HeightBTree extends BTree{
 		if (locate(data) != null)
 			return null;
 		node = add(lastNode, nextSide, data);
-		rebalanceAVL(lastNode, nextSide, INSERT);
+		rebalance(lastNode, nextSide, INSERT);
 		return node;
 	}
 	
@@ -57,66 +69,56 @@ public class HeightBTree extends BTree{
 
 		side = node.getSide();
 		node = remove(node);
-		rebalanceAVL(node, side, DELETE);
+		rebalance(node, side, DELETE);
 		return node;
 	}
 	
-	// rebalanceAVL() performs AVL rebalancing of the tree
-	// after INSERT or DELETE using rotations when necessary
-	// argument node is the parent of inserted or deleted node
-	// argument side is the grown or shrunken side
-	// argument in is -1 for DELETE and +1 for INSERT
-	public void rebalanceAVL(BTNode node, int side, int in) {
+	private void rebalance(BTNode node, int side, int in) {
+		int newBalance;
 		for (; node != null; node = node.getParent()) {
-			if (node.getBalance() != in * side)
-				node.setBalance(node.getBalance() + in * side);
-			else
-				node = rotateAVL(node);
+			newBalance = node.getBalance() + in * side;
+			node.setBalance(newBalance);
+			if (Math.abs(newBalance) > variacionMaxima) {
+				if (newBalance < 0) {
+					if (node.getChild(BTNode.LEFT).getBalance() > 0) {
+						rotateLeftAndSetBalance(node.getChild(BTNode.LEFT));
+					}
+					node = rotateRightAndSetBalance(node);
+				} else {
+					if (node.getChild(BTNode.RIGHT).getBalance() < 0) {
+						rotateRightAndSetBalance(node.getChild(BTNode.RIGHT));
+					}
+					node = rotateLeftAndSetBalance(node);
+				}
+			}
 
-			if (in == INSERT && node.getBalance() == 0 || in == DELETE
-					&& node.getBalance() != 0)
+			if (in == INSERT && node.getBalance() == 0 || in == DELETE && node.getBalance() != 0) {
 				break;
+			}
 			side = node.getSide();
 		}
 	}
 	
-	// rotateAVL() is called by rebalanceAVL() after INSERT or DELETE
-	// It performs rotation(s) and updates balance factors.
-	// Returns the top node of the rotated subtree.
-	// If the balance factor of this node is 0:
-	// for INSERT: the subtree has not grown,
-	// for DELETE: the subtree has shrunken.
-	// If the balance factor of this node is not 0 (left-high or right-high):
-	// for INSERT: the subtree has grown,
-	// for DELETE: the subtree has not shrunken.
-	public BTNode rotateAVL(BTNode node) {
-		int side = node.getBalance();
-		BTNode child = node.getChild(side);
-
-		if (child.getBalance() == -side) {
-			BTNode grand = child.getChild(-side);
-			if (grand.getBalance() == -side) {
-				grand.setBalance(0);
-				child.setBalance(side);
-				node.setBalance(0);
-			} else if (grand.getBalance() == side) {
-				grand.setBalance(0);
-				child.setBalance(0);
-				node.setBalance(-side);
-			} else {
-				node.setBalance(0);
-				child.setBalance(0);
-			}
-			rotate(child, side);
-		} else if (child.getBalance() == side) {
-			node.setBalance(0);
-			child.setBalance(0);
-		} else if (child.getBalance() == 0) // only after DELETE, never after INSERT
-		{
-			node.setBalance(side);
-			child.setBalance(-side);
-		}
-		node = rotate(node, -side);
-		return node;
+	private BTNode rotateRightAndSetBalance(BTNode node) {
+		BTNode child = rotateRight(node);
+		
+		//Balances
+		int balanceAux = node.getBalance();
+		node.setBalance(balanceAux + 1 + Math.max(-child.getBalance(), 0));
+		child.setBalance(-Math.min(-balanceAux - 2, Math.min(-balanceAux - child.getBalance() - 2, -child.getBalance() - 1)));
+		
+		return child;
 	}
+	
+	private BTNode rotateLeftAndSetBalance(BTNode node) {
+		BTNode child = rotateLeft(node);
+		
+		//Balances
+		int balanceAux = node.getBalance();
+		node.setBalance(balanceAux - 1 - Math.max(child.getBalance(), 0));
+		child.setBalance(Math.min(balanceAux - 2, Math.min(balanceAux + child.getBalance() - 2, child.getBalance() - 1)));
+		
+		return child;
+	}
+
 }
