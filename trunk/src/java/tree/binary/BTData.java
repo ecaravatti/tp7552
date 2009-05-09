@@ -27,5 +27,10 @@ public class BTData implements Comparable<BTData>{
 	public int compareTo(BTData data) {
 		return new Integer(this.key).compareTo(data.key);
 	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(key);
+	}
 
 }

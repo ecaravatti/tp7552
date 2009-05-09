@@ -99,6 +99,19 @@ public abstract class BTree {
 			root = child;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+		inOrderPrint(root, buffer);
+		return buffer.toString();
+	}
+	
+	private void inOrderPrint(BTNode node, StringBuffer buffer) {
+		if (node.getChild(BTNode.LEFT) != null) inOrderPrint(node.getChild(BTNode.LEFT), buffer);
+		buffer.append(node.toString() + "\n");
+		if (node.getChild(BTNode.RIGHT) != null) inOrderPrint(node.getChild(BTNode.RIGHT), buffer);
+	}
 
 	public abstract BTNode insert(BTData data);
 	

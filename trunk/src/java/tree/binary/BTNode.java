@@ -136,6 +136,11 @@ public class BTNode {
 	public boolean isLeaf() {
 		return (leftChild == null && rightChild == null);
 	}
+	
+	@Override
+	public String toString() {
+		return "[B: " + balance + " - data: " + data.toString() + "]";
+	}
 
 	public BTNode getParent() {
 		return parent;
