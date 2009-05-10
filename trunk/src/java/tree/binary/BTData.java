@@ -6,10 +6,6 @@ package tree.binary;
 //Ideally, it should implement Comparable interface
 public class BTData implements Comparable<BTData>{
 
-	public static final int LT = BTNode.LEFT;
-	public static final int EQ = BTNode.EQUAL;
-	public static final int GT = BTNode.RIGHT;
-
 	private int key;
 
 	public BTData(int key) {
