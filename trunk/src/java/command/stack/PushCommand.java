@@ -4,8 +4,15 @@ import command.Command;
 
 public class PushCommand extends Command {
 
+	private String content;
+	
 	public PushCommand(Integer id, String content) {
-		super(id, content);
+		super(id);
+		this.content = content;
+	}
+	
+	public String getContent() {
+		return content;
 	}
 	
 	@Override

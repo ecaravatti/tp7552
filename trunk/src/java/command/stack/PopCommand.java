@@ -4,10 +4,16 @@ import command.Command;
 
 public class PopCommand extends Command {
 
+	private String content;
+	
 	public PopCommand(Integer id, String content) {
-		super(id, content);
+		super(id);
+		this.content = content;
 	}
 	
+	public String getContent() {
+		return content;
+	}
 	
 	@Override
 	public String execute() {

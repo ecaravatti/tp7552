@@ -4,15 +4,21 @@ import command.Command;
 
 public class AddCommand extends Command {
 
+	private String content;
 	private Integer parentId;
 	private Boolean hasKey;
 
 	public AddCommand(Integer id, String content, Integer parenId,
 			Boolean hasKey) {
 
-		super(id, content);
+		super(id);
+		this.content = content;
 		this.parentId = parenId;
 		this.hasKey = hasKey;
+	}
+	
+	public String getContent() {
+		return content;
 	}
 
 	@Override

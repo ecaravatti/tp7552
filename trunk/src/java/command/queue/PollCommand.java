@@ -4,8 +4,15 @@ import command.Command;
 
 public class PollCommand extends Command {
 
+	private String content;
+	
 	public PollCommand(Integer id, String content) {
-		super(id, content);
+		super(id);
+		this.content = content;
+	}
+	
+	public String getContent() {
+		return content;
 	}
 	
 	@Override

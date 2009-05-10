@@ -4,8 +4,15 @@ import command.Command;
 
 public class OfferCommand extends Command {
 
+	String content;
+	
 	public OfferCommand(Integer id, String content) {
-		super(id, content);
+		super(id);
+		this.content = content;
+	}
+	
+	public String getContent() {
+		return content;
 	}
 
 	@Override
