@@ -19,26 +19,6 @@ public class HeightBTree extends BTree {
 		this.variacionMaxima = 1; //Valor por defecto
 	}
 	
-	// if the node has two children
-	// swap the nodes before delete()
-	// does not apply to splay trees
-	public BTNode swap(BTNode node, int minmax) {
-		BTNode temp = node;
-		BTNode swap = (minmax == FINDMAX) ? node.prevInO() : node.nextInO();
-		swapData(node, swap); // swap data first
-		node = swap; // now swap nodes
-		swap = temp;
-		return node;
-	}
-
-	// helper method for swap()
-	public void swapData(BTNode node1, BTNode node2) {
-		BTData data;
-		data = node1.getData();
-		node1.setData(node2.getData());
-		node2.setData(data);
-	}
-	
 	// insert data into an AVL tree
 	// returns new node or null if the data already exists
 	public BTNode insert(BTData data) {
@@ -95,20 +75,20 @@ public class HeightBTree extends BTree {
 					alturaInicial = node.depth();
 				}
 				if (newBalance < 0) {
-					if (node.getChild(BTNode.LEFT).getBalance() > 0) {
-						int alturaAntesDeRotacion = node.getChild(BTNode.LEFT).depth();
-						nodeAux = rotateLeftAndSetBalance(node.getChild(BTNode.LEFT));
-						if (nodeAux.depth() < alturaAntesDeRotacion) {
+					BTNode leftChild = node.getChild(BTNode.LEFT);
+					if (leftChild.getBalance() > 0) {
+						nodeAux = rotateLeftAndSetBalance(leftChild);
+						if (nodeAux.getBalance() >= 0) {
 							//El subarbol decreció en un nivel.
 							node.setBalance(node.getBalance() - in * side);
-						}
+						} 
 					}
 					node = rotateRightAndSetBalance(node);
 				} else {
-					if (node.getChild(BTNode.RIGHT).getBalance() < 0) {
-						int alturaAntesDeRotacion = node.getChild(BTNode.RIGHT).depth();
-						nodeAux = rotateRightAndSetBalance(node.getChild(BTNode.RIGHT));
-						if (nodeAux.depth() < alturaAntesDeRotacion) {
+					BTNode rightChild = node.getChild(BTNode.RIGHT);
+					if (rightChild.getBalance() < 0) {
+						nodeAux = rotateRightAndSetBalance(rightChild);
+						if (nodeAux.getBalance() <= 0) {
 							//El subarbol decreció en un nivel.
 							node.setBalance(node.getBalance() - in * side);
 						}
