@@ -59,7 +59,7 @@ public class HeightBTreeTest extends TestCase {
 	}
 
 	public void testBalances() {
-		BTree tree = new HeightBTree(9);
+		BTree tree = new HeightBTree(3);
 		
 		List<Integer> insertados = new ArrayList<Integer>();
 		for (int i = 0; i < 10000; i++) {
@@ -77,7 +77,7 @@ public class HeightBTreeTest extends TestCase {
 		
 		int i = 0;
 		for (Integer codigo : insertados) {
-			if (i++ < 9995) tree.delete(new BTData(codigo), 1);
+			if (i++ < 9980) tree.delete(new BTData(codigo), 1);
 		}
 		
 		for (Integer codigo : insertados) {
@@ -88,7 +88,7 @@ public class HeightBTreeTest extends TestCase {
 			}
 		}
 		
-		System.out.println(tree);
+	//	System.out.println(tree);
 		
 	}
 
