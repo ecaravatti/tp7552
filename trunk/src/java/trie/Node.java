@@ -5,12 +5,19 @@ import java.util.Map;
 
 public class Node {
 
+	/** Unique identifier */
+	private Integer id;
+	
 	/** Child nodes to this one */
 	private Map<Character, Node> children = new HashMap<Character, Node>();
 
 	/** Content of the node if there's any */
 	private String content;
 
+	public Node(Integer id) {
+		this.id = id;
+	}
+	
 	/**
 	 * Adds a node for the given character
 	 * @param c
@@ -18,8 +25,8 @@ public class Node {
 	 * @return
 	 * 		The node that correspond to the given character
 	 */
-	public Node addChildNode(Character c) {
-		Node emptyNode = new Node();
+	public Node addChildNode(Character c, Integer id) {
+		Node emptyNode = new Node(id);
 		children.put(toLowerCase(c), emptyNode);
 		return emptyNode;
 	}
@@ -46,8 +53,8 @@ public class Node {
 	 * @param c
 	 * 		Character whose node is going to be removed
 	 */
-	public void removeChildNode(Character c) {
-		children.remove(toLowerCase(c));
+	public Node removeChildNode(Character c) {
+		return children.remove(toLowerCase(c));
 	}
 	
 	/**
@@ -77,5 +84,9 @@ public class Node {
 	
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 }

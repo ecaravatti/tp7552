@@ -36,25 +36,26 @@ public class TrieTest extends TestCase {
 
 	public void testAdd() {
 		assertFalse(trie.containsKey("año"));
-		assertTrue(trie.add("año"));
+		trie.add("año");
 		assertTrue(trie.containsKey("año"));
 	}
 
 	public void testAddAlreadyExistentKey() {
 		assertTrue(trie.containsKey("asar"));
-		assertFalse(trie.add("asar"));
+		trie.add("asar");
 		assertTrue(trie.containsKey("asar"));
 	}
 
 	public void testRemove() {
 		assertTrue(trie.containsKey("ala"));
-		assertTrue(trie.remove("ala"));
+		trie.remove("ala");
 		assertFalse(trie.containsKey("ala"));
 		assertTrue(trie.containsKey("alas"));
 	}
 
 	public void testRemoveUnexistentKey() {
 		assertFalse(trie.containsKey("casa"));
-		assertFalse(trie.remove("casa"));
+		trie.remove("casa");
+		assertFalse(trie.containsKey("casa"));
 	}
 }

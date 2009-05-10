@@ -1,9 +1,24 @@
 package trie;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import command.Command;
+import command.HighlightCommand;
+import command.trie.AddCommand;
+import command.trie.RemoveCommand;
+
 public class Trie {
 
 	/** Root node of the trie */
-	Node root = new Node();
+	Node root;
+
+	private Integer nodesCounter = 0;
+
+	public Trie() {
+		root = new Node(nodesCounter);
+		nodesCounter++;
+	}
 
 	/**
 	 * Adds a key to this trie. New {@link Node}s will be added if necessary.
@@ -11,7 +26,11 @@ public class Trie {
 	 * @param key
 	 *            Word to add to this trie
 	 */
-	public Boolean add(String key) {
+	public List<Command> add(String key) {
+
+		// This list will contain a list of commands performed to add this key
+		List<Command> commandList = new ArrayList<Command>();
+
 		Node node = root;
 		Node previousNode = null;
 
@@ -20,9 +39,13 @@ public class Trie {
 			previousNode = node;
 			node = node.getChildNode(key.charAt(i));
 
-			if (node == null)
+			if (node == null) {
 				// The node doesn't exist
 				break;
+			} else {
+				commandList.add(new HighlightCommand(node.getId(), String
+						.valueOf(key.charAt(i))));
+			}
 			i++;
 		}
 
@@ -35,14 +58,22 @@ public class Trie {
 			node = previousNode;
 			// Add one node for each remaining char.
 			while (i < key.length()) {
-				node = node.addChildNode(key.charAt(i++));
+				previousNode = node;
+				node = node.addChildNode(key.charAt(i++), nodesCounter);
+
+				/*
+				 * When a node is being added, it will only have content if it
+				 * is the last one to add.
+				 */
+				commandList.add(new AddCommand(nodesCounter, String.valueOf(key
+						.charAt(i - 1)), previousNode.getId(),
+						i < key.length() - 1 ? false : true));
+				nodesCounter++;
 			}
 		}
-		if (key.equalsIgnoreCase(node.getContent())) {
-			return false;
-		}
 		node.setContent(key);
-		return true;
+
+		return commandList;
 	}
 
 	/**
@@ -56,43 +87,47 @@ public class Trie {
 		Node node = root;
 		for (int i = 0; i < key.length() && node != null; i++) {
 			node = node.getChildNode(key.charAt(i));
+
 		}
-		return node != null && key.equalsIgnoreCase(node.getContent()) ? true : false;
+		return node != null && key.equalsIgnoreCase(node.getContent()) ? true
+				: false;
 	}
 
-	public Boolean remove(String key) {
-		return removeNode(null, root, key, 0);
+	public List<Command> remove(String key) {
+		List<Command> commandList = new ArrayList<Command>();
+		removeNode(null, root, key, 0, commandList);
+		return commandList;
 	}
 
-	private Boolean removeNode(Node parentNode, Node childNode, String key, 
-			Integer depth) {
-		
-		Boolean containsKey = false;
-		
-		if (depth < key.length() && 
-				childNode.containsChildNode(key.charAt(depth))) {
-			
-			containsKey = removeNode(childNode, 
-					childNode.getChildNode(key.charAt(depth)), key, depth + 1) 
-						? true 
-						: containsKey;
+	private void removeNode(Node parentNode, Node childNode, String key,
+			Integer depth, List<Command> commandList) {
+
+		Boolean hasKey = false;
+
+		if (depth < key.length()
+				&& childNode.containsChildNode(key.charAt(depth))) {
+
+			removeNode(childNode, childNode.getChildNode(key.charAt(depth)),
+					key, depth + 1, commandList);
 		}
 		if (key.equalsIgnoreCase(childNode.getContent())) {
 			childNode.setContent(null);
-			containsKey = true;
+			hasKey = true;
 		}
 		if (!childNode.hasChildren() && childNode.getContent() == null) {
-			parentNode.removeChildNode(key.charAt(depth-1));
+			parentNode.removeChildNode(key.charAt(depth - 1));
+			commandList
+					.add(new RemoveCommand(childNode.getId(), String
+							.valueOf(key.charAt(depth - 1)),
+							parentNode.getId(), hasKey));
+
 		}
-		return containsKey;
 	}
-	
+
 	public Node getRoot() {
 		return root;
 	}
-	
-	
-	
+
 	// public Collection<T> getItemsInString(CharSequence str) {
 	// Node<T> node = root;
 	// int i = 0;
