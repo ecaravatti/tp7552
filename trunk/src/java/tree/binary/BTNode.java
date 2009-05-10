@@ -73,6 +73,7 @@ public class BTNode {
 			break;
 		default:
 			//TODO [manugarciacab] Habría que hacer algo por default?
+			//TODO [dpisaturo] Creo que no, a lo sumo lanzar una InvalidSideException :P
 		}
 	}
 
@@ -156,6 +157,14 @@ public class BTNode {
 
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+	
+	public int getWeight() {
+		return balance;
+	}
+	
+	public void setWeight(int weight) {
+		balance = weight;
 	}
 
 	public BTData getData() {

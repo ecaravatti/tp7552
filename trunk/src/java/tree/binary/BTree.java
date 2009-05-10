@@ -21,6 +21,17 @@ public abstract class BTree {
 
 	// BST methods
 
+	public abstract BTNode insert(BTData data);
+	
+	public abstract BTNode delete(BTData data, int minmax);
+
+	@Override
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+		inOrderPrint(root, buffer);
+		return buffer.toString();
+	}
+	
 	/**
 	 * Devuelve el nodo que contiene la data, o null si no lo encuentra.
 	 * Guarda el último nodo en la búsqueda y el side del siguiente nodo para otros métodos.
@@ -50,7 +61,7 @@ public abstract class BTree {
 	 * El nodo puede ser null, significando que el árbol está vacío.
 	 * Devuelve el nodo creado.
 	 */
-	public BTNode add(BTNode node, int side, BTData data) {
+	protected BTNode add(BTNode node, int side, BTData data) {
 		BTNode newnode = new BTNode(data);
 		link(node, side, newnode);
 		return newnode;
@@ -59,7 +70,7 @@ public abstract class BTree {
 	/**
 	 * Quita un nodo del árbol, y devuelve el padre del nodo removido.
 	 */
-	public BTNode remove(BTNode node) {
+	protected BTNode remove(BTNode node) {
 		int side;
 		BTNode child, parent;
 
@@ -73,7 +84,7 @@ public abstract class BTree {
 	/**
 	 * Realiza la rotación a derecha del nodo recibido, y devuelve el nodo que queda arriba luego de la rotación
 	 */
-	public BTNode rotateRight(BTNode node) {
+	protected BTNode rotateRight(BTNode node) {
 		BTNode parent = node.getParent(); //Puede ser null
 		BTNode child = node.getChild(BTNode.LEFT); //Nunca es null
 		BTNode grand = child.getChild(BTNode.RIGHT); //Puede ser null
@@ -91,7 +102,7 @@ public abstract class BTree {
 	/**
 	 * Realiza la rotación a izquierda del nodo recibido, y devuelve el nodo que queda arriba luego de la rotación
 	 */
-	public BTNode rotateLeft(BTNode node) {
+	protected BTNode rotateLeft(BTNode node) {
 		BTNode parent = node.getParent(); //Puede ser null
 		BTNode child = node.getChild(BTNode.RIGHT); //Nunca es null
 		BTNode grand = child.getChild(BTNode.LEFT); //Puede ser null
@@ -109,7 +120,7 @@ public abstract class BTree {
 	/**
 	 * Asocia un padre a un hijo y viceversa
 	 */
-	public void link(BTNode parent, int side, BTNode child) {
+	protected void link(BTNode parent, int side, BTNode child) {
 		if (child != null) {
 			child.setParent(parent);
 		}
@@ -120,11 +131,24 @@ public abstract class BTree {
 		}
 	}
 	
-	@Override
-	public String toString() {
-		StringBuffer buffer = new StringBuffer();
-		inOrderPrint(root, buffer);
-		return buffer.toString();
+	// if the node has two children
+	// swap the nodes before delete()
+	// does not apply to splay trees
+	protected BTNode swap(BTNode node, int minmax) {
+		BTNode temp = node;
+		BTNode swap = (minmax == FINDMAX) ? node.prevInO() : node.nextInO();
+		swapData(node, swap); // swap data first
+		node = swap; // now swap nodes
+		swap = temp;
+		return node;
+	}
+
+	// helper method for swap()
+	protected void swapData(BTNode node1, BTNode node2) {
+		BTData data;
+		data = node1.getData();
+		node1.setData(node2.getData());
+		node2.setData(data);
 	}
 	
 	private void inOrderPrint(BTNode node, StringBuffer buffer) {
@@ -135,9 +159,5 @@ public abstract class BTree {
 		buffer.append(" Der: " + node.getChild(BTNode.RIGHT) + "\n");
 		if (node.getChild(BTNode.RIGHT) != null) inOrderPrint(node.getChild(BTNode.RIGHT), buffer);
 	}
-
-	public abstract BTNode insert(BTData data);
-	
-	public abstract BTNode delete(BTData data, int minmax);
 
 }

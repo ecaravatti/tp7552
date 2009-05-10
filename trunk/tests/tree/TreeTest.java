@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 
 public class TreeTest extends TestCase {
 	
-	public void testTree() {
+	public void testHeightBTree() {
 		BTree tree = new HeightBTree();
 		
 		insertar(tree, 10);
