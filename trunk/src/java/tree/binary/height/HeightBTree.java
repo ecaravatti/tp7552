@@ -76,29 +76,37 @@ public class HeightBTree extends BTree {
 	
 	private void rebalance(BTNode node, int side, int in) {
 		int newBalance;
-		boolean aumentaBalanceo;
-		boolean huboRotaciones;
+		int balanceInicial;
+		boolean mejoraBalanceo;
 		for (; node != null; node = node.getParent()) {
+			balanceInicial = node.getBalance();
 			newBalance = node.getBalance() + in * side;
-			aumentaBalanceo = Math.abs(newBalance) - Math.abs(node.getBalance()) < 0;
-			huboRotaciones = false;
 			node.setBalance(newBalance);
 			if (Math.abs(newBalance) > variacionMaxima) {
-				huboRotaciones = true;
 				if (newBalance < 0) {
 					if (node.getChild(BTNode.LEFT).getBalance() > 0) {
-						rotateLeftAndSetBalance(node.getChild(BTNode.LEFT));
+						int balanceAntesDeRotacion = node.getChild(BTNode.LEFT).getBalance();
+						BTNode aux = rotateLeftAndSetBalance(node.getChild(BTNode.LEFT));
+						if (Math.abs(aux.getBalance()) < Math.abs(balanceAntesDeRotacion)) { 
+							//El subarbol decreció en un nivel.
+							node.setBalance(node.getBalance() - in * side);
+						}
 					}
 					node = rotateRightAndSetBalance(node);
 				} else {
 					if (node.getChild(BTNode.RIGHT).getBalance() < 0) {
-						rotateRightAndSetBalance(node.getChild(BTNode.RIGHT));
+						int balanceAntesDeRotacion = node.getChild(BTNode.RIGHT).getBalance();
+						BTNode aux = rotateRightAndSetBalance(node.getChild(BTNode.RIGHT));
+						if (Math.abs(aux.getBalance()) < Math.abs(balanceAntesDeRotacion)) {
+							//El subarbol decreció en un nivel.
+							node.setBalance(node.getBalance() - in * side);
+						}
 					}
 					node = rotateLeftAndSetBalance(node);
 				}
 			}
-
-			if (in == INSERT && aumentaBalanceo || (in == DELETE && (!aumentaBalanceo && !huboRotaciones))) {
+			mejoraBalanceo = Math.abs(node.getBalance()) - Math.abs(balanceInicial) < 0;
+			if ((in == INSERT && mejoraBalanceo) || (in == DELETE && !mejoraBalanceo)) {
 				break;
 			}
 			side = node.getSide();
@@ -112,7 +120,7 @@ public class HeightBTree extends BTree {
 		int balanceAux = node.getBalance();
 		node.setBalance(balanceAux + 1 + Math.max(-child.getBalance(), 0));
 		child.setBalance(-Math.min(-balanceAux - 2, Math.min(-balanceAux - child.getBalance() - 2, -child.getBalance() - 1)));
-		
+
 		return child;
 	}
 	
