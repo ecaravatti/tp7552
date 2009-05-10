@@ -140,7 +140,7 @@ public class BTNode {
 	
 	@Override
 	public String toString() {
-		return "[B: " + balance + " - K: " + data.toString() + "]";
+		return "[B: " + balance + " - BT: " + getBalanceTeorico() + " - K: " + data.toString() + "]";
 	}
 
 	public BTNode getParent() {
@@ -175,4 +175,20 @@ public class BTNode {
 		this.data = data;
 	}
 
+	public int depth() {
+		int ld = 0, rd = 0;
+		if (leftChild != null) ld = leftChild.depth();
+		if (rightChild != null) rd = rightChild.depth();
+		return Math.max(ld, rd) + 1;
+	}
+	
+	/**
+	 * Se utiliza en pruebas
+	 */
+	public int getBalanceTeorico() {
+		int heightLeft = 0, heightRight = 0;
+		if (rightChild != null) heightRight = rightChild.depth();
+		if (leftChild != null) heightLeft = leftChild.depth();
+		return heightRight - heightLeft;
+	}
 }
