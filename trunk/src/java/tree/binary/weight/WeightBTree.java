@@ -39,8 +39,12 @@ public class WeightBTree extends BTree {
 			throw new KeyAlreadyExistsException();
 		} else {
 			node = add(lastNode, nextSide, data);
-			node.setWeight(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)));
-			node = checkRotations(node);
+			
+			for(BTNode temp = node; temp != null; temp = temp.getParent()) {
+				temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
+								weight(temp.getChild(BTNode.RIGHT)));
+				temp = checkRotations(temp);
+			}
 		}
 		return node;
 	}
@@ -63,7 +67,8 @@ public class WeightBTree extends BTree {
 		node = remove(node);
 		
 		if (node != null) {
-			node.setWeight(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)));
+			node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
+							weight(node.getChild(BTNode.RIGHT)));
 			node = checkRotations(node);
 		}
 		
@@ -71,19 +76,28 @@ public class WeightBTree extends BTree {
 	}
 	
 	private BTNode checkRotations(BTNode node) {
-		double wbal = weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
-		if (wbal > UPPER_LIMIT) { // left subtree too heavy: right rotation needed
-			if ((weight(node.getChild(BTNode.LEFT).getChild(BTNode.LEFT)) / (double)weight(node.getChild(BTNode.LEFT))) > UPPER_LEFT_LIMIT) {
+		
+		double wbal = 	(double)weight(node.getChild(BTNode.LEFT)) /
+						(double)node.getWeight();
+		
+		if (wbal > UPPER_LIMIT) {
+			// left subtree too heavy: right rotation needed
+			if (((double)weight(node.getChild(BTNode.LEFT).getChild(BTNode.LEFT)) /
+				(double)weight(node.getChild(BTNode.LEFT))) > UPPER_LEFT_LIMIT){
 				node = rotateRightAndSetWeight(node);
 			} else {
-				node.setChild(BTNode.LEFT, rotateLeftAndSetWeight(node.getChild(BTNode.LEFT)));
+				node.setChild(BTNode.LEFT,
+							rotateLeftAndSetWeight(node.getChild(BTNode.LEFT)));
 				node = rotateRightAndSetWeight(node);
 			}
-		} else if (wbal < LOWER_LIMIT) {// right subtree too heavy: left rotation needed
-			if ((weight(node.getChild(BTNode.RIGHT).getChild(BTNode.LEFT)) / (double)weight(node.getChild(BTNode.RIGHT))) < LOWER_RIGHT_LIMIT) {
+		} else if (wbal < LOWER_LIMIT) {
+			// right subtree too heavy: left rotation needed
+			if (((double)weight(node.getChild(BTNode.RIGHT).getChild(BTNode.LEFT)) /
+				(double)weight(node.getChild(BTNode.RIGHT)))<LOWER_RIGHT_LIMIT){
 				node = rotateLeftAndSetWeight(node);
 			} else {
-				node.setChild(BTNode.RIGHT, rotateRightAndSetWeight(node.getChild(BTNode.RIGHT)));
+				node.setChild(BTNode.RIGHT,
+						rotateRightAndSetWeight(node.getChild(BTNode.RIGHT)));
 				node = rotateLeftAndSetWeight(node);
 			}
 		}
@@ -94,25 +108,37 @@ public class WeightBTree extends BTree {
 		if (node == null)
 			return 1;
 		else
-			return leavesCount(node.getChild(BTNode.LEFT)) + leavesCount(node.getChild(BTNode.RIGHT));
+			return nodesCount(node);
 	}
 	
-	private int leavesCount(BTNode node) {
+	private int nodesCount(BTNode node) {
 		if (node == null) {
 			return 0;
-		} else if (node.isLeaf())
-			return 1;
-		
-		return leavesCount(node.getChild(BTNode.LEFT)) + leavesCount(node.getChild(BTNode.RIGHT));
-		
+		} else {
+			return 	1 + nodesCount(node.getChild(BTNode.LEFT)) +
+					nodesCount(node.getChild(BTNode.RIGHT));
+		}
 	}
+	
+//	private int leavesCount(BTNode node) {
+//		if (node == null) {
+//			return 0;
+//		} else if (node.isLeaf()) {
+//			return 1;
+//		}
+//		
+//		return 	leavesCount(node.getChild(BTNode.LEFT)) +
+//				leavesCount(node.getChild(BTNode.RIGHT));
+//		
+//	}
 	
 	private BTNode rotateRightAndSetWeight(BTNode node) {
 		BTNode child = rotateRight(node);
 		
 		// Adjust weight
 		child.setWeight(node.getWeight());
-		node.setWeight(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)));
+		node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
+						weight(node.getChild(BTNode.RIGHT)));
 		
 		return child;
 	}
@@ -122,7 +148,8 @@ public class WeightBTree extends BTree {
 		
 		// Adjust weight
 		child.setWeight(node.getWeight());
-		node.setWeight(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)));
+		node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
+						weight(node.getChild(BTNode.RIGHT)));
 		
 		return child;
 	}

@@ -41,6 +41,6 @@
 
 	<servlet-mapping>
 		<servlet-name>DataStructuresApplication</servlet-name>
-		<url-pattern>/ds/*</url-pattern>
+		<url-pattern>/tp_taller2/*</url-pattern>
 	</servlet-mapping>
 </web-app>
