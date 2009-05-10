@@ -1,7 +1,8 @@
 package stack;
 
-import java.util.EmptyStackException;
 
+import java.util.EmptyStackException;
+import stack.Stack;
 import junit.framework.TestCase;
 
 public class StackTest extends TestCase {
@@ -90,6 +91,7 @@ public class StackTest extends TestCase {
 		}
 
 	}
+	
 	
 	
 }
