@@ -16,6 +16,7 @@ public class Stack<T> {
 
 	public void destroy() {
 		stack.clear();
+		this.top = -1;
 	}
 
 	public Stack(int capacity) {
