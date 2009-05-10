@@ -153,7 +153,6 @@ public abstract class BTree {
 	
 	private void inOrderPrint(BTNode node, StringBuffer buffer) {
 		if (node.getChild(BTNode.LEFT) != null) inOrderPrint(node.getChild(BTNode.LEFT), buffer);
-		//buffer.append(node.toString() + "\n");
 		buffer.append("Yo: " + node);
 		buffer.append(" Izq: " + node.getChild(BTNode.LEFT));
 		buffer.append(" Der: " + node.getChild(BTNode.RIGHT) + "\n");

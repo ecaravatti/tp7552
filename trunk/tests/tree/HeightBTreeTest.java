@@ -5,7 +5,7 @@ import tree.binary.BTData;
 import tree.binary.height.HeightBTree;
 import junit.framework.TestCase;
 
-public class TreeTest extends TestCase {
+public class HeightBTreeTest extends TestCase {
 	
 	public void testHeightBTree() {
 		BTree tree = new HeightBTree();
