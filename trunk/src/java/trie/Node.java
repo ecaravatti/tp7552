@@ -11,9 +11,6 @@ public class Node {
 	/** Content of the node if there's any */
 	private String content;
 
-//	/** Depth of the node inside the trie */
-//	private Integer depth;
-
 	/**
 	 * Adds a node for the given character
 	 * @param c
@@ -21,14 +18,53 @@ public class Node {
 	 * @return
 	 * 		The node that correspond to the given character
 	 */
-	public Node addNode(Character c) {
+	public Node addChildNode(Character c) {
 		Node emptyNode = new Node();
-		children.put(c, emptyNode);
+		children.put(toLowerCase(c), emptyNode);
 		return emptyNode;
 	}
 
-	public Node getChildNode(char c) {
-		return children.get(c);
+	/**
+	 * Obtains the child node associated with the given {@link Character}.
+	 * 
+	 * @param c
+	 * 		Character whose node is going to be looked for
+	 * @return
+	 * 		The child node associated
+	 */
+	public Node getChildNode(Character c) {
+		return children.get(toLowerCase(c));
+	}
+	
+	/**
+	 * Removes the child node for the given {@link Character} if it is present.
+	 * 
+	 * @param c
+	 * 		Character whose node is going to be removed
+	 */
+	public void removeChildNode(Character c) {
+		children.remove(toLowerCase(c));
+	}
+	
+	/**
+	 * Returns true if this node contains a child node for the given 
+	 * {@link Character}.
+	 * 
+	 * @param c
+	 * 		Character to verify
+	 * @return
+	 * 		True if the requested child node exists
+	 */
+	public Boolean containsChildNode(Character c) {
+		return children.containsKey(c);
+	}
+	
+	public Boolean hasChildren() {
+		return children.size() > 0;
+	}
+	
+	private Character toLowerCase(Character c) {
+		return String.valueOf(c).toLowerCase().charAt(0);
 	}
 	
 	public String getContent() {
