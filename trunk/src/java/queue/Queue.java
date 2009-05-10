@@ -99,6 +99,7 @@ public class Queue<T> {
 
 	public void destroy() {
 		this.queue.clear();
+		this.fullSize = 0;
 	}
 
 }
