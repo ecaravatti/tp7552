@@ -36,6 +36,10 @@ public class Node {
 		return children.get(toLowerCase(c));
 	}
 	
+	public Map<Character, Node> getChildren() {
+		return children;
+	}
+	
 	/**
 	 * Removes the child node for the given {@link Character} if it is present.
 	 * 

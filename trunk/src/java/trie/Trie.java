@@ -87,6 +87,10 @@ public class Trie {
 		return containsKey;
 	}
 	
+	public Node getRoot() {
+		return root;
+	}
+	
 	
 	
 	// public Collection<T> getItemsInString(CharSequence str) {
