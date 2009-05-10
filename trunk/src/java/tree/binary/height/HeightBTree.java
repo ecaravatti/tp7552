@@ -57,7 +57,6 @@ public class HeightBTree extends BTree {
 	private void rebalance(BTNode node, int side, int in) {
 		int newBalance;
 		int balanceInicial;
-		int alturaInicial;
 		boolean noEmpeoraBalanceo;
 		boolean huboRotacion = false;
 		boolean cambioAltura = false;
@@ -70,13 +69,11 @@ public class HeightBTree extends BTree {
 			node.setBalance(newBalance);
 			if (Math.abs(newBalance) > variacionMaxima) {
 				huboRotacion = true;
-				alturaInicial = 0;
-				if (in == DELETE) {
-					alturaInicial = node.depth();
-				}
+
 				if (newBalance < 0) {
 					BTNode leftChild = node.getChild(BTNode.LEFT);
 					if (leftChild.getBalance() > 0) {
+						cambioAltura = true;
 						nodeAux = rotateLeftAndSetBalance(leftChild);
 						if (nodeAux.getBalance() >= 0) {
 							//El subarbol decreció en un nivel.
@@ -84,9 +81,13 @@ public class HeightBTree extends BTree {
 						} 
 					}
 					node = rotateRightAndSetBalance(node);
+					if (!cambioAltura) {
+						cambioAltura = node.getBalance() <= 0;
+					}
 				} else {
 					BTNode rightChild = node.getChild(BTNode.RIGHT);
 					if (rightChild.getBalance() < 0) {
+						cambioAltura = true;
 						nodeAux = rotateRightAndSetBalance(rightChild);
 						if (nodeAux.getBalance() <= 0) {
 							//El subarbol decreció en un nivel.
@@ -94,9 +95,9 @@ public class HeightBTree extends BTree {
 						}
 					}
 					node = rotateLeftAndSetBalance(node);
-				}
-				if (in == DELETE) {
-					cambioAltura = node.depth() < alturaInicial;
+					if (!cambioAltura) {
+						cambioAltura = node.getBalance() >= 0;
+					}
 				}
 				
 			}
