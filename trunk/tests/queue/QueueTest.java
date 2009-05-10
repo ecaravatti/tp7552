@@ -16,20 +16,19 @@ public class QueueTest extends TestCase {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void testQueue(){
+
+	public void testQueue() {
 		queue.offer(new Integer(1));
 		queue.offer(new Integer(2));
 		queue.offer(new Integer(3));
 		queue.offer(new Integer(4));
-		
+
 	}
-	
-	
-	public void testQueueBehavior(){
+
+	public void testQueueBehavior() {
 		// The queue is filled with 5 elements
 		fillQueue();
-		
+
 		// Insert order is 1,2,3,4,5
 		// The queue head at this moment is 1
 		assertEquals(1, queue.poll().intValue());
@@ -41,10 +40,10 @@ public class QueueTest extends TestCase {
 		assertEquals(4, queue.poll().intValue());
 		// The queue head at this moment is 5
 		assertEquals(5, queue.poll().intValue());
-		
+
 		// The queue is empty
 		assertEquals(null, queue.poll());
-		
+
 		// Insert a single element
 		queue.offer(new Integer(1));
 		// The queue head at this moment is 1
@@ -57,33 +56,33 @@ public class QueueTest extends TestCase {
 		queue.offer(new Integer(3));
 		// The queue head at this moment is still 1
 		assertEquals(1, queue.peek().intValue());
-		
+
 		// Remove the current head
 		queue.remove();
-		
+
 		// The queue head at this moment is 3
 		assertEquals(2, queue.poll().intValue());
 		// Remove the current head
 		queue.remove();
-		
+
 		// The queue is empty
 		assertEquals(null, queue.poll());
-		
+
 	}
-	
-	public void testOverflow(){
+
+	public void testOverflow() {
 		assertTrue(queue.offer(new Integer(1)));
 		assertTrue(queue.offer(new Integer(2)));
 		assertTrue(queue.offer(new Integer(3)));
 		assertTrue(queue.offer(new Integer(4)));
 		assertTrue(queue.offer(new Integer(5)));
-		
+
 		// This step should fail
 		assertFalse(queue.offer(new Integer(6)));
-		
+
 	}
-	
-	public void testUnderflow(){
+
+	public void testUnderflow() {
 		// The queue is filled with 5 elements
 		fillQueue();
 		for (int i = 0; i < 5; i++) {
@@ -95,15 +94,22 @@ public class QueueTest extends TestCase {
 		} catch (NoSuchElementException e) {
 			// Expected exception
 		}
-		
+
 	}
-	
+
+	public void testDestroy() {
+		fillQueue();
+		this.queue.destroy();
+		assertEquals(null, this.queue.peek());
+
+	}
+
 	@Override
 	protected void setUp() throws Exception {
 		queue = new Queue<Integer>(5);
 	}
-	
-	private void fillQueue(){
+
+	private void fillQueue() {
 		queue.offer(new Integer(1));
 		queue.offer(new Integer(2));
 		queue.offer(new Integer(3));
