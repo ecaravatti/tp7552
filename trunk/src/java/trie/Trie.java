@@ -60,25 +60,31 @@ public class Trie {
 		return node != null && key.equalsIgnoreCase(node.getContent()) ? true : false;
 	}
 
-	public void remove(String key) {
-		removeNode(null, root, key, 0);
+	public Boolean remove(String key) {
+		return removeNode(null, root, key, 0);
 	}
 
-	private void removeNode(Node parentNode, Node childNode, String key, 
+	private Boolean removeNode(Node parentNode, Node childNode, String key, 
 			Integer depth) {
+		
+		Boolean containsKey = false;
 		
 		if (depth < key.length() && 
 				childNode.containsChildNode(key.charAt(depth))) {
 			
-			removeNode(childNode, childNode.getChildNode(key.charAt(depth)), 
-					key, depth + 1);
+			containsKey = removeNode(childNode, 
+					childNode.getChildNode(key.charAt(depth)), key, depth + 1) 
+						? true 
+						: containsKey;
 		}
 		if (key.equalsIgnoreCase(childNode.getContent())) {
 			childNode.setContent(null);
+			containsKey = true;
 		}
 		if (!childNode.hasChildren() && childNode.getContent() == null) {
 			parentNode.removeChildNode(key.charAt(depth-1));
 		}
+		return containsKey;
 	}
 	
 	

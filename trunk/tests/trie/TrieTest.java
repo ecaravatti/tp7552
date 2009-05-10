@@ -45,8 +45,13 @@ public class TrieTest extends TestCase {
 	
 	public void testRemove() {
 		assertTrue(trie.containsKey("ala"));
-		trie.remove("ala");
+		assertTrue(trie.remove("ala"));
 		assertFalse(trie.containsKey("ala"));
 		assertTrue(trie.containsKey("alas"));
+	}
+	
+	public void testRemoveUnexistentKey() {
+		assertFalse(trie.containsKey("casa"));
+		assertFalse(trie.remove("casa"));
 	}
 }
