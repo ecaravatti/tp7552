@@ -9,7 +9,7 @@ import command.stack.PopCommand;
 import command.stack.PushCommand;
 import common.Element;
 
-public class Stack {
+public class Stack implements Cloneable {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int top = -1;
@@ -96,5 +96,20 @@ public class Stack {
 
 	private boolean isFull() {
 		return (top == (capacity - 1));
+	}
+	
+	@Override
+	public Stack clone() throws CloneNotSupportedException {
+		Stack clone = new Stack(this.capacity);
+		for (Element<Integer> element : this.stack) {
+			clone.stack.add(element);
+		}
+		clone.top = this.top;
+		clone.elementsCount = this.elementsCount;
+		return clone;
+	}
+	
+	public int size() {
+		return stack.size();
 	}
 }
