@@ -11,19 +11,19 @@ public class RightRotationCommand extends Command {
 		
 	private boolean isLeftOfParent; //Rotacion sucede del lado izquierdo del padre.
 	
-	private int parentInitialChild;
+	private Integer parentInitialChild;
 	private Integer nodeInitialLeftChild;
-	private int childInitialRightChild;
+	private Integer childInitialRightChild;
 	
-	private int parentFinalChild;
+	private Integer parentFinalChild;
 	private Integer nodeFinalLeftChild;
-	private int childFinalRightChild; 
+	private Integer childFinalRightChild; 
 	
 	
 
 	public RightRotationCommand(Integer parentId, int nodeId, int childId,
-			Integer grandId, boolean isLeftOfParent, int parentFinalChild,
-			Integer nodeFinalLeftChild, int childFinalRightChild) {
+			Integer grandId, boolean isLeftOfParent, Integer parentFinalChild,
+			Integer nodeFinalLeftChild, Integer childFinalRightChild) {
 		super(nodeId);
 		this.parentId = parentId;
 		this.nodeId = nodeId;
@@ -81,7 +81,7 @@ public class RightRotationCommand extends Command {
 		return childInitialRightChild;
 	}
 
-	public int getParentFinalChild() {
+	public Integer getParentFinalChild() {
 		return parentFinalChild;
 	}
 
@@ -89,7 +89,7 @@ public class RightRotationCommand extends Command {
 		return nodeFinalLeftChild;
 	}
 
-	public int getChildFinalRightChild() {
+	public Integer getChildFinalRightChild() {
 		return childFinalRightChild;
 	}
 
