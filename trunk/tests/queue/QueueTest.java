@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import command.Command;
 import command.HighlightCommand;
 import command.queue.PollCommand;
+import common.export.ExportUtils;
 
 public class QueueTest extends TestCase {
 
@@ -32,6 +33,7 @@ public class QueueTest extends TestCase {
 	public void testQueueBehavior() {
 		// The queue is filled with 5 elements
 		fillQueue();
+		ExportUtils.exportToXML(queue, "queue.xml");
 		List<Command> commandList = null;
 		// Insert order is 1,2,3,4,5
 		// The queue head at this moment is 1

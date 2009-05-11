@@ -158,4 +158,8 @@ public abstract class BTree {
 		if (node.getChild(BTNode.RIGHT) != null) inOrderPrint(node.getChild(BTNode.RIGHT), buffer);
 	}
 
+	public BTNode getRoot() {
+		return root;
+	}
+
 }

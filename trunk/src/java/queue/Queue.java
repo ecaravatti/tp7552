@@ -9,7 +9,7 @@ import command.queue.OfferCommand;
 import command.queue.PollCommand;
 import common.Element;
 
-public class Queue{
+public class Queue implements Cloneable {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int capacity;
@@ -97,6 +97,24 @@ public class Queue{
 		this.fullSize = 0;
 		
 		return commandList;
+	}
+	
+	public int size() {
+		return queue.size();
+	}
+	
+	@Override
+	public Queue clone() throws CloneNotSupportedException {
+		Queue clone = new Queue(this.capacity);
+		
+		for (Element<Integer> element : this.queue) {
+			clone.queue.add(element);
+		}
+		
+		clone.elementsCount = this.elementsCount;
+		clone.fullSize = this.fullSize;
+		
+		return clone;
 	}
 
 }
