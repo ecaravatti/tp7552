@@ -23,7 +23,7 @@ public class ExportUtils {
 	private final static String CHILD = "Child";
 	
 
-	public static void exportTrieToXML(Trie trie, String path) {
+	public static void exportToXML(Trie trie, String path) {
 		Document document = DocumentHelper.createDocument();
 		Element root = document.addElement(ROOT);
 
