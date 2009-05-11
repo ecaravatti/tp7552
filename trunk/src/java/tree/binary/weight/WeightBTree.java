@@ -125,18 +125,6 @@ public class WeightBTree extends BTree {
 		}
 	}
 	
-//	private int leavesCount(BTNode node) {
-//		if (node == null) {
-//			return 0;
-//		} else if (node.isLeaf()) {
-//			return 1;
-//		}
-//		
-//		return 	leavesCount(node.getChild(BTNode.LEFT)) +
-//				leavesCount(node.getChild(BTNode.RIGHT));
-//		
-//	}
-	
 	private BTNode rotateRightAndSetWeight(BTNode node) {
 		BTNode child = rotateRight(node);
 		
