@@ -1,10 +1,10 @@
-package tree.binary.height;
+package collection.tree.binary.height;
 
+import collection.tree.binary.BTData;
+import collection.tree.binary.BTNode;
+import collection.tree.binary.BTree;
 import command.tree.ChangeBalanceCommand;
 
-import tree.binary.BTData;
-import tree.binary.BTNode;
-import tree.binary.BTree;
 
 
 public class HeightBTree extends BTree {

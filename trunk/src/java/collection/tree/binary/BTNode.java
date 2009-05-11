@@ -1,4 +1,4 @@
-package tree.binary;
+package collection.tree.binary;
 
 
 //class BTNode defines the tree node data structure

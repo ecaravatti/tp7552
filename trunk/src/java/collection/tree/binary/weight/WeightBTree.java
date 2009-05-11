@@ -1,10 +1,10 @@
-package tree.binary.weight;
+package collection.tree.binary.weight;
 
-import tree.binary.BTData;
-import tree.binary.BTNode;
-import tree.binary.BTree;
-import tree.binary.KeyAlreadyExistsException;
-import tree.binary.KeyNotFoundException;
+import collection.tree.binary.BTData;
+import collection.tree.binary.BTNode;
+import collection.tree.binary.BTree;
+import collection.tree.binary.KeyAlreadyExistsException;
+import collection.tree.binary.KeyNotFoundException;
 
 
 public class WeightBTree extends BTree {

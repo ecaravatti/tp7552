@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import collection.tree.binary.BTData;
+import collection.tree.binary.BTNode;
+import collection.tree.binary.BTree;
+import collection.tree.binary.KeyAlreadyExistsException;
+import collection.tree.binary.KeyNotFoundException;
+import collection.tree.binary.weight.WeightBTree;
+
 import junit.framework.TestCase;
-import tree.binary.BTData;
-import tree.binary.BTNode;
-import tree.binary.BTree;
-import tree.binary.KeyAlreadyExistsException;
-import tree.binary.KeyNotFoundException;
-import tree.binary.weight.WeightBTree;
 
 public class WeightBTreeTest extends TestCase {
 	
@@ -116,11 +117,12 @@ public class WeightBTreeTest extends TestCase {
 		}
 	}
 	
-//	public void testWeightBTreeBehavior() {
-//		for (double i = 0.1; i <= 0.5; i += 0.1) {
-//			testWeightBTree(i, 10000);
-//		}
-//	}
+	//TODO Este test estaba comentado. 
+	public void testWeightBTreeBehavior() {
+		for (double i = 0.1; i <= 0.5; i += 0.1) {
+			testWeightBTree(i, 10000);
+		}
+	}
 	
 	private void testWeightBTree(double alpha, int insertsAmount) {
 		BTree tree = new WeightBTree(alpha);

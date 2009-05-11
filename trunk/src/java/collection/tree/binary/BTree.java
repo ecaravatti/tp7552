@@ -1,4 +1,4 @@
-package tree.binary;
+package collection.tree.binary;
 
 import java.util.ArrayList;
 import java.util.List;

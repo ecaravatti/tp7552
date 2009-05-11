@@ -2,6 +2,8 @@ package queue;
 
 import java.util.List;
 
+import collection.queue.Queue;
+
 import junit.framework.TestCase;
 
 import command.Command;

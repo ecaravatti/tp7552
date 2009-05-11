@@ -10,12 +10,13 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
-import queue.Queue;
-import stack.Stack;
-import tree.binary.BTNode;
-import tree.binary.BTree;
-import trie.Node;
-import trie.Trie;
+import collection.queue.Queue;
+import collection.stack.Stack;
+import collection.tree.binary.BTNode;
+import collection.tree.binary.BTree;
+import collection.trie.Node;
+import collection.trie.Trie;
+
 
 import command.queue.PollCommand;
 import command.stack.PopCommand;

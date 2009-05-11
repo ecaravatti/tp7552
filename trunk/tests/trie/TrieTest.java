@@ -1,8 +1,8 @@
 package trie;
 
+import collection.trie.Trie;
 import common.export.ExportUtils;
 
-import trie.Trie;
 import junit.framework.TestCase;
 
 public class TrieTest extends TestCase {

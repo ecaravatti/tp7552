@@ -1,4 +1,4 @@
-package tree.binary;
+package collection.tree.binary;
 
 public class KeyNotFoundException extends RuntimeException {
 

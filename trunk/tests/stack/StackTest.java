@@ -2,9 +2,10 @@ package stack;
 
 import java.util.EmptyStackException;
 
+import collection.stack.Stack;
+
 import common.export.ExportUtils;
 
-import stack.Stack;
 import junit.framework.TestCase;
 
 public class StackTest extends TestCase {

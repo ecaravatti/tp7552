@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import tree.binary.BTNode;
-import tree.binary.BTree;
-import tree.binary.BTData;
-import tree.binary.height.HeightBTree;
+import collection.tree.binary.BTData;
+import collection.tree.binary.BTNode;
+import collection.tree.binary.BTree;
+import collection.tree.binary.height.HeightBTree;
+
 import junit.framework.TestCase;
 
 public class HeightBTreeTest extends TestCase {

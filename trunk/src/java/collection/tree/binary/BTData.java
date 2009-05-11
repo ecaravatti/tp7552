@@ -1,4 +1,4 @@
-package tree.binary;
+package collection.tree.binary;
 
 
 //BTData class is a wrapper for the actual data
