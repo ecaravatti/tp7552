@@ -9,22 +9,19 @@ import tree.binary.KeyNotFoundException;
 
 public class WeightBTree extends BTree {
 
-	private static final double UPPER_LIMIT 		= 0.707011;
-	private static final double UPPER_LEFT_LIMIT 	= 0.414213;
-	private static final double LOWER_LIMIT 		= 0.292893;
-	private static final double LOWER_RIGHT_LIMIT 	= 0.585786;
-	private static final int 	DEFAULT_WEIGHT 		= 2;
+	private static final double DEFAULT_ALPHA	= 1 - Math.sqrt(2)/2;
+	private static final int 	DEFAULT_WEIGHT	= 2;
 	
-	private int maxWeightDiff;
+	private double alpha; // Should takes values between 0 and 0.5
 	
-	public WeightBTree(int maxWeightDiff) {
+	public WeightBTree(double alpha) {
 		super();
-		this.maxWeightDiff = maxWeightDiff;
+		this.alpha = alpha;
 	}
 	
 	public WeightBTree() {
 		super();
-		this.maxWeightDiff = 1; // Default
+		this.alpha = DEFAULT_ALPHA;
 	}
 	
 	@Override
@@ -54,22 +51,30 @@ public class WeightBTree extends BTree {
 	// Returns the parent of the deleted node (null if the node was the root)
 	// or KeyNotFoundException if the data has not been found
 	// Uses helper method swap() if necessary
-	public BTNode delete(BTData data, int minmax) {
+	public BTNode delete(BTData data) {
 		BTNode node = locate(data);
 		if (node == null) {
 			throw new KeyNotFoundException();
 		}
 
 		if (node.hasTwoChildren()) {
-			node = swap(node, minmax);
+//			node = swap(node, BTree.FINDMAX);
+			// Rotate on heavier side
+			if (weight(node.getChild(BTNode.LEFT)) > weight(node.getChild(BTNode.LEFT))) {
+				node = rotateRightAndSetWeight(node);
+				delete(data);
+			} else {
+				node = rotateLeftAndSetWeight(node);
+				delete(data);
+			}
+		} else {
+			node = remove(node);
 		}
-
-		node = remove(node);
 		
-		if (node != null) {
-			node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
-							weight(node.getChild(BTNode.RIGHT)));
-			node = checkRotations(node);
+		for(BTNode temp = node; temp != null; temp = temp.getParent()) {
+			temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
+							weight(temp.getChild(BTNode.RIGHT)));
+			temp = checkRotations(temp);
 		}
 		
 		return node;
@@ -80,20 +85,20 @@ public class WeightBTree extends BTree {
 		double wbal = 	(double)weight(node.getChild(BTNode.LEFT)) /
 						(double)node.getWeight();
 		
-		if (wbal > UPPER_LIMIT) {
+		if (wbal > (1-alpha)) {
 			// left subtree too heavy: right rotation needed
 			if (((double)weight(node.getChild(BTNode.LEFT).getChild(BTNode.LEFT)) /
-				(double)weight(node.getChild(BTNode.LEFT))) > UPPER_LEFT_LIMIT){
+				(double)weight(node.getChild(BTNode.LEFT))) > (1-2*alpha)){
 				node = rotateRightAndSetWeight(node);
 			} else {
 				node.setChild(BTNode.LEFT,
 							rotateLeftAndSetWeight(node.getChild(BTNode.LEFT)));
 				node = rotateRightAndSetWeight(node);
 			}
-		} else if (wbal < LOWER_LIMIT) {
+		} else if (wbal < alpha) {
 			// right subtree too heavy: left rotation needed
 			if (((double)weight(node.getChild(BTNode.RIGHT).getChild(BTNode.LEFT)) /
-				(double)weight(node.getChild(BTNode.RIGHT)))<LOWER_RIGHT_LIMIT){
+				(double)weight(node.getChild(BTNode.RIGHT))) < (2*alpha)){
 				node = rotateLeftAndSetWeight(node);
 			} else {
 				node.setChild(BTNode.RIGHT,

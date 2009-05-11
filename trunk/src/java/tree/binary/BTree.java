@@ -23,7 +23,7 @@ public abstract class BTree {
 
 	public abstract BTNode insert(BTData data);
 	
-	public abstract BTNode delete(BTData data, int minmax);
+	public abstract BTNode delete(BTData data);
 
 	@Override
 	public String toString() {
@@ -145,8 +145,7 @@ public abstract class BTree {
 
 	// helper method for swap()
 	protected void swapData(BTNode node1, BTNode node2) {
-		BTData data;
-		data = node1.getData();
+		BTData data = node1.getData();
 		node1.setData(node2.getData());
 		node2.setData(data);
 	}

@@ -44,7 +44,7 @@ public class HeightBTreeTest extends TestCase {
 		for (Integer codigo : insertados) {
 			if (i++ < (insertsAmount*4/5)) {
 				borrados.add(codigo);
-				tree.delete(new BTData(codigo), 1);
+				tree.delete(new BTData(codigo));
 			} else {
 				break;
 			}

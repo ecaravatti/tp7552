@@ -71,13 +71,13 @@ public class WeightBTreeTest extends TestCase {
 		tree.insert(new BTData(2));
 		tree.insert(new BTData(45));
 		
-		tree.delete(new BTData(25), BTree.FINDMIN);
-		tree.delete(new BTData(2), BTree.FINDMAX);
-		tree.delete(new BTData(50), BTree.FINDMIN);
-		tree.delete(new BTData(60), BTree.FINDMAX);
-		tree.delete(new BTData(18), BTree.FINDMIN);
-		tree.delete(new BTData(40), BTree.FINDMAX);
-		tree.delete(new BTData(10), BTree.FINDMIN);
+		tree.delete(new BTData(25));
+		tree.delete(new BTData(2));
+		tree.delete(new BTData(50));
+		tree.delete(new BTData(60));
+		tree.delete(new BTData(18));
+		tree.delete(new BTData(40));
+		tree.delete(new BTData(10));
 		
 		assertNull(tree.locate(new BTData(10)));
 		assertNotNull(tree.locate(new BTData(20)));
@@ -89,6 +89,8 @@ public class WeightBTreeTest extends TestCase {
 		assertNull(tree.locate(new BTData(18)));
 		assertNull(tree.locate(new BTData(2)));
 		assertNotNull(tree.locate(new BTData(45)));
+		
+		System.out.println(tree);
 	}
 	
 	public void testDeleteWithNonExistentKey() {
@@ -98,11 +100,11 @@ public class WeightBTreeTest extends TestCase {
 		tree.insert(new BTData(2));
 		tree.insert(new BTData(45));
 		
-		tree.delete(new BTData(25), BTree.FINDMIN);
-		tree.delete(new BTData(2), BTree.FINDMAX);
+		tree.delete(new BTData(25));
+		tree.delete(new BTData(2));
 		
 		try {
-			tree.delete(new BTData(100), BTree.FINDMIN);
+			tree.delete(new BTData(100));
 			fail("La clave '100' no debería existir en la estructura.");
 		} catch (KeyNotFoundException e) {
 			

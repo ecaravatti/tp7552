@@ -36,7 +36,7 @@ public class HeightBTree extends BTree {
 	// returns the parent of the deleted node
 	// or null if the data has not been found (ojo que el padre es null si era la raiz)
 	// uses helper method swap() if necessary
-	public BTNode delete(BTData data, int minmax) {
+	public BTNode delete(BTData data) {
 		int side;
 		BTNode node;
 
@@ -45,7 +45,7 @@ public class HeightBTree extends BTree {
 			return null;
 
 		if (node.hasTwoChildren()) {
-			node = swap(node, minmax);
+			node = swap(node, BTree.FINDMAX);
 		}
 
 		side = node.getSide();
