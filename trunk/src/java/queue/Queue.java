@@ -1,37 +1,48 @@
 package queue;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.List;
 
-public class Queue<T> {
+import command.Command;
+import command.HighlightCommand;
+import command.queue.OfferCommand;
+import command.queue.PollCommand;
+import common.Element;
+
+public class Queue{
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int capacity;
-	private ArrayList<T> queue;
+	private List<Element<Integer>> queue;
 	private int fullSize = 0;
-
+	private int elementsCount = 0;
+	
 	public Queue(int capacity) {
 		this.capacity = capacity;
-		queue = new ArrayList<T>(capacity);
+		queue = new ArrayList<Element<Integer>>(capacity);
 	}
 
 	public Queue() {
-		queue = new ArrayList<T>(DEFAULT_CAPACITY);
+		queue = new ArrayList<Element<Integer>>(DEFAULT_CAPACITY);
 		capacity = DEFAULT_CAPACITY;
 	}
 
 	/**
 	 * Inserts the specified element into this queue, if possible.
 	 * */
-	public boolean offer(T element) {
-		boolean result = false;
-
+	public List<Command> offer(Integer value) {
+		
+		List<Command> commandList = new ArrayList<Command>();
+		
 		if (canInsert()) {
+			Element<Integer> element = new Element<Integer>(value, elementsCount);
+			elementsCount++;
 			this.queue.add(element);
+			commandList.add(new OfferCommand(element.getId(), element.getValue().toString()));
 			fullSize++;
-			result = true;
 		}
-		return result;
+		
+		return commandList;
 	}
 
 	private boolean canInsert() {
@@ -42,64 +53,50 @@ public class Queue<T> {
 	 * Retrieves and removes the head of this queue, or null if this queue is
 	 * empty.
 	 * */
-	public T poll() {
-		T elementToReturn = null;
+	public List<Command> poll() {
+		List<Command> commandList = new ArrayList<Command>();
 
 		if (!isEmpty()) {
-			elementToReturn = this.queue.get(0);
+			Element<Integer> element = this.queue.get(0);
 			this.queue.remove(0);
+			Command pollCommand = new PollCommand(element.getId(), element.getValue().toString());
+			commandList.add(pollCommand);
 			fullSize--;
 		}
 
-		return elementToReturn;
+		return commandList;
 	}
 
 	private boolean isEmpty() {
 		return (fullSize == 0);
 	}
 
-	/**
-	 * Retrieves and removes the head of this queue. This method differs from
-	 * the poll method in that it throws an exception if this queue is empty.
-	 * */
-	public T remove() throws NoSuchElementException {
-		if (isEmpty()) {
-			throw new NoSuchElementException();
-		}
-
-		return poll();
-	}
-
-	/**
+	 /**
 	 * Retrieves, but does not remove, the head of this queue, returning null if
 	 * this queue is empty.
 	 * */
-	public T peek() {
-		T elementToReturn = null;
+	public List<Command> peek() {
+		List<Command> commandList = new ArrayList<Command>();
 
 		if (!isEmpty()) {
-			elementToReturn = this.queue.get(0);
+			Element<Integer> element = this.queue.get(0);
+			Command highlightCommand = new HighlightCommand(element.getId(), element.getValue().toString());
+			commandList.add(highlightCommand);
 		}
 
-		return elementToReturn;
+		return commandList;
 	}
 
-	/**
-	 * Retrieves, but does not remove, the head of this queue. This method
-	 * differs from the peek method only in that it throws an exception if this
-	 * queue is empty.
-	 * */
-	public T element() throws NoSuchElementException {
-		if (!isEmpty()) {
-			throw new NoSuchElementException();
+
+	public List<Command> destroy() {
+		List<Command> commandList = new ArrayList<Command>();
+		for(int i = 0; i < capacity; i++){
+			commandList.addAll(this.poll());
 		}
-
-		return this.queue.get(0);
-	}
-
-	public void destroy() {
-		this.queue.clear();
+		
 		this.fullSize = 0;
+		
+		return commandList;
 	}
 
 }

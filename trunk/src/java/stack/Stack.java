@@ -1,69 +1,93 @@
 package stack;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
+import java.util.List;
 
-public class Stack<T> {
+import command.Command;
+import command.HighlightCommand;
+import command.stack.PopCommand;
+import command.stack.PushCommand;
+import common.Element;
+
+public class Stack {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int top = -1;
 	private int capacity;
-	private ArrayList<T> stack;
+	private List<Element<Integer>> stack;
+	private int elementsCount = 0;
 
 	public Stack() {
-		stack = new ArrayList<T>(DEFAULT_CAPACITY);
+		stack = new ArrayList<Element<Integer>>(DEFAULT_CAPACITY);
 	}
 
-	public void destroy() {
-		stack.clear();
+	public List<Command> destroy() {
+		List<Command> commandList = new ArrayList<Command>();
+		for(int i = 0; i < capacity - 1; i++){
+			commandList.addAll(this.pop());
+		}
 		this.top = -1;
+		
+		return commandList;
 	}
 
 	public Stack(int capacity) {
 		this.capacity = capacity;
-		stack = new ArrayList<T>(capacity);
+		stack = new ArrayList<Element<Integer>>(capacity);
 	}
 
 	/**
 	 * Pushes an item onto the top of this stack.
 	 * */
-	public void push(T element) throws Exception {
-		if (isFull()) {
-			throw new Exception();
-		} else {
+	public List<Command> push(Integer value) {
+		List<Command> commandList = new ArrayList<Command>();
+		
+		if (!isFull()) {
+			Element<Integer> element = new Element<Integer>(value, elementsCount);
+			elementsCount++;
 			stack.add(element);
 			top++;
+			Command pushCommand = new PushCommand(element.getId(), element.getValue().toString());
+			commandList.add(pushCommand);
 		}
+		
+		return commandList;
 	}
 
 	/**
 	 * Looks at the object at the top of this stack without removing it from the
 	 * stack.
 	 * */
-	public T peek() {
-		if (isEmpty()) {
-			throw new EmptyStackException();
-		} else {
-			T element = stack.get(top);
+	public List<Command> peek() {
+		List<Command> commandList = new ArrayList<Command>();
 
-			return element;
+		if (!isEmpty()) {
+			Element<Integer> element = stack.get(top);
+			Command highlightCommand = new HighlightCommand(element.getId(),
+					element.getValue().toString());
+			commandList.add(highlightCommand);
 		}
+
+		return commandList;
 	}
 
 	/**
 	 * Removes the object at the top of this stack and returns that object as
 	 * the value of this function.
 	 * */
-	public T pop() throws EmptyStackException {
-		if (isEmpty()) {
-			throw new EmptyStackException();
-		} else {
-			T element = stack.get(top);
+	public List<Command> pop() {
+		List<Command> commandList = new ArrayList<Command>();
+
+		if (!isEmpty()) {
+			Element<Integer> element = stack.get(top);
 			stack.remove(top);
 			top--;
-
-			return element;
+			Command popCommand = new PopCommand(element.getId(), element
+					.getValue().toString());
+			commandList.add(popCommand);
 		}
+
+		return commandList;
 	}
 
 	private boolean isEmpty() {

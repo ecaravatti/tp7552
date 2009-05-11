@@ -1,12 +1,16 @@
 package queue;
 
-import java.util.NoSuchElementException;
+import java.util.List;
 
 import junit.framework.TestCase;
 
+import command.Command;
+import command.HighlightCommand;
+import command.queue.PollCommand;
+
 public class QueueTest extends TestCase {
 
-	private Queue<Integer> queue;
+	private Queue queue;
 
 	public QueueTest() {
 		// TODO Auto-generated constructor stub
@@ -28,57 +32,70 @@ public class QueueTest extends TestCase {
 	public void testQueueBehavior() {
 		// The queue is filled with 5 elements
 		fillQueue();
-
+		List<Command> commandList = null;
 		// Insert order is 1,2,3,4,5
 		// The queue head at this moment is 1
-		assertEquals(1, queue.poll().intValue());
+		commandList = queue.poll();
+		assertEquals("1", ((PollCommand)commandList.get(0)).getContent());
+		commandList = queue.poll();
 		// The queue head at this moment is 2
-		assertEquals(2, queue.poll().intValue());
+		assertEquals("2", ((PollCommand)commandList.get(0)).getContent());
+		commandList = queue.poll();
 		// The queue head at this moment is 3
-		assertEquals(3, queue.poll().intValue());
+		assertEquals("3", ((PollCommand)commandList.get(0)).getContent());
+		commandList = queue.poll();
 		// The queue head at this moment is 4
-		assertEquals(4, queue.poll().intValue());
+		assertEquals("4", ((PollCommand)commandList.get(0)).getContent());
 		// The queue head at this moment is 5
-		assertEquals(5, queue.poll().intValue());
+		commandList = queue.poll();
+		assertEquals("5", ((PollCommand)commandList.get(0)).getContent());
 
 		// The queue is empty
-		assertEquals(null, queue.poll());
+		assertEquals(0, queue.poll().size());
 
 		// Insert a single element
 		queue.offer(new Integer(1));
 		// The queue head at this moment is 1
-		assertEquals(1, queue.peek().intValue());
+		commandList = queue.peek();
+		assertEquals("1", ((HighlightCommand)commandList.get(0)).getContent());
 		// Insert a single element
 		queue.offer(new Integer(2));
 		// The queue head at this moment is still 1
-		assertEquals(1, queue.peek().intValue());
+		commandList = queue.peek();
+		assertEquals("1", ((HighlightCommand)commandList.get(0)).getContent());
 		// Insert a single element
 		queue.offer(new Integer(3));
 		// The queue head at this moment is still 1
-		assertEquals(1, queue.peek().intValue());
+		commandList = queue.peek();
+		assertEquals("1", ((HighlightCommand)commandList.get(0)).getContent());
 
 		// Remove the current head
-		queue.remove();
+		commandList = queue.poll();
 
 		// The queue head at this moment is 3
-		assertEquals(2, queue.poll().intValue());
-		// Remove the current head
-		queue.remove();
-
+		assertEquals("1", ((PollCommand)commandList.get(0)).getContent());
+		
+		commandList = queue.peek();
+		assertEquals("2", ((HighlightCommand)commandList.get(0)).getContent());
+		
+		commandList = queue.poll();
+		commandList = queue.poll();
+		assertEquals("3", ((PollCommand)commandList.get(0)).getContent());
+		
+		commandList = queue.poll();
 		// The queue is empty
-		assertEquals(null, queue.poll());
-
+		assertEquals(0, commandList.size());
 	}
 
 	public void testOverflow() {
-		assertTrue(queue.offer(new Integer(1)));
-		assertTrue(queue.offer(new Integer(2)));
-		assertTrue(queue.offer(new Integer(3)));
-		assertTrue(queue.offer(new Integer(4)));
-		assertTrue(queue.offer(new Integer(5)));
-
-		// This step should fail
-		assertFalse(queue.offer(new Integer(6)));
+		
+		assertEquals(1, queue.offer(new Integer(1)).size());
+		assertEquals(1, queue.offer(new Integer(2)).size());
+		assertEquals(1, queue.offer(new Integer(3)).size());
+		assertEquals(1, queue.offer(new Integer(4)).size());
+		assertEquals(1, queue.offer(new Integer(5)).size());
+		// This step should not do anything
+		assertEquals(0, queue.offer(new Integer(6)).size());
 
 	}
 
@@ -86,27 +103,25 @@ public class QueueTest extends TestCase {
 		// The queue is filled with 5 elements
 		fillQueue();
 		for (int i = 0; i < 5; i++) {
-			queue.remove();
+			assertEquals(1, queue.poll().size());
 		}
-		try {
-			queue.remove();
-			fail("The NoSuchElementException was not thrown");
-		} catch (NoSuchElementException e) {
-			// Expected exception
-		}
+		
+		// This step should not do anything
+		assertEquals(0, queue.poll().size());
 
 	}
 
 	public void testDestroy() {
 		fillQueue();
-		this.queue.destroy();
-		assertEquals(null, this.queue.peek());
+		List<Command> commandList = this.queue.destroy();
+		
+		assertEquals(5, commandList.size());
 
 	}
 
 	@Override
 	protected void setUp() throws Exception {
-		queue = new Queue<Integer>(5);
+		queue = new Queue(5);
 	}
 
 	private void fillQueue() {
