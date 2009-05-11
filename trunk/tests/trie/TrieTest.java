@@ -17,7 +17,7 @@ public class TrieTest extends TestCase {
 		trie.add("alas");
 		trie.add("asar");
 		trie.add("asado");
-		ExportUtils.exportTrieToXML(trie, "inicialTrie.xml");
+		ExportUtils.exportToXML(trie, "inicialTrie.xml");
 		super.setUp();
 	}
 
