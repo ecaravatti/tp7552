@@ -1,5 +1,12 @@
 package tree.binary;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import command.Command;
+import command.tree.InsertCommand;
+import command.tree.LeftRotationCommand;
+
 
 public abstract class BTree {
 
@@ -10,6 +17,8 @@ public abstract class BTree {
 	public static final int FINDMIN = -1;
 
 	protected BTNode root;
+	
+	protected List<Command> commands = new ArrayList<Command>(); //TODO [manugarciacab] ESTO NO VA ACA!
 	
 	//Resultados del último locate()
 	protected BTNode lastNode; //Último nodo en la búsqueda
@@ -62,9 +71,11 @@ public abstract class BTree {
 	 * Devuelve el nodo creado.
 	 */
 	protected BTNode add(BTNode node, int side, BTData data) {
-		BTNode newnode = new BTNode(data);
-		link(node, side, newnode);
-		return newnode;
+		BTNode newNode = new BTNode(data);
+		link(node, side, newNode);
+		
+		commands.add(new InsertCommand(newNode.getData().getKey(), side == BTNode.LEFT, node != null ? node.getData().getKey() : null, newNode.getBalance()));
+		return newNode;
 	}
 
 	/**
@@ -96,6 +107,13 @@ public abstract class BTree {
 			root = child;
 		}
 		
+		Integer parentId = parent != null ? parent.getData().getKey() : null;
+		int nodeId = node.getData().getKey();
+		int childId = child.getData().getKey();
+		Integer grandId = grand != null ? grand.getData().getKey() : null;
+		
+		commands.add(new LeftRotationCommand(parentId, nodeId, childId, grandId, node.getSide() == BTNode.LEFT, childId, grandId, nodeId));
+		
 		return child;
 	}
 	
@@ -106,13 +124,20 @@ public abstract class BTree {
 		BTNode parent = node.getParent(); //Puede ser null
 		BTNode child = node.getChild(BTNode.RIGHT); //Nunca es null
 		BTNode grand = child.getChild(BTNode.LEFT); //Puede ser null
-
+		
 		link(node, BTNode.RIGHT, grand);
 		link(parent, node.getSide(), child);
 		link(child, BTNode.LEFT, node);
 		if (node == root) {
 			root = child;
 		}
+		
+		Integer parentId = parent != null ? parent.getData().getKey() : null;
+		int nodeId = node.getData().getKey();
+		int childId = child.getData().getKey();
+		Integer grandId = grand != null ? grand.getData().getKey() : null;
+		
+		commands.add(new LeftRotationCommand(parentId, nodeId, childId, grandId, node.getSide() == BTNode.LEFT, childId, grandId, nodeId));
 		
 		return child;
 	}
