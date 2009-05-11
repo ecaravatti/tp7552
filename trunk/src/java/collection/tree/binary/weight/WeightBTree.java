@@ -27,7 +27,7 @@ public class WeightBTree extends BTree {
 	@Override
 	// Insert data into the tree
 	// Throws KeyAlreadyExistsException if the data already exists
-	public BTNode insert(BTData data) {
+	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
 		BTNode node;
 		if (root == null) {
 			node = add(null, BTNode.NONE, data);
@@ -51,7 +51,7 @@ public class WeightBTree extends BTree {
 	// Returns the parent of the deleted node (null if the node was the root)
 	// or KeyNotFoundException if the data has not been found
 	// Uses helper method swap() if necessary
-	public BTNode delete(BTData data) {
+	public BTNode delete(BTData data) throws KeyNotFoundException {
 		BTNode node = locate(data);
 		if (node == null) {
 			throw new KeyNotFoundException();

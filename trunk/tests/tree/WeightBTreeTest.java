@@ -24,7 +24,7 @@ public class WeightBTreeTest extends TestCase {
 		tree = new WeightBTree();
 	}
 	
-	public void testInsert() {
+	public void testInsert() throws KeyAlreadyExistsException, KeyNotFoundException {
 		tree.insert(new BTData(10));
 		tree.insert(new BTData(20));
 		tree.insert(new BTData(30));
@@ -50,7 +50,7 @@ public class WeightBTreeTest extends TestCase {
 		System.out.println(tree);
 	}
 
-	public void testInsertWithExistentKey() {
+	public void testInsertWithExistentKey() throws KeyAlreadyExistsException, KeyNotFoundException {
 		tree.insert(new BTData(10));
 		tree.insert(new BTData(20));
 		tree.insert(new BTData(30));
@@ -65,7 +65,7 @@ public class WeightBTreeTest extends TestCase {
 		}
 	}
 	
-	public void testDelete() {
+	public void testDelete() throws KeyAlreadyExistsException, KeyNotFoundException {
 		tree.insert(new BTData(10));
 		tree.insert(new BTData(20));
 		tree.insert(new BTData(30));
@@ -99,7 +99,7 @@ public class WeightBTreeTest extends TestCase {
 		System.out.println(tree);
 	}
 	
-	public void testDeleteWithNonExistentKey() {
+	public void testDeleteWithNonExistentKey() throws KeyAlreadyExistsException, KeyNotFoundException {
 		tree.insert(new BTData(60));
 		tree.insert(new BTData(25));
 		tree.insert(new BTData(18));
@@ -118,13 +118,13 @@ public class WeightBTreeTest extends TestCase {
 	}
 	
 	//TODO Este test estaba comentado. 
-	public void testWeightBTreeBehavior() {
+	public void testWeightBTreeBehavior() throws KeyAlreadyExistsException, KeyNotFoundException {
 		for (double i = 0.1; i <= 0.5; i += 0.1) {
 			testWeightBTree(i, 10000);
 		}
 	}
 	
-	private void testWeightBTree(double alpha, int insertsAmount) {
+	private void testWeightBTree(double alpha, int insertsAmount) throws KeyAlreadyExistsException, KeyNotFoundException {
 		BTree tree = new WeightBTree(alpha);
 		
 		List<Integer> insertados = new ArrayList<Integer>();

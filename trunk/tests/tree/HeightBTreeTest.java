@@ -7,14 +7,16 @@ import java.util.List;
 import collection.tree.binary.BTData;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
+import collection.tree.binary.KeyAlreadyExistsException;
+import collection.tree.binary.KeyNotFoundException;
 import collection.tree.binary.height.HeightBTree;
 
 import junit.framework.TestCase;
 
 public class HeightBTreeTest extends TestCase {
 	
-	public void testHeightTreeBehavior() {
-		for (int i = 1; i < 5; i++) {
+	public void testHeightTreeBehavior() throws KeyAlreadyExistsException, KeyNotFoundException {
+		for (int i = 1; i < 6; i++) {
 			testHeightTree(i, 10000);
 		}
 	}
@@ -25,7 +27,11 @@ public class HeightBTreeTest extends TestCase {
 		List<Integer> insertados = new ArrayList<Integer>();
 		for (int i = 0; i < insertsAmount; i++) {
 			int random = (int)(Math.random()*(insertsAmount*1000));
-			tree.insert(new BTData(random));
+			try {
+				tree.insert(new BTData(random));
+			} catch (KeyAlreadyExistsException e) {
+				assertTrue(insertados.contains(random));
+			}
 			insertados.add(random);
 		}
 		
@@ -44,8 +50,12 @@ public class HeightBTreeTest extends TestCase {
 		//Borro menos de los que inserté
 		for (Integer codigo : insertados) {
 			if (i++ < (insertsAmount*4/5)) {
-				borrados.add(codigo);
-				tree.delete(new BTData(codigo));
+				try {
+					tree.delete(new BTData(codigo));
+					borrados.add(codigo);
+				} catch (KeyNotFoundException e) {
+					assertTrue(borrados.contains(codigo));
+				}
 			} else {
 				break;
 			}

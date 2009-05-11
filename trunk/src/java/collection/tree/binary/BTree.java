@@ -30,9 +30,9 @@ public abstract class BTree {
 
 	// BST methods
 
-	public abstract BTNode insert(BTData data);
+	public abstract BTNode insert(BTData data) throws KeyAlreadyExistsException;
 	
-	public abstract BTNode delete(BTData data);
+	public abstract BTNode delete(BTData data) throws KeyNotFoundException;
 
 	@Override
 	public String toString() {

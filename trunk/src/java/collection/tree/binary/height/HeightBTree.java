@@ -3,6 +3,8 @@ package collection.tree.binary.height;
 import collection.tree.binary.BTData;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
+import collection.tree.binary.KeyAlreadyExistsException;
+import collection.tree.binary.KeyNotFoundException;
 import command.tree.ChangeBalanceCommand;
 
 
@@ -23,12 +25,12 @@ public class HeightBTree extends BTree {
 	
 	// insert data into an AVL tree
 	// returns new node or null if the data already exists
-	public BTNode insert(BTData data) {
+	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
 		BTNode node;
 		if (root == null)
 			return add(null, 0, data);
 		if (locate(data) != null)
-			return null;
+			throw new KeyAlreadyExistsException();
 		node = add(lastNode, nextSide, data);
 		rebalance(lastNode, nextSide, INSERT);
 		return node;
@@ -38,13 +40,14 @@ public class HeightBTree extends BTree {
 	// returns the parent of the deleted node
 	// or null if the data has not been found (ojo que el padre es null si era la raiz)
 	// uses helper method swap() if necessary
-	public BTNode delete(BTData data) {
+	public BTNode delete(BTData data) throws KeyNotFoundException {
 		int side;
 		BTNode node;
 
 		node = locate(data);
-		if (node == null)
-			return null;
+		if (node == null) {
+			throw new KeyNotFoundException();
+		}
 
 		if (node.hasTwoChildren()) {
 			node = swap(node, BTree.FINDMAX);

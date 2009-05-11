@@ -1,6 +1,6 @@
 package collection.tree.binary;
 
-public class KeyNotFoundException extends RuntimeException {
+public class KeyNotFoundException extends Exception {
 
 	/**
 	 * 

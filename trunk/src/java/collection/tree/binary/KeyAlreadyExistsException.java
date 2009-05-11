@@ -1,6 +1,6 @@
 package collection.tree.binary;
 
-public class KeyAlreadyExistsException extends RuntimeException {
+public class KeyAlreadyExistsException extends Exception {
 
 	/**
 	 * 
