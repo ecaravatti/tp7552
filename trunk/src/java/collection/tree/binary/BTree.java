@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import command.Command;
+import command.tree.DeleteCommand;
 import command.tree.InsertCommand;
 import command.tree.LeftRotationCommand;
 import command.tree.SwapCommand;
@@ -92,6 +93,12 @@ public abstract class BTree {
 		parent = node.getParent();
 		side = node.getSide();
 		link(parent, side, child);
+		
+		int deletedId = node.getData().getKey();
+		Integer parentId = parent != null ? parent.getData().getKey() : null;
+		Integer childId = child != null ? child.getData().getKey() : null;
+		commands.add(new DeleteCommand(deletedId, parentId, childId, side == BTNode.LEFT));
+		
 		return parent;
 	}
 
