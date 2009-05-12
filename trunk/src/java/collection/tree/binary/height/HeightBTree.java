@@ -23,9 +23,8 @@ public class HeightBTree extends BTree {
 		this.variacionMaxima = 1; //Valor por defecto
 	}
 	
-	// insert data into an AVL tree
-	// returns new node or null if the data already exists
 	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
+		initCommands();
 		BTNode node;
 		
 		if (root == null) {
@@ -48,6 +47,7 @@ public class HeightBTree extends BTree {
 	// or null if the data has not been found (ojo que el padre es null si era la raiz)
 	// uses helper method swap() if necessary
 	public BTNode delete(BTData data) throws KeyNotFoundException {
+		initCommands();
 		int side;
 		BTNode node;
 

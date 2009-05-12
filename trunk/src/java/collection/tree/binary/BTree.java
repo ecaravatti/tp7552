@@ -7,6 +7,7 @@ import command.Command;
 import command.tree.DeleteCommand;
 import command.tree.InsertCommand;
 import command.tree.LeftRotationCommand;
+import command.tree.NodeHighlightCommand;
 import command.tree.SwapCommand;
 
 
@@ -20,7 +21,7 @@ public abstract class BTree {
 
 	protected BTNode root;
 	
-	protected List<Command> commands = new ArrayList<Command>(); //TODO [manugarciacab] ESTO NO VA ACA!
+	protected List<Command> commands;
 	
 	//Resultados del último locate()
 	protected BTNode lastNode; //Último nodo en la búsqueda
@@ -30,9 +31,19 @@ public abstract class BTree {
 		root = null;
 	}
 
+	/**
+	 * Inserta la data en el arbol
+	 * @throws KeyAlreadyExistsException si la data existe
+	 */
 	public abstract BTNode insert(BTData data) throws KeyAlreadyExistsException;
 	
+	/**
+	 * Borra la data del arbol
+	 * Devuelve el padre del nodo borrado (null si el nodo era la raíz)
+	 * @throws KeyNotFoundException si la data no se encuentra
+	 */
 	public abstract BTNode delete(BTData data) throws KeyNotFoundException;
+	
 
 	@Override
 	public String toString() {
@@ -46,11 +57,18 @@ public abstract class BTree {
 	 * Guarda el último nodo en la búsqueda y el side del siguiente nodo para otros métodos.
 	 */
 	public BTNode locate(BTData data) throws KeyNotFoundException {
+		initCommands();
 		BTNode node = root;
 		BTNode next = null;
 		int side = 0;
 
+		Integer lastNodeId = null;
+		Integer currentNodeId = null;
 		while (node != null) {
+			currentNodeId = node.getData().getKey();
+			commands.add(new NodeHighlightCommand(currentNodeId, lastNodeId));
+			lastNodeId = currentNodeId;
+			
 			side = node.getNextSide(data);
 			next = node.getChild(side);
 			if (next == node || next == null) {
@@ -61,6 +79,8 @@ public abstract class BTree {
 		
 		lastNode = node;
 		nextSide = side;
+		
+		commands.add(new NodeHighlightCommand(null, lastNodeId));
 		
 		if (next == null) {
 			throw new KeyNotFoundException();
@@ -199,9 +219,17 @@ public abstract class BTree {
 		buffer.append(" Der: " + node.getChild(BTNode.RIGHT) + "\n");
 		if (node.getChild(BTNode.RIGHT) != null) inOrderPrint(node.getChild(BTNode.RIGHT), buffer);
 	}
+	
+	protected void initCommands() {
+		commands = new ArrayList<Command>();
+	}
 
 	public BTNode getRoot() {
 		return root;
+	}
+
+	public List<Command> getCommands() {
+		return commands;
 	}
 
 }
