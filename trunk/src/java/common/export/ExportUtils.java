@@ -34,8 +34,8 @@ public class ExportUtils {
 	private final static String QUEUE = "Queue";
 	private final static String HEAD = "Head";
 	private final static String BACK = "Back";
-	private final static String LEFT_CHILD = "Left Child";
-	private final static String RIGHT_CHILD = "Right Child";
+	private final static String LEFT_CHILD = "LeftChild";
+	private final static String RIGHT_CHILD = "RightChild";
 
 	public static void exportToXML(Queue queue, String path) {
 
@@ -110,7 +110,7 @@ public class ExportUtils {
 		addNode(root, node);
 
 		exportToFile(path, document);
-		printToOutput(document);
+		//printToOutput(document);
 	}
 	
 	private static void addNode(Element element, BTNode node) {
