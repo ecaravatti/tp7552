@@ -5,15 +5,15 @@ import command.Command;
 public class DeleteCommand extends Command {
 
 	private Integer parentId;
-	private int deletedId;
+	private int deletedValue;
 	private Integer childId;
 
 	private boolean isLeftChild;
 
-	public DeleteCommand(int deletedId, Integer parentId, Integer childId,
-			boolean isLeftChild) {
+	public DeleteCommand(int deletedId, int deletedValue, Integer parentId,
+			Integer childId, boolean isLeftChild) {
 		super(deletedId);
-		this.deletedId = deletedId;
+		this.deletedValue = deletedValue;
 		this.parentId = parentId;
 		this.childId = childId;
 		this.isLeftChild = isLeftChild;
@@ -21,20 +21,20 @@ public class DeleteCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Borro el elemento " + deletedId;
+		return "Borro el elemento " + deletedValue;
 	}
 
 	@Override
 	public String undo() {
-		return "Deshago el borrado del elemento " + deletedId;
+		return "Deshago el borrado del elemento " + deletedValue;
 	}
 
 	public Integer getParentId() {
 		return parentId;
 	}
 
-	public int getDeletedId() {
-		return deletedId;
+	public int getDeletedValue() {
+		return deletedValue;
 	}
 
 	public Integer getChildId() {

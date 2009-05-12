@@ -122,9 +122,10 @@ public abstract class BTree {
 		link(parent, side, child);
 
 		int deletedId = node.getElement().getId();
+		int deletedValue = node.getElement().getValue();
 		Integer parentId = parent != null ? parent.getElement().getId() : null;
 		Integer childId = child != null ? child.getElement().getId() : null;
-		commands.add(new DeleteCommand(deletedId, parentId, childId,
+		commands.add(new DeleteCommand(deletedId, deletedValue, parentId, childId,
 				side == BTNode.LEFT));
 
 		return parent;
