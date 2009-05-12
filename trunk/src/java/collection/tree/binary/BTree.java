@@ -51,7 +51,11 @@ public abstract class BTree {
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		inOrderPrint(root, buffer);
+		if (root != null) {
+			inOrderPrint(root, buffer);
+		} else {
+			buffer.append("Árbol vacío");
+		}
 		return buffer.toString();
 	}
 
