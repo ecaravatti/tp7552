@@ -17,12 +17,12 @@ public class PopCommand extends Command {
 	
 	@Override
 	public String execute() {
-		return "Pop node with id '" + getId() + "' and content '" + getContent() + "'";
+		return "Quita el elemento '" + getId() + "' cuyo valor es '" + getContent() + " del tope de la pila";
 	}
 
 	@Override
 	public String undo() {
-		return "Push node with id '" + getId() + "' and content '" + getContent() + "'";
+		return "Inserta el elemento '" + getId() + "' cuyo valor es '" + getContent() + " en el tope de la pila'";
 	}
 
 }
