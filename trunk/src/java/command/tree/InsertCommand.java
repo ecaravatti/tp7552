@@ -25,7 +25,7 @@ public class InsertCommand extends Command {
 
 	@Override
 	public String undo() {
-		return "Quita el elemento " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		return "Remueve el elemento " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
 	}
 
 	public int getInsertedData() {
