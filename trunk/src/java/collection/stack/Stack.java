@@ -23,7 +23,7 @@ public class Stack implements Cloneable {
 
 	public List<Command> destroy() {
 		List<Command> commandList = new ArrayList<Command>();
-		for(int i = 0; i < capacity - 1; i++){
+		for(int i = 0; i < capacity; i++){
 			commandList.addAll(this.pop());
 		}
 		this.top = -1;

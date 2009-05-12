@@ -1,10 +1,10 @@
 package stack;
 
-import java.util.EmptyStackException;
-
+import java.util.List;
 import collection.stack.Stack;
-
-import common.export.ExportUtils;
+import command.Command;
+import command.HighlightCommand;
+import command.stack.PopCommand;
 
 import junit.framework.TestCase;
 
@@ -16,7 +16,7 @@ public class StackTest extends TestCase {
 		stack = new Stack(5);
 	}
 
-	private void fillStack() throws Exception {
+	private void fillStack() {
 		stack.push(new Integer(1));
 		stack.push(new Integer(2));
 		stack.push(new Integer(3));
@@ -25,93 +25,71 @@ public class StackTest extends TestCase {
 	}
 
 	public void testOverflow() {
-		try {
-			// The stack size is 5
-			fillStack();
-			ExportUtils.exportToXML(stack, "stack.xml");
-		} catch (Exception e) {
-		}
-//		try {
-//			stack.push(new Integer(6));
-//			fail("The Exception was not thrown");
-//		} catch (Exception e) {
-//			// The expected exception was thrown
-//		}
+		assertEquals(1, stack.push(new Integer(1)).size());
+		assertEquals(1, stack.push(new Integer(2)).size());
+		assertEquals(1, stack.push(new Integer(3)).size());
+		assertEquals(1, stack.push(new Integer(4)).size());
+		assertEquals(1, stack.push(new Integer(5)).size());
+		// This step should not do anything
+		assertEquals(0, stack.push(new Integer(6)).size());
 	}
 
 	public void testUnderflow() {
-		try {
-			fillStack();
-		} catch (Exception e) {
-		}
 		// The stack is filled with 5 elements
+		fillStack();
 		for (int i = 0; i < 5; i++) {
-			stack.pop();
+			assertEquals(1, stack.pop().size());
 		}
-		try {
-			stack.pop();
-			fail("The EmptyStackException was not thrown");
-		} catch (EmptyStackException e) {
-			// The expected exception was thrown
-		}
+
+		// This step should not do anything
+		assertEquals(0, stack.pop().size());
+
 	}
 
-	public void testDestroy(){
-		try {
-			fillStack();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.stack.destroy();
-		try{
-			this.stack.pop();
-			fail("The expected exception was not thrown");
-		}catch(EmptyStackException e){
-			// Expected exception
-		}
+	public void testDestroy() {
+
+		fillStack();
+		List<Command> commandList = this.stack.destroy();
+
+		assertEquals(5, commandList.size());
 	}
-	
+
 	public void testStackBehavior() {
-//		// The top of the stack is 1
-//		try {
-//			stack.push(new Integer(1));
-//		} catch (Exception e) {
-//		}
-//
-//		assertEquals(1, stack.peek().intValue());
-//
-//		// The top of the stack is 2
-//		try {
-//			stack.push(new Integer(2));
-//		} catch (Exception e) {
-//		}
-//
-//		assertEquals(2, stack.peek().intValue());
-//
-//		// The top of the stack is 3
-//		try {
-//			stack.push(new Integer(3));
-//		} catch (Exception e) {
-//		}
-//
-//		assertEquals(3, stack.peek().intValue());
-//
-//		// Pop 3
-//		assertEquals(3, stack.pop().intValue());
-//		// The top must be 2
-//		assertEquals(2, stack.pop().intValue());
-//		// The top must be 1
-//		assertEquals(1, stack.pop().intValue());
-//
-//		// The stack is empty
-//		try {
-//			stack.pop();
-//			fail("The EmptyStackException was not thrown");
-//		} catch (EmptyStackException e) {
-//			// EmptyStackException was thrown
-//		}
+		List<Command> commandList = null;
+		// The top of the stack is 1
+		stack.push(new Integer(1));
 
+		commandList = stack.peek();
+		assertEquals("1", ((HighlightCommand) commandList.get(0)).getContent());
+
+		// The top of the stack is 2
+		stack.push(new Integer(2));
+		commandList = stack.peek();
+		assertEquals("2", ((HighlightCommand) commandList.get(0)).getContent());
+
+		// The top of the stack is 3
+		stack.push(new Integer(3));
+		commandList = stack.peek();
+		assertEquals("3", ((HighlightCommand) commandList.get(0)).getContent());
+
+		// Pop 3
+		commandList = stack.pop();
+		assertEquals(1, commandList.size());
+		assertEquals("3", ((PopCommand) commandList.get(0)).getContent());
+
+		// The top must be 2
+		commandList = stack.pop();
+		assertEquals(1, commandList.size());
+		assertEquals("2", ((PopCommand) commandList.get(0)).getContent());
+
+		// The top must be 1
+		commandList = stack.pop();
+		assertEquals(1, commandList.size());
+		assertEquals("1", ((PopCommand) commandList.get(0)).getContent());
+
+		// The stack is empty
+		commandList = stack.pop();
+		assertEquals(0, commandList.size());
 	}
 
 }
