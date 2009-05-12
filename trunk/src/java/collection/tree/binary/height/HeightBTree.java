@@ -27,13 +27,20 @@ public class HeightBTree extends BTree {
 	// returns new node or null if the data already exists
 	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
 		BTNode node;
-		if (root == null)
+		
+		if (root == null) {
 			return add(null, 0, data);
-		if (locate(data) != null)
+		}
+		
+		try {
+			locate(data);
 			throw new KeyAlreadyExistsException();
-		node = add(lastNode, nextSide, data);
-		rebalance(lastNode, nextSide, INSERT);
-		return node;
+		} catch (KeyNotFoundException e) {
+			node = add(lastNode, nextSide, data);
+			rebalance(lastNode, nextSide, INSERT);
+			return node;
+		}
+		
 	}
 	
 	// delete data from an AVL tree
@@ -50,7 +57,7 @@ public class HeightBTree extends BTree {
 		}
 
 		if (node.hasTwoChildren()) {
-			node = swap(node, BTree.FINDMAX);
+			node = swap(node, BTree.FIND_MAX);
 		}
 
 		side = node.getSide();

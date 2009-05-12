@@ -32,17 +32,22 @@ public class WeightBTree extends BTree {
 		if (root == null) {
 			node = add(null, BTNode.NONE, data);
 			node.setWeight(DEFAULT_WEIGHT);
-		} else if (locate(data) != null) {
-			throw new KeyAlreadyExistsException();
 		} else {
-			node = add(lastNode, nextSide, data);
-			
-			for(BTNode temp = node; temp != null; temp = temp.getParent()) {
-				temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
-								weight(temp.getChild(BTNode.RIGHT)));
-				temp = checkRotations(temp);
+			try {
+				locate(data);
+				throw new KeyAlreadyExistsException();
+			} catch (KeyNotFoundException e) {
+				node = add(lastNode, nextSide, data);
+				
+				for(BTNode temp = node; temp != null; temp = temp.getParent()) {
+					temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
+									weight(temp.getChild(BTNode.RIGHT)));
+					temp = checkRotations(temp);
+				}
+
 			}
 		}
+		
 		return node;
 	}
 	
@@ -53,9 +58,6 @@ public class WeightBTree extends BTree {
 	// Uses helper method swap() if necessary
 	public BTNode delete(BTData data) throws KeyNotFoundException {
 		BTNode node = locate(data);
-		if (node == null) {
-			throw new KeyNotFoundException();
-		}
 
 		if (node.hasTwoChildren()) {
 //			node = swap(node, BTree.FINDMAX);

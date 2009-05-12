@@ -6,6 +6,7 @@ import java.util.List;
 import command.Command;
 import command.tree.InsertCommand;
 import command.tree.LeftRotationCommand;
+import command.tree.SwapCommand;
 
 
 public abstract class BTree {
@@ -13,8 +14,8 @@ public abstract class BTree {
 	public static final int INSERT = +1;
 	public static final int DELETE = -1;
 
-	public static final int FINDMAX = +1;
-	public static final int FINDMIN = -1;
+	public static final int FIND_MAX = +1;
+	public static final int FIND_MIN = -1;
 
 	protected BTNode root;
 	
@@ -28,8 +29,6 @@ public abstract class BTree {
 		root = null;
 	}
 
-	// BST methods
-
 	public abstract BTNode insert(BTData data) throws KeyAlreadyExistsException;
 	
 	public abstract BTNode delete(BTData data) throws KeyNotFoundException;
@@ -42,10 +41,10 @@ public abstract class BTree {
 	}
 	
 	/**
-	 * Devuelve el nodo que contiene la data, o null si no lo encuentra.
+	 * Devuelve el nodo que contiene la data. Tira KeyNotFoundException si no lo encuentra.
 	 * Guarda el último nodo en la búsqueda y el side del siguiente nodo para otros métodos.
 	 */
-	public BTNode locate(BTData data) {
+	public BTNode locate(BTData data) throws KeyNotFoundException {
 		BTNode node = root;
 		BTNode next = null;
 		int side = 0;
@@ -61,6 +60,10 @@ public abstract class BTree {
 		
 		lastNode = node;
 		nextSide = side;
+		
+		if (next == null) {
+			throw new KeyNotFoundException();
+		}
 		
 		return next;
 	}
@@ -85,7 +88,7 @@ public abstract class BTree {
 		int side;
 		BTNode child, parent;
 
-		child = node.getChild(); // single child
+		child = node.getChild(); //A lo sumo un hijo
 		parent = node.getParent();
 		side = node.getSide();
 		link(parent, side, child);
@@ -156,25 +159,32 @@ public abstract class BTree {
 		}
 	}
 	
-	// if the node has two children
-	// swap the nodes before delete()
-	// does not apply to splay trees
+	/**
+	 * Intercambia la BTData de node, con la del nodo menor de los mayores (minmax == FIND_MIN)
+	 * o con la del mayor de los menores (minmax == FIND_MAX)
+	 */
 	protected BTNode swap(BTNode node, int minmax) {
 		BTNode temp = node;
-		BTNode swap = (minmax == FINDMAX) ? node.prevInO() : node.nextInO();
+		BTNode swap = (minmax == FIND_MAX) ? node.prevInO() : node.nextInO();
+		commands.add(new SwapCommand(node.getData().getKey(), swap.getData().getKey()));
 		swapData(node, swap); // swap data first
 		node = swap; // now swap nodes
 		swap = temp;
 		return node;
 	}
 
-	// helper method for swap()
-	protected void swapData(BTNode node1, BTNode node2) {
+	/**
+	 * Intercambia la BTData de dos nodos.
+	 */
+	private void swapData(BTNode node1, BTNode node2) {
 		BTData data = node1.getData();
 		node1.setData(node2.getData());
 		node2.setData(data);
 	}
 	
+	/**
+	 * Llena buffer con un recorrido in order del arbol.
+	 */
 	private void inOrderPrint(BTNode node, StringBuffer buffer) {
 		if (node.getChild(BTNode.LEFT) != null) inOrderPrint(node.getChild(BTNode.LEFT), buffer);
 		buffer.append("Yo: " + node);

@@ -4,13 +4,11 @@ import command.Command;
 
 public class ChangeBalanceCommand extends Command {
 	
-	private int data;
 	private int newBalance;
 	private int oldBalance;
 	
 	public ChangeBalanceCommand(Integer data, int newBalance, int oldBalance) {
 		super(data);
-		this.data = data;
 		this.newBalance = newBalance;
 		this.oldBalance = oldBalance;
 	}
@@ -23,10 +21,6 @@ public class ChangeBalanceCommand extends Command {
 	@Override
 	public String undo() {
 		return "Cambia el balance de " + newBalance + " a " + oldBalance;
-	}
-
-	public int getData() {
-		return data;
 	}
 
 	public int getNewBalance() {

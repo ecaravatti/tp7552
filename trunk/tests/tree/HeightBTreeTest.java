@@ -38,10 +38,14 @@ public class HeightBTreeTest extends TestCase {
 		Collections.shuffle(insertados); //Los mezclo para que varíe el orden
 		BTNode node;
 		for (Integer codigo : insertados) {
-			node = tree.locate(new BTData(codigo));
-			assertNotNull(node); //Lo encontré
-			assertEquals(node.getBalance(), node.getBalanceTeorico()); //El balance está bien calculado
-			assertTrue(Math.abs(node.getBalance()) <= heightVariation); //No está desbalanceado
+			try {
+				node = tree.locate(new BTData(codigo));
+				assertNotNull(node); //No puede encontrar algo null
+				assertEquals(node.getBalance(), node.getBalanceTeorico()); //El balance está bien calculado
+				assertTrue(Math.abs(node.getBalance()) <= heightVariation); //No está desbalanceado
+			} catch (KeyNotFoundException e) {
+				fail();
+			}
 		}
 		
 		List<Integer> borrados = new ArrayList<Integer>();
@@ -62,18 +66,28 @@ public class HeightBTreeTest extends TestCase {
 		}
 		
 		for (Integer codigo : borrados) {
-			node = tree.locate(new BTData(codigo));
-			assertNull(node); //Efectivamente está borrado
+			try {
+				node = tree.locate(new BTData(codigo));
+				fail();
+			} catch (KeyNotFoundException e) {
+				//Efectivamente está borrado
+			}
 		}
 		
 		for (Integer codigo : insertados) {
-			node = tree.locate(new BTData(codigo));
-			if (borrados.contains(codigo)) {
-				assertNull(node); //Efectivamente está borrado
-			} else {
-				assertNotNull(node); //Lo encontré
-				assertEquals(node.getBalance(), node.getBalanceTeorico()); //El balance está bien calculado
-				assertTrue(Math.abs(node.getBalance()) <= heightVariation); //No está desbalanceado
+			try {
+				node = tree.locate(new BTData(codigo));
+				if (borrados.contains(codigo)) {
+					fail(); //No debería haberlo encontrado
+				} else {
+					assertNotNull(node); //No puede devolver null
+					assertEquals(node.getBalance(), node.getBalanceTeorico()); //El balance está bien calculado
+					assertTrue(Math.abs(node.getBalance()) <= heightVariation); //No está desbalanceado
+				}
+			} catch (KeyNotFoundException e) {
+				if (!borrados.contains(codigo)) {
+					fail(); //Debería haberlo encontrado
+				}
 			}
 		}
 		
