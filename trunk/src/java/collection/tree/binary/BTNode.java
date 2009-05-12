@@ -140,7 +140,7 @@ public class BTNode {
 	
 	@Override
 	public String toString() {
-		return "[B: " + balance + " - BT: " + getBalanceTeorico() + " - K: " + data.toString() + "]";
+		return "[B: " + balance + " - K: " + data.toString() + "]";
 	}
 
 	public BTNode getParent() {
