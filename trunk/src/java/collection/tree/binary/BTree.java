@@ -194,9 +194,14 @@ public abstract class BTree {
 		BTNode temp = node;
 		BTNode swap = (minmax == FIND_MAX) ? node.prevInO() : node.nextInO();
 		commands.add(new SwapCommand(node.getData().getKey(), swap.getData().getKey()));
-		swapData(node, swap); // swap data first
-		node = swap; // now swap nodes
+		
+		//Intercambio data
+		swapData(node, swap);
+		
+		//Intercambio nodos
+		node = swap; 
 		swap = temp;
+		
 		return node;
 	}
 

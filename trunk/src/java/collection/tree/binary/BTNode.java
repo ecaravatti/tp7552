@@ -1,16 +1,11 @@
 package collection.tree.binary;
 
-
-//class BTNode defines the tree node data structure
-//and provides a collection of get/set methods protecting private data
-//all balancing methods are defined in BSTree class
 public class BTNode {
 
 	public static final int LEFT = -1;
 	public static final int RIGHT = +1;
 	public static final int NONE = 0;
 	public static final int EQUAL = 0;
-	public static final int ERROR = 666;
 
 	private BTNode parent;
 	private BTNode leftChild;
@@ -26,7 +21,6 @@ public class BTNode {
 		data = null;
 	}
 
-	//TODO [manugarciacab] borrar este comment: este metodo lo agregue yo, manu
 	public BTNode(BTData data) {
 		parent = null;
 		leftChild = null;
@@ -72,8 +66,7 @@ public class BTNode {
 			rightChild = node;
 			break;
 		default:
-			//TODO [manugarciacab] Habría que hacer algo por default?
-			//TODO [dpisaturo] Creo que no, a lo sumo lanzar una InvalidSideException :P
+			throw new InconsistentStateException();
 		}
 	}
 
@@ -88,17 +81,15 @@ public class BTNode {
 		} else if (this == parent.rightChild) {
 			return RIGHT;
 		}
-		return ERROR; //TODO [manugarciacab] No me gusta que devuelva esto, debería ser Exception en todo caso.
+		throw new InconsistentStateException();
 	}
 	
-	//TODO [manugarciacab] Ver que es esto de InO (aparentemente tiene algo que ver como logaritmo, no inOrden).
 	public BTNode prevInO() {
 		BTNode temp = this;
 		BTNode node = null;
 		if (temp.leftChild != null) {
 			node = temp.leftChild.lastInO();
 		} else {
-			//TODO [manugarciacab] Puede que funcione, pero es inentendible
 			for (; (node = temp.parent) != null && temp == node.leftChild; temp = node);
 		}
 		return node;
@@ -110,7 +101,6 @@ public class BTNode {
 		if (temp.rightChild != null) {
 			node = temp.rightChild.firstInO();
 		} else {
-			//TODO [manugarciacab] Puede que funcione, pero es inentendible
 			for (; (node = temp.parent) != null && temp == node.rightChild; temp = node);
 		}
 		return node;
@@ -118,14 +108,12 @@ public class BTNode {
 
 	public BTNode firstInO() {
 		BTNode node;
-		//TODO [manugarciacab] Puede que funcione, pero es inentendible
 		for (node = this; node.leftChild != null; node = node.leftChild);
 		return node;
 	}
 
 	public BTNode lastInO() {
 		BTNode node;
-		//TODO [manugarciacab] Puede que funcione, pero es inentendible
 		for (node = this; node.rightChild != null; node = node.rightChild);
 		return node;
 	}
