@@ -1,7 +1,10 @@
 package heap;
 
 //import common.export.ExportUtils;
+import java.util.List;
 import java.util.NoSuchElementException;
+
+import command.Command;
 
 import collection.heap.Heap;
 import junit.framework.TestCase;
@@ -72,6 +75,35 @@ public class MaxHeapTest extends TestCase {
 		}
 		
 		assertEquals(1, heap.size());		
+	}
+	
+	public void testCommand(){
+		heap.clear();
+		heap.insert(new Integer(10));
+		List<Command> commandList = heap.getCommandList();
+		
+		System.out.println(commandList.get(0).execute());
+		
+		heap.insert(new Integer(20));
+		commandList = heap.getCommandList();
+		
+		for (Command c : commandList){
+			System.out.println(c.execute());
+		}
+		
+		heap.insert(new Integer(35));
+		commandList = heap.getCommandList();
+		
+		for (Command c : commandList){
+			System.out.println(c.execute());
+		}
+		
+		heap.remove();
+		commandList = heap.getCommandList();
+		
+		for (Command c : commandList){
+			System.out.println(c.execute());
+		}
 	}
 	
 	/* (non-Javadoc)

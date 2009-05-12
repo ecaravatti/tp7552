@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import command.Command;
+import command.heap.InsertCommand;
+import command.heap.RemoveRootCommand;
+import command.heap.SwapCommand;
 import common.Element;
 
 public class Heap {
@@ -14,6 +19,12 @@ public class Heap {
     private final static int DEFAULT_CAPACITY = 13;
     
     /**
+     * Lista de comandos a ser interpretados por la vista
+     * para la animación de los eventos.
+     */
+    private List<Command> commandList;
+    
+	/**
      * La cantidad de elementos actual del Heap.
      */
     private int actualSize;  
@@ -80,7 +91,8 @@ public class Heap {
         }
         this.isMinHeap = isMinHeap;
         elementCount = 0;
-        elements = new ArrayList<Element<Integer>>(capacity);        
+        elements = new ArrayList<Element<Integer>>(capacity);
+        commandList = null;
     }
    
 
@@ -120,13 +132,14 @@ public class Heap {
      * @param element  El elemento a ser insertado.
      */
     public void insert(Integer value) {
-        Element<Integer> element = new Element<Integer>(value, elementCount++);
-    	
+        Element<Integer> element = new Element<Integer>(value, elementCount++);    	
+        commandList = new ArrayList<Command>(); 
+        
         //Ubicar elemento en su lugar del árbol.
-        if (isMinHeap) {
-            swapUpMinHeap(element);
+        if (isMinHeap){
+        	this.swapUpMinHeap(element);
         } else {
-            swapUpMaxHeap(element);
+        	this.swapUpMaxHeap(element);
         }
     }
 
@@ -152,15 +165,29 @@ public class Heap {
      */
     public Integer pop() throws NoSuchElementException {
         final Integer result = peek();
-        elements.set(0, elements.get(--actualSize));
-
+        actualSize--;
+        
+        int newRootParentIndex = (int)(actualSize-1)/2;
+        Element<Integer> root = elements.get(0);
+        Element<Integer> newRoot = elements.get(actualSize);
+        Element<Integer> newRootParent = elements.get(newRootParentIndex);
+        
+        commandList = new ArrayList<Command>(); 
+        commandList.add(new RemoveRootCommand(root.getId(), root.getValue(),
+        		newRoot.getId(), newRoot.getValue(),
+        		newRootParent.getId(), newRootParent.getValue(), 
+        		newRootParentIndex % 2 == 0));
+        
+        elements.set(0, elements.get(actualSize));
+        elements.remove(actualSize);
+        
         if (actualSize != 0) {
             // Ubicar al elemento raíz en su lugar en el árbol.
-            if (isMinHeap) {
-                swapDownMinHeap(0);
-            } else {
-                swapDownMaxHeap(0);
-            }
+        	if (isMinHeap){
+        		swapDownMinHeap(0);
+        	} else {
+        		swapDownMaxHeap(0);
+        	}
         }
 
         return result;
@@ -178,12 +205,12 @@ public class Heap {
         int hole = index;
         int child = 0;
         
-        while ((2 * hole + 1) <= actualSize) {
+        while ((2 * hole + 1) < actualSize) {
             child = (2 * hole) + 1;
 
             // Si se tiene un hijo derecho y no puede ser movido hacia
             // arriba, moverse al otro hijo.
-            if (child != actualSize && compare(elements.get(child + 1), elements.get(child)) < 0) {
+            if (child + 1 < actualSize && compare(elements.get(child + 1), elements.get(child)) < 0) {
                 child++;
             }
 
@@ -192,13 +219,18 @@ public class Heap {
             if (compare(elements.get(child), element) >= 0) {
                 break;
             }
-
-            elements.set(hole, elements.get(child));
+            
+            commandList.add(new SwapCommand(elements.get(hole).getId(), elements.get(child).getId(), 
+            		elements.get(hole).getValue(), elements.get(child).getValue(), true));
+            
+            elements.set(hole, elements.get(child));            
             hole = child;
         }
 
         elements.set(hole, element);
     }
+    
+
 
     /**
      * Intercambia un elemento hacia abajo, desde la posición indicada.
@@ -211,14 +243,14 @@ public class Heap {
         final Element<Integer> element = elements.get(index);
         int hole = index;
         int child = 0;
-
-        while ((hole * 2 + 1) <= actualSize) {
+        
+        while ((2 * hole  + 1) < actualSize) {
             child = (2 * hole)  + 1;
 
             // Si se tiene un hijo derecho y no puede ser movido hacia
             // arriba, moverse al otro hijo.   
-            if (child != actualSize && compare(elements.get(child + 1), elements.get(child)) > 0) {
-                child++;
+            if (child + 1 < actualSize && compare(elements.get(child + 1), elements.get(child)) > 0) {
+                child++;   
             }
 
             // Se termina la búsqueda si el elemento en movimiento encuentra
@@ -226,13 +258,17 @@ public class Heap {
             if (compare(elements.get(child), element) <= 0) {
                 break;
             }
-
+            
+            commandList.add(new SwapCommand(elements.get(hole).getId(), elements.get(child).getId(), 
+            		elements.get(hole).getValue(), elements.get(child).getValue(), true));
+            
             elements.set(hole, elements.get(child));
             hole = child;
         }
 
         elements.set(hole, element);
     }
+
 
     /**
      * Intercambia un elemento hacia arriba, desde la posición indicada.
@@ -250,9 +286,14 @@ public class Heap {
             // Salvar elemento que esta siendo enviado hacia abajo
             // mientras el elemento a reemplazar sube un nivel.
             next = (hole - 1)/ 2;
-            elements.set(hole, elements.get(next));
+            
+            commandList.add(new SwapCommand(elements.get(hole).getId(), elements.get(next).getId(), 
+            		elements.get(hole).getValue(), elements.get(next).getValue(), false));
+            
+            elements.set(hole, elements.get(next));            
             hole = next;
         }
+        
         elements.set(hole, element);
     }
 
@@ -264,7 +305,11 @@ public class Heap {
      * @param element El elemento a intercambiar.
      */
     protected void swapUpMinHeap(final Element<Integer> element) {
-        elements.add(element);
+        elements.add(element);        
+        
+        commandList.add(new InsertCommand(element.getId(), element.getValue(), 
+        		actualSize % 2 == 0, (actualSize > 0) ? elements.get((actualSize-1)/2).getId() : null));
+        
         swapUpMinHeap(actualSize++);
     }
 
@@ -276,14 +321,18 @@ public class Heap {
      * @param index Índice del elemento.
      */
     protected void swapUpMaxHeap(final int index) {
-        int hole = index;
+    	int hole = index;
         Element<Integer> element = elements.get(hole);
-        int next = 0;
-        
+        int next = 0;        
+         
         while (hole > 0 && compare(element, elements.get((hole - 1)/ 2)) > 0) {
         	// Salvar elemento que esta siendo enviado hacia abajo
             // mientras el elemento a reemplazar sube un nivel.
             next = (hole - 1)/ 2;
+            
+            commandList.add(new SwapCommand(elements.get(hole).getId(), elements.get(next).getId(), 
+            		elements.get(hole).getValue(), elements.get(next).getValue(), false));
+            
             elements.set(hole, elements.get(next));
             hole = next;
         }
@@ -298,8 +347,13 @@ public class Heap {
      *
      * @param element El elemento a intercambiar.
      */
-    protected void swapUpMaxHeap(/*final*/ Element<Integer> element) {
+    protected void swapUpMaxHeap(final Element<Integer> element) {
     	elements.add(element);
+    	
+    	commandList = new ArrayList<Command>();
+        commandList.add(new InsertCommand(element.getId(), element.getValue(), 
+        		actualSize % 2 == 0, (actualSize > 0) ? elements.get((actualSize-1)/2).getId() : null));
+
         this.swapUpMaxHeap(actualSize++);
     }
     
@@ -308,13 +362,13 @@ public class Heap {
      * 
      * @param e1  El primer elemento.
      * @param e2  El segundo elemento.
-     * @return -1 si e1 menor a e2, 0 si son iguales, +1 si mayor a e2
+     * @return -1 si e1 menor a e2, 0 si son iguales, +1 si mayor a e2. 
      */
     private int compare(Element<Integer> e1, Element<Integer> e2) {
     	Integer int1 = e1.getValue();
     	Integer int2 = e2.getValue();
 
-    	return int1.compareTo(int2);
+    	return int1.compareTo(int2); 
     }
 
    
@@ -435,4 +489,8 @@ public class Heap {
     public int size() {
         return actualSize;
     }
+    
+    public List<Command> getCommandList() {
+		return commandList;
+	}
 }

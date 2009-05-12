@@ -20,12 +20,14 @@ public class InsertCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Inserta el elemento " + insertedId + " con clave" + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		return (parentId == null) ? "Inserta como raíz el elemento " + insertedId + " con clave " + insertedData : 
+			"Inserta el elemento " + insertedId + " con clave " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
 	}
 
 	@Override
 	public String undo() {
-		return "Remueve el elemento " + insertedId + " con clave " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		return (parentId == null) ? "Remueve el elemento " + insertedId + ", raíz con clave " + insertedData :
+			"Remueve el elemento " + insertedId + " con clave " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
 	}
 
 	public Integer getInsertedId() {

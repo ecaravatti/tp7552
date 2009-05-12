@@ -3,48 +3,48 @@ package command.heap;
 import command.Command;
 
 public class SwapCommand extends Command {
-	private Integer idParent;
-	private Integer idChild; 
+	private Integer idSecondary;
+	private Integer idPrimary; 
 	
 	/**
-	 *  Si true idChild es el id del elemento descendente y idParent, del descendente.
-	 *  Si false, determina el caso opuesto.
+	 *  Si true idPrimary es el id del elemento que desciende.
+	 *  Si false, idPrimary es el id del elemento que es promovido.
 	 */
 	private boolean isSwapDown;
 	
-	private Integer childData;
-	private Integer parentData;
+	private Integer primaryData;
+	private Integer secondaryData;
 
-	public SwapCommand(Integer idChild, Integer idParent, Integer childData, Integer parentData, boolean isSwapDown) {
-		super(idChild);
+	public SwapCommand(Integer idPrimary, Integer idSecondary, Integer primaryData, Integer secondaryData, boolean isSwapDown) {
+		super(idPrimary);
 		
-		this.idChild = idChild;
-		this.idParent = idParent;
-		this.childData = childData;
-		this.parentData = parentData;
+		this.idPrimary = idPrimary;
+		this.idSecondary = idSecondary;
+		this.primaryData = primaryData;
+		this.secondaryData = secondaryData;
 		this.isSwapDown = isSwapDown;
 	}
 
 	@Override
 	public String execute() {
-		return "Promueve el elemento " + (isSwapDown ? idChild : idParent) + " con clave " + 
-			(isSwapDown ? childData : parentData) + " y desciende el elemento " + (isSwapDown ? idParent: idChild) +
-			" con clave " + (isSwapDown ? parentData: childData);
+		return "Promueve el elemento " + (isSwapDown ? idSecondary : idPrimary) + " con clave " + 
+			(isSwapDown ? secondaryData : primaryData) + " y desciende el elemento " + (isSwapDown ? idPrimary : idSecondary) +
+			" con clave " + (isSwapDown ? primaryData : secondaryData);
 	}
 
 	@Override
 	public String undo() {
-		return "Desciende el elemento " + (isSwapDown ? idParent : idChild) + " con clave " + 
-		(isSwapDown ? parentData : childData) + " y promueve el elemento " + (isSwapDown ? idChild : idParent) +
-		" con clave " + (isSwapDown ? childData : parentData);
+		return "Desciende el elemento " + (isSwapDown ? idSecondary : idPrimary) + " con clave " + 
+		(isSwapDown ? secondaryData : primaryData) + " y promueve el elemento " + (isSwapDown ? idPrimary : idSecondary) +
+		" con clave " + (isSwapDown ? primaryData : secondaryData);
 	}
 	
 	public Integer getIdChild() {
-		return idChild;
+		return idPrimary;
 	}
 	
 	public Integer getIdParent() {
-		return idParent;
+		return idSecondary;
 	}
 	
 	public boolean isSwapDown() {
