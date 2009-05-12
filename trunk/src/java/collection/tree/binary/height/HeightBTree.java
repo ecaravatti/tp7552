@@ -76,11 +76,7 @@ public class HeightBTree extends BTree {
 			cambioAltura = false;
 			balanceInicial = node.getBalance();
 			newBalance = node.getBalance() + in * side;
-			commands
-					.add(new ChangeBalanceCommand(node.getElement().getId(),
-							node.getElement().getValue(), node.getBalance(),
-							newBalance));
-			node.setBalance(newBalance);
+			changeBalance(node, newBalance);
 			if (Math.abs(newBalance) > variacionMaxima) {
 				huboRotacion = true;
 
@@ -91,13 +87,7 @@ public class HeightBTree extends BTree {
 						nodeAux = rotateLeftAndSetBalance(leftChild);
 						if (nodeAux.getBalance() >= 0) {
 							// El subarbol decreció en un nivel.
-							newBalance = node.getBalance() - in * side;
-							commands
-									.add(new ChangeBalanceCommand(node
-											.getElement().getId(), node
-											.getElement().getValue(), node
-											.getBalance(), newBalance));
-							node.setBalance(newBalance);
+							changeBalance(node, node.getBalance() - in * side);
 						}
 					}
 					node = rotateRightAndSetBalance(node);
@@ -111,13 +101,7 @@ public class HeightBTree extends BTree {
 						nodeAux = rotateRightAndSetBalance(rightChild);
 						if (nodeAux.getBalance() <= 0) {
 							// El subarbol decreció en un nivel.
-							newBalance = node.getBalance() - in * side;
-							commands
-									.add(new ChangeBalanceCommand(node
-											.getElement().getId(), node
-											.getElement().getValue(), node
-											.getBalance(), newBalance));
-							node.setBalance(newBalance);
+							changeBalance(node, node.getBalance() - in * side);
 						}
 					}
 					node = rotateLeftAndSetBalance(node);
@@ -145,14 +129,9 @@ public class HeightBTree extends BTree {
 
 		// Balances
 		int balanceAux = node.getBalance();
-		node.setBalance(balanceAux + 1 + Math.max(-child.getBalance(), 0));
-		commands.add(new ChangeBalanceCommand(node.getElement().getId(), node
-				.getElement().getValue(), balanceAux, node.getBalance()));
-		int newBalance = -Math.min(-balanceAux - 2, Math.min(-balanceAux
-				- child.getBalance() - 2, -child.getBalance() - 1));
-		commands.add(new ChangeBalanceCommand(child.getElement().getId(), child
-				.getElement().getValue(), child.getBalance(), newBalance));
-		child.setBalance(newBalance);
+		changeBalance(node, balanceAux + 1 + Math.max(-child.getBalance(), 0));
+		changeBalance(child, -Math.min(-balanceAux - 2, Math.min(-balanceAux
+				- child.getBalance() - 2, -child.getBalance() - 1)));
 
 		return child;
 	}
@@ -162,17 +141,17 @@ public class HeightBTree extends BTree {
 
 		// Balances
 		int balanceAux = node.getBalance();
-		node.setBalance(balanceAux - 1 - Math.max(child.getBalance(), 0));
-		commands.add(new ChangeBalanceCommand(node.getElement().getId(), node
-				.getElement().getValue(), balanceAux, node.getBalance()));
-		int newBalance = Math.min(balanceAux - 2, Math.min(balanceAux
-				+ child.getBalance() - 2, child.getBalance() - 1));
-		commands.add(new ChangeBalanceCommand(child.getElement().getId(), child
-				.getElement().getValue(), child.getBalance(), newBalance));
-		child.setBalance(Math.min(balanceAux - 2, Math.min(balanceAux
+		changeBalance(node, balanceAux - 1 - Math.max(child.getBalance(), 0));
+		changeBalance(child, Math.min(balanceAux - 2, Math.min(balanceAux
 				+ child.getBalance() - 2, child.getBalance() - 1)));
 
 		return child;
+	}
+
+	private void changeBalance(BTNode node, int newBalance) {
+		commands.add(new ChangeBalanceCommand(node.getElement().getId(), node
+				.getElement().getValue(), node.getBalance(), newBalance));
+		node.setBalance(newBalance);
 	}
 
 }
