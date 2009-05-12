@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import command.Command;
+
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.tree.binary.KeyAlreadyExistsException;
@@ -16,18 +18,37 @@ public class HeightBTreeTest extends TestCase {
 
 	public void testHeightTreeBehavior() {
 		for (int i = 1; i < 6; i++) {
-			testHeightTree(i, 10000);
+			testHeightTree(i, 10000, false);
 		}
 	}
-
-	private void testHeightTree(int heightVariation, int insertsAmount) {
+	
+	public void testCommands() {
+		testHeightTree(1, 5, true);
+	}
+	
+	private void printCommands(List<Command> commands, String descripcion) {
+		System.out.println("---" + descripcion + "---");
+		System.out.println("----EXECUTE----");
+		for (Command command : commands) {
+			System.out.println(command.execute());
+		}
+		System.out.println("-----UNDO-----");
+		Collections.reverse(commands);
+		for (Command command : commands) {
+			System.out.println(command.undo());
+		}
+		System.out.println("------FIN------\n");
+	}
+	
+	private void testHeightTree(int heightVariation, int insertsAmount, boolean printCommands) {
 		BTree tree = new HeightBTree(heightVariation);
 
 		List<Integer> insertados = new ArrayList<Integer>();
 		for (int i = 0; i < insertsAmount; i++) {
-			int random = (int) (Math.random() * (insertsAmount * 1000));
+			int random = (int) (Math.random() * (insertsAmount * 100));
 			try {
 				tree.insert(random);
+				if (printCommands) printCommands(tree.getCommands(), "INSERT " + random);
 			} catch (KeyAlreadyExistsException e) {
 				assertTrue(insertados.contains(random));
 			}
@@ -39,6 +60,7 @@ public class HeightBTreeTest extends TestCase {
 		for (Integer codigo : insertados) {
 			try {
 				node = tree.locate(codigo);
+				if (printCommands) printCommands(tree.getCommands(), "LOCATE " + codigo);
 				assertNotNull(node); //No puede encontrar algo null
 				//El balance está bien calculado
 				assertEquals(node.getBalance(), node.getBalanceTeorico());
@@ -57,6 +79,7 @@ public class HeightBTreeTest extends TestCase {
 			if (i++ < (insertsAmount * 4 / 5)) {
 				try {
 					tree.delete(codigo);
+					if (printCommands) printCommands(tree.getCommands(), "DELETE "+ codigo);
 					borrados.add(codigo);
 				} catch (KeyNotFoundException e) {
 					assertTrue(borrados.contains(codigo));
@@ -73,6 +96,7 @@ public class HeightBTreeTest extends TestCase {
 			} catch (KeyNotFoundException e) {
 				//Efectivamente está borrado
 			}
+			if (printCommands) printCommands(tree.getCommands(), "LOCATE " + codigo);
 		}
 
 		for (Integer codigo : insertados) {
@@ -92,6 +116,7 @@ public class HeightBTreeTest extends TestCase {
 					fail(); //Debería haberlo encontrado
 				}
 			}
+			if (printCommands) printCommands(tree.getCommands(), "LOCATE " + codigo);
 		}
 
 	}

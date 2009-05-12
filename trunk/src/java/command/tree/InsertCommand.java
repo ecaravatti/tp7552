@@ -20,14 +20,24 @@ public class InsertCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Inserta el elemento " + insertedData + " como hijo "
-				+ (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		if (parentId == null) {
+			return "Inserta el elemento " + insertedData + " como raíz";
+		} else {
+			return "Inserta el elemento " + insertedData + " como hijo "
+					+ (isLeftChild ? "izquierdo" : "derecho") + " de "
+					+ parentId;
+		}
 	}
 
 	@Override
 	public String undo() {
-		return "Remueve el elemento " + insertedData + " como hijo "
-				+ (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		if (parentId == null) {
+			return "Remueve la raíz";
+		} else {
+			return "Remueve el elemento " + insertedData + " como hijo "
+					+ (isLeftChild ? "izquierdo" : "derecho") + " de "
+					+ parentId;
+		}
 	}
 
 	public int getInsertedData() {

@@ -16,14 +16,31 @@ public class NodeHighlightCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Resalto elemento " + highlightElementId
-				+ " y dejo de resaltar el elemento " + unhighlightElementId;
+		StringBuffer buffer = new StringBuffer();
+		if (highlightElementId != null) {
+			buffer.append("Resalto elemento " + highlightElementId);
+		}
+		if (unhighlightElementId != null) {
+			if (highlightElementId != null)
+				buffer.append(". ");
+			buffer.append("Dejo de resaltar el elemento "
+					+ unhighlightElementId);
+		}
+		return buffer.toString();
 	}
 
 	@Override
 	public String undo() {
-		return "Resalto elemento " + unhighlightElementId
-				+ " y dejo de resaltar el elemento " + highlightElementId;
+		StringBuffer buffer = new StringBuffer();
+		if (unhighlightElementId != null) {
+			buffer.append("Resalto elemento " + unhighlightElementId);
+		}
+		if (highlightElementId != null) {
+			if (unhighlightElementId != null)
+				buffer.append(". ");
+			buffer.append("Dejo de resaltar el elemento " + highlightElementId);
+		}
+		return buffer.toString();
 	}
 
 	public Integer getHighlightElementId() {

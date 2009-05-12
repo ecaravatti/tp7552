@@ -21,12 +21,26 @@ public class DeleteCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Borro el elemento " + deletedValue;
+		if (parentId == null) {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("Borro la raíz (elemento " + deletedValue + ")");
+			if (childId != null) {
+				buffer.append(". El elemento " + childId + " es la nueva raíz");
+			}
+			return buffer.toString();
+		} else {
+			return "Borro el elemento " + deletedValue;
+		}
 	}
 
 	@Override
 	public String undo() {
-		return "Deshago el borrado del elemento " + deletedValue;
+		if (parentId == null) {
+			return "Deshago el borrado de la raíz (elemento " + deletedValue
+					+ ")";
+		} else {
+			return "Deshago el borrado del elemento " + deletedValue;
+		}
 	}
 
 	public Integer getParentId() {

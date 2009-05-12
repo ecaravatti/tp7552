@@ -8,6 +8,7 @@ import command.tree.DeleteCommand;
 import command.tree.InsertCommand;
 import command.tree.LeftRotationCommand;
 import command.tree.NodeHighlightCommand;
+import command.tree.RightRotationCommand;
 import command.tree.SwapCommand;
 import common.Element;
 
@@ -156,7 +157,7 @@ public abstract class BTree {
 		int childId = child.getElement().getId();
 		Integer grandId = grand != null ? grand.getElement().getId() : null;
 
-		commands.add(new LeftRotationCommand(parentId, nodeId, childId,
+		commands.add(new RightRotationCommand(parentId, nodeId, childId,
 				grandId, node.getSide() == BTNode.LEFT, childId, grandId,
 				nodeId));
 
