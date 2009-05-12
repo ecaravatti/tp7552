@@ -17,13 +17,13 @@ public class PollCommand extends Command {
 	
 	@Override
 	public String execute() {
-		return "Poll node with id '" + getId() + "' and content '"
+		return "Desencola el elemento '" + getId() + "' cuyo valor es '"
 		+ getContent() + "'";
 	}
 
 	@Override
 	public String undo() {
-		return "Offer node with id '" + getId() + "' and content '"
+		return "Encola el elemento'" + getId() + "' cuyo valor es '"
 		+ getContent() + "'";
 	}
 
