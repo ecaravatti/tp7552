@@ -3,14 +3,14 @@ package command.tree;
 import command.Command;
 
 public class InsertCommand extends Command {
-	
+
 	private int insertedData;
 	private boolean isLeftChild;
-	private Integer parentId; //Puede ser null si es la raíz.
+	private Integer parentId; // Puede ser null si es la raíz.
 	private int balance;
-	
 
-	public InsertCommand(int insertedData, boolean isLeftChild, Integer parentData, int balance) {
+	public InsertCommand(int insertedData, boolean isLeftChild,
+			Integer parentData, int balance) {
 		super(insertedData);
 		this.insertedData = insertedData;
 		this.isLeftChild = isLeftChild;
@@ -20,12 +20,14 @@ public class InsertCommand extends Command {
 
 	@Override
 	public String execute() {
-		return "Inserta el elemento " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		return "Inserta el elemento " + insertedData + " como hijo "
+				+ (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
 	}
 
 	@Override
 	public String undo() {
-		return "Remueve el elemento " + insertedData + " como hijo " + (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
+		return "Remueve el elemento " + insertedData + " como hijo "
+				+ (isLeftChild ? "izquierdo" : "derecho") + " de " + parentId;
 	}
 
 	public int getInsertedData() {

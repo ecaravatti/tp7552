@@ -3,16 +3,16 @@ package command.tree;
 import command.Command;
 
 public class ChangeBalanceCommand extends Command {
-	
+
 	private int newBalance;
 	private int oldBalance;
-	
+
 	public ChangeBalanceCommand(Integer data, int newBalance, int oldBalance) {
 		super(data);
 		this.newBalance = newBalance;
 		this.oldBalance = oldBalance;
 	}
-	
+
 	@Override
 	public String execute() {
 		return "Cambia el balance de " + oldBalance + " a " + newBalance;

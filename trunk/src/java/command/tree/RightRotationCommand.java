@@ -3,23 +3,22 @@ package command.tree;
 import command.Command;
 
 public class RightRotationCommand extends Command {
-	
+
 	private Integer parentId;
 	private int nodeId;
 	private int childId;
 	private Integer grandId;
-		
-	private boolean isLeftOfParent; //Rotacion sucede del lado izquierdo del padre.
-	
+
+	//Rotacion sucede del lado izquierdo del padre.
+	private boolean isLeftOfParent; 
+
 	private Integer parentInitialChild;
 	private Integer nodeInitialLeftChild;
 	private Integer childInitialRightChild;
-	
+
 	private Integer parentFinalChild;
 	private Integer nodeFinalLeftChild;
-	private Integer childFinalRightChild; 
-	
-	
+	private Integer childFinalRightChild;
 
 	public RightRotationCommand(Integer parentId, int nodeId, int childId,
 			Integer grandId, boolean isLeftOfParent, Integer parentFinalChild,
@@ -33,7 +32,7 @@ public class RightRotationCommand extends Command {
 		this.parentFinalChild = parentFinalChild;
 		this.nodeFinalLeftChild = nodeFinalLeftChild;
 		this.childFinalRightChild = childFinalRightChild;
-		
+
 		this.parentInitialChild = nodeId;
 		this.nodeInitialLeftChild = childId;
 		this.childInitialRightChild = grandId;
@@ -92,6 +91,5 @@ public class RightRotationCommand extends Command {
 	public Integer getChildFinalRightChild() {
 		return childFinalRightChild;
 	}
-
 
 }

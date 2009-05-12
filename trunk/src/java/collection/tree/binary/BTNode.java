@@ -35,11 +35,11 @@ public class BTNode {
 			return leftChild;
 		case RIGHT:
 			return rightChild;
-		default: //EQUAL
+		default: // EQUAL
 			return this;
 		}
 	}
-	
+
 	public int getNextSide(BTData data) {
 		int cmp = this.data.compareTo(data);
 		int side;
@@ -75,7 +75,7 @@ public class BTNode {
 	 */
 	public int getSide() {
 		if (parent == null) {
-			return NONE; //Es la raiz
+			return NONE; // Es la raiz
 		} else if (this == parent.leftChild) {
 			return LEFT;
 		} else if (this == parent.rightChild) {
@@ -83,14 +83,15 @@ public class BTNode {
 		}
 		throw new InconsistentStateException();
 	}
-	
+
 	public BTNode prevInO() {
 		BTNode temp = this;
 		BTNode node = null;
 		if (temp.leftChild != null) {
 			node = temp.leftChild.lastInO();
 		} else {
-			for (; (node = temp.parent) != null && temp == node.leftChild; temp = node);
+			for (; (node = temp.parent) != null && temp == node.leftChild; temp = node)
+				;
 		}
 		return node;
 	}
@@ -101,20 +102,23 @@ public class BTNode {
 		if (temp.rightChild != null) {
 			node = temp.rightChild.firstInO();
 		} else {
-			for (; (node = temp.parent) != null && temp == node.rightChild; temp = node);
+			for (; (node = temp.parent) != null && temp == node.rightChild; temp = node)
+				;
 		}
 		return node;
 	}
 
 	public BTNode firstInO() {
 		BTNode node;
-		for (node = this; node.leftChild != null; node = node.leftChild);
+		for (node = this; node.leftChild != null; node = node.leftChild)
+			;
 		return node;
 	}
 
 	public BTNode lastInO() {
 		BTNode node;
-		for (node = this; node.rightChild != null; node = node.rightChild);
+		for (node = this; node.rightChild != null; node = node.rightChild)
+			;
 		return node;
 	}
 
@@ -125,7 +129,7 @@ public class BTNode {
 	public boolean isLeaf() {
 		return (leftChild == null && rightChild == null);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "[B: " + balance + " - K: " + data.toString() + "]";
@@ -146,11 +150,11 @@ public class BTNode {
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
-	
+
 	public int getWeight() {
 		return balance;
 	}
-	
+
 	public void setWeight(int weight) {
 		balance = weight;
 	}
@@ -165,18 +169,22 @@ public class BTNode {
 
 	public int depth() {
 		int ld = 0, rd = 0;
-		if (leftChild != null) ld = leftChild.depth();
-		if (rightChild != null) rd = rightChild.depth();
+		if (leftChild != null)
+			ld = leftChild.depth();
+		if (rightChild != null)
+			rd = rightChild.depth();
 		return Math.max(ld, rd) + 1;
 	}
-	
+
 	/**
 	 * Se utiliza en pruebas
 	 */
 	public int getBalanceTeorico() {
 		int heightLeft = 0, heightRight = 0;
-		if (rightChild != null) heightRight = rightChild.depth();
-		if (leftChild != null) heightLeft = leftChild.depth();
+		if (rightChild != null)
+			heightRight = rightChild.depth();
+		if (leftChild != null)
+			heightLeft = leftChild.depth();
 		return heightRight - heightLeft;
 	}
 }

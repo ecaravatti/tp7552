@@ -1,10 +1,6 @@
 package collection.tree.binary;
 
-
-//BTData class is a wrapper for the actual data
-//It must provide a method for comparing values
-//Ideally, it should implement Comparable interface
-public class BTData implements Comparable<BTData>{
+public class BTData implements Comparable<BTData> {
 
 	private int key;
 
@@ -23,7 +19,7 @@ public class BTData implements Comparable<BTData>{
 	public int compareTo(BTData data) {
 		return new Integer(this.key).compareTo(data.key);
 	}
-	
+
 	@Override
 	public String toString() {
 		return Integer.toString(key);
