@@ -14,12 +14,10 @@ public class QueueTest extends TestCase {
 	private Queue queue;
 
 	public QueueTest() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public QueueTest(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void testQueue() {

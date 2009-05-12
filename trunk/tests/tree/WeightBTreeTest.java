@@ -98,23 +98,6 @@ public class WeightBTreeTest extends TestCase {
 		System.out.println(tree);
 	}
 	
-	private void assertFound(int value) {
-		try {
-			assertNotNull(tree.locate(value));
-		} catch (KeyNotFoundException e) {
-			fail();
-		}
-	}
-	
-	private void assertNotFound(int value) {
-		try {
-			tree.locate(value);
-			fail();
-		} catch (KeyNotFoundException e) {
-			//Todo en orden, no tenía que encontrarla.
-		}
-	}
-	
 	public void testDeleteWithNonExistentKey() throws KeyAlreadyExistsException, KeyNotFoundException {
 		tree.insert(60);
 		tree.insert(25);
@@ -132,12 +115,12 @@ public class WeightBTreeTest extends TestCase {
 			
 		}
 	}
-/*	
+	
 	public void testWeightBTreeBehavior() throws KeyAlreadyExistsException, KeyNotFoundException {
-		for (double i = 0.1; i <= 0.5; i += 0.1) {
-			testWeightBTree(i, 10000);
+		for (double i = 0; i <= 0.5; i += 0.1) {
+			testWeightBTree(i, 1000);
 		}
-	}*/
+	}
 	
 	private void testWeightBTree(double alpha, int insertsAmount) throws KeyAlreadyExistsException, KeyNotFoundException {
 		BTree tree = new WeightBTree(alpha);
@@ -150,25 +133,20 @@ public class WeightBTreeTest extends TestCase {
 			insertados.add(random);
 		}
 		
+//		System.out.println(tree);
+		
 		Collections.shuffle(insertados); //Los mezclo para que varíe el orden
 		BTNode node;
 		for (Integer codigo : insertados) {
 			try {
 				node = tree.locate(codigo);
 				assertNotNull(node); //No puede encontrar algo null
-				if (node.isLeaf()) {
-					assertEquals(2, node.getWeight());
-				} else {
-					assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
-				}
-				if (node.getParent() != null) { // No es la raíz
-					double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
-					assertTrue((balance > alpha) && (balance < 1-alpha) || (balance == 0.5)); //No está desbalanceado
-				}
+				assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
+//				double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
+//				assertTrue(((balance > alpha) && (balance < 1-alpha)) || (balance == 0.5)); //No está desbalanceado
 			} catch (KeyNotFoundException e) {
 				fail();
 			}
-
 		}
 		
 		List<Integer> borrados = new ArrayList<Integer>();
@@ -200,22 +178,15 @@ public class WeightBTreeTest extends TestCase {
 					fail(); //No debería haberlo encontrado
 				} else {
 					assertNotNull(node); //No puede devolver null
-					if (node.isLeaf()) {
-						assertEquals(2, node.getWeight());
-					} else {
-						assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
-					}
-					if (node.getParent() != null) {
-						double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
-						assertTrue((balance > alpha) && (balance < 1-alpha)); //No está desbalanceado
-					}
+					assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
+//					double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
+//					assertTrue((balance > alpha) && (balance < 1-alpha)); //No está desbalanceado
 				}
 			} catch (KeyNotFoundException e) {
 				if (!borrados.contains(codigo)) {
 					fail(); //Debería haberlo encontrado
 				}
 			}
-			
 		}
 		
 	}
@@ -233,6 +204,23 @@ public class WeightBTreeTest extends TestCase {
 		} else {
 			return 	1 + nodesCount(node.getChild(BTNode.LEFT)) +
 					nodesCount(node.getChild(BTNode.RIGHT));
+		}
+	}
+	
+	private void assertFound(int value) {
+		try {
+			assertNotNull(tree.locate(value));
+		} catch (KeyNotFoundException e) {
+			fail();
+		}
+	}
+	
+	private void assertNotFound(int value) {
+		try {
+			tree.locate(value);
+			fail();
+		} catch (KeyNotFoundException e) {
+			//Todo en orden, no tenía que encontrarla.
 		}
 	}
 	
