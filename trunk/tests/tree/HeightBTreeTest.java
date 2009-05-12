@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import collection.tree.binary.BTData;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.tree.binary.KeyAlreadyExistsException;
@@ -28,7 +27,7 @@ public class HeightBTreeTest extends TestCase {
 		for (int i = 0; i < insertsAmount; i++) {
 			int random = (int) (Math.random() * (insertsAmount * 1000));
 			try {
-				tree.insert(new BTData(random));
+				tree.insert(random);
 			} catch (KeyAlreadyExistsException e) {
 				assertTrue(insertados.contains(random));
 			}
@@ -39,7 +38,7 @@ public class HeightBTreeTest extends TestCase {
 		BTNode node;
 		for (Integer codigo : insertados) {
 			try {
-				node = tree.locate(new BTData(codigo));
+				node = tree.locate(codigo);
 				assertNotNull(node); //No puede encontrar algo null
 				//El balance está bien calculado
 				assertEquals(node.getBalance(), node.getBalanceTeorico());
@@ -57,7 +56,7 @@ public class HeightBTreeTest extends TestCase {
 		for (Integer codigo : insertados) {
 			if (i++ < (insertsAmount * 4 / 5)) {
 				try {
-					tree.delete(new BTData(codigo));
+					tree.delete(codigo);
 					borrados.add(codigo);
 				} catch (KeyNotFoundException e) {
 					assertTrue(borrados.contains(codigo));
@@ -69,7 +68,7 @@ public class HeightBTreeTest extends TestCase {
 
 		for (Integer codigo : borrados) {
 			try {
-				node = tree.locate(new BTData(codigo));
+				node = tree.locate(codigo);
 				fail();
 			} catch (KeyNotFoundException e) {
 				//Efectivamente está borrado
@@ -78,7 +77,7 @@ public class HeightBTreeTest extends TestCase {
 
 		for (Integer codigo : insertados) {
 			try {
-				node = tree.locate(new BTData(codigo));
+				node = tree.locate(codigo);
 				if (borrados.contains(codigo)) {
 					fail(); //No debería haberlo encontrado
 				} else {

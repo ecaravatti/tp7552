@@ -1,6 +1,7 @@
 package collection.tree.binary.weight;
 
-import collection.tree.binary.BTData;
+import common.Element;
+
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.tree.binary.KeyAlreadyExistsException;
@@ -25,18 +26,19 @@ public class WeightBTree extends BTree {
 	}
 	
 	@Override
-	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
+	public BTNode insert(int value) throws KeyAlreadyExistsException {
 		initCommands();
+		Element<Integer> element = new Element<Integer>(value, value);
 		BTNode node;
 		if (root == null) {
-			node = add(null, BTNode.NONE, data);
+			node = add(null, BTNode.NONE, element);
 			node.setWeight(DEFAULT_WEIGHT);
 		} else {
 			try {
-				locate(data);
+				locate(element.getValue());
 				throw new KeyAlreadyExistsException();
 			} catch (KeyNotFoundException e) {
-				node = add(lastNode, nextSide, data);
+				node = add(lastNode, nextSide, element);
 				
 				for(BTNode temp = node; temp != null; temp = temp.getParent()) {
 					temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
@@ -51,19 +53,20 @@ public class WeightBTree extends BTree {
 	}
 	
 	@Override
-	public BTNode delete(BTData data) throws KeyNotFoundException {
+	public BTNode delete(int value) throws KeyNotFoundException {
 		initCommands();
-		BTNode node = locate(data);
+		Element<Integer> element = new Element<Integer>(value, value);
+		BTNode node = locate(element.getValue());
 
 		if (node.hasTwoChildren()) {
 //			node = swap(node, BTree.FINDMAX);
 			// Rotate on heavier side
 			if (weight(node.getChild(BTNode.LEFT)) > weight(node.getChild(BTNode.LEFT))) {
 				node = rotateRightAndSetWeight(node);
-				delete(data);
+				delete(element.getValue());
 			} else {
 				node = rotateLeftAndSetWeight(node);
-				delete(data);
+				delete(element.getValue());
 			}
 		} else {
 			node = remove(node);

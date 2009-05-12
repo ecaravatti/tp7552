@@ -115,7 +115,7 @@ public class ExportUtils {
 	
 	private static void addNode(Element element, BTNode node) {
 		element.addAttribute("balance", String.valueOf(node.getBalance()));
-		element.addAttribute(KEY, String.valueOf(node.getData().getKey()));
+		element.addAttribute(KEY, String.valueOf(node.getElement().getValue()));
 
 		if (node.getChild(BTNode.LEFT) != null) {
 				addNode(element.addElement(LEFT_CHILD), node.getChild(BTNode.LEFT));

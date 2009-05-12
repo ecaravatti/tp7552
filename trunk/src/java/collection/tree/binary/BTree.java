@@ -9,6 +9,7 @@ import command.tree.InsertCommand;
 import command.tree.LeftRotationCommand;
 import command.tree.NodeHighlightCommand;
 import command.tree.SwapCommand;
+import common.Element;
 
 public abstract class BTree {
 
@@ -31,21 +32,21 @@ public abstract class BTree {
 	}
 
 	/**
-	 * Inserta la data en el arbol
+	 * Inserta el elemento en el arbol
 	 * 
 	 * @throws KeyAlreadyExistsException
-	 *                 si la data existe
+	 *             si el elemento ya existe
 	 */
-	public abstract BTNode insert(BTData data) throws KeyAlreadyExistsException;
+	public abstract BTNode insert(int value) throws KeyAlreadyExistsException;
 
 	/**
-	 * Borra la data del arbol Devuelve el padre del nodo borrado (null si el
-	 * nodo era la raíz)
+	 * Borra el elemento del arbol. Devuelve el padre del nodo borrado (null si
+	 * el nodo era la raíz)
 	 * 
 	 * @throws KeyNotFoundException
-	 *                 si la data no se encuentra
+	 *             si el elemento no se encuentra
 	 */
-	public abstract BTNode delete(BTData data) throws KeyNotFoundException;
+	public abstract BTNode delete(int value) throws KeyNotFoundException;
 
 	@Override
 	public String toString() {
@@ -55,12 +56,13 @@ public abstract class BTree {
 	}
 
 	/**
-	 * Devuelve el nodo que contiene la data. Tira KeyNotFoundException si no lo
-	 * encuentra. Guarda el último nodo en la búsqueda y el side del siguiente
-	 * nodo para otros métodos.
+	 * Devuelve el nodo que contiene el elemento. Tira KeyNotFoundException si
+	 * no lo encuentra. Guarda el último nodo en la búsqueda y el side del
+	 * siguiente nodo para otros métodos.
 	 */
-	public BTNode locate(BTData data) throws KeyNotFoundException {
+	public BTNode locate(int value) throws KeyNotFoundException {
 		initCommands();
+		Element<Integer> element = new Element<Integer>(value, value);
 		BTNode node = root;
 		BTNode next = null;
 		int side = 0;
@@ -68,11 +70,11 @@ public abstract class BTree {
 		Integer lastNodeId = null;
 		Integer currentNodeId = null;
 		while (node != null) {
-			currentNodeId = node.getData().getKey();
+			currentNodeId = node.getElement().getId();
 			commands.add(new NodeHighlightCommand(currentNodeId, lastNodeId));
 			lastNodeId = currentNodeId;
 
-			side = node.getNextSide(data);
+			side = node.getNextSide(element);
 			next = node.getChild(side);
 			if (next == node || next == null) {
 				break;
@@ -93,16 +95,16 @@ public abstract class BTree {
 	}
 
 	/**
-	 * Crea un nodo hoja con la data recibida, y lo pone como hijo del nodo
+	 * Crea un nodo hoja con el elemento recibido, y lo pone como hijo del nodo
 	 * recibido. El nodo puede ser null, significando que el árbol está vacío.
 	 * Devuelve el nodo creado.
 	 */
-	protected BTNode add(BTNode node, int side, BTData data) {
-		BTNode newNode = new BTNode(data);
+	protected BTNode add(BTNode node, int side, Element<Integer> element) {
+		BTNode newNode = new BTNode(element);
 		link(node, side, newNode);
 
-		commands.add(new InsertCommand(newNode.getData().getKey(),
-				side == BTNode.LEFT, node != null ? node.getData().getKey()
+		commands.add(new InsertCommand(newNode.getElement().getValue(),
+				side == BTNode.LEFT, node != null ? node.getElement().getId()
 						: null, newNode.getBalance()));
 		return newNode;
 	}
@@ -119,9 +121,9 @@ public abstract class BTree {
 		side = node.getSide();
 		link(parent, side, child);
 
-		int deletedId = node.getData().getKey();
-		Integer parentId = parent != null ? parent.getData().getKey() : null;
-		Integer childId = child != null ? child.getData().getKey() : null;
+		int deletedId = node.getElement().getId();
+		Integer parentId = parent != null ? parent.getElement().getId() : null;
+		Integer childId = child != null ? child.getElement().getId() : null;
 		commands.add(new DeleteCommand(deletedId, parentId, childId,
 				side == BTNode.LEFT));
 
@@ -144,10 +146,10 @@ public abstract class BTree {
 			root = child;
 		}
 
-		Integer parentId = parent != null ? parent.getData().getKey() : null;
-		int nodeId = node.getData().getKey();
-		int childId = child.getData().getKey();
-		Integer grandId = grand != null ? grand.getData().getKey() : null;
+		Integer parentId = parent != null ? parent.getElement().getId() : null;
+		int nodeId = node.getElement().getId();
+		int childId = child.getElement().getId();
+		Integer grandId = grand != null ? grand.getElement().getId() : null;
 
 		commands.add(new LeftRotationCommand(parentId, nodeId, childId,
 				grandId, node.getSide() == BTNode.LEFT, childId, grandId,
@@ -172,10 +174,10 @@ public abstract class BTree {
 			root = child;
 		}
 
-		Integer parentId = parent != null ? parent.getData().getKey() : null;
-		int nodeId = node.getData().getKey();
-		int childId = child.getData().getKey();
-		Integer grandId = grand != null ? grand.getData().getKey() : null;
+		Integer parentId = parent != null ? parent.getElement().getId() : null;
+		int nodeId = node.getElement().getId();
+		int childId = child.getElement().getId();
+		Integer grandId = grand != null ? grand.getElement().getId() : null;
 
 		commands.add(new LeftRotationCommand(parentId, nodeId, childId,
 				grandId, node.getSide() == BTNode.LEFT, childId, grandId,
@@ -199,15 +201,15 @@ public abstract class BTree {
 	}
 
 	/**
-	 * Intercambia la BTData de node, con la del nodo menor de los mayores
+	 * Intercambia el Element de node, con la del nodo menor de los mayores
 	 * (minmax == FIND_MIN) o con la del mayor de los menores (minmax ==
 	 * FIND_MAX)
 	 */
 	protected BTNode swap(BTNode node, int minmax) {
 		BTNode temp = node;
 		BTNode swap = (minmax == FIND_MAX) ? node.prevInO() : node.nextInO();
-		commands.add(new SwapCommand(node.getData().getKey(), swap.getData()
-				.getKey()));
+		commands.add(new SwapCommand(node.getElement().getId(), swap
+				.getElement().getId()));
 
 		// Intercambio data
 		swapData(node, swap);
@@ -220,12 +222,12 @@ public abstract class BTree {
 	}
 
 	/**
-	 * Intercambia la BTData de dos nodos.
+	 * Intercambia el Element de dos nodos.
 	 */
 	private void swapData(BTNode node1, BTNode node2) {
-		BTData data = node1.getData();
-		node1.setData(node2.getData());
-		node2.setData(data);
+		Element<Integer> element = node1.getElement();
+		node1.setElement(node2.getElement());
+		node2.setElement(element);
 	}
 
 	/**

@@ -10,11 +10,11 @@ public class InsertCommand extends Command {
 	private int balance;
 
 	public InsertCommand(int insertedData, boolean isLeftChild,
-			Integer parentData, int balance) {
+			Integer parentId, int balance) {
 		super(insertedData);
 		this.insertedData = insertedData;
 		this.isLeftChild = isLeftChild;
-		this.parentId = parentData;
+		this.parentId = parentId;
 		this.balance = balance;
 	}
 

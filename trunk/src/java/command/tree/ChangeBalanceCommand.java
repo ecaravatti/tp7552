@@ -7,8 +7,8 @@ public class ChangeBalanceCommand extends Command {
 	private int newBalance;
 	private int oldBalance;
 
-	public ChangeBalanceCommand(Integer data, int newBalance, int oldBalance) {
-		super(data);
+	public ChangeBalanceCommand(Integer nodeId, int newBalance, int oldBalance) {
+		super(nodeId);
 		this.newBalance = newBalance;
 		this.oldBalance = oldBalance;
 	}

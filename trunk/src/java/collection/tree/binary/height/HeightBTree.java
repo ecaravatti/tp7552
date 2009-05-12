@@ -1,11 +1,11 @@
 package collection.tree.binary.height;
 
-import collection.tree.binary.BTData;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.tree.binary.KeyAlreadyExistsException;
 import collection.tree.binary.KeyNotFoundException;
 import command.tree.ChangeBalanceCommand;
+import common.Element;
 
 public class HeightBTree extends BTree {
 
@@ -22,19 +22,20 @@ public class HeightBTree extends BTree {
 	}
 
 	@Override
-	public BTNode insert(BTData data) throws KeyAlreadyExistsException {
+	public BTNode insert(int value) throws KeyAlreadyExistsException {
 		initCommands();
+		Element<Integer> element = new Element<Integer>(value, value);
 		BTNode node;
 
 		if (root == null) {
-			return add(null, 0, data);
+			return add(null, 0, element);
 		}
 
 		try {
-			locate(data);
+			locate(element.getValue());
 			throw new KeyAlreadyExistsException();
 		} catch (KeyNotFoundException e) {
-			node = add(lastNode, nextSide, data);
+			node = add(lastNode, nextSide, element);
 			rebalance(lastNode, nextSide, INSERT);
 			return node;
 		}
@@ -42,12 +43,13 @@ public class HeightBTree extends BTree {
 	}
 
 	@Override
-	public BTNode delete(BTData data) throws KeyNotFoundException {
+	public BTNode delete(int value) throws KeyNotFoundException {
 		initCommands();
+		Element<Integer> element = new Element<Integer>(value, value);
 		int side;
 		BTNode node;
 
-		node = locate(data);
+		node = locate(element.getValue());
 		if (node == null) {
 			throw new KeyNotFoundException();
 		}
@@ -74,8 +76,8 @@ public class HeightBTree extends BTree {
 			cambioAltura = false;
 			balanceInicial = node.getBalance();
 			newBalance = node.getBalance() + in * side;
-			commands.add(new ChangeBalanceCommand(node.getData().getKey(), node
-					.getBalance(), newBalance));
+			commands.add(new ChangeBalanceCommand(node.getElement().getId(),
+					node.getBalance(), newBalance));
 			node.setBalance(newBalance);
 			if (Math.abs(newBalance) > variacionMaxima) {
 				huboRotacion = true;
@@ -89,7 +91,7 @@ public class HeightBTree extends BTree {
 							// El subarbol decreció en un nivel.
 							newBalance = node.getBalance() - in * side;
 							commands.add(new ChangeBalanceCommand(node
-									.getData().getKey(), node.getBalance(),
+									.getElement().getId(), node.getBalance(),
 									newBalance));
 							node.setBalance(newBalance);
 						}
@@ -107,7 +109,7 @@ public class HeightBTree extends BTree {
 							// El subarbol decreció en un nivel.
 							newBalance = node.getBalance() - in * side;
 							commands.add(new ChangeBalanceCommand(node
-									.getData().getKey(), node.getBalance(),
+									.getElement().getId(), node.getBalance(),
 									newBalance));
 							node.setBalance(newBalance);
 						}
@@ -138,11 +140,11 @@ public class HeightBTree extends BTree {
 		// Balances
 		int balanceAux = node.getBalance();
 		node.setBalance(balanceAux + 1 + Math.max(-child.getBalance(), 0));
-		commands.add(new ChangeBalanceCommand(node.getData().getKey(),
+		commands.add(new ChangeBalanceCommand(node.getElement().getId(),
 				balanceAux, node.getBalance()));
 		int newBalance = -Math.min(-balanceAux - 2, Math.min(-balanceAux
 				- child.getBalance() - 2, -child.getBalance() - 1));
-		commands.add(new ChangeBalanceCommand(child.getData().getKey(), child
+		commands.add(new ChangeBalanceCommand(child.getElement().getId(), child
 				.getBalance(), newBalance));
 		child.setBalance(newBalance);
 
@@ -155,11 +157,11 @@ public class HeightBTree extends BTree {
 		// Balances
 		int balanceAux = node.getBalance();
 		node.setBalance(balanceAux - 1 - Math.max(child.getBalance(), 0));
-		commands.add(new ChangeBalanceCommand(node.getData().getKey(),
+		commands.add(new ChangeBalanceCommand(node.getElement().getId(),
 				balanceAux, node.getBalance()));
 		int newBalance = Math.min(balanceAux - 2, Math.min(balanceAux
 				+ child.getBalance() - 2, child.getBalance() - 1));
-		commands.add(new ChangeBalanceCommand(child.getData().getKey(), child
+		commands.add(new ChangeBalanceCommand(child.getElement().getId(), child
 				.getBalance(), newBalance));
 		child.setBalance(Math.min(balanceAux - 2, Math.min(balanceAux
 				+ child.getBalance() - 2, child.getBalance() - 1)));

@@ -1,5 +1,7 @@
 package collection.tree.binary;
 
+import common.Element;
+
 public class BTNode {
 
 	public static final int LEFT = -1;
@@ -11,22 +13,22 @@ public class BTNode {
 	private BTNode leftChild;
 	private BTNode rightChild;
 	private int balance;
-	private BTData data;
+	private Element<Integer> element;
 
 	public BTNode() {
 		parent = null;
 		leftChild = null;
 		rightChild = null;
 		balance = 0;
-		data = null;
+		element = null;
 	}
 
-	public BTNode(BTData data) {
+	public BTNode(Element<Integer> element) {
 		parent = null;
 		leftChild = null;
 		rightChild = null;
 		balance = 0;
-		this.data = data;
+		this.element = element;
 	}
 
 	public BTNode getChild(int side) {
@@ -40,8 +42,8 @@ public class BTNode {
 		}
 	}
 
-	public int getNextSide(BTData data) {
-		int cmp = this.data.compareTo(data);
+	public int getNextSide(Element<Integer> element) {
+		int cmp = this.element.compareTo(element);
 		int side;
 		if (cmp > 0) {
 			side = LEFT;
@@ -132,7 +134,7 @@ public class BTNode {
 
 	@Override
 	public String toString() {
-		return "[B: " + balance + " - K: " + data.toString() + "]";
+		return "[B: " + balance + " - K: " + element.toString() + "]";
 	}
 
 	public BTNode getParent() {
@@ -159,12 +161,12 @@ public class BTNode {
 		balance = weight;
 	}
 
-	public BTData getData() {
-		return data;
+	public Element<Integer> getElement() {
+		return element;
 	}
 
-	public void setData(BTData data) {
-		this.data = data;
+	public void setElement(Element<Integer> element) {
+		this.element = element;
 	}
 
 	public int depth() {
@@ -187,4 +189,5 @@ public class BTNode {
 			heightLeft = leftChild.depth();
 		return heightRight - heightLeft;
 	}
+
 }
