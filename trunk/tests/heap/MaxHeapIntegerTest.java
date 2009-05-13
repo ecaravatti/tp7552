@@ -1,24 +1,30 @@
 package heap;
 
 //import common.export.ExportUtils;
+//import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 import command.Command;
+
+//import command.Command;
 
 import collection.heap.Heap;
 import junit.framework.TestCase;
 
-public class MaxHeapTest extends TestCase {
+public class MaxHeapIntegerTest extends TestCase {
 	
-	private Heap heap;
+	private Heap<Integer> heap;
 	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		heap = new Heap(false);
+		heap = new Heap<Integer>(false);
 		heap.insert(new Integer(10));
 		heap.insert(new Integer(15));
 		heap.insert(new Integer(80));
@@ -80,30 +86,50 @@ public class MaxHeapTest extends TestCase {
 	public void testCommand(){
 		heap.clear();
 		heap.insert(new Integer(10));
-		List<Command> commandList = heap.getCommandList();
-		
-		System.out.println(commandList.get(0).execute());
+		Queue<Command> commands = heap.getCommandQueue();
+		printCommands(commands, "INSERT 10");
 		
 		heap.insert(new Integer(20));
-		commandList = heap.getCommandList();
-		
-		for (Command c : commandList){
-			System.out.println(c.execute());
-		}
+		commands = heap.getCommandQueue();		
+		printCommands(commands, "INSERT 20");
 		
 		heap.insert(new Integer(35));
-		commandList = heap.getCommandList();
+		commands = heap.getCommandQueue();
+		printCommands(commands, "INSERT 35");
 		
-		for (Command c : commandList){
-			System.out.println(c.execute());
+		heap.pop();
+		commands = heap.getCommandQueue();
+		printCommands(commands, "REMOVE ROOT");	
+		
+		heap.insert(new Integer(22));
+		commands = heap.getCommandQueue();
+		printCommands(commands, "INSERT 22");
+		
+		heap.insert(new Integer(33));
+		commands = heap.getCommandQueue();
+		printCommands(commands, "INSERT 33");
+		
+		heap.pop();
+		commands = heap.getCommandQueue();
+		printCommands(commands, "REMOVE ROOT");	
+
+	}
+	
+	private void printCommands(Queue<Command> commands, String description){
+		List<Command> commandsList = new ArrayList<Command>(commands); 
+		
+		System.out.println("------" + description + "------");
+		System.out.println("// EXECUTE");
+		for (Command command : commandsList) {
+			System.out.println(command.execute());
 		}
+		System.out.println("// UNDO");
 		
-		heap.remove();
-		commandList = heap.getCommandList();
-		
-		for (Command c : commandList){
-			System.out.println(c.execute());
+		Collections.reverse(commandsList);
+		for (Command command : commands) {
+			System.out.println(command.undo());
 		}
+		System.out.println("-------END-------\n");
 	}
 	
 	/* (non-Javadoc)

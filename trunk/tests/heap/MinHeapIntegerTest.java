@@ -8,16 +8,16 @@ import java.util.NoSuchElementException;
 import collection.heap.Heap;
 import junit.framework.TestCase;
 
-public class MinHeapTest extends TestCase {
+public class MinHeapIntegerTest extends TestCase {
 	
-	private Heap heap;
+	private Heap<Integer> heap;
 	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		heap = new Heap(true);
+		heap = new Heap<Integer>(true);
 		heap.insert(new Integer(10));
 		heap.insert(new Integer(15));
 		heap.insert(new Integer(80));

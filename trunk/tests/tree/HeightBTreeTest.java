@@ -28,17 +28,17 @@ public class HeightBTreeTest extends TestCase {
 	}
 
 	private void printCommands(List<Command> commands, String descripcion) {
-		System.out.println("---" + descripcion + "---");
-		System.out.println("----EXECUTE----");
+		System.out.println("------" + descripcion + "------");
+		System.out.println("// EXECUTE");
 		for (Command command : commands) {
 			System.out.println(command.execute());
 		}
-		System.out.println("-----UNDO-----");
+		System.out.println("// UNDO");
 		Collections.reverse(commands);
 		for (Command command : commands) {
 			System.out.println(command.undo());
 		}
-		System.out.println("------FIN------\n");
+		System.out.println("-------END-------\n");
 	}
 
 	private void testHeightTree(int heightVariation, int insertsAmount,
