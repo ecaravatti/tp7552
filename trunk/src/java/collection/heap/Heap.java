@@ -1,18 +1,21 @@
 package collection.heap;
 
+import java.util.AbstractCollection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.lang.NullPointerException;
 import command.Command;
 import command.heap.InsertCommand;
 import command.heap.RemoveRootCommand;
 import command.heap.SwapCommand;
 import common.Element;
 
-public class Heap<T extends Comparable<T>> {
+public class Heap<T extends Comparable<T>> extends AbstractCollection<T>{
 
 	/**
 	 * La capacidad por defecto del Heap.
@@ -97,6 +100,44 @@ public class Heap<T extends Comparable<T>> {
 		elementCount = 0;
 		elements = new ArrayList<Element<T>>(capacity);
 		commandsQueue = new LinkedList<Command>();
+	}
+	
+	/**
+	 * Construye un min o max Heap con el contenido de la colección
+	 * pasada.
+	 * 
+	 * @param elements
+	 *            La capacidad inicial del Heap. Debe ser mayor a cero.
+	 * @param isMinHeap
+	 *            Si es true, el Heap será creado como min Heap; si es false,
+	 *            será max Heap.
+	 * @throws IllegalArgumentException
+	 *             Si <code>capacity</code> es <code><= 0</code>
+	 *             @throws NullPointerException
+	 *             Si la colección especificada es <code>null</code>
+	 */
+	public Heap(Collection<T> elements, boolean isMinHeap){
+		this(isMinHeap);
+		
+		if (elements == null){
+			throw new NullPointerException("Colección especificada null");
+		}
+		
+		this.addAll(elements);
+	}
+	
+	/**
+	 * Construye un  max Heap con el contenido de la colección
+	 * pasada.
+	 * 
+	 * @param elements
+	 *            La capacidad inicial del Heap. Debe ser mayor a cero.
+
+	 * @throws IllegalArgumentException
+	 *             Si <code>capacity</code> es <code><= 0</code>
+	 */
+	public Heap(Collection<T> elements){
+		this(elements, false);
 	}
 
 	// -----------------------------------------------------------------------
@@ -380,10 +421,10 @@ public class Heap<T extends Comparable<T>> {
 	 * @return -1 si e1 menor a e2, 0 si son iguales, +1 si mayor a e2.
 	 */
 	private int compare(Element<T> e1, Element<T> e2) {
-		T int1 = e1.getValue();
-		T int2 = e2.getValue();
+		T value1 = e1.getValue();
+		T value2 = e2.getValue();
 
-		return int1.compareTo(int2);
+		return value1.compareTo(value2);
 	}
 
 	/**
@@ -409,26 +450,27 @@ public class Heap<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Returns an iterator over this heap's elements.
+	 * Devuelve un iterador de los elementos en el Heap.
 	 * 
-	 * @return an iterator over this heap's elements
+	 * @return Un iterador por sobre los elementos del Heap.
 	 */
-	public Iterator<Element<T>> iterator() {
-		return new Iterator<Element<T>>() {
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
 
 			private int index = 0;
 			private int lastReturnedIndex = -1;
 
 			public boolean hasNext() {
-				return index <= actualSize;
+				return index <= actualSize - 1;
 			}
 
-			public Element<T> next() {
-				if (!hasNext())
+			public T next() {
+				if (!hasNext()){
 					throw new NoSuchElementException();
+				}
 				lastReturnedIndex = index;
 				index++;
-				return elements.get(lastReturnedIndex);
+				return elements.get(lastReturnedIndex).getValue();
 			}
 
 			public void remove() {
@@ -517,4 +559,16 @@ public class Heap<T extends Comparable<T>> {
 
 		return currentCommands;
 	}
+	
+	/**
+	 * Devuelve una copia de de la lista de elementos
+	 * del Heap, conteniendo ids internos y los valores almacenados.
+	 * 
+	 * @return Una copia de la lista de elementos.
+	 */
+	public List<Element<T>> getElements() {
+		return new ArrayList<Element<T>>(elements);
+	}
+	
+	
 }
