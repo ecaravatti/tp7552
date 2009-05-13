@@ -17,6 +17,56 @@ import junit.framework.TestCase;
 
 public class HeightBTreeTest extends TestCase {
 
+	private BTree tree;
+
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+
+		tree = new HeightBTree(1);
+
+		tree.insert(20);
+		tree.insert(30);
+		tree.insert(25);
+	}
+
+	public void testInsert() {
+		try {
+			tree.insert(47);
+		} catch (KeyAlreadyExistsException e) {
+			fail("Dice que ya existe una clave no insertada");
+		}
+
+		try {
+			tree.locate(47);
+		} catch (KeyNotFoundException e) {
+			fail("No encuentra algo insertado");
+		}
+	}
+
+	public void testDelete() {
+		try {
+			tree.delete(30);
+		} catch (KeyNotFoundException e) {
+			fail("No encuentra algo insertado");
+		}
+
+		try {
+			tree.locate(30);
+			fail("Encuentra algo borrado");
+		} catch (KeyNotFoundException e) {
+			//Todo en orden, no lo tenía que encontrar
+		}
+	}
+
+	public void testLocate() {
+		try {
+			tree.locate(30);
+		} catch (KeyNotFoundException e) {
+			fail("No encuentra algo que fue insertado en el arbol");
+		}
+	}
+
 	public void testHeightTreeBehavior() {
 		for (int i = 1; i < 6; i++) {
 			testHeightTree(i, 10000, false, false);
@@ -59,7 +109,7 @@ public class HeightBTreeTest extends TestCase {
 		}
 
 		Collections.shuffle(insertados); // Los mezclo para que varíe el
-											// orden
+		// orden
 		BTNode node;
 		for (Integer codigo : insertados) {
 			try {
@@ -72,7 +122,7 @@ public class HeightBTreeTest extends TestCase {
 				// No está desbalanceado
 				assertTrue(Math.abs(node.getBalance()) <= heightVariation);
 			} catch (KeyNotFoundException e) {
-				fail();
+				fail("No encuentra el elemento insertado " + codigo);
 			}
 		}
 
@@ -98,7 +148,7 @@ public class HeightBTreeTest extends TestCase {
 		for (Integer codigo : borrados) {
 			try {
 				node = tree.locate(codigo);
-				fail();
+				fail("Encuentra el elemento borrado " + codigo);
 			} catch (KeyNotFoundException e) {
 				// Efectivamente está borrado
 			}
@@ -110,7 +160,7 @@ public class HeightBTreeTest extends TestCase {
 			try {
 				node = tree.locate(codigo);
 				if (borrados.contains(codigo)) {
-					fail(); // No debería haberlo encontrado
+					fail("Encuentra el elemento borrado " + codigo);
 				} else {
 					assertNotNull(node); // No puede devolver null
 					// El balance está bien calculado
@@ -120,7 +170,7 @@ public class HeightBTreeTest extends TestCase {
 				}
 			} catch (KeyNotFoundException e) {
 				if (!borrados.contains(codigo)) {
-					fail(); // Debería haberlo encontrado
+					fail("No encuentra el elemento insertado " + codigo);
 				}
 			}
 			if (printCommands)
