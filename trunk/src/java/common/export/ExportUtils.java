@@ -165,7 +165,7 @@ public class ExportUtils {
 	}
 
 	private static void addNode(Element element, Node node) {
-		element.addAttribute(KEY, node.getContent());
+		element.addAttribute(KEY, node.getKey());
 
 		if (node.hasChildren()) {
 			for (Character nodeLetter : node.getChildren().keySet()) {

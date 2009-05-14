@@ -11,8 +11,8 @@ public class Node {
 	/** Child nodes to this one */
 	private Map<Character, Node> children = new HashMap<Character, Node>();
 
-	/** Content of the node if there's any */
-	private String content;
+	/** Key of the node, if it is a leaf node */
+	private String key;
 
 	public Node(Integer id) {
 		this.id = id;
@@ -78,12 +78,12 @@ public class Node {
 		return String.valueOf(c).toLowerCase().charAt(0);
 	}
 	
-	public String getContent() {
-		return content;
+	public String getKey() {
+		return key;
 	}
 	
-	public void setContent(String content) {
-		this.content = content;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public Integer getId() {
