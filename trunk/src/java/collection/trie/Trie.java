@@ -3,8 +3,8 @@ package collection.trie;
 import java.util.ArrayList;
 import java.util.List;
 
-import collection.tree.binary.KeyAlreadyExistsException;
-import collection.tree.binary.KeyNotFoundException;
+import collection.KeyAlreadyExistsException;
+import collection.KeyNotFoundException;
 
 import command.Command;
 import command.HighlightCommand;

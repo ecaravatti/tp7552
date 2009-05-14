@@ -1,7 +1,7 @@
 package trie;
 
-import collection.tree.binary.KeyAlreadyExistsException;
-import collection.tree.binary.KeyNotFoundException;
+import collection.KeyAlreadyExistsException;
+import collection.KeyNotFoundException;
 import collection.trie.Trie;
 import common.export.ExportUtils;
 

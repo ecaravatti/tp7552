@@ -1,9 +1,9 @@
 package collection.tree.binary.height;
 
+import collection.KeyAlreadyExistsException;
+import collection.KeyNotFoundException;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
-import collection.tree.binary.KeyAlreadyExistsException;
-import collection.tree.binary.KeyNotFoundException;
 import command.tree.ChangeBalanceCommand;
 import common.Element;
 

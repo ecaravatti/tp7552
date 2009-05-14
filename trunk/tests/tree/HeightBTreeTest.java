@@ -7,10 +7,10 @@ import java.util.List;
 import command.Command;
 import common.export.ExportUtils;
 
+import collection.KeyAlreadyExistsException;
+import collection.KeyNotFoundException;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
-import collection.tree.binary.KeyAlreadyExistsException;
-import collection.tree.binary.KeyNotFoundException;
 import collection.tree.binary.height.HeightBTree;
 
 import junit.framework.TestCase;

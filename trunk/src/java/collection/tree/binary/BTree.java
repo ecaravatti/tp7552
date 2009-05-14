@@ -3,6 +3,9 @@ package collection.tree.binary;
 import java.util.ArrayList;
 import java.util.List;
 
+import collection.KeyAlreadyExistsException;
+import collection.KeyNotFoundException;
+
 import command.Command;
 import command.tree.DeleteCommand;
 import command.tree.InsertCommand;
