@@ -13,39 +13,39 @@
     <property name="source" value="1.6"/>
     <path id="taller.classpath">
         <pathelement location="web/WEB-INF/classes"/>
-        <pathelement location="lib/antlr-2.7.6.jar"/>
-        <pathelement location="lib/asm-1.5.3.jar"/>
-        <pathelement location="lib/asm-attrs.jar"/>
-        <pathelement location="lib/asm.jar"/>
-        <pathelement location="lib/cglib-2.1.3.jar"/>
-        <pathelement location="lib/cglib-nodep-2.1_3.jar"/>
-        <pathelement location="lib/commons-collections-2.1.1.jar"/>
-        <pathelement location="lib/commons-logging-1.0.4.jar"/>
-        <pathelement location="lib/commons-pool-1.3.jar"/>
-        <pathelement location="lib/dom4j-1.6.1.jar"/>
-        <pathelement location="lib/jasper-compiler-4.1.30.jar"/>
-        <pathelement location="lib/jasper-runtime-4.1.30.jar"/>
-        <pathelement location="lib/jta.jar"/>
-        <pathelement location="lib/junit.jar"/>
-        <pathelement location="lib/log4j-1.2.13.jar"/>
-        <pathelement location="lib/org.mortbay.jetty-4.2.24.jar"/>
-        <pathelement location="lib/portlet-api-1.0.jar"/>
-        <pathelement location="lib/servlet-api-2.3.jar"/>
-        <pathelement location="lib/slf4j-api-1.4.2.jar"/>
-        <pathelement location="lib/slf4j-log4j12-1.4.2.jar"/>
-        <pathelement location="lib/spring-2.0.jar"/>
-        <pathelement location="lib/spring-mock.jar"/>
-        <pathelement location="lib/wicket-1.3.4-sources.jar"/>
-        <pathelement location="lib/wicket-1.3.4.jar"/>
-        <pathelement location="lib/wicket-extensions-1.3.4-sources.jar"/>
-        <pathelement location="lib/wicket-extensions-1.3.4.jar"/>
-        <pathelement location="lib/wicket-ioc-1.3.4-sources.jar"/>
-        <pathelement location="lib/wicket-ioc-1.3.4.jar"/>
-        <pathelement location="lib/wicket-spring-1.3.4-sources.jar"/>
-        <pathelement location="lib/wicket-spring-1.3.4.jar"/>
-        <pathelement location="lib/wicket-spring-annot-1.3.4-sources.jar"/>
-        <pathelement location="lib/wicket-spring-annot-1.3.4.jar"/>
-        <pathelement location="lib/xml-apis.jar"/>
+        <pathelement location="web/WEB-INF/lib/antlr-2.7.6.jar"/>
+        <pathelement location="web/WEB-INF/lib/asm-1.5.3.jar"/>
+        <pathelement location="web/WEB-INF/lib/asm-attrs.jar"/>
+        <pathelement location="web/WEB-INF/lib/asm.jar"/>
+        <pathelement location="web/WEB-INF/lib/cglib-2.1.3.jar"/>
+        <pathelement location="web/WEB-INF/lib/cglib-nodep-2.1_3.jar"/>
+        <pathelement location="web/WEB-INF/lib/commons-collections-2.1.1.jar"/>
+        <pathelement location="web/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/commons-pool-1.3.jar"/>
+        <pathelement location="web/WEB-INF/lib/dom4j-1.6.1.jar"/>
+        <pathelement location="web/WEB-INF/lib/jasper-compiler-4.1.30.jar"/>
+        <pathelement location="web/WEB-INF/lib/jasper-runtime-4.1.30.jar"/>
+        <pathelement location="web/WEB-INF/lib/jta.jar"/>
+        <pathelement location="web/WEB-INF/lib/junit.jar"/>
+        <pathelement location="web/WEB-INF/lib/log4j-1.2.13.jar"/>
+        <pathelement location="web/WEB-INF/lib/org.mortbay.jetty-4.2.24.jar"/>
+        <pathelement location="web/WEB-INF/lib/portlet-api-1.0.jar"/>
+        <pathelement location="web/WEB-INF/lib/servlet-api-2.3.jar"/>
+        <pathelement location="web/WEB-INF/lib/slf4j-api-1.4.2.jar"/>
+        <pathelement location="web/WEB-INF/lib/slf4j-log4j12-1.4.2.jar"/>
+        <pathelement location="web/WEB-INF/lib/spring-2.0.jar"/>
+        <pathelement location="web/WEB-INF/lib/spring-mock.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-1.3.4-sources.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-1.3.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-extensions-1.3.4-sources.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-extensions-1.3.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-ioc-1.3.4-sources.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-ioc-1.3.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-spring-1.3.4-sources.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-spring-1.3.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-spring-annot-1.3.4-sources.jar"/>
+        <pathelement location="web/WEB-INF/lib/wicket-spring-annot-1.3.4.jar"/>
+        <pathelement location="web/WEB-INF/lib/xml-apis.jar"/>
     </path>
     <target name="init">
         <mkdir dir="web/WEB-INF/classes"/>
@@ -118,6 +118,10 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
+            <test name="heap.MaxHeapIntegerTest" todir="${junit.output.dir}"/>
+            <test name="heap.MaxHeapStringTest" todir="${junit.output.dir}"/>
+            <test name="heap.MinHeapIntegerTest" todir="${junit.output.dir}"/>
+            <test name="heap.MinHeapStringTest" todir="${junit.output.dir}"/>
             <test name="queue.QueueTest" todir="${junit.output.dir}"/>
             <test name="stack.StackTest" todir="${junit.output.dir}"/>
             <test name="tree.HeightBTreeTest" todir="${junit.output.dir}"/>
@@ -174,12 +178,12 @@
             <report format="frames" todir="${junit.output.dir}"/>
         </junitreport>
     </target>
-	<target name="createWar">
+	<target name="war">
 		<war destfile="taller.war" webxml="web/WEB-INF/web.xml" update="true">
-		<classes dir="web/WEB-INF/classes"/>
-		<fileset dir="web">
-			<exclude name="WEB-INF/web.xml"/>
-		</fileset>
+			<classes dir="web/WEB-INF/classes"/>
+			<fileset dir="web">
+				<exclude name="WEB-INF/web.xml"/>
+			</fileset>
 		</war>
 	</target>
 </project>
