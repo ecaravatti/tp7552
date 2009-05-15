@@ -87,7 +87,7 @@ public class Trie {
 				this.commands.add(new AddCommand(this.nodesCounter, 
 						String.valueOf(key.charAt(i - 1)), 
 						previousNode.getId(),
-						i < key.length() - 1 ? false : true));
+						i < key.length() ? false : true));
 				this.nodesCounter++;
 			}
 		}

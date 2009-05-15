@@ -67,7 +67,7 @@ public class Node {
 	 * 		True if the requested child node exists
 	 */
 	public Boolean containsChildNode(Character c) {
-		return children.containsKey(c);
+		return children.containsKey(toLowerCase(c));
 	}
 	
 	public Boolean hasChildren() {
