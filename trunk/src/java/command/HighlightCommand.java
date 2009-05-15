@@ -15,7 +15,7 @@ public class HighlightCommand extends Command {
 	
 	@Override
 	public String execute() {
-		return "Highlight node with id '" + getId() + "' and content '"
+		return "Resalto el nodo con id '" + getId() + "' y cuyo contenido es'"
 				+ getContent() + "'";
 	}
 
