@@ -1,17 +1,12 @@
 package heap;
 
-//import common.export.ExportUtils;
-//import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Queue;
-
 import command.Command;
-
-//import command.Command;
-
+import common.export.ExportUtils;
 import collection.heap.Heap;
 import junit.framework.TestCase;
 
@@ -31,7 +26,14 @@ public class MaxHeapIntegerTest extends TestCase {
 		heap.insert(new Integer(33));
 		heap.insert(new Integer(25));
 		heap.insert(new Integer(29));
-		//ExportUtils.exportToXML(heap, "inicialHeap.xml");
+		ExportUtils.exportToXML(heap, "maxHeapIntegerheap.xml");
+	}
+	
+	public void testExport(){
+		heap.insert(new Integer(9));	
+		heap.insert(new Integer(88));
+		
+		ExportUtils.exportToXML(heap, "maxHeapInteger.xml");
 	}
 	
 	public void testInsert() {		

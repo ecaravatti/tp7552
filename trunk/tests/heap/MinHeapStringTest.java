@@ -1,7 +1,7 @@
 package heap;
 
 import java.util.NoSuchElementException;
-
+import common.export.ExportUtils;
 import collection.heap.Heap;
 import junit.framework.TestCase;
 
@@ -20,7 +20,13 @@ public class MinHeapStringTest extends TestCase {
 		heap.insert(new String("AC"));
 		heap.insert(new String("BB"));
 		heap.insert(new String("BA"));
-		//ExportUtils.exportToXML(heap, "inicialHeap.xml");
+	}	
+	
+	public void testExport(){
+		heap.insert(new String("00"));	
+		heap.insert(new String("PO"));
+		
+		ExportUtils.exportToXML(heap, "minHeapString.xml");
 	}
 	
 	public void testInsert() {		

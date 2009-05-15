@@ -1,10 +1,7 @@
-/**
- * 
- */
 package heap;
 
 import java.util.NoSuchElementException;
-
+import common.export.ExportUtils;
 import collection.heap.Heap;
 import junit.framework.TestCase;
 
@@ -23,15 +20,22 @@ public class MinHeapIntegerTest extends TestCase {
 		heap.insert(new Integer(80));
 		heap.insert(new Integer(33));
 		heap.insert(new Integer(25));
-		heap.insert(new Integer(29));
+		heap.insert(new Integer(29));		
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#tearDown()
 	 */
 	protected void tearDown() throws Exception {
 		super.tearDown();
 		heap.clear();
+	}
+	
+	public void testExport(){
+		heap.insert(new Integer(9));	
+		heap.insert(new Integer(88));
+		
+		ExportUtils.exportToXML(heap, "minHeapInteger.xml");
 	}
 
 	/**

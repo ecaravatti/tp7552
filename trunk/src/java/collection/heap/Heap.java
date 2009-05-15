@@ -174,8 +174,15 @@ public class Heap<T extends Comparable<T>> extends AbstractCollection<T>{
 	 * 
 	 * @param element
 	 *            El elemento a ser insertado.
+	 * @throws NoSuchElementException
+	 *           Si <code>value == null</code>
 	 */
 	public void insert(T value) {
+		
+		if (value == null){
+			throw new NullPointerException();
+		}
+		
 		Element<T> element = new Element<T>(value, elementCount++);
 
 		// Ubicar elemento en su lugar del árbol.
@@ -250,7 +257,6 @@ public class Heap<T extends Comparable<T>> extends AbstractCollection<T>{
 		boolean continueSwap = child < actualSize;
 
 		while (continueSwap) {
-
 			// Si se tiene un hijo derecho y no puede ser movido hacia
 			// arriba, moverse al otro hijo.
 			if (child + 1 < actualSize
@@ -379,7 +385,6 @@ public class Heap<T extends Comparable<T>> extends AbstractCollection<T>{
 		int next = (hole - 1) >> 1;
 
 		while (hole > 0 && compare(element, elements.get(next)) > 0) {
-
 			// Emisión de comando para intercambio de dos elementos.
 			commandsQueue.offer(new SwapCommand<T>(element, elements
 					.get(next), false));
