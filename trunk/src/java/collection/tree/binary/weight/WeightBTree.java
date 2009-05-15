@@ -1,11 +1,12 @@
 package collection.tree.binary.weight;
 
-import common.Element;
-
 import collection.KeyAlreadyExistsException;
 import collection.KeyNotFoundException;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
+
+import command.tree.ChangeWeightCommand;
+import common.Element;
 
 
 public class WeightBTree extends BTree {
@@ -32,7 +33,7 @@ public class WeightBTree extends BTree {
 		BTNode node;
 		if (root == null) {
 			node = add(null, BTNode.NONE, element);
-			node.setWeight(DEFAULT_WEIGHT);
+			changeWeight(node, DEFAULT_WEIGHT);
 		} else {
 			try {
 				locate(element.getValue());
@@ -41,11 +42,10 @@ public class WeightBTree extends BTree {
 				node = add(lastNode, nextSide, element);
 				
 				for(BTNode temp = node; temp != null; temp = temp.getParent()) {
-					temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
-									weight(temp.getChild(BTNode.RIGHT)));
+					changeWeight(temp, weight(temp.getChild(BTNode.LEFT)) + 
+								 	   weight(temp.getChild(BTNode.RIGHT)));
 					temp = checkRotations(temp);
 				}
-
 			}
 		}
 		
@@ -59,9 +59,9 @@ public class WeightBTree extends BTree {
 		BTNode node = locate(element.getValue());
 
 		if (node.hasTwoChildren()) {
-//			node = swap(node, BTree.FINDMAX);
 			// Rotate on heavier side
-			if (weight(node.getChild(BTNode.LEFT)) > weight(node.getChild(BTNode.LEFT))) {
+			if (weight(node.getChild(BTNode.LEFT)) > 
+				weight(node.getChild(BTNode.RIGHT))) {
 				node = rotateRightAndSetWeight(node);
 				delete(element.getValue());
 			} else {
@@ -73,8 +73,8 @@ public class WeightBTree extends BTree {
 		}
 		
 		for(BTNode temp = node; temp != null; temp = temp.getParent()) {
-			temp.setWeight(	weight(temp.getChild(BTNode.LEFT)) + 
-							weight(temp.getChild(BTNode.RIGHT)));
+			changeWeight(temp, weight(temp.getChild(BTNode.LEFT)) + 
+						 	   weight(temp.getChild(BTNode.RIGHT)));
 			temp = checkRotations(temp);
 		}
 		
@@ -122,7 +122,7 @@ public class WeightBTree extends BTree {
 			return 0;
 		} else {
 			return 	1 + nodesCount(node.getChild(BTNode.LEFT)) +
-					nodesCount(node.getChild(BTNode.RIGHT));
+						nodesCount(node.getChild(BTNode.RIGHT));
 		}
 	}
 	
@@ -130,9 +130,10 @@ public class WeightBTree extends BTree {
 		BTNode child = rotateRight(node);
 		
 		// Adjust weight
-		child.setWeight(node.getWeight());
-		node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
-						weight(node.getChild(BTNode.RIGHT)));
+		changeWeight(child, weight(child.getChild(BTNode.LEFT)) +
+			 	   			weight(child.getChild(BTNode.RIGHT)));
+		changeWeight(node, weight(node.getChild(BTNode.LEFT)) +
+					 	   weight(node.getChild(BTNode.RIGHT)));
 		
 		return child;
 	}
@@ -141,11 +142,18 @@ public class WeightBTree extends BTree {
 		BTNode child = rotateLeft(node);
 		
 		// Adjust weight
-		child.setWeight(node.getWeight());
-		node.setWeight(	weight(node.getChild(BTNode.LEFT)) +
-						weight(node.getChild(BTNode.RIGHT)));
+		changeWeight(child, weight(child.getChild(BTNode.LEFT)) +
+ 	   						weight(child.getChild(BTNode.RIGHT)));
+		changeWeight(node, weight(node.getChild(BTNode.LEFT)) +
+					 	   weight(node.getChild(BTNode.RIGHT)));
 		
 		return child;
 	}
 	
+	private void changeWeight(BTNode node, int newWeight) {
+		commands.add(new ChangeWeightCommand(node.getElement().getId(),
+											 node.getElement().getValue(),
+											 node.getWeight(), newWeight));
+		node.setWeight(newWeight);
+	}
 }

@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import junit.framework.TestCase;
 import collection.KeyAlreadyExistsException;
 import collection.KeyNotFoundException;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.tree.binary.weight.WeightBTree;
 
-import junit.framework.TestCase;
+import command.Command;
+import common.export.ExportUtils;
 
 public class WeightBTreeTest extends TestCase {
 	
@@ -23,7 +25,8 @@ public class WeightBTreeTest extends TestCase {
 		tree = new WeightBTree();
 	}
 	
-	public void testInsert() throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testInsert() throws KeyAlreadyExistsException,
+									KeyNotFoundException {
 		tree.insert(10);
 		tree.insert(20);
 		tree.insert(30);
@@ -49,7 +52,8 @@ public class WeightBTreeTest extends TestCase {
 		System.out.println(tree);
 	}
 
-	public void testInsertWithExistentKey() throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testInsertWithExistentKey() throws KeyAlreadyExistsException,
+												   KeyNotFoundException {
 		tree.insert(10);
 		tree.insert(20);
 		tree.insert(30);
@@ -64,7 +68,8 @@ public class WeightBTreeTest extends TestCase {
 		}
 	}
 	
-	public void testDelete() throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testDelete() throws KeyAlreadyExistsException,
+									KeyNotFoundException {
 		tree.insert(10);
 		tree.insert(20);
 		tree.insert(30);
@@ -98,7 +103,8 @@ public class WeightBTreeTest extends TestCase {
 		System.out.println(tree);
 	}
 	
-	public void testDeleteWithNonExistentKey() throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testDeleteWithNonExistentKey() throws KeyAlreadyExistsException,
+													  KeyNotFoundException {
 		tree.insert(60);
 		tree.insert(25);
 		tree.insert(18);
@@ -116,13 +122,37 @@ public class WeightBTreeTest extends TestCase {
 		}
 	}
 	
-	public void testWeightBTreeBehavior() throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testWeightBTreeBehavior() throws KeyAlreadyExistsException,
+												 KeyNotFoundException {
 		for (double i = 0; i <= 0.5; i += 0.1) {
-			testWeightBTree(i, 1000);
+			testWeightBTree(i, 1000, false, false);
 		}
 	}
 	
-	private void testWeightBTree(double alpha, int insertsAmount) throws KeyAlreadyExistsException, KeyNotFoundException {
+	public void testCommands() throws KeyAlreadyExistsException,
+									  KeyNotFoundException {
+		testWeightBTree(0.3, 5, true, true);
+	}
+	
+	private void printCommands(List<Command> commands, String description) {
+		System.out.println("------" + description + "------");
+		System.out.println("// EXECUTE");
+		for (Command command : commands) {
+			System.out.println(command.execute());
+		}
+		System.out.println("// UNDO");
+		Collections.reverse(commands);
+		for (Command command : commands) {
+			System.out.println(command.undo());
+		}
+		System.out.println("-------END-------\n");
+	}
+	
+	private void testWeightBTree(double alpha, int insertsAmount,
+								 boolean printCommands, boolean exportFinalTree)
+								 throws KeyAlreadyExistsException,
+								 		KeyNotFoundException {
+		
 		BTree tree = new WeightBTree(alpha);
 		
 		List<Integer> insertados = new ArrayList<Integer>();
@@ -130,20 +160,22 @@ public class WeightBTreeTest extends TestCase {
 			int random = (int)(Math.random()*(insertsAmount*1000));
 			if (insertados.contains(random)) continue;
 			tree.insert(random);
+			if (printCommands)
+				printCommands(tree.getCommands(), "INSERT " + random);
 			insertados.add(random);
 		}
-		
-//		System.out.println(tree);
 		
 		Collections.shuffle(insertados); //Los mezclo para que varíe el orden
 		BTNode node;
 		for (Integer codigo : insertados) {
 			try {
 				node = tree.locate(codigo);
+				if (printCommands)
+					printCommands(tree.getCommands(), "LOCATE " + codigo);
 				assertNotNull(node); //No puede encontrar algo null
-				assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
-//				double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
-//				assertTrue(((balance > alpha) && (balance < 1-alpha)) || (balance == 0.5)); //No está desbalanceado
+				assertEquals(weight(node.getChild(BTNode.LEFT)) +
+							 weight(node.getChild(BTNode.RIGHT)),
+							 node.getWeight()); //El peso está bien calculado
 			} catch (KeyNotFoundException e) {
 				fail();
 			}
@@ -155,8 +187,10 @@ public class WeightBTreeTest extends TestCase {
 		//Borro menos de los que inserté
 		for (Integer codigo : insertados) {
 			if (i++ < (insertsAmount*4/5)) {
-				borrados.add(codigo);
 				tree.delete(codigo);
+				if (printCommands)
+					printCommands(tree.getCommands(), "DELETE " + codigo);
+				borrados.add(codigo);
 			} else {
 				break;
 			}
@@ -169,6 +203,8 @@ public class WeightBTreeTest extends TestCase {
 			} catch (KeyNotFoundException e) {
 				//Efectivamente está borrado
 			}
+			if (printCommands)
+				printCommands(tree.getCommands(), "LOCATE " + codigo);
 		}
 		
 		for (Integer codigo : insertados) {
@@ -178,17 +214,22 @@ public class WeightBTreeTest extends TestCase {
 					fail(); //No debería haberlo encontrado
 				} else {
 					assertNotNull(node); //No puede devolver null
-					assertEquals(weight(node.getChild(BTNode.LEFT)) + weight(node.getChild(BTNode.RIGHT)), node.getWeight()); //El peso está bien calculado
-//					double balance = (double)weight(node.getChild(BTNode.LEFT)) / (double)node.getWeight();
-//					assertTrue((balance > alpha) && (balance < 1-alpha)); //No está desbalanceado
+					assertEquals(weight(node.getChild(BTNode.LEFT)) +
+								 weight(node.getChild(BTNode.RIGHT)),
+								 node.getWeight());//El peso está bien calculado
 				}
 			} catch (KeyNotFoundException e) {
 				if (!borrados.contains(codigo)) {
 					fail(); //Debería haberlo encontrado
 				}
 			}
+			if (printCommands)
+				printCommands(tree.getCommands(), "LOCATE " + codigo);
 		}
 		
+		if (exportFinalTree) {
+			ExportUtils.exportToXML(tree, "WeightBTree" + alpha + ".xml");
+		}
 	}
 	
 	private int weight(BTNode node) {
