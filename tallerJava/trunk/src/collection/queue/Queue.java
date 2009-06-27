@@ -12,12 +12,12 @@ import common.Element;
 
 public class Queue<T> implements Cloneable {
 
-	private final static int DEFAULT_CAPACITY = 8;
-	private int capacity;
-	private ArrayList<Element<Integer>> queue;
-	private int fullSize = 0;
-	private List<Command> commandList;
-	private int idGenerator = 0; 
+	public final static int DEFAULT_CAPACITY = 8;
+	public int capacity;
+	public ArrayList<Element<Integer>> queue;
+	public int fullSize = 0;
+	public List<Command> commandList;
+	public int idGenerator = 0; 
 	
 	public Queue(int capacity) {
 		this.capacity = capacity;
