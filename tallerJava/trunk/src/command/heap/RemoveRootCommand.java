@@ -40,6 +40,8 @@ public class RemoveRootCommand<T extends Comparable<T>> extends Command {
 	 * su padre.
 	 */
 	private boolean isLeftChild;
+	
+	public static final String REMOVE_ROOT_COMMAND = "removeRoot";
 
 	/**
 	 * Construye un comando de eliminación de la raíz.
@@ -64,7 +66,7 @@ public class RemoveRootCommand<T extends Comparable<T>> extends Command {
 	 */
 	public RemoveRootCommand(Integer rootId, T rootData, Integer newRootId,
 			T newRootData, Integer parentId, T parentData, boolean isLeftChild) {
-		super(rootId);
+		super(rootId, REMOVE_ROOT_COMMAND);
 
 		this.rootId = rootId;
 		this.rootData = rootData;

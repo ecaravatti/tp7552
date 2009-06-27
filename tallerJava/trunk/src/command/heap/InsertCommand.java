@@ -8,30 +8,32 @@ public class InsertCommand<T extends Comparable<T>> extends Command {
 	/**
 	 * Id interno del elemento a insertar.
 	 */
-	private Integer insertedId;
+	public Integer insertedId;
 
 	/**
 	 * Valor del elemento a insertar.
 	 */
-	private T insertedData;
+	public T insertedData;
+
 
 	/**
 	 * Id interno del elemento padre al elemento a insertar. Si null, el
 	 * elemento a insertar es la raíz del Heap.
 	 */
-	private Integer parentId;
+	public Integer parentId;
 
 	/**
 	 * Valor del elemento padre al elemento a insertar.
 	 */
-	private T parentData;
+	public T parentData;
 
 	/**
 	 * true si el elemento a insertar es hijo izquierdo de su padre. Si
 	 * <code>parentId == null</code>, se ignora.
 	 */
-	private boolean isLeftChild;
-
+	public boolean isLeftChild;
+	
+	public static final String INSERT_COMMAND = "insertCommand";
 	/**
 	 * Construye un comando de inserción.
 	 * 
@@ -49,7 +51,7 @@ public class InsertCommand<T extends Comparable<T>> extends Command {
 	 */
 	public InsertCommand(Integer insertedId, T insertedData, Integer parentId,
 			T parentData, boolean isLeftChild) {
-		super(insertedId);
+		super(insertedId, INSERT_COMMAND);
 
 		this.insertedId = insertedId;
 		this.insertedData = insertedData;
@@ -71,9 +73,12 @@ public class InsertCommand<T extends Comparable<T>> extends Command {
 	 *            true si el elemento a insertar es hijo izquierdo de su padre.
 	 *            Si <code>parentId == null</code>, se ignora.
 	 */
+	
+	// TODO Cambio de "null" a -1 como ID del nodo padre para la insercion
+	// de la raiz. AS no acepta Numbers nulls.
 	public InsertCommand(Element<T> inserted, Element<T> parent,
 			boolean isLeftChild) {
-		this(inserted.getId(), inserted.getValue(), parent == null ? null
+		this(inserted.getId(), inserted.getValue(), parent == null ? -1
 				: parent.getId(), parent == null ? null : parent.getValue(),
 				isLeftChild);
 	}
@@ -99,17 +104,4 @@ public class InsertCommand<T extends Comparable<T>> extends Command {
 						+ " del elemento con clave " + parentData + " (id="
 						+ parentId + ")";
 	}
-
-	public Integer getInsertedId() {
-		return insertedId;
-	}
-
-	public Integer getParentId() {
-		return parentId;
-	}
-
-	public boolean isLeftChild() {
-		return isLeftChild;
-	}
-
 }

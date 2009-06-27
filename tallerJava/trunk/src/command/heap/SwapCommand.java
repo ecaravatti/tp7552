@@ -7,28 +7,30 @@ public class SwapCommand<T extends Comparable<T>> extends Command {
 	/**
 	 * Id interno del elemento primario a ser intercambiado.
 	 */
-	private Integer primaryId;
+	public Integer primaryId;
 
 	/**
 	 * Id interno del elemento secundario a ser intercambiado.
 	 */
-	private Integer secondaryId;
+	public Integer secondaryId;
 
 	/**
 	 * Si true idPrimary es el id del elemento que desciende. Si false,
 	 * idPrimary es el id del elemento que es promovido.
 	 */
-	private boolean isSwapDown;
+	public boolean isSwapDown;
 
 	/**
 	 * Valor del elemento primario a ser intercambiado.
 	 */
-	private T primaryData;
+	public T primaryData;
 
 	/**
 	 * Valor del elemento secundario a ser intercambiado.
 	 */
-	private T secondaryData;
+	public T secondaryData;
+	
+	public static final String SWAP_COMMAND = "swapCommand";
 
 	/**
 	 * Construye un comando de intercambio de elementos.
@@ -48,7 +50,7 @@ public class SwapCommand<T extends Comparable<T>> extends Command {
 	 */
 	public SwapCommand(Integer primaryId, T primaryData, Integer secondaryId,
 			T secondaryData, boolean isSwapDown) {
-		super(primaryId);
+		super(primaryId, SWAP_COMMAND);
 
 		this.primaryId = primaryId;
 		this.secondaryId = secondaryId;
