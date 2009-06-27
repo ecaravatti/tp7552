@@ -1,0 +1,10 @@
+/* CSS file */
+.canvasStack{
+	font-family:					franklin1;
+	font-size:						11;
+	font-weight:					normal;
+	border-color:					#cbcbcb;
+	color:							#333333;
+	text-align:						left;
+  	border-sides:                   left, right, bottom;
+}

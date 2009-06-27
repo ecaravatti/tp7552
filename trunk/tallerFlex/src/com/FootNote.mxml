@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	styleName="footNoteStyle">
+	
+	<mx:Style source="css/footNote.css"/>
+	
+	<mx:Label styleName="footNoteWord" 
+		text="data progress viewer"/>
+	<mx:Label styleName="footNoteWord" 
+		text="Taller de Programación II (75.52)"/>
+	<mx:Label styleName="footNoteWord" 
+		text="Facultad de Ingeniería | U.B.A"/>
+	<mx:Label styleName="footNoteWord" 
+		text="Versión Alpha. Build 050609"/>
+</mx:VBox>

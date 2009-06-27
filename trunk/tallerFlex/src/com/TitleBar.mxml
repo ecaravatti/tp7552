@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	minWidth="70"  minHeight="45"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off">
+	
+	<mx:Style source="css/titleBar.css" />
+	
+	<!-- TODO: Logo -->
+	<mx:Text styleName="title" text=":dpv"/>
+	<mx:Text styleName="subTitleWord" text="data progress viewer"/>
+
+</mx:HBox>
