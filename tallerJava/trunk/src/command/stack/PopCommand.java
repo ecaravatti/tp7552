@@ -4,7 +4,7 @@ import command.Command;
 
 public class PopCommand extends Command {
 
-	private String content;
+	public String content;
 	
 	public PopCommand(Integer id, String content) {
 		super(id);
