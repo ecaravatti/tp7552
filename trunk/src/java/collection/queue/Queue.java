@@ -2,6 +2,7 @@ package collection.queue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import command.Command;
 import command.HighlightCommand;
@@ -9,40 +10,48 @@ import command.queue.OfferCommand;
 import command.queue.PollCommand;
 import common.Element;
 
-public class Queue implements Cloneable {
+public class Queue<T> {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int capacity;
-	private List<Element<Integer>> queue;
+	private ArrayList<Element<Integer>> queue;
 	private int fullSize = 0;
-	private int elementsCount = 0;
+	private List<Command> commandList;
+	private int idGenerator = 0; 
 	
 	public Queue(int capacity) {
 		this.capacity = capacity;
 		queue = new ArrayList<Element<Integer>>(capacity);
+		commandList = new ArrayList<Command>();
 	}
 
 	public Queue() {
 		queue = new ArrayList<Element<Integer>>(DEFAULT_CAPACITY);
 		capacity = DEFAULT_CAPACITY;
+		commandList = new ArrayList<Command>();
 	}
 
+	public List<Command> getCommands(){
+		return commandList;
+	} 
+	
+	private int generateId(){
+		return idGenerator++;
+	}
+	
 	/**
 	 * Inserts the specified element into this queue, if possible.
 	 * */
-	public List<Command> offer(Integer value) {
-		
-		List<Command> commandList = new ArrayList<Command>();
-		
+	public boolean offer(Element<Integer> element) {
+		boolean result = false; 
 		if (canInsert()) {
-			Element<Integer> element = new Element<Integer>(value, elementsCount);
-			elementsCount++;
 			this.queue.add(element);
-			commandList.add(new OfferCommand(element.getId(), element.getValue().toString()));
 			fullSize++;
+			result = true;
+			commandList.clear();
+			commandList.add(new OfferCommand(generateId(), element.getValue().toString()));
 		}
-		
-		return commandList;
+		return result;
 	}
 
 	private boolean canInsert() {
@@ -53,68 +62,68 @@ public class Queue implements Cloneable {
 	 * Retrieves and removes the head of this queue, or null if this queue is
 	 * empty.
 	 * */
-	public List<Command> poll() {
-		List<Command> commandList = new ArrayList<Command>();
+	public Element<Integer> poll() {
+		Element<Integer> elementToReturn = null;
 
 		if (!isEmpty()) {
-			Element<Integer> element = this.queue.get(0);
+			elementToReturn = this.queue.get(0);
 			this.queue.remove(0);
-			Command pollCommand = new PollCommand(element.getId(), element.getValue().toString());
-			commandList.add(pollCommand);
 			fullSize--;
+			commandList.clear();
+			commandList.add(new PollCommand(generateId(), elementToReturn.getValue().toString()));
 		}
 
-		return commandList;
+		return elementToReturn;
 	}
 
 	private boolean isEmpty() {
 		return (fullSize == 0);
 	}
 
-	 /**
+	/**
+	 * Retrieves and removes the head of this queue. This method differs from
+	 * the poll method in that it throws an exception if this queue is empty.
+	 * */
+	public Element<Integer> remove() throws NoSuchElementException {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+
+		return poll();
+	}
+
+	/**
 	 * Retrieves, but does not remove, the head of this queue, returning null if
 	 * this queue is empty.
 	 * */
-	public List<Command> peek() {
-		List<Command> commandList = new ArrayList<Command>();
+	public Element<Integer> peek() {
+		Element<Integer> elementToReturn = null;
 
 		if (!isEmpty()) {
-			Element<Integer> element = this.queue.get(0);
-			Command highlightCommand = new HighlightCommand(element.getId(), element.getValue().toString());
-			commandList.add(highlightCommand);
+			elementToReturn = this.queue.get(0);
+			commandList.clear();
+			commandList.add(new HighlightCommand(generateId(), elementToReturn.getValue().toString()));
 		}
 
-		return commandList;
+		return elementToReturn;
 	}
 
-
-	public List<Command> destroy() {
-		List<Command> commandList = new ArrayList<Command>();
-		for(int i = 0; i < capacity; i++){
-			commandList.addAll(this.poll());
+	/**
+	 * Retrieves, but does not remove, the head of this queue. This method
+	 * differs from the peek method only in that it throws an exception if this
+	 * queue is empty.
+	 * */
+	public Element<Integer> element() throws NoSuchElementException {
+		if (!isEmpty()) {
+			throw new NoSuchElementException();
 		}
-		
+
+		return this.queue.get(0);
+	}
+
+	public void destroy() {
+		this.queue.clear();
 		this.fullSize = 0;
-		
-		return commandList;
-	}
-	
-	public int size() {
-		return queue.size();
-	}
-	
-	@Override
-	public Queue clone() throws CloneNotSupportedException {
-		Queue clone = new Queue(this.capacity);
-		
-		for (Element<Integer> element : this.queue) {
-			clone.queue.add(element);
-		}
-		
-		clone.elementsCount = this.elementsCount;
-		clone.fullSize = this.fullSize;
-		
-		return clone;
 	}
 
 }
