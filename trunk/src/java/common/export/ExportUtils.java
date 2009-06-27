@@ -11,15 +11,10 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
 import collection.heap.Heap;
-import collection.queue.Queue;
-import collection.stack.Stack;
 import collection.tree.binary.BTNode;
 import collection.tree.binary.BTree;
 import collection.trie.Node;
 import collection.trie.Trie;
-
-import command.queue.PollCommand;
-import command.stack.PopCommand;
 
 public class ExportUtils {
 
@@ -28,12 +23,12 @@ public class ExportUtils {
 	private final static String KEY = "key";
 	private final static String CONTENT = "content";
 	private final static String CHILD = "Child";
-	private final static String STACK = "Stack";
-	private final static String ELEMENT = "Element";
-	private final static String TOP = "Top";
-	private final static String QUEUE = "Queue";
-	private final static String HEAD = "Head";
-	private final static String BACK = "Back";
+//	private final static String STACK = "Stack";
+//	private final static String ELEMENT = "Element";
+//	private final static String TOP = "Top";
+//	private final static String QUEUE = "Queue";
+//	private final static String HEAD = "Head";
+//	private final static String BACK = "Back";
 	private final static String LEFT_CHILD = "LeftChild";
 	private final static String RIGHT_CHILD = "RightChild";
 	private final static String HEAP = "Heap";
@@ -70,69 +65,69 @@ public class ExportUtils {
 		
 	}
 
-	public static void exportToXML(Queue queue, String path) {
-		Document document = DocumentHelper.createDocument();
-		Element XMLroot = document.addElement(QUEUE);
-
-		Queue clone = null;
-		try {
-			clone = queue.clone();
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-		Element headElement = XMLroot.addElement(ELEMENT);
-		headElement.addAttribute(HEAD, Boolean.TRUE.toString());
-		addElementAttributes(headElement, (PollCommand) clone.poll().get(0));
-
-		int cloneSize = clone.size();
-		for (int i = 0; i < cloneSize - 1; i++) {
-			addElementAttributes(XMLroot.addElement(ELEMENT),
-					(PollCommand) clone.poll().get(0));
-		}
-		Element backElement = XMLroot.addElement(ELEMENT);
-		backElement.addAttribute(BACK, Boolean.TRUE.toString());
-		addElementAttributes(backElement, (PollCommand) clone.poll().get(0));
-
-		exportToFile(path, document);
-		printToOutput(document);
-	}
-
-	private static void addElementAttributes(Element element,
-			PollCommand pollCommand) {
-		element.addAttribute(CONTENT, pollCommand.getContent());
-		element.addAttribute(KEY, pollCommand.getId().toString());
-	}
-
-	public static void exportToXML(Stack stack, String path) {
-
-		Document document = DocumentHelper.createDocument();
-		Element XMLroot = document.addElement(STACK);
-
-		Stack clone = null;
-		try {
-			clone = stack.clone();
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-		Element topElement = XMLroot.addElement(ELEMENT);
-		topElement.addAttribute(TOP, Boolean.TRUE.toString());
-		addElementAttributes(topElement, (PopCommand) clone.pop().get(0));
-
-		int cloneSize = clone.size();
-		for (int i = 0; i < cloneSize; i++) {
-			addElementAttributes(XMLroot.addElement(ELEMENT),
-					(PopCommand) clone.pop().get(0));
-		}
-
-		exportToFile(path, document);
-		printToOutput(document);
-	}
-
-	private static void addElementAttributes(Element element,
-			PopCommand popCommand) {
-		element.addAttribute(CONTENT, popCommand.getContent());
-		element.addAttribute(KEY, popCommand.getId().toString());
-	}
+//	public static void exportToXML(Queue queue, String path) {
+//		Document document = DocumentHelper.createDocument();
+//		Element XMLroot = document.addElement(QUEUE);
+//
+//		Queue clone = null;
+//		try {
+//			clone = (Queue)queue.clone();
+//		} catch (CloneNotSupportedException e) {
+//			e.printStackTrace();
+//		}
+//		Element headElement = XMLroot.addElement(ELEMENT);
+//		headElement.addAttribute(HEAD, Boolean.TRUE.toString());
+//		addElementAttributes(headElement, (PollCommand) clone.poll().get(0));
+//
+//		int cloneSize = clone.size();
+//		for (int i = 0; i < cloneSize - 1; i++) {
+//			addElementAttributes(XMLroot.addElement(ELEMENT),
+//					(PollCommand) clone.poll().get(0));
+//		}
+//		Element backElement = XMLroot.addElement(ELEMENT);
+//		backElement.addAttribute(BACK, Boolean.TRUE.toString());
+//		addElementAttributes(backElement, (PollCommand) clone.poll().get(0));
+//
+//		exportToFile(path, document);
+//		printToOutput(document);
+//	}
+//
+//	private static void addElementAttributes(Element element,
+//			PollCommand pollCommand) {
+//		element.addAttribute(CONTENT, pollCommand.getContent());
+//		element.addAttribute(KEY, pollCommand.getId().toString());
+//	}
+//
+//	public static void exportToXML(Stack stack, String path) {
+//
+//		Document document = DocumentHelper.createDocument();
+//		Element XMLroot = document.addElement(STACK);
+//
+//		Stack clone = null;
+//		try {
+//			clone = stack.clone();
+//		} catch (CloneNotSupportedException e) {
+//			e.printStackTrace();
+//		}
+//		Element topElement = XMLroot.addElement(ELEMENT);
+//		topElement.addAttribute(TOP, Boolean.TRUE.toString());
+//		addElementAttributes(topElement, (PopCommand) clone.pop().get(0));
+//
+//		int cloneSize = clone.size();
+//		for (int i = 0; i < cloneSize; i++) {
+//			addElementAttributes(XMLroot.addElement(ELEMENT),
+//					(PopCommand) clone.pop().get(0));
+//		}
+//
+//		exportToFile(path, document);
+//		printToOutput(document);
+//	}
+//
+//	private static void addElementAttributes(Element element,
+//			PopCommand popCommand) {
+//		element.addAttribute(CONTENT, popCommand.getContent());
+//		element.addAttribute(KEY, popCommand.getId().toString());
+//	}
 
 	public static void exportToXML(BTree tree, String path) {
 		Document document = DocumentHelper.createDocument();

@@ -154,28 +154,32 @@ public class Trie {
 			Integer depth, List<Command> commandList) {
 
 		// Indicates whether the key is in the trie or not
-		Boolean hasKey = false;
+		Boolean wasKeyRemoved = false;
+		Boolean keyRemovedInThisIteration = false;
 
 		if (depth < key.length()
 				&& childNode.containsChildNode(key.charAt(depth))) {
 
-			hasKey = removeNode(childNode, childNode.getChildNode(
+			wasKeyRemoved = removeNode(childNode, childNode.getChildNode(
 					key.charAt(depth)), key, depth + 1, commandList)
 					? true
-					: hasKey;
+					: wasKeyRemoved;
 		}
 		if (key.equalsIgnoreCase(childNode.getKey())) {
 			childNode.setKey(null);
-			hasKey = true;
+			wasKeyRemoved = true;
+			keyRemovedInThisIteration = true;
 		}
 		if (!childNode.hasChildren() && childNode.getKey() == null) {
 			parentNode.removeChildNode(key.charAt(depth - 1));
 			
 			commandList.add(new RemoveCommand(childNode.getId(), 
 					String.valueOf(key.charAt(depth - 1)),
-					parentNode.getId(), hasKey));
+					parentNode.getId(), keyRemovedInThisIteration ?
+										keyRemovedInThisIteration :
+										childNode.getKey() != null));
 		}
-		return hasKey;
+		return wasKeyRemoved;
 	}
 
 	/**

@@ -10,7 +10,7 @@ import command.queue.OfferCommand;
 import command.queue.PollCommand;
 import common.Element;
 
-public class Queue<T> {
+public class Queue<T> implements Cloneable {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int capacity;
@@ -124,6 +124,16 @@ public class Queue<T> {
 	public void destroy() {
 		this.queue.clear();
 		this.fullSize = 0;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Queue<Element<Integer>> queueClone = new Queue<Element<Integer>>(this.capacity);
+		
+		for (Element<Integer> e : queue)
+			queueClone.offer(e);
+		
+		return queueClone;
 	}
 
 }

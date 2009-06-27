@@ -26,7 +26,6 @@ public class Element<T extends Comparable<T>> implements Comparable<Element<T>> 
 		this.id = id;
 	}
 
-	@Override
 	public int compareTo(Element<T> element) {
 		return this.value.compareTo(element.value);
 	}

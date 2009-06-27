@@ -10,7 +10,7 @@ import command.stack.PopCommand;
 import command.stack.PushCommand;
 import common.Element;
 
-public class Stack<T> {
+public class Stack<T> implements Cloneable {
 
 	private final static int DEFAULT_CAPACITY = 8;
 	private int top = -1;
@@ -97,5 +97,19 @@ public class Stack<T> {
 
 	private boolean isFull() {
 		return (top == (capacity - 1));
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Stack<Element<Integer>> stackClone = new Stack<Element<Integer>>(this.capacity);
+		
+		for (Element<Integer> e : stack)
+			try {
+				stackClone.push(e);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		
+		return stackClone;
 	}
 }

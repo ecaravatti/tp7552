@@ -29,6 +29,7 @@ public class TrieTest extends TestCase {
 	}
 
 	public void testContains() {
+		ExportUtils.exportToXML(trie, "trie.xml");
 		assertTrue(trie.containsKey("auto"));
 		assertTrue(trie.containsKey("AUTO"));
 		assertTrue(trie.containsKey("aLa"));
@@ -126,7 +127,7 @@ public class TrieTest extends TestCase {
 	
 	public void testTrieBehavior() {
 		for (int i = 1; i < 6; i++) {
-			testTrieBehaviour(1000, true, true);
+			testTrieBehaviour(10, true, true);
 		}
 	}
 
