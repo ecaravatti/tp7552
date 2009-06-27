@@ -4,7 +4,7 @@ import command.Command;
 
 public class PushCommand extends Command {
 
-	private String content;
+	public String content;
 	
 	public PushCommand(Integer id, String content) {
 		super(id);
