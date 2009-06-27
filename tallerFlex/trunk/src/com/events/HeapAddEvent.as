@@ -12,8 +12,7 @@ package com.events
 		public function HeapAddEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false)
 		{
 			super(type, bubbles, cancelable);
-		}
-		
+		}		
 		
 		public function get commands():ArrayCollection{
 			return _commands;

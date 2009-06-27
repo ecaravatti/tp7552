@@ -9,23 +9,23 @@ package com.command.heap
 		/**
 		 * Id interno del elemento a insertar.
 		 */
-		private var insertedId:Number;
+		private var insertedId:int;
 	
 		/**
 		 * Valor del elemento a insertar.
 		 */
-		private var insertedData:Number;
+		private var insertedData:int;
 	
 		/**
 		 * Id interno del elemento padre al elemento a insertar. Si null, el
 		 * elemento a insertar es la raíz del Heap.
 		 */
-		private var parentId:Number;
+		private var parentId:int;
 	
 		/**
 		 * Valor del elemento padre al elemento a insertar.
 		 */
-		private var parentData:Number;
+		private var parentData:int;
 	
 		/**
 		 * true si el elemento a insertar es hijo izquierdo de su padre. Si
@@ -33,18 +33,15 @@ package com.command.heap
 		 */
 		private var isLeftChild:Boolean;
 		
-		
-		public function InsertCommand(insertedId:Number, insertedData:Number, 
-			parentId:Number, parentData:Number, isLeftChild:Boolean)
-		{
-			super(insertedId, INSERT_COMMAND);
-	
-			this.insertedId = insertedId;
-			this.insertedData = insertedData;
-			this.parentId = parentId;
-			this.parentData = parentData;
-			this.isLeftChild = isLeftChild;
-	
+		public function InsertCommand(remoteCommand:Object)
+		{ 
+			super(remoteCommand.insertedId, INSERT_COMMAND);
+			
+			this.insertedId = remoteCommand.insertedId;
+			this.insertedData = remoteCommand.insertedData;
+			this.isLeftChild = remoteCommand.isLeftChild;
+			this.parentId = remoteCommand.parentId;
+			this.parentData = remoteCommand.parentData;
 		}
 		
 		public function execute():String {

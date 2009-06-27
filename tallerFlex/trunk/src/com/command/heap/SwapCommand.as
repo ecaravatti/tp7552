@@ -9,12 +9,12 @@ package com.command.heap
 		/**
 		 * Id interno del elemento primario a ser intercambiado.
 		 */
-		private var primaryId: Number;
+		private var primaryId: int;
 
 		/**
 		 * Id interno del elemento secundario a ser intercambiado.
 		 */
-		private var secondaryId:Number;
+		private var secondaryId:int;
 
 		/**
 		 * Si true idPrimary es el id del elemento que desciende. Si false,
@@ -25,31 +25,30 @@ package com.command.heap
 		/**
 		 * Valor del elemento primario a ser intercambiado.
 		 */
-		private var primaryData:Number;
+		private var primaryData:int;
 	
 		/**
 		 * Valor del elemento secundario a ser intercambiado.
 		 */
-		private var secondaryData:Number;
+		private var secondaryData:int;
 	
 		
-		public function SwapCommand(primaryId:Number, primaryData:Number,
-			secondaryData:Number, isSwapDown:Boolean)
+		public function SwapCommand(remoteCommand:Object)
 		{
 			super(primaryId, SWAP_COMMAND);
 	
-			this.primaryId = primaryId;
-			this.secondaryId = secondaryId;
-			this.primaryData = primaryData;
-			this.secondaryData = secondaryData;
-			this.isSwapDown = isSwapDown;
+			this.primaryId = remoteCommand.primaryId;
+			this.secondaryId = remoteCommand.secondaryId;
+			this.primaryData = remoteCommand.primaryData;
+			this.secondaryData = remoteCommand.secondaryData;
+			this.isSwapDown = remoteCommand.isSwapDown;
 		}
 		
 		public function execute():String {
-		return "Promueve el elemento con clave " + (isSwapDown ? secondaryData : primaryData)
-				+ " (id=" + (isSwapDown ? secondaryId : primaryId) + ")"
-				+ " y desciende el elemento con clave " + (isSwapDown ? primaryData : secondaryData)
-				+ " (id=" + (isSwapDown ? primaryId : secondaryId) + ")";
+			return "Promueve el elemento con clave " + (isSwapDown ? secondaryData : primaryData)
+					+ " (id=" + (isSwapDown ? secondaryId : primaryId) + ")"
+					+ " y desciende el elemento con clave " + (isSwapDown ? primaryData : secondaryData)
+					+ " (id=" + (isSwapDown ? primaryId : secondaryId) + ")";
 	}
 
 
