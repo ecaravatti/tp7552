@@ -12,12 +12,12 @@ import common.Element;
 
 public class Stack<T> implements Cloneable {
 
-	private final static int DEFAULT_CAPACITY = 8;
-	private int top = -1;
-	private int capacity;
-	private ArrayList<Element<Integer>> stack;
-	private List<Command> commandList;
-	private int idGenerator = 0; 
+	public final static int DEFAULT_CAPACITY = 8;
+	public int top = -1;
+	public int capacity;
+	public ArrayList<Element<Integer>> stack;
+	public List<Command> commandList;
+	public int idGenerator = 0; 
 	
 	public Stack() {
 		stack = new ArrayList<Element<Integer>>(DEFAULT_CAPACITY);
