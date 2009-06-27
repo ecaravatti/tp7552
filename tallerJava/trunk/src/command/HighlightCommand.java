@@ -2,7 +2,7 @@ package command;
 
 public class HighlightCommand extends Command {
 
-	private String content;
+	public String content;
 	
 	public HighlightCommand(Integer id, String content) {
 		super(id);
