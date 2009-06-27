@@ -4,7 +4,7 @@ import command.Command;
 
 public class OfferCommand extends Command {
 
-	String content;
+	public String content;
 	
 	public OfferCommand(Integer id, String content) {
 		super(id);

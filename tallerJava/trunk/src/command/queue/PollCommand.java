@@ -4,7 +4,7 @@ import command.Command;
 
 public class PollCommand extends Command {
 
-	private String content;
+	public String content;
 	
 	public PollCommand(Integer id, String content) {
 		super(id);
