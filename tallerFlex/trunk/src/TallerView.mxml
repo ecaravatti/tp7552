@@ -4,7 +4,7 @@
 	xmlns:sp="com.containers.*"
 	layout="absolute"
 	styleName="mainApplicationStyle" 
-	creationComplete="init()" xmlns:collection="com.events.collection.*">
+	creationComplete="init()" xmlns:collection="com.events.dispatchers.*">
 	
 	<mx:Metadata>
 		[Event(name="heapAddEvent", type="com.events.HeapEvent")]
@@ -14,7 +14,7 @@
 	<mx:Script>
 		<![CDATA[
 		import com.events.HeapEvent;
-		import com.events.collection.HeapEventDispatcher;
+		import com.events.dispatchers.HeapEventDispatcher;
 		import mx.events.MenuEvent;
 		import mx.controls.MenuBar;
 		import mx.collections.XMLListCollection;
