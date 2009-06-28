@@ -8,38 +8,38 @@ public class RemoveRootCommand<T extends Comparable<T>> extends Command {
 	/**
 	 * Id interno del elemento raíz.
 	 */
-	private Integer rootId;
+	public Integer rootId;
 
 	/**
 	 * Valor del elemento raíz a remover.
 	 */
-	private T rootData;
+	public T rootData;
 
 	/**
 	 * Id interno del elemento a ocupar la posición de la raíz.
 	 */
-	private Integer newRootId;
+	public Integer newRootId;
 
 	/**
 	 * Valor del elemento a ocupar la posición de la raíz.
 	 */
-	private T newRootData;
+	public T newRootData;
 
 	/**
 	 * Id del elemento padre al elemento a ocupar la posición de la raíz.
 	 */
-	private Integer parentId;
+	public Integer parentId;
 
 	/**
 	 * Valor del elemento padre al elemento a ocupar la posición de la raíz.
 	 */
-	private T parentData;
+	public T parentData;
 
 	/**
 	 * true si el elemento a ocupar la posición de la raíz es hijo izquierdo de
 	 * su padre.
 	 */
-	private boolean isLeftChild;
+	public boolean isLeftChild;
 	
 	public static final String REMOVE_ROOT_COMMAND = "removeRoot";
 
