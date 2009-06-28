@@ -4,12 +4,14 @@ import command.Command;
 
 public class ChangeBalanceCommand extends Command {
 
-	private int nodeValue;
-	private int oldBalance;
-	private int newBalance;
+	public int nodeValue;
+	public int oldBalance;
+	public int newBalance;
+	
+	public static final String CHANGE_BALANCE_COMMAND = "treeChangeBalanceCommand";
 
 	public ChangeBalanceCommand(Integer nodeId, int nodeValue, int oldBalance, int newBalance) {
-		super(nodeId);
+		super(nodeId, CHANGE_BALANCE_COMMAND);
 		this.nodeValue = nodeValue;
 		this.oldBalance = oldBalance;
 		this.newBalance = newBalance;

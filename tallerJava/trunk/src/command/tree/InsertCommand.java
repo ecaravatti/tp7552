@@ -4,14 +4,16 @@ import command.Command;
 
 public class InsertCommand extends Command {
 
-	private int insertedData;
-	private boolean isLeftChild;
-	private Integer parentId; // Puede ser null si es la raíz.
-	private int balance;
+	public int insertedData;
+	public boolean isLeftChild;
+	public Integer parentId; // Puede ser null si es la raíz.
+	public int balance;
 
+	public static final String INSERT_COMMAND = "treeInsertCommand";
+	
 	public InsertCommand(int insertedData, boolean isLeftChild,
 			Integer parentId, int balance) {
-		super(insertedData);
+		super(insertedData, INSERT_COMMAND);
 		this.insertedData = insertedData;
 		this.isLeftChild = isLeftChild;
 		this.parentId = parentId;

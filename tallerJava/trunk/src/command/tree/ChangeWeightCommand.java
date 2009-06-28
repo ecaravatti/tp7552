@@ -4,12 +4,14 @@ import command.Command;
 
 public class ChangeWeightCommand extends Command {
 
-	private int nodeValue;
-	private int oldWeight;
-	private int newWeight;
+	public int nodeValue;
+	public int oldWeight;
+	public int newWeight;
+	
+	public static final String CHANGE_WEIGHT_COMMAND = "treeChangeWeightCommand";
 
 	public ChangeWeightCommand(Integer nodeId, int nodeValue, int oldWeight, int newWeight) {
-		super(nodeId);
+		super(nodeId, CHANGE_WEIGHT_COMMAND);
 		this.nodeValue = nodeValue;
 		this.oldWeight = oldWeight;
 		this.newWeight = newWeight;

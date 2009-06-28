@@ -4,15 +4,16 @@ import command.Command;
 
 public class DeleteCommand extends Command {
 
-	private Integer parentId;
-	private int deletedValue;
-	private Integer childId;
-
-	private boolean isLeftChild;
+	public Integer parentId;
+	public int deletedValue;
+	public Integer childId;
+	public boolean isLeftChild;
+	
+	public static final String DELETE_COMMAND = "treeDeleteCommand";
 
 	public DeleteCommand(int deletedId, int deletedValue, Integer parentId,
 			Integer childId, boolean isLeftChild) {
-		super(deletedId);
+		super(deletedId, DELETE_COMMAND);
 		this.deletedValue = deletedValue;
 		this.parentId = parentId;
 		this.childId = childId;

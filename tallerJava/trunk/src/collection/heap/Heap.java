@@ -91,6 +91,9 @@ public class Heap<T extends Comparable<T>> extends AbstractCollection<T>{
 	 *             Si <code>capacity</code> es <code><= 0</code>
 	 */
 	public Heap(int capacity, boolean isMinHeap) {
+		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		
 		if (capacity <= 0) {
 			throw new IllegalArgumentException("Capacidad inválida");
 		}
