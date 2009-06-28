@@ -35,7 +35,7 @@ package com.command.heap
 		
 		public function SwapCommand(remoteCommand:Object)
 		{
-			super(primaryId, SWAP_COMMAND);
+			super(remoteCommand.id, SWAP_COMMAND);
 	
 			this.primaryId = remoteCommand.primaryId;
 			this.secondaryId = remoteCommand.secondaryId;

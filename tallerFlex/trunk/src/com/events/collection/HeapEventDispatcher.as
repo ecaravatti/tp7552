@@ -1,6 +1,6 @@
 package com.events.collection
 {
-	import com.command.heap.HeapCommandFactory;
+	import com.command.CommandFactory;
 	import com.events.HeapAddEvent;
 	
 	import flash.events.EventDispatcher;
@@ -38,7 +38,7 @@ package com.events.collection
 			var commandList:ArrayCollection = new ArrayCollection();
 			
  			for (var i:Number = 0; i < event.result.length; i++){
-				commandList.addItem(HeapCommandFactory.getCommand(event.result[i]));
+				commandList.addItem(CommandFactory.getCommand(event.result[i]));
 			} 
 			
 			var addEvent:HeapAddEvent = new HeapAddEvent(HeapAddEvent.HEAP_ADD);
