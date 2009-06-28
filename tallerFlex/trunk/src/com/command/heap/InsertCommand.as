@@ -35,7 +35,7 @@ package com.command.heap
 		
 		public function InsertCommand(remoteCommand:Object)
 		{ 
-			super(remoteCommand.insertedId, INSERT_COMMAND);
+			super(remoteCommand.id, INSERT_COMMAND);
 			
 			this.insertedId = remoteCommand.insertedId;
 			this.insertedData = remoteCommand.insertedData;
@@ -45,14 +45,14 @@ package com.command.heap
 		}
 		
 		public function execute():String {
-		return (parentId == -1) ? "Inserta como raíz el elemento con clave "
-				+ insertedData + " (id=" + insertedId + ")"
-				: "Inserta el elemento con clave " + insertedData + " (id="
-						+ insertedId + ") como hijo "
-						+ (isLeftChild ? "izquierdo" : "derecho")
-						+ " del elemento con clave " + parentData + " (id="
-						+ parentId + ")";
-	}
+			return (parentId == -1) ? "Inserta como raíz el elemento con clave "
+					+ insertedData + " (id=" + insertedId + ")"
+					: "Inserta el elemento con clave " + insertedData + " (id="
+							+ insertedId + ") como hijo "
+							+ (isLeftChild ? "izquierdo" : "derecho")
+							+ " del elemento con clave " + parentData + " (id="
+							+ parentId + ")";
+		}
 
 	}
 }
