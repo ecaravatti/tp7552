@@ -4,7 +4,7 @@ package com.command.heap
 	
 	public class RemoveRootCommand extends Command
 	{
-		public static const REMOVE_ROOT_COMMAND:String  = "removeRoot";
+		public static const REMOVE_ROOT_COMMAND:String = "removeRoot";
 			
 		/**
 		 * Id interno del elemento raíz.
@@ -45,7 +45,7 @@ package com.command.heap
 		
 		public function RemoveRootCommand(remoteCommand:Object)
 		{
-			super(rootId, REMOVE_ROOT_COMMAND);
+			super(remoteCommand.rootId, REMOVE_ROOT_COMMAND);
 	
 			this.rootId = remoteCommand.rootId;
 			this.rootData = remoteCommand.rootData;
@@ -53,8 +53,7 @@ package com.command.heap
 			this.newRootData = remoteCommand.newRootData;
 			this.parentId = remoteCommand.parentId;
 			this.parentData = remoteCommand.parentData;
-			this.isLeftChild = remoteCommand.isLeftChild;
-	
+			this.isLeftChild = remoteCommand.isLeftChild;	
 		}
 		
 		public function execute():String {
@@ -64,7 +63,7 @@ package com.command.heap
 					+ (isLeftChild ? "izquierdo" : "derecho")
 					+ " del elememento con clave " + parentData + " (id="
 					+ parentId + ")";
-	}
+		}
 
 	}
 }

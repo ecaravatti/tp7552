@@ -1,7 +1,7 @@
 package com.events.collection
 {
 	import com.command.CommandFactory;
-	import com.events.HeapAddEvent;
+	import com.events.HeapEvent;
 	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
@@ -15,6 +15,8 @@ package com.events.collection
 	public class HeapEventDispatcher extends EventDispatcher
 	{		
 		public var heap:RemoteObject;
+		private var commandList:ArrayCollection;
+		private var resultType:String;
 
 		public function HeapEventDispatcher(target:IEventDispatcher=null)
 		{
@@ -35,31 +37,36 @@ package com.events.collection
 		
 		private function getCommandQueueHandler(event:ResultEvent):void
 		{
-			var commandList:ArrayCollection = new ArrayCollection();
+			commandList = new ArrayCollection();
 			
  			for (var i:Number = 0; i < event.result.length; i++){
 				commandList.addItem(CommandFactory.getCommand(event.result[i]));
-			} 
-			
-			var addEvent:HeapAddEvent = new HeapAddEvent(HeapAddEvent.HEAP_ADD);
-			addEvent.commands = commandList;
-			 
-			this.dispatchEvent(addEvent);
+			}
+
+			createAndDispatchEvent(resultType);
+		}
+		
+		private function createAndDispatchEvent(eventType:String):void {
+			var heapEvent:HeapEvent = new HeapEvent(eventType);
+			heapEvent.commands = commandList;			
+			this.dispatchEvent(heapEvent);
 		}
 		
 		private function addHandler(event:ResultEvent):void
-		{	
+		{
+			this.resultType = HeapEvent.HEAP_ADD;
 			heap.getCommandQueue();
 		}
-		
+						
 		private function popHandler(event:ResultEvent):void
-		{
-			//TODO
+		{	
+			this.resultType = HeapEvent.HEAP_POP;
+			heap.getCommandQueue();	
 		}
 		
 		private function genericFaultHandler(event:FaultEvent):void
 		{
-			//TODO Manejo de fallas
+			//Alert.show("Fail! " + event.type);
 		}
 	}		
 }

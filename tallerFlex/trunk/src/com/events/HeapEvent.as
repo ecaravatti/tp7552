@@ -4,12 +4,14 @@ package com.events
 	
 	import mx.collections.ArrayCollection;
 
-	public class HeapAddEvent extends Event
+	public class HeapEvent extends Event
 	{
 		public static const HEAP_ADD:String = "heapAddEvent";
+		public static const HEAP_POP:String = "heapPopEvent";
+		
 		private var _commands:ArrayCollection;
 		
-		public function HeapAddEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false)
+		public function HeapEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false)
 		{
 			super(type, bubbles, cancelable);
 		}		

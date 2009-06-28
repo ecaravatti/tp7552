@@ -7,12 +7,13 @@
 	creationComplete="init()" xmlns:collection="com.events.collection.*">
 	
 	<mx:Metadata>
-		[Event(name="heapAddEvent", type="com.events.HeapAddEvent")]
+		[Event(name="heapAddEvent", type="com.events.HeapEvent")]
+		[Event(name="heapPopEvent", type="com.events.HeapEvent")]
 	</mx:Metadata>
 		
 	<mx:Script>
 		<![CDATA[
-		import com.events.HeapAddEvent;
+		import com.events.HeapEvent;
 		import com.events.collection.HeapEventDispatcher;
 		import mx.events.MenuEvent;
 		import mx.controls.MenuBar;
@@ -21,11 +22,12 @@
 		import com.containers.SuperPanel;
 		import com.events.RequestNewStack;
 		import mx.rpc.events.ResultEvent;
+		import mx.controls.Alert;
 		
 		[Bindable]
 		public var menuBarCollection:XMLListCollection;
 		
-		public var heapDispatcher:HeapEventDispatcher;
+		public static var heapDispatcher:HeapEventDispatcher;
 
         private var menubarXML:XMLList =
             <>
@@ -49,7 +51,9 @@
 			heapDispatcher    = new HeapEventDispatcher();
 			menuBarCollection = new XMLListCollection(menubarXML);
 	
-			heapDispatcher.addEventListener(HeapAddEvent.HEAP_ADD, drawHeapAdd);
+			heapDispatcher.addEventListener(HeapEvent.HEAP_ADD, drawHeap);
+			heapDispatcher.addEventListener(HeapEvent.HEAP_POP, drawHeap);
+			
 			this.addEventListener(RequestNewStack.NEW_STACK, addNewPanel);
 		}		
 		
@@ -109,17 +113,14 @@
 			heapDispatcher.heap.pop();
 		}
 		
-		private function drawHeapAdd(event:HeapAddEvent):void
+		private function drawHeap(event:HeapEvent):void
 		{
+			showHeap.text = "";
 			for (var i:Number = 0; i < event.commands.length; i++){
 				showHeap.text += event.commands.getItemAt(i).execute() + " ";
 			}
 		}
-		
-/* 		private function popHandler(event:ResultEvent):void
-		{
-			showHeap.text = new String(event.result);	
-		} */
+
 		
 		]]>
 	</mx:Script>
