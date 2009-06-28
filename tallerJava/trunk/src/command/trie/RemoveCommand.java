@@ -4,9 +4,9 @@ import command.Command;
 
 public class RemoveCommand extends Command {
 
-	private String content;
-	private Integer parentId;
-	private Boolean hasKey;
+	public String content;
+	public Integer parentId;
+	public Boolean hasKey;
 
 	public RemoveCommand(Integer id, String content, Integer parenId,
 			Boolean hasKey) {

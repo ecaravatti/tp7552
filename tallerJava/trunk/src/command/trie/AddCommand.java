@@ -4,9 +4,9 @@ import command.Command;
 
 public class AddCommand extends Command {
 
-	private String content;
-	private Integer parentId;
-	private Boolean hasKey;
+	public String content;
+	public Integer parentId;
+	public Boolean hasKey;
 
 	public AddCommand(Integer id, String content, Integer parenId,
 			Boolean hasKey) {
