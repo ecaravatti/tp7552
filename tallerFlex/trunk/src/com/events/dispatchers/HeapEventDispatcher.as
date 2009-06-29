@@ -10,8 +10,25 @@ package com.events.dispatchers
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.remoting.RemoteObject;
+
+//--------------------------------------
+//  Events
+//--------------------------------------
 	
+	/**
+	 *  Dispatched an item is added to the heap.
+	 *
+	 *  @eventType HeapEvent.HEAP_ADD
+	 */
+	[Event(name="heapAddEvent", type="com.events.HeapEvent")]
 	
+	/**
+	 *  Dispatched an item is popped from the heap.
+	 *
+	 *  @eventType HeapEvent.HEAP_POP
+	 */
+	[Event(name="heapPopEvent", type="com.events.HeapEvent")]
+
 	public class HeapEventDispatcher extends EventDispatcher
 	{		
 		public var heap:RemoteObject;
@@ -25,13 +42,15 @@ package com.events.dispatchers
 			heap.destination = "heap";
 			heap.source = "collection.heap.Heap";
 			
-			// Event handlers para evento de push
+			// Event handlers para evento de add
 			heap.add.addEventListener(ResultEvent.RESULT, addHandler);
 			heap.add.addEventListener(FaultEvent.FAULT, genericFaultHandler);
 			
+			// Event handlers para evento de pop
 			heap.pop.addEventListener(ResultEvent.RESULT, popHandler);
 			heap.pop.addEventListener(FaultEvent.FAULT, genericFaultHandler);
 			
+			// Event handlers para capturar lista de comandos
 			heap.getCommandQueue.addEventListener(ResultEvent.RESULT, getCommandQueueHandler);
 		}
 		

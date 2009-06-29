@@ -3,6 +3,7 @@ package com.events
 	import flash.events.Event;
 	
 	import mx.collections.ArrayCollection;
+	import mx.managers.IBrowserManager;
 
 	public class HeapEvent extends Event
 	{
@@ -14,6 +15,7 @@ package com.events
 		public function HeapEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false)
 		{
 			super(type, bubbles, cancelable);
+		
 		}		
 		
 		public function get commands():ArrayCollection{

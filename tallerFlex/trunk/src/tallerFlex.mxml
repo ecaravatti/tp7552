@@ -6,11 +6,6 @@
 	styleName="mainApplicationStyle" 
 	creationComplete="init()" xmlns:collection="com.events.dispatchers.*">
 	
-	<mx:Metadata>
-		[Event(name="heapAddEvent", type="com.events.HeapEvent")]
-		[Event(name="heapPopEvent", type="com.events.HeapEvent")]
-	</mx:Metadata>
-		
 	<mx:Script>
 		<![CDATA[
 		import com.events.HeapEvent;
@@ -137,8 +132,6 @@
 		height="26"
 		itemClick="menuClick(event)"/>
 	
-<!--	<mx:RemoteObject id="roHeap" destination="heap" source="collection.heap.Heap"/>
-	-->
 	<mx:VBox x="100" y="70">
 		<mx:TextInput id="heapElement" width="30" />
 		<mx:Label id="showHeap" text=" " color="white"/>
@@ -146,6 +139,11 @@
 			<mx:Button label="Push!" click="pushElement(event)"/>
 			<mx:Button label="Pop!" click="popElement(event)"/>
 		</mx:HBox>
+	</mx:VBox>
+	
+	<mx:VBox x="100" y="200" borderStyle="solid" borderColor="white" borderThickness="2">
+		<mx:Text text="Node skin" color="white"/>
+		<lc:NodeTest />
 	</mx:VBox>
 	
 	<lc:TitleBar id="titleBar" 

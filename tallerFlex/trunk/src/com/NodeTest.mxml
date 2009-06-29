@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import com.draw.GenericNode;
+			import mx.controls.Alert;
+			import mx.controls.Text;
+			private var nodeA:GenericNode;
+			private var nodeB:GenericNode;
+			
+			private function init():void
+			{
+				nodeA = new GenericNode(this, 0);
+				//nodeB = new GenericNode(this, 1);
+
+				nodeA.styleName = "nodeStyleA";
+				//nodeB.styleName = "nodeStyleB";
+				
+				nodeA.draw(0, 0, "10");
+				//nodeB.draw(0, 40, "33");
+			}
+			
+			private function swapNodes():void
+			{
+				nodeA.swap(nodeB);
+			}
+			
+			private function eraseNode():void
+			{
+				nodeA.erase();
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Style>
+		.nodeStyleA {
+			nodeSkin: Embed(source="/assets/botones/textArea.png");
+		}
+		
+		.nodeStyleB {
+			nodeSkin: Embed(source="/assets/botones/adelante.png");
+		}
+	</mx:Style>
+	
+	<mx:HBox y="80">
+		<mx:Button label="Swap!" click="swapNodes()"/>
+		<mx:Button label="Erase!" click="eraseNode()"/>
+	</mx:HBox>
+	
+</mx:Canvas>
