@@ -7,9 +7,17 @@
 		</properties>
 	</destination>
 	
-	<destination id="popCommand">
+	<destination id="stack">
 		<properties>
-			<source>command.stack.PopCommand</source>
+			<source>collection.stack.Stack</source>
+			<scope>application</scope>
+		</properties>
+	</destination>
+	
+	<destination id="queue">
+		<properties>
+			<source>collection.queue.Queue</source>
+			<scope>application</scope>
 		</properties>
 	</destination>
 	
