@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.0  (Win32)">
+	<META NAME="CREATED" CONTENT="20090625;20193500">
+	<META NAME="CHANGED" CONTENT="20090807;16423100">
+	<META NAME="Informaci&oacute;n 1" CONTENT="">
+	<META NAME="Informaci&oacute;n 2" CONTENT="">
+	<META NAME="Informaci&oacute;n 3" CONTENT="">
+	<META NAME="Informaci&oacute;n 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		P.monoespacio-western { font-family: "Courier New", monospace; text-align: center }
+		P.monoespacio-cjk { text-align: center }
+		P.monoespacio-ctl { text-align: center }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>Animador de Estructuras Din&aacute;micas</H1>
+<P LANG="es-ES">La mejor manera de comprender las estructuras de
+datos es verlas en acci&oacute;n. Por eso hemos desarrollado
+animaciones interactivas para una variedad de estructuras de datos:</P>
+<UL>
+	<LI><P><A HREF="#Heap|outline" NAME="Heap"><SPAN LANG="es-ES">Heap</SPAN></A></P>
+	<LI><P><A HREF="#&Aacute;rboles Binarios de B&uacute;squeda|outline"><SPAN LANG="es-ES">&Aacute;rboles
+	Binarios de B&uacute;squeda</SPAN></A></P>
+	<UL>
+		<LI><P><A HREF="#&Aacute;rbol Binario de B&uacute;squeda Balanceado por Altura|outline"><SPAN LANG="es-ES">&Aacute;rbol
+		Binario de B&uacute;squeda Balanceado por Altura</SPAN></A></P>
+		<LI><P><A HREF="#&Aacute;rbol Binario de B&uacute;squeda Balanceado por Peso|outline"><SPAN LANG="es-ES">&Aacute;rbol
+		Binario de B&uacute;squeda Balanceado por Peso</SPAN></A></P>
+	</UL>
+	<LI><P><A HREF="#Queue (Cola)|outline"><SPAN LANG="en-US">Queue
+	(Cola)</SPAN></A></P>
+	<LI><P><A HREF="#Stack (Pila)|outline"><SPAN LANG="en-US">Stack
+	(Pila)</SPAN></A></P>
+	<LI><P><A HREF="#Trie|outline">Trie</A></P>
+</UL>
+<P>Otras datos de inter&eacute;s:</P>
+<UL>
+	<LI><P><A HREF="#Controles de Animaci&oacute;n|outline">Controles de
+	Animaci&oacute;n</A></P>
+	<LI><P><A HREF="#Acerca de...|outline">Acerca de...</A></P>
+</UL>
+<HR>
+<H2><A NAME="Heap|outline"></A>Heap</H2>
+<P>Un heap es una estructura de &aacute;rbol con informaci&oacute;n
+perteneciente a un conjunto ordenado. El heap tiene la caracter&iacute;stica
+de que cada nodo padre tiene un valor mayor &oacute; menor que el de
+todos sus nodos hijos.</P>
+<P>Un &aacute;rbol cumple la condici&oacute;n de heap si satisface
+dicha condici&oacute;n y adem&aacute;s es un &aacute;rbol binario
+completo. Un &aacute;rbol binario es completo cuando todos los
+niveles est&aacute;n llenos, con la excepci&oacute;n del &uacute;ltimo
+que puede quedar exento de dicho cumplimiento, pudiendo faltar los
+nodos a la derecha a partir de uno determinado.</P>
+<P>Si bien se puede utilizar un &aacute;rbol binario para representar
+un heap, la condici&oacute;n de &aacute;rbol completo permite
+representar f&aacute;cilmente un heap en un vector colocando los
+elementos por niveles y en cada nivel, los elementos de izquierda a
+derecha. El nodo ra&iacute;z se almacena en la primera posici&oacute;n
+del vector. Siempre se puede calcular la posici&oacute;n de los hijos
+o la del padre a partir de la posici&oacute;n de un nodo en el
+arreglo (contando las posiciones del arreglo a partir de cero): 
+</P>
+<UL>
+	<LI><P>El nodo ra&iacute;z se almacena en la posici&oacute;n 0 del
+	arreglo.</P>
+	<LI><P>Los hijos de un nodo almacenado en la posici&oacute;n <I>k</I>
+	se almacenan en las posiciones <I>2k+1</I> y <I>2k+2</I>
+	respectivamente. 
+	</P>
+	<P STYLE="margin-bottom: 0cm"><IMG SRC="resource/370px-Binary_tree_in_array.svg.png" NAME="gr&aacute;ficos1" ALIGN=BOTTOM WIDTH=370 HEIGHT=93 BORDER=0>
+		</P>
+	<P>Un &aacute;rbol binario completo guardado como arrreglo</P>
+</UL>
+<P><BR><BR>
+</P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta un elemento en el heap (el valor
+	debe ser un n&uacute;mero entero entre 0 y 999).</P>
+	<LI><P><B>Eliminar</B>: Elimina la ra&iacute;z del heap.</P>
+	<LI><P><B>Random</B>: Inserta un elemento en el heap, cuyo valor es
+	elegido al azar entre 0 y 999.</P>
+	<LI><P><B>Limpiar</B>: Elimina a todos los elementos del heap.</P>
+	<LI><P><B>Tama&ntilde;o del heap</B>: Cambia el tama&ntilde;o del
+	heap. Por defecto el tama&ntilde;o del heap es 31. Al cambiar el
+	tama&ntilde;o del heap, se eliminan todos los elementos del mismo.</P>
+</UL>
+<P><BR><BR>
+</P>
+<H4>C&oacute;digo de colores de los nodos durante las animaciones</H4>
+<UL>
+	<LI><P><B>Amarillo</B>: Los nodos est&aacute;n de color amarillo
+	cuando el heap est&aacute; bien formado.</P>
+	<LI><P><B>Rojo</B>: Los nodos est&aacute;n de color rojo cuando se
+	producen rotaciones para reconstruir el heap. Para que los nodos se
+	pongan de color rojo se tuvo que haber realizado una eliminaci&oacute;n
+	&oacute; una inserci&oacute;n</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H2><A NAME="&Aacute;rboles Binarios de B&uacute;squeda|outline"></A>&Aacute;rboles
+Binarios de B&uacute;squeda</H2>
+<P>Un ABB es un &aacute;rbol en el cu&aacute;l cada nodo tiene a los
+sumo 2 hijos y se verifica que para todo nodo del &aacute;rbol:</P>
+<P CLASS="monoespacio-western">valor del sub&aacute;rbol izquierdo &lt;
+valor del nodo &lt; valor del sub&aacute;rbol derecho</P>
+<UL>
+	<LI><P><B>Sub&aacute;rbol derecho de un nodo</B>: es el ABB que
+	tiene como ra&iacute;z al nodo hijo derecho de otro nodo del &aacute;rbol.</P>
+	<LI><P><B>Sub&aacute;rbol izquierdo de un nodo</B>: es el ABB que
+	tiene como ra&iacute;z al nodo hijo izquierdo de otro nodo del
+	&aacute;rbol.</P>
+</UL>
+<H4>C&oacute;digo de colores de los nodos durante las animaciones</H4>
+<TABLE WIDTH=616 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-inside: avoid">
+	<COL WIDTH=106>
+	<COL WIDTH=492>
+	<TR>
+		<TD WIDTH=106>
+			<P><IMG SRC="resource/amarillo.png" NAME="gr&aacute;ficos6" ALIGN=BOTTOM WIDTH=101 HEIGHT=111 BORDER=0></P>
+		</TD>
+		<TD WIDTH=492>
+			<P>El nodo es <I>amarillo</I> cuando se inserta correctamente en
+			el &aacute;rbol.</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=106>
+			<P><IMG SRC="resource/verde-naranja.png" NAME="gr&aacute;ficos7" ALIGN=BOTTOM WIDTH=105 HEIGHT=118 BORDER=0></P>
+		</TD>
+		<TD WIDTH=492>
+			<P>El nodo alterna entre <I>naranja y verde</I> cuando est&aacute;
+			siendo visitado (para conocer si tiene nodos hijos al insertar o
+			bien para buscarlo cuando se elimina).</P>
+			<P>Luego, cambia a <I>naranja</I> para indicar que ya fue visitado
+			(y posteriormente necesite ser actualizado el balance del mismo)</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=106>
+			<P><IMG SRC="resource/rojo-recorrer.png" NAME="gr&aacute;ficos8" ALIGN=BOTTOM WIDTH=106 HEIGHT=112 BORDER=0></P>
+		</TD>
+		<TD WIDTH=492>
+			<P>El nodo es <I>rojo</I> cuando es procesado al ser recorrido.</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=106>
+			<P><IMG SRC="resource/rojo-eliminar.png" NAME="gr&aacute;ficos9" ALIGN=BOTTOM WIDTH=95 HEIGHT=135 BORDER=0></P>
+		</TD>
+		<TD WIDTH=492>
+			<P>El nodo es <I>rojo</I> cuando es eliminado.</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
+</P>
+<HR>
+<H3><A NAME="&Aacute;rbol Binario de B&uacute;squeda Balanceado por Altura|outline"></A>
+&Aacute;rbol Binario de B&uacute;squeda Balanceado por Altura</H3>
+<P>Un ABB est&aacute; <TT>Balanceado por Altura</TT> cuando para cada
+uno de sus nodos ocurre que las <U>alturas</U> de sus dos subarboles
+difieren a lo sumo en <TT>K</TT> (par&aacute;metro entero no nulo). 
+</P>
+<P>Para el caso particular en que <TT>K</TT> vale 1, a este &aacute;rbol
+se lo llama &Aacute;rbol AVL (por sus autores Adel'son-Vels'ki y
+Landis). 
+</P>
+<P>Gracias a este balanceo, se cumple que la <U>altura total del
+arbol [h(n)]</U> con n nodos est&aacute; acotada por: 
+</P>
+<P ALIGN=CENTER><CODE>log2(n+1) &le; h(n) &le; 1.44042 * log2(n+2) -
+0.33772</CODE> 
+</P>
+<P>es decir, la altura total es O(log(n)).</P>
+<P><BR><BR>
+</P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta un nodo en el &aacute;rbol (el valor
+	debe ser un n&uacute;mero entero entre 0 y 999).</P>
+	<LI><P><B>Insertar Random</B>: Inserta un nodo en el &aacute;rbol,
+	cuyo valor es elegido al azar entre 0 y 999.</P>
+	<LI><P><B>Eliminar</B>: Elimina un nodo del &aacute;rbol (*).</P>
+	<LI><P><B>Recorrer</B>: Visita a los nodos en el orden especificado
+	(In-Order, Pre-Order o Post-Order).</P>
+	<LI><P><B>Limpiar</B>: Elimina a todos los nodos del &aacute;rbol.</P>
+	<LI><P><B>Cambiar par&aacute;metro</B>: Cambia la diferencia de
+	altura m&aacute;xima permitida entre los sub&aacute;rboles izquierdo
+	y derecho de cada nodo (se puede elegir entre 1 y 9). Por defecto,
+	este valor es 1 (correspondiente al &Aacute;rbol AVL).</P>
+</UL>
+<P>Al final de cada operaci&oacute;n, se indican la &ldquo;cantidad
+de operaciones realizadas&rdquo; (entre rotaciones y comparaciones).</P>
+<P>(*) Al eliminar un nodo con todos sus hijos, la implementaci&oacute;n
+desarrollada realiza rotaciones hasta que el nodo quede con un &uacute;nico
+hijo (en vez de buscar el nodo sucesor).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4>Referencias</H4>
+<P><B>[1]</B> Handbook of algorithms and data structures (2&ordm;
+editon) - Gonnet, Baeza-Yates. Addison-Wesley, 1991.</P>
+<P><B>[2]</B> Data structures and network algorithms - Tarjan. SIAM,
+1983.</P>
+<P><B>[3]</B> Handbook of Data Structures and Applications - Mehta,
+Sahni. Chapman and Hall, 2005</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H3><A NAME="&Aacute;rbol Binario de B&uacute;squeda Balanceado por Peso|outline"></A>
+&Aacute;rbol Binario de B&uacute;squeda Balanceado por Peso</H3>
+<P>Un ABB est&aacute; <TT>Balanceado por Peso</TT> cuando para cada
+uno de sus nodos ocurre que el balance <TT>p(t)</TT> est&aacute;
+acotado por:</P>
+<P ALIGN=CENTER><TT>[a, 1-a]</TT>, con <TT>a</TT> tal que <TT>0 &le;
+a &le; 1/2</TT>. 
+</P>
+<P>El balance del nodo t, <TT>p(t)</TT>, se define como: 
+</P>
+<P ALIGN=CENTER><CODE>p(t) = cant_nodos en t_izquierdo / cant_nodos
+en t</CODE> 
+</P>
+<P>Para esta implementacion, el par&aacute;metro <TT>a</TT> vale 1/3.</P>
+<P>Se cumple que la <U>altura total del arbol [h(n)]</U> con n nodos
+est&aacute; acotada por: 
+</P>
+<P ALIGN=CENTER><CODE>log2(n+1) &le; h(n) &le; log2(n)/log2(1 - a)</CODE>
+</P>
+<P>es decir, la altura total es O(log(n)).</P>
+<P>Fue introducido por Nievergelt y Reingold (1973). 
+</P>
+<P><BR><BR>
+</P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta un nodo en el &aacute;rbol (el valor
+	debe ser un n&uacute;mero entero entre 0 y 999).</P>
+	<LI><P><B>Insertar Random</B>: Inserta un nodo en el &aacute;rbol,
+	cuyo valor es elegido al azar entre 0 y 999.</P>
+	<LI><P><B>Eliminar</B>: Elimina un nodo del &aacute;rbol (*).</P>
+	<LI><P><B>Recorrer</B>: Visita a los nodos en el orden especificado
+	(In-Order, Pre-Order o Post-Order).</P>
+	<LI><P><B>Limpiar</B>: Elimina todos los nodos del &aacute;rbol.</P>
+</UL>
+<P>Al final de cada operaci&oacute;n, se indican la &ldquo;cantidad
+de operaciones realizadas&rdquo; (entre rotaciones y comparaciones).</P>
+<P>(*) Al eliminar un nodo con todos sus hijos, la implementaci&oacute;n
+desarrollada realiza rotaciones hasta que el nodo quede con un &uacute;nico
+hijo (en vez de buscar el nodo sucesor).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4>Referencias</H4>
+<P><B>[1]</B> Handbook of algorithms and data structures (2&ordm;
+editon) - Gonnet, Baeza-Yates. Addison-Wesley, 1991.</P>
+<P><B>[2]</B> Data structures and network algorithms - Tarjan. SIAM,
+1983.</P>
+<P><B>[3]</B> Handbook of Data Structures and Applications - Mehta,
+Sahni. Chapman and Hall, 2005</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H2><A NAME="Queue (Cola)|outline"></A>Queue (Cola)</H2>
+<P>Una <B>cola</B> (<I>queue</I> en ingl&eacute;s) es una estructura
+de datos, caracterizada por ser una secuencia de elementos en la que
+la operaci&oacute;n de inserci&oacute;n <B>encolar</B> <I>(enqueue)</I>
+se realiza por un extremo y la operaci&oacute;n de extracci&oacute;n
+<B>desencolar</B> <I>(dequeue)</I> por el otro. Tambi&eacute;n se le
+llama estructura FIFO (del ingl&eacute;s <I>First In First Out</I>,
+<B>primero en entrar, primero en salir</B>).</P>
+<P><IMG SRC="resource/400px-ColaProg.JPG" NAME="gr&aacute;ficos2" ALT="Ejemplo de Cola" ALIGN=BOTTOM WIDTH=400 HEIGHT=300 BORDER=0></P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta un nodo en la cola (en la cola).</P>
+	<LI><P><B>Insertar Random</B>: Inserta 10 nodos en la cola cuyo
+	valor es elegido al azar entre 0 y 99.</P>
+	<LI><P><B>Eliminar</B>: Elimina un nodo de la cola (el frente).</P>
+	<LI><P><B>Vaciar</B>: Elimina todos los nodos de la cola.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H2><A NAME="Stack (Pila)|outline"></A>Stack (Pila)</H2>
+<P>Una <B>pila</B> (<I>stack</I> en ingl&eacute;s) es una lista
+ordinal o estructura de datos en la que el modo de acceso a sus
+elementos es de tipo LIFO (del ingl&eacute;s <I>Last In First Out</I>,
+<B>&uacute;ltimo en entrar, primero en salir</B>) que permite
+almacenar y recuperar datos.</P>
+<P>Para el manejo de los datos se cuenta con dos operaciones b&aacute;sicas:
+<B>apilar</B> (<I>push</I>), que coloca un objeto en la pila, y su
+operaci&oacute;n inversa, <B>retirar</B> (o desapilar, <I>pop</I>),
+que retira el &uacute;ltimo elemento apilado.</P>
+<P><IMG SRC="resource/Pila_de_datos.jpg" NAME="gr&aacute;ficos3" ALT="Representaci&oacute;n gr&aacute;fica de una pila" ALIGN=BOTTOM WIDTH=273 HEIGHT=224 BORDER=0></P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta un nodo en la pila (en el tope).</P>
+	<LI><P><B>Insertar Random</B>: Inserta 10 nodos en la pila cuyo
+	valor es elegido al azar entre 0 y 99.</P>
+	<LI><P><B>Eliminar</B>: Elimina un nodo de la pila (el tope).</P>
+	<LI><P><B>Vaciar</B>: Elimina todos los nodos de la pila.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H2><A NAME="Trie|outline"></A>Trie</H2>
+<P>La palabra TRIE proviene de las letras centrales de la palabra
+<B>&quot;retrieval&quot;</B> (recuperaci&oacute;n - de informaci&oacute;n
+-). Un trie es un &aacute;rbol de b&uacute;squeda que utiliza partes
+de la clave para realizar las operaciones de b&uacute;squeda,
+inserci&oacute;n y eliminaci&oacute;n. Cada clave es una secuencia de
+caracteres, y un trie se organiza de acuerdo a estos caracteres en
+lugar de hacerlo en torno de la clave completa.</P>
+<H3><A NAME="Algunas variantes"></A>Algunas variantes</H3>
+<UL>
+	<P><B>array-trie:</B> cada nodo es un vector de punteros para
+	acceder a los sub&aacute;rboles directamente. Esta soluci&oacute;n
+	es adecuada cuando la cardinalidad del alfabeto es peque&ntilde;a
+	(por ejemplo, para cadenas binarias), en caso contrario es necesario
+	crear una gran cantidad de punteros nulos.</P>
+</UL>
+<P ALIGN=CENTER><IMG SRC="resource/array.png" NAME="gr&aacute;ficos4" ALIGN=BOTTOM WIDTH=616 HEIGHT=335 BORDER=0></P>
+<P ALIGN=CENTER>Un trie implementado con arrays. Alfabeto = { A, D,
+E, I, M} 
+</P>
+<UL>
+	<P><B>list-trie: </B>esta estructura soluciona el alto costo de
+	almacenamiento de los trie implementados con arrays. Este caso, cada
+	nodo es una lista enlazada por punteros que contiene dos punteros,
+	uno al nodo hijo m&aacute;s a la izquierda y otro al siguiente
+	hermano. Esta implementaci&oacute;n, no permite el acceso aleatorio
+	a los punteros almacenados en los nodos, por lo que no es posible
+	seleccionar un nodo hijo en tiempo constante, y aunque la lista de
+	nodos puede mantenerse ordenada, en el peor de los casos todos los
+	nodos hijos deber&aacute;n ser examinados.</P>
+</UL>
+<P ALIGN=CENTER><IMG SRC="resource/list.png" NAME="gr&aacute;ficos5" ALIGN=BOTTOM WIDTH=617 HEIGHT=344 BORDER=0></P>
+<P ALIGN=CENTER>Un trie implementado con listas</P>
+<P><BR><BR>
+</P>
+<H4>Controles de animaci&oacute;n</H4>
+<UL>
+	<LI><P><B>Insertar</B>: Inserta una clave en el trie.</P>
+	<LI><P><B>Eliminar</B>: Elimina una clave del trie.</P>
+	<LI><P><B>Demo</B>: Inserta una secuencia de claves en el trie.</P>
+	<LI><P><B>Limpiar</B>: Elimina a todos los nodos del trie.</P>
+</UL>
+<H4>C&oacute;digo de colores de los nodos durante las animaciones</H4>
+<UL>
+	<LI><P><B>Amarillo</B>: Un nodo es amarillo cuando el nodo ha sido
+	insertado.</P>
+	<LI><P><B>Verde</B>: Un nodo es verde cuando ha sido encontrado
+	durante una b&uacute;squeda, o va a ser eliminado.</P>
+	<LI><P><B>Rojo</B>: Un nodo es rojo cuando no coincide con el nodo
+	buscado. En el caso de la eliminaci&oacute;n de una clave, el nodo
+	no puede ser eliminado.</P>
+</UL>
+<H3><A NAME="Referencias"></A>Referencias</H3>
+<P><B>[1]</B> Applied data structures with C++ - Peter Smith</P>
+<P><B>[2]</B> Data Structure And Algorithms in C++ 2nd ed - Adam
+Drozdek</P>
+<P><B>[3]</B> An introduction to data structures and algorithms -
+Andrew Storer</P>
+<P><B>[4]</B> Data structures and algorithms - Alfred V. Aho, John E.
+Hopcroft, Jeffrey D. Ullman</P>
+<P><B>[5]</B> Handbook of data structures and applications - Dinesh
+P. Mehta, Sartaj Sahni</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<H2><A NAME="Controles de Animaci&oacute;n|outline"></A>Controles de
+Animaci&oacute;n</H2>
+<P>Para controlar las animaciones, se usan los siguientes controles:</P>
+<UL>
+	<LI><P><B>Interactivo:</B> Activa el modo manual de las animaciones,
+	donde la animaci&oacute;n de una acci&oacute;n determinada se
+	realiza con interacci&oacute;n del usuario, paso por paso hasta que
+	se termina. De este modo, se comprende con mayor detalle los pasos
+	que se van realizando durante la animaci&oacute;n.</P>
+	<LI><P><B>Siguiente:</B> (Solo en modo Interactivo) Se pasa el
+	siguiente paso de la animaci&oacute;n.</P>
+	<LI><P><B>Deshacer:</B> (Solo en modo Interactivo) Deshace el &uacute;ltimo
+	paso de la animaci&oacute;n. Esto es &uacute;til para repetir el
+	&uacute;ltimo paso (y no toda la animaci&oacute;n) debido a que la
+	misma se hizo r&aacute;pidamente y no se lleg&oacute; a comprender
+	el detalle.</P>
+	<LI><P><B>Control de Velocidad:</B> Aumenta o diminuye la velocidad
+	de las animaciones.</P>
+</UL>
+<HR>
+<H2><A NAME="Acerca de...|outline"></A>Acerca de...</H2>
+<P>Esta aplicaci&oacute;n form&oacute; parte de un Trabajo Pr&aacute;ctico
+de la asignatura <A HREF="http://materias.fi.uba.ar/7552">Taller de
+Programaci&oacute;n II </A>de la <A HREF="http://www.fi.uba.ar/">Faculta
+de Ingenier&iacute;a de la UBA</A>.</P>
+<P>Fue desarrollado durante el transcurso del Primer Cuatrimestre de
+2009 por:</P>
+<UL>
+	<LI><P>CURIA, Exequiel Osvaldo</P>
+	<LI><P>FREIJE, Agustina</P>
+	<LI><P>GORIN, Patricio</P>
+	<LI><P>HERN&Aacute;NDEZ, Duilio</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+</BODY>
+</HTML>

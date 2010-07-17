@@ -1,0 +1,26 @@
+package view.commons.exceptions;
+
+/**
+ * Esta excepcion debe arrojarse cuando no se puede deshacer una operacion.
+ *
+ * @author Agustina Freije
+ */
+public class CannotUndoException extends Exception {
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Construye una excepcion CannotUndoException
+   * @param message mensaje explicando la excepcion.
+   */
+  public CannotUndoException(String message) {
+    super(message);
+  }
+
+  /**
+   * Construye una excepcion CannotUndoException
+   */
+  public CannotUndoException() {
+    super();
+  }
+
+}
