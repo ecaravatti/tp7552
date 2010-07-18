@@ -1,12 +1,6 @@
-package model.structures.queues;
+package model.structures.queue;
 
-/**
- * Queue data structure. Each queue item is of type T.
- *
- * @author pgorin
- *
- * @param <T> type of item stored in the queue.
- */
+
 public interface Queue<T> {
 
     /**

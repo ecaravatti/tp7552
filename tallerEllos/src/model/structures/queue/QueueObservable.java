@@ -2,15 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.structures.queues;
+package model.structures.queue;
 
 import events.ObservableBase;
 import events.queues.QueueListener;
 
-/**
- *
- * @author pgorin
- */
+
 public abstract class QueueObservable<T> extends ObservableBase<QueueListener<T>> implements Queue<T>,  Iterable<T> {
 
     protected void fireItemEnqueued(T item) {

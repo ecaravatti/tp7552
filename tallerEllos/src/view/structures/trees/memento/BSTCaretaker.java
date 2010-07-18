@@ -1,14 +1,14 @@
 package view.structures.trees.memento;
 
-import model.structures.stacks.LinkedListStackImpl;
+import model.structures.stack.ArrayListStackImpl;
 
 public class BSTCaretaker {
-  private LinkedListStackImpl<BSTMemento> savedStates;
+  private ArrayListStackImpl<BSTMemento> savedStates;
   
   
   public BSTCaretaker() {
     super();
-    this.savedStates = new LinkedListStackImpl<BSTMemento>();
+    this.savedStates = new ArrayListStackImpl<BSTMemento>();
   }
 
   public void addMemento(BSTMemento m) {

@@ -1,12 +1,6 @@
-package model.structures.stacks;
+package model.structures.stack;
 
-/**
- * Stack data structure. Each stack element is of type T.
- *
- * @author pgorin
- * 
- * @param <T> type of item stored in the queue.
- */
+
 public interface Stack<T> {
 
     /**

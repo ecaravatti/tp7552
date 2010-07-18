@@ -6,7 +6,8 @@ package controllers;
 
 import java.util.Iterator;
 import javax.swing.JTextArea;
-import model.structures.stacks.StackObservable;
+
+import model.structures.stack.StackObservable;
 import view.commons.commands.ShowMessageCommand;
 import view.structures.stacks.StackPanel;
 import view.structures.stacks.StackView;

@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
-import model.structures.queues.LinkedListQueueImpl;
+
+import model.structures.queue.ArrayListQueueImpl;
 import view.commons.PanelAnimated;
 import view.commons.shapes.Arrow;
 import view.commons.shapes.NodeShape;
@@ -63,10 +64,10 @@ public class HeapView<T> extends PanelAnimated implements HeapListener<T> {
     private int labelPosY = 68;
     // Generador de números aleatorios
     private Random generator = new Random();
-    private LinkedListQueueImpl<Text> currentLabelQueue = new LinkedListQueueImpl<Text>();
-    private LinkedListQueueImpl<Text> parentLabelQueue = new LinkedListQueueImpl<Text>();
-    private LinkedListQueueImpl<BSTNodeShape> currentNodeQueue = new LinkedListQueueImpl<BSTNodeShape>();
-    private LinkedListQueueImpl<BSTNodeShape> parentNodeQueue = new LinkedListQueueImpl<BSTNodeShape>();
+    private ArrayListQueueImpl<Text> currentLabelQueue = new ArrayListQueueImpl<Text>();
+    private ArrayListQueueImpl<Text> parentLabelQueue = new ArrayListQueueImpl<Text>();
+    private ArrayListQueueImpl<BSTNodeShape> currentNodeQueue = new ArrayListQueueImpl<BSTNodeShape>();
+    private ArrayListQueueImpl<BSTNodeShape> parentNodeQueue = new ArrayListQueueImpl<BSTNodeShape>();
     private Integer swapCount = 0;
 
     /** Creates new form HeapView */

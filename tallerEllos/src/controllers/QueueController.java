@@ -6,7 +6,8 @@ package controllers;
 
 import java.util.Iterator;
 import javax.swing.JTextArea;
-import model.structures.queues.QueueObservable;
+
+import model.structures.queue.QueueObservable;
 import view.structures.queues.QueuePanel;
 import view.structures.queues.QueueView;
 
