@@ -200,7 +200,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
 
         treeAVL.delete(new Integer(12));
         assertEquals(4, treeAVL.getHeight());
-        assertEquals(8, treeAVL.getRootData().intValue());
+        assertEquals(5, treeAVL.getRootData().intValue());
 //        printAVL();
     }
 

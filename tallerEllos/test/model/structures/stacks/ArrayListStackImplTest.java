@@ -1,24 +1,27 @@
 package model.structures.stacks;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
+
+import model.structures.stack.ArrayListStackImpl;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LinkedListStackImplTest {
+public class ArrayListStackImplTest {
 
     private static final Integer STACK_ITEM_1 = 1;
     private static final Integer STACK_ITEM_2 = 2;
 
     @Test
     public void testIsEmptyUsingTrueCondition() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+        ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
         Assert.assertTrue(stack.isEmpty());
     }
 
     @Test
     public void testIsEmptyUsingFalseCondition() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
         stack.push(STACK_ITEM_1);
 
         Assert.assertFalse(stack.isEmpty());
@@ -26,7 +29,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testGetSize() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
         stack.push(STACK_ITEM_1);
 
         Assert.assertEquals(1, stack.getSize());
@@ -34,7 +37,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testPeekUsingEmptyStack() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
 
         try {
             stack.peek();
@@ -47,7 +50,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testPeek() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
         stack.push(STACK_ITEM_1);
 
         Assert.assertEquals(STACK_ITEM_1, stack.peek());
@@ -56,7 +59,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testPush() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
 
         stack.push(STACK_ITEM_1);
 
@@ -71,7 +74,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testPop() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
         stack.push(STACK_ITEM_1);
         stack.push(STACK_ITEM_2);
 
@@ -83,7 +86,7 @@ public class LinkedListStackImplTest {
 
     @Test
     public void testIterator() {
-        LinkedListStackImpl<Integer> stack = new LinkedListStackImpl<Integer>();
+    	ArrayListStackImpl<Integer> stack = new ArrayListStackImpl<Integer>();
 
         Iterator<Integer> iterator = stack.iterator();
 

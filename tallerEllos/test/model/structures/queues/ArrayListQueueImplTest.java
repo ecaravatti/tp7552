@@ -1,25 +1,27 @@
 package model.structures.queues;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-import model.structures.stacks.EmptyStackException;
+import model.structures.queue.ArrayListQueueImpl;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LinkedListQueueImplTest {
+public class ArrayListQueueImplTest {
 
     private static final Integer QUEUE_ITEM_1 = 1;
     private static final Integer QUEUE_ITEM_2 = 2;
 
     @Test
     public void testIsEmptyUsingTrueCondition() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+        ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         Assert.assertTrue(queue.isEmpty());
     }
 
     @Test
     public void testIsEmptyUsingFalseCondition() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
 
         Assert.assertFalse(queue.isEmpty());
@@ -27,7 +29,7 @@ public class LinkedListQueueImplTest {
 
     @Test
     public void testGetLength() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
 
         Assert.assertEquals(1, queue.getLength());
@@ -35,7 +37,7 @@ public class LinkedListQueueImplTest {
 
     @Test
     public void testEnqueue() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
 
         queue.enqueue(QUEUE_ITEM_1);
         Assert.assertEquals(1, queue.getLength());
@@ -46,12 +48,12 @@ public class LinkedListQueueImplTest {
 
     @Test
     public void testDequeueUsingEmptyQueue() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
 
         try {
             queue.dequeue();
             Assert.fail();
-        } catch (EmptyQueueException e) {
+        } catch (NoSuchElementException e) {
         } catch (Exception e) {
             Assert.fail(e.getClass().getName());
         }
@@ -59,7 +61,7 @@ public class LinkedListQueueImplTest {
 
     @Test
     public void testDequeue() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
         queue.enqueue(QUEUE_ITEM_2);
 
@@ -71,7 +73,7 @@ public class LinkedListQueueImplTest {
 
     @Test
     public void testIterator() {
-        LinkedListQueueImpl<Integer> queue = new LinkedListQueueImpl<Integer>();
+    	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
 
         Iterator<Integer> iterator = queue.iterator();
 
