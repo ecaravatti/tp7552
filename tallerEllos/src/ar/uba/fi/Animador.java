@@ -24,10 +24,10 @@ import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import model.structures.heap.Heap;
-import model.structures.queues.LinkedListQueueImpl;
-import model.structures.queues.QueueObservable;
-import model.structures.stacks.LinkedListStackImpl;
-import model.structures.stacks.StackObservable;
+import model.structures.queue.ArrayListQueueImpl;
+import model.structures.queue.QueueObservable;
+import model.structures.stack.ArrayListStackImpl;
+import model.structures.stack.StackObservable;
 import model.structures.trees.BSTHeightBalanced;
 import model.structures.trees.BSTWeightBalanced;
 import model.structures.trie.Trie;
@@ -147,7 +147,7 @@ public class Animador extends JApplet implements ComponentListener {
         /**
          * Componentes de Queue.
          */
-        queue = new LinkedListQueueImpl();
+        queue = new ArrayListQueueImpl();
         queueView = new QueueView();
         queuePanel = new QueuePanel(queueView);
         queueController = new QueueController(queue, queuePanel, operationsLog);
@@ -157,7 +157,7 @@ public class Animador extends JApplet implements ComponentListener {
         /**
          * Componentes de Stack.
          */
-        stack = new LinkedListStackImpl();
+        stack = new ArrayListStackImpl();
         stackView = new StackView();
         stackPanel = new StackPanel(stackView);
         stackController = new StackController(stack, stackPanel, operationsLog);
