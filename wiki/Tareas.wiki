@@ -17,6 +17,7 @@ Ejemplos:
   * Código Fuente
     * Refactor de comentarios
     * Refactor de convención de sintaxis
+    * Eliminar warnings
   * Ventana
     * Cambiar color, tabs, botones, etc. (si se puede)
     * Eliminar la opción “Guardar” porque tira una excepción
