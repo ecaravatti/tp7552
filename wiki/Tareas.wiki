@@ -11,84 +11,67 @@ Ejemplos:
 
 = Details =
 
-Paquetes
-  * Refactor de nombres
-  * Refactor de orden
-
-Código Fuente
-  * Refactor de comentarios
-  * Refactor de convención de sintaxis
-
-Ventana
-  * Cambiar color, tabs, botones, etc. (si se puede)
-  * Eliminar la opción “Guardar” porque tira una excepción
-  * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009”
-
-Ayuda
-  * Styles
-  * Acerca de…
-
-Imágenes
+  * Paquetes
+    * Refactor de nombres
+    * Refactor de orden
+  * Código Fuente
+    * Refactor de comentarios
+    * Refactor de convención de sintaxis
+  * Ventana
+    * Cambiar color, tabs, botones, etc. (si se puede)
+    * Eliminar la opción “Guardar” porque tira una excepción
+    * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009”
+  * Ayuda
+    * Styles
+    * Acerca de…
+  * Imágenes
+    * Trie
+      * Nodo cuadrado
+      * Nodo de lista
+      * Nodo cuadrado con bordes redondeados
+    * Stack
+      * Nodo cuadrado con bordes redondeados
+    * Queue
+      * Nodo cuadrado con bordes redondeados
+    * Heap
+      * Nodo cuadrado (array)
+      * Nodo circular (árbol)
+    * Árboles
+      * Nodo circular
+  * Pila
+    * Armar estructura en forma vertical
+    * Permitir especificar el tamaño de la estructura al inicio
+    * Mostrar cartel de aviso de pila vacía
+    * Poner nombres específicos de las funciones (Push, Pop)
+  * Cola
+    * Agregar esquema simultáneo de cola circular
+    * Permitir especificar el tamaño de la estructura al inicio
+    * Mostrar cartel de aviso de cola vacía
+    * Poner nombres específicos de las funciones (Acolar, Desacolar)
+  * Árbol Balanceado por Peso
+    * Permitir ingresar el parámetro de peso
+    * Permitir especificar el tamaño de la estructura al inicio
+    * Mostrar cartel de aviso de árbol vacío
+  * Árbol Balanceado por Altura
+    * Mostrar cartel de aviso de árbol vacío
+    * Permitir especificar el tamaño de la estructura al inicio
   * Trie
-    * Nodo cuadrado
-    * Nodo de lista
-    * Nodo cuadrado con bordes redondeados
-  * Stack
-    * Nodo cuadrado con bordes redondeados
-  * Queue
-    * Nodo cuadrado con bordes redondeados
+    * Cambiar “Demo” por “Random”
+    * Permitir especificar el tamaño de la estructura al inicio
   * Heap
-    * Nodo cuadrado (array)
-    * Nodo circular (árbol)
-  * Árboles
-    * Nodo circular
-
-Pila
-  * Armar estructura en forma vertical
-  * Permitir especificar el tamaño de la estructura al inicio
-  * Mostrar cartel de aviso de pila vacía
-  * Poner nombres específicos de las funciones (Push, Pop)
-
-Cola
-  * Agregar esquema simultáneo de cola circular
-  * Permitir especificar el tamaño de la estructura al inicio
-  * Mostrar cartel de aviso de cola vacía
-  * Poner nombres específicos de las funciones (Acolar, Desacolar)
-
-Árbol Balanceado por Peso
-  * Permitir ingresar el parámetro de peso
-  * Permitir especificar el tamaño de la estructura al inicio
-  * Mostrar cartel de aviso de árbol vacío
-
-Árbol Balanceado por Altura
-  * Mostrar cartel de aviso de árbol vacío
-  * Permitir especificar el tamaño de la estructura al inicio
-
-Trie
-  * Cambiar “Demo” por “Random”
-  * Permitir especificar el tamaño de la estructura al inicio
-
-Heap
-  * Mostrar cartel de aviso de heap vacío
-
-Frame Principal
-  * Agregar scroll
-  * Styles
-
-Frame de Operaciones Realizadas
-  * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
-  * Styles
-
-Frame de Pseudocódigo
-  * Styles
-
-Frame Inferior
-  * Mejorar el Step by Step
-  * Styles
-
-Página Web para correr el Applet
-
-Documentación
-  * Documento Técnico
-  * Documento con el estándar de codificación
-
+    * Mostrar cartel de aviso de heap vacío
+  * Frame Principal
+    * Agregar scroll
+    * Styles
+  * Frame de Operaciones Realizadas
+    * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
+    * Styles
+  * Frame de Pseudocódigo
+    * Styles
+  * Frame Inferior
+    * Mejorar el Step by Step
+    * Styles
+  * Página Web para correr el Applet
+  * Documentación
+    * Documento Técnico
+    * Documento con el estándar de codificación
