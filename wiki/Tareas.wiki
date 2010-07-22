@@ -27,18 +27,18 @@ Ejemplos:
     * Acerca de…
   * Imágenes
     * Trie
-      * Nodo cuadrado
-      * Nodo de lista
-      * Nodo cuadrado con bordes redondeados
+      * Nodo cuadrado _(Dami)_ *(In Progress)*
+      * Nodo de lista _(Dami)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(In Progress)*
     * Stack
-      * Nodo cuadrado con bordes redondeados
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(In Progress)*
     * Queue
-      * Nodo cuadrado con bordes redondeados
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(In Progress)*
     * Heap
-      * Nodo cuadrado (array)
-      * Nodo circular (árbol)
+      * Nodo cuadrado (array) _(Dami)_ *(In Progress)*
+      * Nodo circular (árbol) _(Dami)_ *(In Progress)*
     * Árboles
-      * Nodo circular
+      * Nodo circular _(Dami)_ *(In Progress)*
   * Pila
     * Armar estructura en forma vertical
     * Permitir especificar el tamaño de la estructura al inicio
