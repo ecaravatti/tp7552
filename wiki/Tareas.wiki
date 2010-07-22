@@ -64,6 +64,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio
   * Heap
     * Mostrar cartel de aviso de heap vacío
+    * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras.
   * Frame Principal
     * Agregar scroll
     * Styles
