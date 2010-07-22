@@ -1,21 +1,14 @@
 package ar.uba.fi.structuresAnimator;
 
-import controller.BSTHeightBalancedController;
-import controller.HeapController;
-import controller.InteractiveController;
-import controller.QueueController;
-import controller.StackController;
-import controller.TrieController;
-
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.Font;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.BorderFactory;
 import javax.swing.JApplet;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -32,12 +25,6 @@ import model.collection.stack.StackObservable;
 import model.collection.tree.BSTHeightBalanced;
 import model.collection.tree.BSTWeightBalanced;
 import model.collection.trie.Trie;
-import ar.uba.fi.structuresAnimator.doc.HelpPanel;
-
-import java.awt.Font;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-
 import view.collection.heap.HeapView;
 import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
@@ -48,11 +35,19 @@ import view.collection.tree.BSTPanel;
 import view.collection.trie.MainPanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
+import ar.uba.fi.structuresAnimator.doc.HelpPanel;
+import controller.BSTHeightBalancedController;
+import controller.HeapController;
+import controller.InteractiveController;
+import controller.QueueController;
+import controller.StackController;
+import controller.TrieController;
 
 /**
  *
  * @author Exe Curia
  */
+@SuppressWarnings("serial")
 public class StructuresAnimator extends JApplet implements ComponentListener {
     private final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
 
@@ -104,7 +99,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
      * Componentes de Heap.
      */
     private Heap<Integer> heap;
-    private HeapView heapView;
+    private HeapView<Integer> heapView;
     private HeapController<Integer> heapController;
 
     private List<InteractiveController> controllers;
@@ -171,8 +166,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
          * Componentes de Heap.
          */
         heap = new Heap<Integer>();
-        heapView = new HeapView();
-        heapController = new HeapController(heap, heapView, operationsLog);
+        heapView = new HeapView<Integer>();
+        heapController = new HeapController<Integer>(heap, heapView, operationsLog);
         heapController.setPrimitivesCodeArea(primitivesCodeArea);
         heapView.addController(heapController);
 

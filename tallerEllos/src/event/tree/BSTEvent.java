@@ -10,6 +10,7 @@ import model.collection.tree.BinarySearchTree;
  *
  * @author Exe Curia
  */
+@SuppressWarnings("serial")
 public class BSTEvent<K extends Comparable<K>> extends EventObject {
     private BSTNode<K> currentNode;
     private int side;
@@ -31,7 +32,8 @@ public class BSTEvent<K extends Comparable<K>> extends EventObject {
         this.currentNode = node;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public BinarySearchTree<K> getSource() {
         return (BinarySearchTree<K>) source;
     }

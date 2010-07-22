@@ -16,7 +16,6 @@ import view.collection.tree.TreeGenerator;
 
 /**
  *
- * @author Exe Curia
  */
 public class BSTHeightBalancedController extends InteractiveController {
 
@@ -26,7 +25,6 @@ public class BSTHeightBalancedController extends InteractiveController {
     private BinarySearchTree<Integer> tree;
     private BSTHeightBalancedView view;
     private BSTPanel panel;
-    private JTextArea operationsLog;
     private boolean running;
     private boolean create;
     private TreeGenerator gen = null;
@@ -38,7 +36,6 @@ public class BSTHeightBalancedController extends InteractiveController {
         this.panel = panel;
         this.view = panel.getView();
         this.tree.addListener(view);
-        this.operationsLog = operationsLog;
         this.running = false;
         this.create = false;
 

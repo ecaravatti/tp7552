@@ -18,10 +18,10 @@ import view.command.common.StepFinishedCommand;
  */
 public class EndAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private HeapView view;
+    private HeapView<T> view;
     private String text;
 
-    public EndAnimation(HeapView view, String text) {
+    public EndAnimation(HeapView<T> view, String text) {
         this.view = view;
         this.text = text;
     }

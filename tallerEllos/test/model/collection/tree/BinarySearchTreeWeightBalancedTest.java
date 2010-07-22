@@ -1,12 +1,10 @@
 package model.collection.tree;
 
-import model.collection.tree.BSTIterator;
-import model.collection.tree.BSTNode;
-import model.collection.tree.BSTWeightBalanced;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
 
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +20,7 @@ public class BinarySearchTreeWeightBalancedTest {
 		data2 = new Integer((int) Math.round(1000*Math.random()));
 	}
 
-    private void printTree() {
+    protected void printTree() {
         for (BSTIterator<Integer> it = tree.traversePreOrder(); it.hasNext();) {
             BSTNode<Integer> node = it.next();
             System.out.println(node.getData() + " " + node.getBalance());

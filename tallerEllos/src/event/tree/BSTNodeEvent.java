@@ -6,15 +6,16 @@ import model.collection.tree.BSTNode;
 
 /**
  *
- * @author Exe Curia
  */
+@SuppressWarnings("serial")
 public class BSTNodeEvent<K extends Comparable<K>> extends EventObject {
 
     public BSTNodeEvent(BSTNode<K> source) {
         super(source);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public BSTNode<K> getSource() {
         return (BSTNode<K>) source;
     }

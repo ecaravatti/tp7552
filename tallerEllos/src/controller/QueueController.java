@@ -5,6 +5,7 @@
 package controller;
 
 import java.util.Iterator;
+
 import javax.swing.JTextArea;
 
 import model.collection.queue.QueueObservable;
@@ -19,16 +20,14 @@ public class QueueController<T> extends InteractiveController {
 
     private QueueObservable<T> queue;
     private QueueView<T> view;
-    private QueuePanel panel;
-    private JTextArea operationsLog;
+    private QueuePanel<T> panel;
 
-    public QueueController(QueueObservable<T> queue, QueuePanel panel, JTextArea operationsLog) {
+    public QueueController(QueueObservable<T> queue, QueuePanel<T> panel, JTextArea operationsLog) {
         super(panel.getView(), operationsLog);
         this.queue = queue;
         this.panel = panel;
         this.view = panel.getView();
         this.queue.addListener(view);
-        this.operationsLog = operationsLog;
     }
 
     public void dequeueAllItem() {

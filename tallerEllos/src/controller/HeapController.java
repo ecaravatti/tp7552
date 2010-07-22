@@ -17,16 +17,14 @@ import view.command.common.ShowPrimitiveCodeCommand;
  */
 public class HeapController<T extends Comparable<T>> extends InteractiveController {
 
-    private Heap heap;
-    private HeapView view;
-    private JTextArea operationsLog;
+    private Heap<T> heap;
+    private HeapView<T> view;
 
-    public HeapController(Heap heap, HeapView view, JTextArea operationsLog) {
+    public HeapController(Heap<T> heap, HeapView<T> view, JTextArea operationsLog) {
         super(view, operationsLog);
 
         this.heap = heap;
         this.view = view;
-        this.operationsLog = operationsLog;
 
         heap.addListener(view);
         view.addController(this);
