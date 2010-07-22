@@ -11,9 +11,9 @@ Ejemplos:
 
 = Details =
 
-  * Paquetes
-    * Refactor de nombres _(Dami)_ *(In Progress)*
-    * Refactor de orden _(Dami)_ *(In Progress)*
+  * Paquetes *(Done)*
+    * Refactor de nombres _(Dami)_ *(Done)*
+    * Refactor de orden _(Dami)_ *(Done)*
   * Código Fuente
     * Refactor de comentarios
     * Refactor de convención de sintaxis
