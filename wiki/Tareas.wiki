@@ -68,6 +68,7 @@ Ejemplos:
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
     * Styles
   * Frame de Pseudocódigo
+    * Arreglar alineación: hay funciones que tiene if anidados en una sola línea
     * Styles
   * Frame Inferior
     * Mejorar el Step by Step
