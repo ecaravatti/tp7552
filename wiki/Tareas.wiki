@@ -49,6 +49,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio
     * Mostrar cartel de aviso de cola vacía
     * Poner nombres específicos de las funciones (Acolar, Desacolar)
+    * Corregir bug que hay cuando se hace una inserción random, se eliminan un par de elementos, y al insertar uno nuevo, éste es insertado muy a la izquierda, como si la cola continuara con la cant. inicial de elementos.
   * Árbol Balanceado por Peso
     * Permitir ingresar el parámetro de peso
     * Permitir especificar el tamaño de la estructura al inicio
