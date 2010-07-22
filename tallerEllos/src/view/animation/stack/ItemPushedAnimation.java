@@ -22,18 +22,17 @@ import view.command.stack.LinkMobilesCommand;
 
 /**
  *
- * @author pgorin
  */
 public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private final static int DEF_WIDTH_NODE = 50;
-    private final static int DEF_HEIGTH_NODE = 50;
+//    private final static int DEF_HEIGTH_NODE = 50;
     private static final int DELTA_HORIZONTAL = 50;
     private static final int DELTA_VERTICAL = 100;
-    private StackView view;
+    private StackView<T> view;
     private StackNodeView<T> node;
 
-    public ItemPushedAnimation(StackView view, StackNodeView<T> node) {
+    public ItemPushedAnimation(StackView<T> view, StackNodeView<T> node) {
         this.view = view;
         this.node = node;
     }
@@ -59,11 +58,11 @@ public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
             this.steps.add(new LinkMobilesCommand(node, true));
 
             //assign new role to the pushed parent item.
-            this.steps.add(new AssignNodeRoleCommand(pushedParentNode, (pushedParentNode.getParent() == null) ? StackNodeRoles.bottom : null));
+            this.steps.add(new AssignNodeRoleCommand<T>(pushedParentNode, (pushedParentNode.getParent() == null) ? StackNodeRoles.bottom : null));
         }
 
         //assign the role to the pushed item.
-        this.steps.add(new AssignNodeRoleCommand(node, StackNodeRoles.top));
+        this.steps.add(new AssignNodeRoleCommand<T>(node, StackNodeRoles.top));
 
         this.steps.add(new ShowMessageCommand(view, MessageFormat.format("Item insertado: {0}", node.getItem().toString())));
         this.steps.add(new StepFinishedCommand(view, true));

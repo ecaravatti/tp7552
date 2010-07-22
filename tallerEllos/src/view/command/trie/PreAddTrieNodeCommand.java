@@ -1,11 +1,11 @@
 package view.command.trie;
 
+import java.util.Hashtable;
+
 import view.collection.trie.TrieView;
 import view.command.common.Command;
 import view.element.trie.AbstractTrieNodeView;
 import view.element.trie.TrieNodeView;
-
-import java.util.Hashtable;
 
 
 

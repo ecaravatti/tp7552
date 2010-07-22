@@ -7,7 +7,7 @@ import view.element.trie.AbstractTrieNodeView;
 /**
  * Este comando debe ejecutarse cuando se agrega un nodo al trie.
  * 
- * @author Agustina
+ * 
  */
 public class AddTrieNodeCommand implements Command {
   private TrieView trieView;

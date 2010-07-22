@@ -7,7 +7,7 @@ import view.command.common.Command;
 
 /**
  * 
- * @author Agustina Freije
+ * 
  */
 public abstract class AbstractUndoAnimationSteps implements UndoAnimationSteps {
   protected List<Command> steps;

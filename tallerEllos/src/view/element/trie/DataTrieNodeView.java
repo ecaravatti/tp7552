@@ -12,7 +12,7 @@ import view.shape.NodeShape;
 /**
  * Esta clase representa la vista de un trie node que contiene un dato.
  * 
- * @author Agustina
+ * 
  */
 public class DataTrieNodeView extends AbstractTrieNodeView {
   private final static Font DEF_FONT = new Font("SansSerif", Font.BOLD, 10);

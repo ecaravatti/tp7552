@@ -26,11 +26,12 @@ import controller.InteractiveController;
 /**
  * Panel para la vista donde se realizan las animaciones
  *
- * @author Exe Curia
  */
 public abstract class AnimatedPanel extends JPanel implements ComponentListener {
 
-    private static int MIN_DELAY = 50;
+	private static final long serialVersionUID = 1L;
+	
+	private static int MIN_DELAY = 50;
     private static int MAX_DELAY = 100;
     private static int DELAY = 60;
     private static double DEF_DELTA = 8;

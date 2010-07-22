@@ -24,12 +24,11 @@ import view.command.queue.RemoveNodeCommand;
 
 /**
  *
- * @author pgorin
  */
 public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private final static int DEF_WIDTH_NODE = 50;
-    private final static int DEF_HEIGTH_NODE = 50;
+//    private final static int DEF_HEIGTH_NODE = 50;
     private static final int DELTA_HORIZONTAL = 50;
     private static final int DELTA_VERTCAL = 100;
     private QueueView<T> view;
@@ -57,10 +56,10 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
         }
 
         //remove head role of the popped item.
-        steps.add(new AssignNodeRoleCommand(dequeuedNode, null));
+        steps.add(new AssignNodeRoleCommand<T>(dequeuedNode, null));
 
         //remove zero index of the dequeued item.
-        steps.add(new AssignNodeIndexCommand(dequeuedNode, null));
+        steps.add(new AssignNodeIndexCommand<T>(dequeuedNode, null));
 
         //move the dequeued item to the final position.
         MobileAnimationSteps moveSteps = new MobileAnimationSteps(view, dequeuedNode, dequeuedNode.getPosition(), this.moveNodeToInitialPosition(dequeuedNode), 8);
@@ -68,7 +67,7 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
 
         //assign top role to the next item of the queue.
         if (queueSize > 1) {
-            steps.add(new AssignNodeRoleCommand(queueNodes.get(1), QueueNodeRoles.head));
+            steps.add(new AssignNodeRoleCommand<T>(queueNodes.get(1), QueueNodeRoles.head));
         }
 
         //move one position to the right each item in the queue except the dequeued one.
@@ -77,12 +76,12 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
             if (!nodeToMove.equals(dequeuedNode)) {
                 MobileAnimationSteps moveRightSteps = new MobileAnimationSteps(view, nodeToMove, nodeToMove.getPosition(), this.moveNodeToRight(nodeToMove), 8);
                 steps.addAll(moveRightSteps.getSteps());
-                steps.add(new AssignNodeIndexCommand(nodeToMove, queueNodes.indexOf(nodeToMove) - 1));
+                steps.add(new AssignNodeIndexCommand<T>(nodeToMove, queueNodes.indexOf(nodeToMove) - 1));
             }
         }
 
         //remove the dequeued item of the queue.
-        steps.add(new RemoveNodeCommand(view, dequeuedNode));
+        steps.add(new RemoveNodeCommand<T>(view, dequeuedNode));
         steps.add(new ShowMessageCommand(view, MessageFormat.format("Item eliminado: {0}", dequeuedNode.getItem().toString())));
         steps.add(new StepFinishedCommand(view, false));
     }
@@ -101,14 +100,4 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
         return newPosition;
     }
 
-    private int getNodeIndex(QueueNodeView<T> node) {
-        int index = 1;
-        QueueNodeView<T> parentNode = node.getParent();
-        while (parentNode != null) {
-            index++;
-            parentNode = parentNode.getParent();
-        }
-
-        return index;
-    }
 }

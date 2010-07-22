@@ -2,7 +2,6 @@ package model.collection.heap;
 
 import java.util.List;
 
-import model.collection.heap.Heap;
 import junit.framework.TestCase;
 
 

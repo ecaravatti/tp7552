@@ -1,12 +1,11 @@
 package view.animation.trie;
 
-import view.animation.common.AbstractUndoAnimationSteps;
-
 import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import view.animation.common.AbstractUndoAnimationSteps;
 import view.collection.trie.TrieMessages;
 import view.collection.trie.TrieView;
 import view.command.common.Command;
@@ -22,7 +21,7 @@ import view.element.trie.AbstractTrieNodeView;
  * Crea los pasos necesarios para indicar que un nodo dato buscado fue
  * encontrado en trie.
  * 
- * @author Agustina
+ * 
  */
 public class DataTrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
   private static String TITLE = "Warning";

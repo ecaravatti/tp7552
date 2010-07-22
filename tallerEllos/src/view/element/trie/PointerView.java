@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
+
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
 import view.shape.Arrow;
@@ -11,7 +12,7 @@ import view.shape.Arrow;
 /**
  * Esta define como se representa visualmente un puntero.
  * 
- * @author Agustina
+ * 
  */
 public abstract class PointerView extends AbstractElementView implements Selectable {
   private final static Color DEF_COLOR = Color.YELLOW.brighter();

@@ -1,11 +1,10 @@
 package view.animation.trie;
 
-import view.animation.common.AbstractUndoAnimationSteps;
-
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import view.animation.common.AbstractUndoAnimationSteps;
 import view.collection.trie.TrieMessages;
 import view.collection.trie.TrieView;
 import view.command.common.Command;
@@ -13,10 +12,10 @@ import view.command.common.SelectElementViewCommand;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StopFlashingElementViewCommand;
 import view.command.trie.AddTrieNodeCommand;
-import view.command.trie.RemoveTrieNodeCommand;
 import view.command.trie.MakeInvisibleCommand;
 import view.command.trie.MakeTransparentNodeCommand;
 import view.command.trie.MoveFirstChildCommand;
+import view.command.trie.RemoveTrieNodeCommand;
 import view.command.trie.StepFinishedCommand;
 import view.command.trie.TrieViewResizeCommand;
 import view.element.trie.AbstractTrieNodeView;
@@ -25,7 +24,7 @@ import view.element.trie.TrieNodeView;
 /**
  * Crea los pasos necesarios para la animacion que elimina un nodo del trie
  * 
- * @author Agustina
+ * 
  */
 public class RemoveTrieNodeAnimationSteps extends AbstractUndoAnimationSteps {
   private TrieView trieView;

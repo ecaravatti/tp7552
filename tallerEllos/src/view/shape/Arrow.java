@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 /**
  * Esta clase define a una flecha.
  * 
- * @author Agustina
+ * 
  */
 public class Arrow {
   private final static Color DEF_COLOR = Color.BLACK;

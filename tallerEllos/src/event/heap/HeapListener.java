@@ -8,7 +8,7 @@ import java.util.EventListener;
 
 /**
  *
- * @author Duilio
+ * 
  */
 public interface HeapListener<T> extends EventListener {
 

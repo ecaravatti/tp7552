@@ -5,15 +5,13 @@
 
 package view.command.stack;
 
-import view.collection.queue.QueueNodeRoles;
-import view.collection.queue.QueueNodeView;
 import view.collection.stack.StackNodeRoles;
 import view.collection.stack.StackNodeView;
 import view.command.common.Command;
 
 /**
  *
- * @author pgorin
+ * 
  */
 public class AssignNodeRoleCommand<T> implements Command {
     

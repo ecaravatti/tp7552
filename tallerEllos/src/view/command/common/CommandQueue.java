@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 
- * @author Agustina Freije
+ * 
  */
 public class CommandQueue implements Runnable {
   private LinkedList<Command> queue;

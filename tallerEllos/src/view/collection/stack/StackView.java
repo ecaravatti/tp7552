@@ -4,8 +4,6 @@
  */
 package view.collection.stack;
 
-import event.stack.StackListener;
-
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,14 +14,16 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.common.StepFinishedCommand;
 import view.common.AnimatedPanel;
+import event.stack.StackListener;
 
 /**
  * Queue data structure view.
- * @author pgorin
  */
 public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
-    private static final int INITIAL_HORIZONTAL = 920;
+	private static final long serialVersionUID = 1L;
+	
+	private static final int INITIAL_HORIZONTAL = 920;
     private static final int INITIAL_VERTICAL = 50;
     private List<StackNodeView<T>> stackNodes;
 
@@ -36,19 +36,19 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
     public void itemPushed(T item) {
         int stackSize = this.stackNodes.size();
         StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes.get(stackSize - 1) : null;
-        StackNodeView<T> node = new StackNodeView(item, stackSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+        StackNodeView<T> node = new StackNodeView<T>(item, stackSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
 
         this.stackNodes.add(node);
 
         this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.push.getCode()));
-        this.addAnimationToQueue(new ItemPushedAnimation(this, node));
+        this.addAnimationToQueue(new ItemPushedAnimation<T>(this, node));
         this.addCommandToQueue(new StepFinishedCommand(this, true));
     }
 
     @Override
     public void itemPopped(T item) {
         this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.pop.getCode()));
-        this.addAnimationToQueue(new ItemPoppedAnimation(this));
+        this.addAnimationToQueue(new ItemPoppedAnimation<T>(this));
         this.addCommandToQueue(new StepFinishedCommand(this, true));
     }
 

@@ -3,7 +3,7 @@ package model.collection.tree;
 /**
  * Nodo de un <tt>Arbol Binario de Busqueda</tt>.
  *
- * @author Exe Curia
+ * 
  * @param <K> clase tipo almacenado en la estructura.
  */
 public class BSTNode<K extends Comparable<K>> extends BSTNodeObservable<K> {

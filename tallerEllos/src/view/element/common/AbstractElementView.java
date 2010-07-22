@@ -5,13 +5,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
 
-import view.element.common.ElementView;
-import view.element.common.Selectable;
-
 /**
  * Esta clase representa a un elemento de la vista
  * 
- * @author Agustina
+ * 
  */
 public abstract class AbstractElementView implements ElementView, Cloneable {
   private Point2D position;

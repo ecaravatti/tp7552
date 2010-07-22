@@ -1,16 +1,16 @@
 package view.command.trie;
 
+import java.awt.geom.Point2D;
+
 import view.collection.trie.TrieView;
 import view.command.common.Command;
 import view.element.trie.TrieNodeView;
-
-import java.awt.geom.Point2D;
 
 
 /**
  * Este comando debe ejecutarse cuando se desea mover el primer hijo del nodo
  * 
- * @author Agustina
+ * 
  */
 public class MoveFirstChildCommand implements Command {
   private TrieView trieView;

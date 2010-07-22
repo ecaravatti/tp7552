@@ -2,7 +2,7 @@ package view.collection.tree;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public interface BSTPrimitives {
 

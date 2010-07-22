@@ -6,7 +6,7 @@ package view.collection.queue;
 
 /**
  *
- * @author pgorin
+ * 
  */
 public enum QueueNodeRoles {
 

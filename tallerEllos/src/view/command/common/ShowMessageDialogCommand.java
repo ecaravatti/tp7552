@@ -1,12 +1,10 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import javax.swing.JOptionPane;
 
 /**
  * Este comando debe ejecutarse cuando se desea mostrar un mensaje de Dialogo
- * @author Agustina
+ * 
  */
 public class ShowMessageDialogCommand implements Command {
   private String message;

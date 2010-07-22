@@ -14,7 +14,7 @@ import view.command.tree.ChangeSelectableColorCommand;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTNodeVisitedAnimation extends AbstractUndoAnimationSteps {
 

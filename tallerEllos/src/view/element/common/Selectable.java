@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * Define a un objeto como seleccionable.
  * 
- * @author Agustina
+ * 
  */
 public interface Selectable {
 

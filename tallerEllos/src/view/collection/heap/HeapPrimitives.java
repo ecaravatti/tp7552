@@ -6,7 +6,7 @@ package view.collection.heap;
 
 /**
  *
- * @author Pato
+ * 
  */
 public enum HeapPrimitives {
 

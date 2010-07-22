@@ -7,10 +7,11 @@ import model.collection.tree.BSTNode;
 /**
  *
  */
-@SuppressWarnings("serial")
 public class BSTNodeEvent<K extends Comparable<K>> extends EventObject {
 
-    public BSTNodeEvent(BSTNode<K> source) {
+	private static final long serialVersionUID = 1L;
+
+	public BSTNodeEvent(BSTNode<K> source) {
         super(source);
     }
 

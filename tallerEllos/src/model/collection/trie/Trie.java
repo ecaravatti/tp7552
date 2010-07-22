@@ -5,7 +5,7 @@ package model.collection.trie;
 /**
  * Esta clase representa un trie.
  * 
- * @author Agustina
+ * 
  *
  * @param <Data> Tipo de dato almacenado en los nodos del trie.
  */

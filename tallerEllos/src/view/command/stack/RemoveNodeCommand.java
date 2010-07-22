@@ -11,7 +11,6 @@ import view.command.common.Command;
 
 /**
  *
- * @author pgorin
  */
 public class RemoveNodeCommand<T> implements Command {
 

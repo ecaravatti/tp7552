@@ -4,8 +4,6 @@
  */
 package view.collection.queue;
 
-import event.queue.QueueListener;
-
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,14 +14,16 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.common.StepFinishedCommand;
 import view.common.AnimatedPanel;
+import event.queue.QueueListener;
 
 /**
  * Queue data structure view.
- * @author pgorin
  */
 public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
-    private static final int INITIAL_HORIZONTAL = 920;
+	private static final long serialVersionUID = 1L;
+	
+	private static final int INITIAL_HORIZONTAL = 920;
     private static final int INITIAL_VERTICAL = 50;
     private List<QueueNodeView<T>> queueNodes;
 
@@ -37,19 +37,19 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
         int queueSize = this.queueNodes.size();
         QueueNodeView<T> parentNode = (queueSize > 0) ? this.getQueueNodes().get(queueSize - 1) : null;
 
-        QueueNodeView<T> node = new QueueNodeView(item, queueSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+        QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
 
         this.getQueueNodes().add(node);
 
         this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.enqueue.getCode()));
-        this.addAnimationToQueue(new ItemEnqueuedAnimation(this, node));
+        this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
         this.addCommandToQueue(new StepFinishedCommand(this, true));
     }
 
     @Override
     public void itemDequeued(T item) {
         this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.dequeue.getCode()));
-        this.addAnimationToQueue(new ItemDequeuedAnimation(this));
+        this.addAnimationToQueue(new ItemDequeuedAnimation<T>(this));
         this.addCommandToQueue(new StepFinishedCommand(this, true));
     }
 

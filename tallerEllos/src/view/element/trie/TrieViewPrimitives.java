@@ -7,7 +7,7 @@ import java.awt.Color;
  * Representa a las primitivas que pueden aplicarse sobre una
  * vista de un TrieView
  * 
- * @author Agustina
+ * 
  */
 public interface TrieViewPrimitives{
 

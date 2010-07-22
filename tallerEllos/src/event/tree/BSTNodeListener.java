@@ -4,7 +4,7 @@ import java.util.EventListener;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public interface BSTNodeListener<K extends Comparable<K>> extends EventListener {
 

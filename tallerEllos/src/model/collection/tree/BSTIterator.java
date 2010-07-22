@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * Iterador para recorrer la estructura de un <tt>Arbol Binario de Busqueda</tt>.
  * 
- * @author Exe Curia
+ * 
  * @param <K> clase tipo almacenado en la estructura.
  */
 public class BSTIterator<K extends Comparable<K>> implements Iterator<BSTNode<K>> {

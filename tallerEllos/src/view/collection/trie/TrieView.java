@@ -27,19 +27,19 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.trie.PreAddTrieNodeCommand;
 import view.common.AnimatedPanel;
-import event.trie.TrieEvent;
-import event.trie.TrieListener;
 import view.element.trie.AbstractTrieNodeView;
 import view.element.trie.DataTrieNodeView;
 import view.element.trie.TrieNodeView;
 import view.element.trie.TrieViewPrimitives;
 import view.element.trie.WordView;
 import view.exception.common.CannotUndoException;
+import event.trie.TrieEvent;
+import event.trie.TrieListener;
 
 /**
  * Esta clase representa a la vista de un Trie.
  * 
- * @author Agustina
+ * 
  */
 public class TrieView extends AnimatedPanel implements TrieListener<String>,
         TrieViewPrimitives {

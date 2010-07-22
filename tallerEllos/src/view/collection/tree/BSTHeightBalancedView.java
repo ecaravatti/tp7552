@@ -1,8 +1,12 @@
 package view.collection.tree;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,25 +21,19 @@ import view.animation.tree.BSTNodeVisitedAnimation;
 import view.command.common.Command;
 import view.command.common.ShowMessageCommand;
 import view.common.AnimatedPanel;
+import view.exception.common.CannotUndoException;
 import view.memento.tree.BSTCaretaker;
 import view.memento.tree.BSTMemento;
 import view.shape.Segment;
 import event.tree.BSTEvent;
 import event.tree.BSTListener;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.Collections;
-
-import view.exception.common.CannotUndoException;
-
 /**
  *
- * @author Exe Curia
  */
 public class BSTHeightBalancedView extends AnimatedPanel implements BSTListener<Integer>, BSTPrimitives {
-    private static final int DEF_ROOT_POSITION_Y = 20;
+	private static final long serialVersionUID = 1L;
+	private static final int DEF_ROOT_POSITION_Y = 20;
     private final static Font DEF_FONT = new Font("SansSerif", Font.PLAIN, 13);
     private final static Color DEF_COLOR_TEXT = Color.BLACK;
     private final static Color DEF_COLOR_STATISTICS = Color.BLUE;

@@ -14,7 +14,6 @@ import view.collection.queue.QueueView;
 
 /**
  *
- * @author pgorin
  */
 public class QueueController<T> extends InteractiveController {
 

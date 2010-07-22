@@ -15,7 +15,7 @@ import view.shape.Segment;
  * Crea los pasos necesarios para mover un objeto, desde una posicion final o
  * una posicion inicial.
  * 
- * @author Agustina
+ * 
  */
 public class MobileAnimationSteps implements AnimationSteps {
   private Point2D point1;

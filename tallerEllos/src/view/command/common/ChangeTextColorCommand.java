@@ -10,7 +10,7 @@ import view.shape.Text;
 
 /**
  *
- * @author Duilio
+ * 
  */
 public class ChangeTextColorCommand implements Command {
 

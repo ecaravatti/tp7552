@@ -3,8 +3,9 @@ package model.exception.tree;
 /**
  * Excepcion indicando que una clave no puede ser insertada porque ya existe
  *
- * @author Exe Curia
  */
 public class BSTKeyFoundException extends Exception {
+
+	private static final long serialVersionUID = 1L;
 
 }

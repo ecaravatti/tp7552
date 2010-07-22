@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Esta clase representa a un segmento.
  * 
- * @author Agustina
+ * 
  */
 public class Segment {
   private Point2D p1;

@@ -3,8 +3,6 @@ package model.collection.stack;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
-import model.collection.stack.ArrayListStackImpl;
-
 import org.junit.Assert;
 import org.junit.Test;
 

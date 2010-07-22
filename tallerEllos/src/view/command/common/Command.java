@@ -3,7 +3,7 @@ package view.command.common;
 /**
  * Representa a un comando
  * 
- * @author Agustina Freije
+ * 
  */
 public interface Command {
 

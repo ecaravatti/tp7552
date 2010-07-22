@@ -13,13 +13,12 @@ import view.command.common.SelectElementViewCommand;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
 import view.command.common.StopFlashingElementViewCommand;
-import view.command.tree.UpdateParentCommand;
 import view.command.tree.RemoveCommand;
 import view.command.tree.RestoreBSTCommand;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTNodeRemovedAnimation extends AbstractUndoAnimationSteps {
 

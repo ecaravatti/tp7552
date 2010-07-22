@@ -11,19 +11,19 @@ import event.queue.QueueListener;
 public abstract class QueueObservable<T> extends ObservableBase<QueueListener<T>> implements Queue<T>,  Iterable<T> {
 
     protected void fireItemEnqueued(T item) {
-        for (QueueListener<T> listener : this.cloneListeners()) {
+        for (QueueListener<T> listener : this.getListeners()) {
             listener.itemEnqueued(item);
         }
     }
 
     protected void fireItemDequeued(T item) {
-        for (QueueListener<T> listener : this.cloneListeners()) {
+        for (QueueListener<T> listener : this.getListeners()) {
             listener.itemDequeued(item);
         }
     }
 
     protected void fireEmptyQueueCondition() {
-        for (QueueListener<T> listener : this.cloneListeners()) {
+        for (QueueListener<T> listener : this.getListeners()) {
             listener.emptyQueueCondition();
         }
     }

@@ -22,13 +22,12 @@ import view.shape.Text;
 
 /**
  *
- * @author Duilio
  */
-public class SwapElementsAnimation extends AbstractUndoAnimationSteps {
+public class SwapElementsAnimation<T> extends AbstractUndoAnimationSteps {
 
     private static final int FACT = 3;
     private static final int PATH_LENGTH = 40;
-    private HeapView view;
+    private HeapView<T> view;
     private Text parentLabel;
     private Text currentLabel;
     private BSTNodeShape parentNode;
@@ -36,7 +35,7 @@ public class SwapElementsAnimation extends AbstractUndoAnimationSteps {
     private double deltaLabel;
     private double deltaNode;
 
-    public SwapElementsAnimation(HeapView view) {
+    public SwapElementsAnimation(HeapView<T> view) {
         this.view = view;
     }
     

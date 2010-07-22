@@ -15,7 +15,7 @@ import model.exception.tree.BSTKeyFoundException;
  * con n nodos está acotada por:
  * <p><code>log2(n+1) &le h(n) &le 1.44042 * log2(n+2) - 0.33772</code>
  *
- * @author Exe Curia
+ * 
  * @param <K> clase tipo almacenado en la estructura.
  */
 public class BSTHeightBalanced<K extends Comparable<K>> extends BinarySearchTree<K> {

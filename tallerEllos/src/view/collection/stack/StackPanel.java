@@ -7,10 +7,10 @@ import controller.StackController;
 /**
  *
  */
-@SuppressWarnings("serial")
 public class StackPanel<T> extends javax.swing.JPanel {
 
-    private StackController<T> controller;
+	private static final long serialVersionUID = 1L;
+	
     private StackView<T> view;
 
     public StackPanel(StackView<T> view) {
@@ -20,7 +20,6 @@ public class StackPanel<T> extends javax.swing.JPanel {
     }
 
     public void addController(StackController<T> controller) {
-        this.controller = controller;
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }

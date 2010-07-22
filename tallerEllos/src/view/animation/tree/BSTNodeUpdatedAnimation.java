@@ -10,12 +10,11 @@ import view.command.common.PaintCommand;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
 import view.command.common.StopFlashingElementViewCommand;
-import view.command.tree.RestoreBSTCommand;
 import view.command.tree.UpdateBalanceCommand;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTNodeUpdatedAnimation extends AbstractUndoAnimationSteps {
     private BSTHeightBalancedView bstView;

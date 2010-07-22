@@ -19,10 +19,11 @@ import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 /**
  *
  */
-@SuppressWarnings("serial")
 public class HelpPanel extends javax.swing.JPanel {
 
-    /** Creates new form HelpPanel */
+	private static final long serialVersionUID = 1L;
+	
+	/** Creates new form HelpPanel */
     public HelpPanel() {
         try {
             initComponents();

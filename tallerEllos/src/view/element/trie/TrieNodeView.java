@@ -18,7 +18,7 @@ import event.trie.TrieNodeListener;
 /**
  * Esta clase representa la vista de un nodo de un trie. 
  *  
- * @author Agustina
+ * 
  */
 public class TrieNodeView extends AbstractTrieNodeView implements TrieNodeListener<String>{
   public final static int DEF_LENGTH = 20;

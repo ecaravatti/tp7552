@@ -7,7 +7,6 @@ package view.animation.queue;
 import java.awt.geom.Point2D;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import view.animation.common.AbstractUndoAnimationSteps;
 import view.animation.common.MobileAnimationSteps;
@@ -23,18 +22,17 @@ import view.command.queue.LinkMobilesCommand;
 
 /**
  *
- * @author pgorin
  */
 public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private final static int DEF_WIDTH_NODE = 50;
-    private final static int DEF_HEIGTH_NODE = 50;
+//    private final static int DEF_HEIGTH_NODE = 50;
     private static final int DELTA_HORIZONTAL = 50;
     private static final int DELTA_VERTICAL = 100;
-    private QueueView view;
+    private QueueView<T> view;
     private QueueNodeView<T> node;
 
-    public ItemEnqueuedAnimation(QueueView view, QueueNodeView<T> node) {
+    public ItemEnqueuedAnimation(QueueView<T> view, QueueNodeView<T> node) {
         this.view = view;
         this.node = node;
     }
@@ -60,11 +58,11 @@ public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
             this.steps.add(new LinkMobilesCommand(node, true));
 
             //assign new role to the enqueued parent item.
-            this.steps.add(new AssignNodeRoleCommand(enqueuedParentNode, (enqueuedParentNode.getParent() == null) ? QueueNodeRoles.head : null));
+            this.steps.add(new AssignNodeRoleCommand<T>(enqueuedParentNode, (enqueuedParentNode.getParent() == null) ? QueueNodeRoles.head : null));
         }
 
         //assign the role to the enqueued item.
-        this.steps.add(new AssignNodeRoleCommand(node, (enqueuedParentNode == null) ? QueueNodeRoles.head : QueueNodeRoles.tail));
+        this.steps.add(new AssignNodeRoleCommand<T>(node, (enqueuedParentNode == null) ? QueueNodeRoles.head : QueueNodeRoles.tail));
 
         this.steps.add(new ShowMessageCommand(view, MessageFormat.format("Item insertado: {0}", node.getItem().toString())));
         this.steps.add(new StepFinishedCommand(view, false));

@@ -5,7 +5,7 @@ import event.trie.TrieEvent;
 import event.trie.TrieListener;
 
 /**
- * @author Agustina
+ * 
  * 
  * @param <Data> Tipo de dato almacenado en el nodo
  */

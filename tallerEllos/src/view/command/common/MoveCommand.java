@@ -1,15 +1,14 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import java.awt.geom.Point2D;
+
 import javax.swing.JComponent;
 
 import view.element.common.Mobile;
 
 /**
  * Este comando debe ejecutarse para mover un elemento.
- * @author Agustina Freije
+ * 
  */
 public class MoveCommand implements Command {
   private Point2D point;

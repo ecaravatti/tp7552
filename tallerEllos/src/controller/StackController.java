@@ -14,7 +14,6 @@ import view.collection.stack.StackView;
 
 /**
  *
- * @author pgorin
  */
 public class StackController<T> extends InteractiveController {
 

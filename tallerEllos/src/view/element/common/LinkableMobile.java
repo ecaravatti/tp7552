@@ -6,7 +6,7 @@ package view.element.common;
 
 /**
  * Links a mobile element to another.
- * @author pgorin
+ * 
  */
 public interface LinkableMobile {
 

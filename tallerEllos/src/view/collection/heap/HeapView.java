@@ -34,10 +34,11 @@ import event.heap.HeapListener;
 /**
  *
  */
-@SuppressWarnings("serial")
 public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
-    // Constantes
-
+	
+	private static final long serialVersionUID = 1L;
+	
+	// Constantes
     private static final Font FONT = new Font("SansSerif", Font.BOLD, 12);
     private static final Stroke STROKE = new BasicStroke(1.0f);
     private final static BasicStroke ARROW_STROKE = new BasicStroke(2.0f);
@@ -379,7 +380,7 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
         parentNodeQueue.enqueue(parentNode);
         currentNodeQueue.enqueue(currentNode);
 
-        this.addAnimationToQueue(new SwapElementsAnimation(this));
+        this.addAnimationToQueue(new SwapElementsAnimation<T>(this));
 
         // Intercambiar elementos
         labels.set(current, parentLabel);

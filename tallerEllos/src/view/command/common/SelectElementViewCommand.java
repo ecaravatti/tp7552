@@ -1,8 +1,7 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import java.awt.Color;
+
 import javax.swing.JComponent;
 
 import view.element.common.ElementView;
@@ -11,7 +10,7 @@ import view.element.common.ElementView;
  * Este comando debe ejecutarse cuando se desea seleccionars, un elemento del
  * vista.
  * 
- * @author Agustina
+ * 
  */
 public class SelectElementViewCommand implements Command {
   private JComponent component;

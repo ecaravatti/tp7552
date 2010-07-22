@@ -10,11 +10,12 @@ import javax.swing.text.PlainDocument;
 
 /**
  *
- * @author Duilio
  */
 public class JTextFieldLimit extends PlainDocument {
 
-    private int limit;
+	private static final long serialVersionUID = 1L;
+	
+	private int limit;
     // optional uppercase conversion
     private boolean toUppercase = false;
 

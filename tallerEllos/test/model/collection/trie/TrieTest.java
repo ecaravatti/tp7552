@@ -1,9 +1,8 @@
 package model.collection.trie;
 
-import model.collection.trie.Trie;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 
 public class TrieTest {

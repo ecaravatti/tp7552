@@ -45,11 +45,12 @@ import controller.TrieController;
 
 /**
  *
- * @author Exe Curia
  */
-@SuppressWarnings("serial")
 public class StructuresAnimator extends JApplet implements ComponentListener {
-    private final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
+
+	private static final long serialVersionUID = 1L;
+
+	private final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
 
     /**
      * Componentes Generales
@@ -84,17 +85,17 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
     /**
      * Componentes de Queue.
      */
-    private QueuePanel queuePanel;
-    private QueueObservable<?> queue;
-    private QueueView<?> queueView;
-    private QueueController<?> queueController;
+    private QueuePanel<Integer> queuePanel;
+    private QueueObservable<Integer> queue;
+    private QueueView<Integer> queueView;
+    private QueueController<Integer> queueController;
     /**
      * Componentes de Stack.
      */
-    private StackPanel stackPanel;
-    private StackObservable<?> stack;
-    private StackView<?> stackView;
-    private StackController<?> stackController;
+    private StackPanel<Integer> stackPanel;
+    private StackObservable<Integer> stack;
+    private StackView<Integer> stackView;
+    private StackController<Integer> stackController;
     /**
      * Componentes de Heap.
      */
@@ -145,20 +146,20 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         /**
          * Componentes de Queue.
          */
-        queue = new ArrayListQueueImpl();
-        queueView = new QueueView();
-        queuePanel = new QueuePanel(queueView);
-        queueController = new QueueController(queue, queuePanel, operationsLog);
+        queue = new ArrayListQueueImpl<Integer>();
+        queueView = new QueueView<Integer>();
+        queuePanel = new QueuePanel<Integer>(queueView);
+        queueController = new QueueController<Integer>(queue, queuePanel, operationsLog);
         queueController.setPrimitivesCodeArea(primitivesCodeArea);
         queuePanel.addController(queueController);
 
         /**
          * Componentes de Stack.
          */
-        stack = new ArrayListStackImpl();
-        stackView = new StackView();
-        stackPanel = new StackPanel(stackView);
-        stackController = new StackController(stack, stackPanel, operationsLog);
+        stack = new ArrayListStackImpl<Integer>();
+        stackView = new StackView<Integer>();
+        stackPanel = new StackPanel<Integer>(stackView);
+        stackController = new StackController<Integer>(stack, stackPanel, operationsLog);
         stackController.setPrimitivesCodeArea(primitivesCodeArea);
         stackPanel.addController(stackController);
 

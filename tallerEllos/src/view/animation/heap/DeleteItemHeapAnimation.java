@@ -15,14 +15,13 @@ import view.command.common.StepFinishedCommand;
 
 /**
  *
- * @author Duilio
  */
 public class DeleteItemHeapAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private HeapView view;
+    private HeapView<T> view;
     private T item;
 
-    public DeleteItemHeapAnimation(HeapView view, T item) {
+    public DeleteItemHeapAnimation(HeapView<T> view, T item) {
         this.view = view;
         this.item = item;
     }

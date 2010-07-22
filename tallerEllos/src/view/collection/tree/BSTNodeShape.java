@@ -8,13 +8,14 @@ import java.awt.Stroke;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+
 import view.element.common.Mobile;
 import view.element.common.Selectable;
 import view.shape.Text;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTNodeShape implements Selectable, Mobile {
 

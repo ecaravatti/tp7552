@@ -5,7 +5,7 @@ import view.element.common.ElementView;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class MakeVisibleCommand implements Command {
     private AnimatedPanel component;

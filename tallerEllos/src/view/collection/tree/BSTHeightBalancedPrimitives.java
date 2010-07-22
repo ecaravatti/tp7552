@@ -6,7 +6,7 @@ package view.collection.tree;
 
 /**
  *
- * @author Pato
+ * 
  */
 public enum BSTHeightBalancedPrimitives {
 

@@ -1,12 +1,12 @@
 package view.command.common;
 
-import controller.InteractiveController;
 import view.common.AnimatedPanel;
+import controller.InteractiveController;
 
 /**
  * Este comando debe ejecutarse cuando se desea mostrar un mensaje
  * 
- * @author Agustina
+ * 
  */
 public class ShowMessageCommand implements Command {
 

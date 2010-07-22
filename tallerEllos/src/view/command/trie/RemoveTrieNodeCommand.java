@@ -9,7 +9,7 @@ import view.element.trie.TrieNodeView;
  * Este comando debe ejecutarse cuando a un nodo debe eliminarse alguno de sus
  * hijos
  * 
- * @author Agustina
+ * 
  */
 public class RemoveTrieNodeCommand implements Command {
   private TrieNodeView parent;

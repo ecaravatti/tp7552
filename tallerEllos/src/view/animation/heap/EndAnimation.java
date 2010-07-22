@@ -14,7 +14,7 @@ import view.command.common.StepFinishedCommand;
 
 /**
  *
- * @author Duilio
+ * 
  */
 public class EndAnimation<T> extends AbstractUndoAnimationSteps {
 

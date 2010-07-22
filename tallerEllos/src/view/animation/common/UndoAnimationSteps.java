@@ -6,7 +6,7 @@ import view.command.common.Command;
 
 /**
  * 
- * @author Agustina Freije
+ * 
  */
 public interface UndoAnimationSteps extends AnimationSteps {
 

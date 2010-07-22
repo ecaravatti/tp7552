@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import view.element.common.Mobile;
-
 public interface ElementView extends Mobile {
 
   /**

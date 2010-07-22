@@ -8,7 +8,7 @@ import model.collection.trie.TrieNode;
 /**
  * Representa un evento que se origina en un trie.
  * 
- * @author Agustina
+ * 
  * 
  * @param <Data> Tipo de dato almacenado en los nodos del Trie.
  */

@@ -14,14 +14,13 @@ import view.command.common.StepFinishedCommand;
 
 /**
  *
- * @author Duilio
  */
 public class InsertItemHeapAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private HeapView view;
+    private HeapView<T> view;
     private T item;
 
-    public InsertItemHeapAnimation(HeapView view, T item) {
+    public InsertItemHeapAnimation(HeapView<T> view, T item) {
         this.view = view;
         this.item = item;
     }

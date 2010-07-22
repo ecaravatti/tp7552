@@ -1,6 +1,7 @@
 package model.collection.tree;
 
-import model.exception.tree.*;
+import model.exception.tree.BSTKeyFoundException;
+import model.exception.tree.BSTKeyNotFoundException;
 
 /**
  * Un <tt>Arbol Binario de Busqueda</tt> solo puede tener hasta 2 nodos hijos.
@@ -8,7 +9,7 @@ import model.exception.tree.*;
  * <p>Los nodos hijos derechos tienen claves menores y los nodos hijos izquierdos
  * tienen claves mayores respecto del nodo padre.
  * 
- * @author Exe Curia
+ * 
  * @param <K> clase tipo almacenado en la estructura.
  */
 public abstract class BinarySearchTree<K extends Comparable<K>> extends BinarySearchTreeObservable<K> {

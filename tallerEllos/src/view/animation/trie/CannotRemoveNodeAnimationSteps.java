@@ -1,10 +1,9 @@
 package view.animation.trie;
 
-import view.animation.common.AbstractUndoAnimationSteps;
-
 import java.awt.Color;
 import java.util.ArrayList;
 
+import view.animation.common.AbstractUndoAnimationSteps;
 import view.collection.trie.TrieMessages;
 import view.collection.trie.TrieView;
 import view.command.common.ChangeColorNodeShapeCommand;
@@ -22,7 +21,7 @@ import view.element.trie.WordView;
  * Crea los pasos necesarios para mostrar que no puede eliminarse un nodo del
  * trie.
  * 
- * @author Agustina
+ * 
  */
 public class CannotRemoveNodeAnimationSteps extends AbstractUndoAnimationSteps {
   private TrieView trieView;

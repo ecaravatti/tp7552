@@ -24,7 +24,7 @@ import view.shape.NodeShape;
  * Crea los pasos necesarios para indicar que un nodo buscado fue encontrado en
  * trie.
  * 
- * @author Agustina
+ * 
  */
 public class TrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
   private static int DEF_INITIAL = 20;

@@ -1,6 +1,6 @@
 package model.collection.tree;
 
-import model.exception.tree.*;
+import model.exception.tree.BSTKeyFoundException;
 
 /**
  * Un <tt>Árbol Binario de Búsqueda</tt> está <tt>Balanceado por Peso</tt>
@@ -19,16 +19,12 @@ import model.exception.tree.*;
  *
  * <p>Fue introducido por Nievergelt y Reingold (1973).
  * 
- * @author Exe Curia
  * @param <K> clase tipo almacenado en la estructura.
  */
 public class BSTWeightBalanced<K extends Comparable<K>> extends BinarySearchTree<K> {
 
-	private int weight;
-
 	public BSTWeightBalanced(int weight) {
 		super();
-		this.weight = weight;
 	}
 
     /**

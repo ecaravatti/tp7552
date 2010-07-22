@@ -23,15 +23,14 @@ import view.command.stack.RemoveNodeCommand;
 
 /**
  *
- * @author pgorin
  */
 public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private static final int DELTA_HORIZONTAL = 100;
+//    private static final int DELTA_HORIZONTAL = 100;
     private static final int DELTA_VERTCAL = 100;
-    private StackView view;
+    private StackView<T> view;
 
-    public ItemPoppedAnimation(StackView view) {
+    public ItemPoppedAnimation(StackView<T> view) {
         this.view = view;
     }
 
@@ -44,17 +43,17 @@ public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
     protected void initializeListSteps() {
         steps = new ArrayList<Command>();
 
-        List<StackNodeView> stackNodes = view.getStackNodes();
+        List<StackNodeView<T>> stackNodes = view.getStackNodes();
         int stackSize = stackNodes.size();
         StackNodeView<T> poppedNode = stackNodes.get(stackSize - 1);
 
         //remove top role of the popped item.
-        steps.add(new AssignNodeRoleCommand(poppedNode, null));
+        steps.add(new AssignNodeRoleCommand<T>(poppedNode, null));
         final StackNodeView<T> poppedParentNode = poppedNode.getParent();
 
         //assign top role to the parent popped item.
         if ((poppedParentNode != null) && (stackSize > 2)) {
-            steps.add(new AssignNodeRoleCommand(poppedNode.getParent(), StackNodeRoles.top));
+            steps.add(new AssignNodeRoleCommand<T>(poppedNode.getParent(), StackNodeRoles.top));
         }
 
         //unlink the popped item as bottom of the queue.
@@ -65,7 +64,7 @@ public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
         steps.addAll(moveSteps.getSteps());
 
         //remove the popped item of the stack.
-        steps.add(new RemoveNodeCommand(view, poppedNode));
+        steps.add(new RemoveNodeCommand<T>(view, poppedNode));
         steps.add(new ShowMessageCommand(view, MessageFormat.format("Item eliminado: {0}", poppedNode.getItem().toString())));
         steps.add(new StepFinishedCommand(view, true));
     }

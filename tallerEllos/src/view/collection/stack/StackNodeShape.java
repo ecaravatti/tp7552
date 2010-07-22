@@ -13,7 +13,7 @@ import view.shape.NodeShape;
 
 /**
  *
- * @author pgorin
+ * 
  */
 public class StackNodeShape extends NodeShape {
 

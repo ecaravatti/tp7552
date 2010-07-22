@@ -18,7 +18,7 @@ import view.element.common.Selectable;
 /**
  * Esta clase define la forma de un nodo.
  * 
- * @author Agustina
+ * 
  */
 public class NodeShape implements Selectable, Mobile {
   private final static Color DEF_COLOR = new Color(1.0f, 1.0f, 1.0f, 0f);

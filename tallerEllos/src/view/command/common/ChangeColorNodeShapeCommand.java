@@ -1,7 +1,5 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import java.awt.Color;
 
 import view.shape.NodeShape;
@@ -9,7 +7,7 @@ import view.shape.NodeShape;
 /**
  * Este comando debe ejecutarse cuando se desea cambiar el color de un nodo.
  * 
- * @author Agustina Freije
+ * 
  */
 public class ChangeColorNodeShapeCommand implements Command {
   private NodeShape node;

@@ -1,16 +1,16 @@
 package view.command.trie;
 
+import java.awt.Color;
+
 import view.collection.trie.TrieView;
 import view.command.common.Command;
 import view.element.trie.AbstractTrieNodeView;
-
-import java.awt.Color;
 
 
 /**
  * Este comando debe ejecutarse cuando se ha insertado un nodo.
  * 
- * @author Agustina Freije
+ * 
  */
 public class InsertNodeCommand implements Command {
   private TrieView trie;

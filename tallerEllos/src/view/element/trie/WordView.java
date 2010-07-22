@@ -10,6 +10,7 @@ import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
 import view.shape.NodeShape;
@@ -17,7 +18,7 @@ import view.shape.NodeShape;
 /**
  * Esta define como se representa visualmente una palabra.
  * 
- * @author Agustina
+ * 
  */
 public class WordView extends AbstractElementView{
   private final static Color LETTER_SELECTION_COLOR = Color.blue.brighter();
@@ -295,10 +296,6 @@ public class WordView extends AbstractElementView{
 
     protected NodeShape getNodeShape() {
       return node;
-    }
-
-    protected void setNode(NodeShape node) {
-      this.node = node;
     }
 
     protected boolean isVisible() {

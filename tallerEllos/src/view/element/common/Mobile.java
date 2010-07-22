@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 /**
  * Define a un objeto como movil.
  * 
- * @author Agustina
+ * 
  */
 public interface Mobile {
 

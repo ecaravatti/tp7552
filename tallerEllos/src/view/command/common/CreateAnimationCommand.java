@@ -7,7 +7,7 @@ import view.common.AnimatedPanel;
  * Este comando debe ejecutarse cuando se deba crear cada uno de los pasos de la
  * animacion.
  * 
- * @author Agustina Freije
+ * 
  */
 public class CreateAnimationCommand implements Command {
 

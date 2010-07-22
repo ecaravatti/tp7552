@@ -3,8 +3,6 @@ package model.collection.queue;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import model.collection.queue.ArrayListQueueImpl;
-
 import org.junit.Assert;
 import org.junit.Test;
 

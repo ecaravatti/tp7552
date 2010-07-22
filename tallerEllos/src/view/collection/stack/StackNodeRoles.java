@@ -6,7 +6,7 @@ package view.collection.stack;
 
 /**
  *
- * @author pgorin
+ * 
  */
 public enum StackNodeRoles {
 

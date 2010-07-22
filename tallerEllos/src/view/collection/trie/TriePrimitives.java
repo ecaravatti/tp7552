@@ -6,7 +6,7 @@ package view.collection.trie;
 
 /**
  *
- * @author Pato
+ * 
  */
 public enum TriePrimitives {
 

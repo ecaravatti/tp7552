@@ -7,7 +7,7 @@ import view.element.trie.AbstractTrieNodeView;
  * Este comando debe ejecutarse cuando se desea que un elemento sea invisible (o
  * no)
  * 
- * @author Agustina
+ * 
  */
 public class MakeInvisibleCommand implements Command {
   private AbstractTrieNodeView node;

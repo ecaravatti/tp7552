@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 /**
  * Representa a un puntero a un hermano.
  * 
- * @author Agustina
+ * 
  */
 public class SiblingPointerView extends PointerView {
   private final static BasicStroke DEF_STROKE = new BasicStroke(1.4f);

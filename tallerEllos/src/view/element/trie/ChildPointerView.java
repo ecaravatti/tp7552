@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 /**
  * Esta clase representa a un puntero a un hijo.
  * 
- * @author Agustina
+ * 
  */
 public class ChildPointerView extends PointerView {
   private final static BasicStroke DEF_STROKE = new BasicStroke(1.4f);

@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * Define la forma de un nodo de un Trie.
  * 
- * @author Agustina
+ * 
  */
 public class TrieNodeShape extends NodeShape {
   private final static Color DEF_NODE_COLOR = Color.gray.brighter();

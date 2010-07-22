@@ -3,7 +3,8 @@ package view.animation.tree;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.collection.tree.*;
+import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.command.common.SelectElementViewCommand;
 import view.command.common.ShowMessageCommand;
@@ -16,7 +17,7 @@ import view.command.tree.SaveStateBST;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTDoubleRotationStartedAnimation extends AbstractUndoAnimationSteps {
     private BSTHeightBalancedView bstView;

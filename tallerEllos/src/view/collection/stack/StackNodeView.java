@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+
 import view.element.common.AbstractElementView;
 import view.element.common.LinkableMobile;
 import view.element.common.Selectable;
@@ -12,13 +13,11 @@ import view.shape.Arrow;
 
 /**
  * 
- * @author pgorin
  */
 public class StackNodeView<T> extends AbstractElementView implements LinkableMobile {
 
     private final static BasicStroke DEF_STROKE = new BasicStroke(1.5f);
     private final static Color DEF_COLOR_ARROW = Color.BLACK;
-    private Point2D finalPosition;
     private T item;
     private StackNodeView<T> parent;
     private boolean linked = false;
@@ -30,7 +29,6 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
         this.parent = parent;
         this.shape = new StackNodeShape(item.toString(), this.getPosition(), index);
         setVisible(false);
-        this.finalPosition = null;
     }
 
     public void assignRole(StackNodeRoles role) {

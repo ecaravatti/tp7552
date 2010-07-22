@@ -10,7 +10,7 @@ import view.collection.tree.BSTNodeShape;
 
 /**
  *
- * @author Duilio
+ * 
  */
 public class ChangeColorBSTNodeShapeCommand implements Command {
 

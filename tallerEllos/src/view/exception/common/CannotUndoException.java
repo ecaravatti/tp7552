@@ -3,7 +3,7 @@ package view.exception.common;
 /**
  * Esta excepcion debe arrojarse cuando no se puede deshacer una operacion.
  *
- * @author Agustina Freije
+ * 
  */
 public class CannotUndoException extends Exception {
   private static final long serialVersionUID = 1L;

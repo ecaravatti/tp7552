@@ -9,7 +9,7 @@ import view.command.common.Command;
 
 /**
  *
- * @author pgorin
+ * 
  */
 public class AssignNodeIndexCommand<T> implements Command {
 

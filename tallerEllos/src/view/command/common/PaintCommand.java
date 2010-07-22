@@ -1,12 +1,10 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import javax.swing.JComponent;
 
 /**
  * Este comando debe ejecutarse cuando se desea re-pintar el trie
- * @author Agustina Freije
+ * 
  */
 public class PaintCommand implements Command {
   private JComponent component;

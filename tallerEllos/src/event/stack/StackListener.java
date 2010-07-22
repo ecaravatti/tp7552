@@ -4,7 +4,7 @@ import java.util.EventListener;
 
 /**
  * Stack data structure listener.
- * @author pgorin
+ * 
  */
 public interface StackListener<T> extends EventListener {
 

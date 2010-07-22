@@ -1,8 +1,5 @@
 package view.collection.tree;
 
-import event.tree.BSTNodeEvent;
-import event.tree.BSTNodeListener;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,10 +11,12 @@ import model.collection.tree.BSTNode;
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
 import view.shape.Arrow;
+import event.tree.BSTNodeEvent;
+import event.tree.BSTNodeListener;
 
 /**
  * 
- * @author Exe Curia
+ * 
  */
 public class BSTNodeView extends AbstractElementView implements
         BSTNodeListener<Integer>, Cloneable{

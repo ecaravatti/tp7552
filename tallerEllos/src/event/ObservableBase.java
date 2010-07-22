@@ -36,15 +36,7 @@ public class ObservableBase<T extends EventListener> {
      * Obtiene la lista con los listeners
      * @return la lista con los listeners
      */
-    protected Collection<T> getListeners() {
-        return listeners;
-    }
-
-    //TODO cambiar el nombre a getListeners() mediante CTRL+R
-    protected synchronized Collection<T> cloneListeners() {
-        /*Collection<T> col;
-        col = new ArrayList<T>(listeners);
-        return col;*/
+    protected synchronized Collection<T> getListeners() {
         return listeners;
     }
 }

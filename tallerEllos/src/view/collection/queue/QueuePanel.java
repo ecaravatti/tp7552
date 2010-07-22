@@ -7,11 +7,11 @@ import controller.QueueController;
 /**
  *
  */
-@SuppressWarnings("serial")
 public class QueuePanel<T> extends javax.swing.JPanel {
 
-    private QueueController<T> controller;
-    private QueueView<T> view;
+	private static final long serialVersionUID = 1L;
+	
+	private QueueView<T> view;
 
     public QueuePanel(QueueView<T> view) {
         initComponents();
@@ -20,7 +20,6 @@ public class QueuePanel<T> extends javax.swing.JPanel {
     }
 
     public void addController(QueueController<T> controller) {
-        this.controller = controller;
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }

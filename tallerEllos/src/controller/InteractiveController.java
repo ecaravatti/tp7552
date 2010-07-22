@@ -2,8 +2,8 @@ package controller;
 
 import javax.swing.JTextArea;
 
-import view.common.InteractivePanel;
 import view.common.AnimatedPanel;
+import view.common.InteractivePanel;
 import view.exception.common.CannotUndoException;
 
 public abstract class InteractiveController {

@@ -7,7 +7,7 @@ import java.util.EventListener;
  * La interfaz del Listener para recibir eventos generados por el Trie.
  * 
  * @param <Data> El tipos de dato almacenado en los nodos del Trie.
- * @author Agustina
+ * 
  */
 public interface TrieListener<Data> extends EventListener {
 

@@ -8,16 +8,16 @@ import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
-import view.command.tree.UpdateParentCommand;
 import view.command.tree.MoveNodesCommand;
 import view.command.tree.RestoreBSTCommand;
 import view.command.tree.RotateCommand;
 import view.command.tree.RotationFinishedCommand;
 import view.command.tree.SaveStateBST;
+import view.command.tree.UpdateParentCommand;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class BSTNodeRotatedAnimation extends AbstractUndoAnimationSteps {
     private BSTHeightBalancedView bstView;

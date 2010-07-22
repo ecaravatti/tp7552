@@ -13,7 +13,6 @@ import view.command.common.ShowPrimitiveCodeCommand;
 
 /**
  *
- * @author Duilio
  */
 public class HeapController<T extends Comparable<T>> extends InteractiveController {
 

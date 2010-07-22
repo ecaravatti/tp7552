@@ -16,7 +16,6 @@ import view.common.InteractivePanel;
 /**
  * El controlador del Trie.
  * 
- * @author Agustina
  */
 public class TrieController extends InteractiveController {
   private Trie<String> trie;

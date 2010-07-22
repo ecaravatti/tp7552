@@ -16,7 +16,7 @@ import view.element.trie.AbstractTrieNodeView;
  * Crea los pasos necesarios para indicar que un nodo buscado no fue encontrado
  * en el trie.
  * 
- * @author Agustina
+ * 
  */
 public class TrieNodeNotFoundAnimationSteps extends AbstractUndoAnimationSteps {
   private TrieView trieView;

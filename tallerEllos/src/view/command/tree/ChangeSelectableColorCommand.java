@@ -8,7 +8,7 @@ import view.element.common.AbstractElementView;
 
 /**
  *
- * @author Exe Curia
+ * 
  */
 public class ChangeSelectableColorCommand implements Command {
     private AnimatedPanel component;

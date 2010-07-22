@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 /**
  * Representa a un puntero diagonal.
  * 
- * @author Agustina
+ * 
  */
 public class DiagonalPointerView extends PointerView {
   private final static BasicStroke DEF_STROKE = new BasicStroke(1.4f);

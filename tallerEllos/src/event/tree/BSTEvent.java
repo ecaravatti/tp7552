@@ -8,11 +8,12 @@ import model.collection.tree.BinarySearchTree;
 /**
  * Representa un evento que se origina en un Binary Search Tree.
  *
- * @author Exe Curia
  */
-@SuppressWarnings("serial")
 public class BSTEvent<K extends Comparable<K>> extends EventObject {
-    private BSTNode<K> currentNode;
+	
+	private static final long serialVersionUID = 1L;
+	
+	private BSTNode<K> currentNode;
     private int side;
 
     public BSTEvent(BinarySearchTree<K> source) {

@@ -6,13 +6,11 @@ package view.command.stack;
 
 import view.command.common.Command;
 import view.element.common.LinkableMobile;
-import view.element.common.Mobile;
 
 /**
  *
- * @author pgorin
  */
-public class LinkMobilesCommand<T> implements Command {
+public class LinkMobilesCommand implements Command {
 
     private LinkableMobile mobileToLink;
     private boolean isLinked;

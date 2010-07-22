@@ -1,12 +1,12 @@
 package view.command.common;
 
-import controller.InteractiveController;
 import view.common.AnimatedPanel;
+import controller.InteractiveController;
 
 /**
  * Este comando debe ejecutarse cuando se desea mostrar el pseudocodigo de una primitiva.
  * 
- * @author Agustina
+ * 
  */
 public class ShowPrimitiveCodeCommand implements Command {
 

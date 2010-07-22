@@ -12,7 +12,6 @@ import view.collection.tree.BSTHeightBalancedView;
 import view.collection.tree.BSTPanel;
 import view.collection.tree.BSTTraversePrimitives;
 import view.collection.tree.BSTWeightBalancedPrimitives;
-import view.collection.tree.TreeGenerator;
 
 /**
  *
@@ -26,8 +25,6 @@ public class BSTHeightBalancedController extends InteractiveController {
     private BSTHeightBalancedView view;
     private BSTPanel panel;
     private boolean running;
-    private boolean create;
-    private TreeGenerator gen = null;
 
 //    public BSTHeightBalancedController(BSTHeightBalanced<Integer> tree, BSTHeightBalancedView view) {
     public BSTHeightBalancedController(BinarySearchTree<Integer> tree, BSTPanel panel, JTextArea operationsLog) {
@@ -37,8 +34,6 @@ public class BSTHeightBalancedController extends InteractiveController {
         this.view = panel.getView();
         this.tree.addListener(view);
         this.running = false;
-        this.create = false;
-
     }
 
     public void changeParameter(int parameter) {
@@ -111,10 +106,8 @@ public class BSTHeightBalancedController extends InteractiveController {
     tree.insert( new Integer(text) );
 
     } catch (NumberFormatException e) {
-    // TODO Auto-generated catch block
     e.printStackTrace();
     } catch (BSTKeyFoundException e) {
-    // TODO Auto-generated catch block
     e.printStackTrace();
     }
     }
@@ -124,7 +117,6 @@ public class BSTHeightBalancedController extends InteractiveController {
         if (value == null) {
             return;
         }
-
         insert(value);
     }
 

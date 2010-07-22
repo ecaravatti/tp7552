@@ -4,11 +4,10 @@
  */
 package view.collection.queue;
 
-import view.collection.stack.*;
 
 /**
  *
- * @author Pato
+ * 
  */
 public enum QueuePrimitives {
 

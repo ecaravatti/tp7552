@@ -1,17 +1,17 @@
 package view.command.trie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import view.collection.trie.TrieView;
 import view.command.common.Command;
 import view.element.trie.TrieNodeView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * Este comando debe ejecutarse cuando se debe redimensionar cada nodo del trie
  * 
- * @author Agustina Freije
+ * 
  */
 public class TrieViewResizeCommand implements Command {
   private TrieView trie;

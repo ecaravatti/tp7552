@@ -2,7 +2,7 @@ package view.collection.trie;
 
 /**
  * 
- * @author Agustina
+ * 
  */
 public class TrieMessages {
   private static TrieMessages instance = null;
@@ -131,9 +131,6 @@ public class TrieMessages {
       return this.message;
     }
 
-    public String getMessage(String aditionalInfo) {
-      return this.message + aditionalInfo;
-    }
   }
 
 }

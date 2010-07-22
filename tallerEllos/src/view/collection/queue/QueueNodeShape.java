@@ -7,14 +7,12 @@ package view.collection.queue;
 import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Stroke;
 import java.awt.geom.Point2D;
 
 import view.shape.NodeShape;
 
 /**
  *
- * @author pgorin
  */
 public class QueueNodeShape extends NodeShape {
 

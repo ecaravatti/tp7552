@@ -4,7 +4,7 @@ import java.util.EventListener;
 
 /**
  * Queue data structure listener.
- * @author pgorin
+ * 
  */
 public interface QueueListener<T> extends EventListener {
 

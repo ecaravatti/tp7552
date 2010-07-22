@@ -1,15 +1,15 @@
 package view.command.trie;
 
+import java.awt.Color;
+
 import view.command.common.Command;
 import view.element.trie.AbstractTrieNodeView;
-
-import java.awt.Color;
 
 
 /**
  * Este comando debe ejecutarse cuando se desea cambiar el color de un nodo.
  * 
- * @author Agustina
+ * 
  */
 public class ChangeColorNodeCommand implements Command {
   private AbstractTrieNodeView node;

@@ -1,7 +1,5 @@
 package view.command.common;
 
-import view.command.common.Command;
-
 import javax.swing.JComponent;
 
 import view.element.common.ElementView;

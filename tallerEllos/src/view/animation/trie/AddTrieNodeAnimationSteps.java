@@ -30,7 +30,7 @@ import view.shape.Segment;
 /**
  * Crea los pasos necesarios para la animacion que añade un nodo al trie.
  * 
- * @author Agustina Freije
+ * 
  */
 public class AddTrieNodeAnimationSteps extends AbstractUndoAnimationSteps {
   private static int DEF_INITIAL = 20;

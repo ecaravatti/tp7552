@@ -7,7 +7,7 @@ import view.element.trie.AbstractTrieNodeView;
  * Este comando debe invocarse cuando se desea que un nodo sea trasparente (o
  * no)
  * 
- * @author Agustina
+ * 
  */
 public class MakeTransparentNodeCommand implements Command {
   private AbstractTrieNodeView node;
