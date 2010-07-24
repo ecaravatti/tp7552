@@ -23,8 +23,10 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final int INITIAL_HORIZONTAL = 920;
-    private static final int INITIAL_VERTICAL = 50;
+	//private static final int INITIAL_HORIZONTAL = 920;
+    //private static final int INITIAL_VERTICAL = 50;
+	private static final int INITIAL_HORIZONTAL = 50;
+    private static final int INITIAL_VERTICAL = 200;
     private List<StackNodeView<T>> stackNodes;
 
     public StackView() {
