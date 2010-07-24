@@ -63,6 +63,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio
   * Trie
     * Cambiar “Demo” por “Random”
+    * Cambiar ejemplos (del random)
     * Permitir especificar el tamaño de la estructura al inicio
   * Heap
     * Mostrar cartel de aviso de heap vacío
