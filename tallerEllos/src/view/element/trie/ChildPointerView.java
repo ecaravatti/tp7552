@@ -15,7 +15,7 @@ public class ChildPointerView extends PointerView {
   private final static float DEF_DASH[] = { 1f };
   private final static BasicStroke DEF_DATA_STROKE = new BasicStroke(1.4f,
       BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, DEF_DASH, 0.0f);
-  private final static Color DEF_DATA_COLOR = Color.BLUE.brighter();
+  private final static Color DEF_DATA_COLOR = Color.BLUE.darker();
 
   /**
    * Construye un ChildPointerView
@@ -31,9 +31,9 @@ public class ChildPointerView extends PointerView {
 
   @Override
   public Color getColor() {
-    if (!getSourceNode().hasDataNode()
-        || !getSourceNode().getDataNode().isVisible())
+    if (!getSourceNode().hasDataNode() || !getSourceNode().getDataNode().isVisible()) {
       return DEF_COLOR;
+    }
     return DEF_DATA_COLOR;
   }
 
@@ -45,9 +45,9 @@ public class ChildPointerView extends PointerView {
 
   @Override
   public BasicStroke getStroke() {
-    if (!getSourceNode().hasDataNode()
-        || !getSourceNode().getDataNode().isVisible())
+    if (!getSourceNode().hasDataNode() || !getSourceNode().getDataNode().isVisible()) {
       return DEF_STROKE;
+    }
     return DEF_DATA_STROKE;
   }
 
@@ -67,17 +67,19 @@ public class ChildPointerView extends PointerView {
     double finalLength = this.getFinalLength();
     double length = this.getLength();
 
-    if (Math.signum(delta) == 1 && (length + delta > getFinalLength()))
+    if (Math.signum(delta) == 1 && (length + delta > getFinalLength())) {
       length = finalLength;
-    else if (Math.signum(delta) == -1 && (length + delta) < getFinalLength())
+    } else if (Math.signum(delta) == -1 && (length + delta) < getFinalLength()) {
       length = finalLength;
-    else
+    } else {
       length += delta;
+    }
 
     this.setLength(length);
 
-    if (this.hasTargetNode())
+    if (this.hasTargetNode()) {
       this.getTargetNode().moveTo(this.getTargetNodePosition(length));
+    }
 
   }
 

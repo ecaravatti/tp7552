@@ -333,15 +333,15 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
   @Override
   protected void paintPanel(Graphics2D g){
 
-    if ( root != null && root.isVisible() ){
+    if ( root != null && root.isVisible() ) {
       paintTrie(g, root);
-    }
-    else if (root != null && root.getSibling() != null){
+    } else if (root != null && root.getSibling() != null) {
       paintTrie(g, root.getSibling());
     }
 
-    if (word != null)
+    if (word != null) {
       word.paint(g);
+    }
   }
 
   /**
@@ -359,8 +359,9 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
   public int countNodesVertical() {
     int count = this.countChildren(root);
 
-    if (count != 0)
+    if (count != 0) {
       return ++count;
+    }
 
     return count;
   }
@@ -370,8 +371,9 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    */
   public void clear(){
     this.root = null;
-    if (this.getWord() != null)
+    if (this.getWord() != null) {
       this.getWord().clear();
+    }
   }
 
   /**
@@ -392,14 +394,15 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
     getController().showLogMessage("** Operacion finalizada");
     statistics.add("Comparaciones: " + countComp);
 
-    if ( isRunningInsertion() ){
+    if ( isRunningInsertion() ) {
       statistics.add("Nuevos nodos: " + countNewNodes);
-    }
-    else
+    } else {
       statistics.add("Nodos eliminados: " + countDelNodes);
+    }
 
-    for (String stat : statistics)
+    for (String stat : statistics) {
       getController().showLogMessage(stat);
+    }
   }
 
   public void restore(){
@@ -409,8 +412,9 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
   @Override
   public void changeSpeed(int speed) {
     super.changeSpeed(speed);
-    if ( getCommandQueue().getDelay() < 30 )
+    if ( getCommandQueue().getDelay() < 30 ) {
        getCommandQueue().setDelay(30);
+    }
   }
   
   @Override
@@ -420,26 +424,26 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
       LinkedList<UndoAnimationSteps> animations = new LinkedList<UndoAnimationSteps>();
       List<Command> list = new ArrayList<Command>();
       List<Command> listUndo = new ArrayList<Command>();
-      do{
+      do {
         animations.addFirst( stack.pop() );
       } while ( !stack.isEmpty() && !stack.peek().getRedoPause() );
       
-      if ( animations.size() > 1){
+      if ( animations.size() > 1) {
         animations.getFirst().setUndoPause(true);
         animations.getLast().setUndoPause(false);
-      }
-      else
+      } else {
         animations.getFirst().setUndoPause(true);
+      }
 
-      this.setCurrentAnimation( this.getCurrentAnimation() - 1);
+      this.setCurrentAnimation(this.getCurrentAnimation() - 1);
       this.setPrimitiveFinished( false );
       this.setExecutingUndo( true );
       
-      for (UndoAnimationSteps animation : animations){
+      for (UndoAnimationSteps animation : animations) {
         list.addAll( animation.getSteps() );
       }
 
-      for (int i = animations.size() - 1; i >= 0 ; i-- ){
+      for (int i = animations.size() - 1; i >= 0 ; i-- ) {
         listUndo.addAll( animations.get(i).getUndoSteps() );
       }
       
@@ -449,7 +453,7 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
       getCommandQueue().executeImmediate(list);
       this.wait(false);
   } catch (java.util.EmptyStackException e) {
-      controller.showLogMessage("No hay nada para deshacer...");
+      controller.showLogMessage("No hay operaciones para deshacer...");
       throw new CannotUndoException();
   }
   }
@@ -462,8 +466,9 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    */
   private int countChildren(TrieNodeView node){
 
-    if (node == null)
+    if (node == null) {
       return 0;
+    }
 
     return Math.max( 1 + countChildren(node.getChild()), countChildren(node.getSibling()));
   }
@@ -474,15 +479,16 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    */
   private void changeTrieColorRec(TrieNodeView trieNode) {
 
-    if (trieNode == null)
+    if (trieNode == null) {
       return;
+    }
 
     trieNode.restore();
     trieNode.stopFlashing();
     changeTrieColorRec(trieNode.getChild());
     changeTrieColorRec(trieNode.getSibling());
 
-    if ( trieNode.hasDataNode() ){
+    if ( trieNode.hasDataNode() ) {
       AbstractTrieNodeView data = trieNode.getDataNode();
       data.stopFlashing();
       data.changeNodeColor();
@@ -499,35 +505,38 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
 
     double add = 0;
 
-    if (node == null)
+    if (node == null) {
       return;
+    }
 
-    if (!node.hasChild()
-        && (node.isEndWord() && !node.getDataNode().defaultSizeChanged()))
+    if (!node.hasChild() && (node.isEndWord() && !node.getDataNode().defaultSizeChanged())) {
       node.setDepthSibling(0);
-    else {
-      if (node.hasChild())
+    } else {
+      if (node.hasChild()) {
         setDepthSiblingsRec(node.getChild());
+      }
 
       if (node.isEndWord()) {
-        if (node.hasChild() && !node.getChild().isInvisible() &&
-          !node.getDataNode().isInvisible() )
+        if (node.hasChild() && !node.getChild().isInvisible() && !node.getDataNode().isInvisible()) {
             add = 1;
-        if ( node.getDataNode().defaultSizeChanged() )
+        }
+        if ( node.getDataNode().defaultSizeChanged() ) {
           add += node.getDataNode().getDepthSibling();
+        }
       }
 
       int countSiblings = 0;
 
-      if (node.hasChild())
+      if (node.hasChild()) {
         countSiblings = node.getChild().countSiblings();
+      }
 
-      node.setDepthSibling(add + countSiblings
-          + calculateSumDepthSib(node.getChild()));
+      node.setDepthSibling(add + countSiblings + calculateSumDepthSib(node.getChild()));
     }
 
-    if (node.getSibling() != null)
+    if (node.getSibling() != null) {
       setDepthSiblingsRec(node.getSibling());
+    }
   }
 
   /**
@@ -537,12 +546,14 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    */
   private double calculateSumDepthSib(TrieNodeView node) {
 
-    if (node == null)
+    if (node == null) {
       return 0;
+    }
 
     double sum = 0;
-    for (TrieNodeView ptr = node; ptr != null; ptr = ptr.getSibling())
+    for (TrieNodeView ptr = node; ptr != null; ptr = ptr.getSibling()) {
       sum += ptr.getDepthSibling();
+    }
 
     return sum;
   }
@@ -552,15 +563,16 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    */
   private void moveTrieRecursive(double displacement, TrieNodeView node) {
 
-    if (node == null)
+    if (node == null) {
       return;
+    }
 
     Point2D position = node.getPosition();
     node.moveTo( new Point2D.Double(position.getX() + displacement, position.getY()) );
     moveTrieRecursive(displacement, node.getChild() );
     moveTrieRecursive(displacement, node.getSibling() );
 
-    if ( node.hasDataNode() ){
+    if ( node.hasDataNode() ) {
       AbstractTrieNodeView data = node.getDataNode();
       position = data.getPosition();
       data.moveTo( new Point2D.Double(position.getX() + displacement, position.getY() ) );
@@ -573,30 +585,35 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
   private void paintTrie(Graphics graphics, TrieNodeView root) {
     Graphics2D g2 = (Graphics2D) graphics;
 
-    if (root == null)
+    if (root == null) {
       return;
+    }
+    
     root.paint(graphics);
     paintTrie(g2, root.getChild());
     paintTrie(g2, root.getSibling());
-    if (root.getDataNode() != null)
+    
+    if (root.getDataNode() != null) {
       root.getDataNode().paint(g2);
+    }
   }
 
   /**
    * Redimensiona el trie recursivamente.
    */
-  private void resizeRec(List<TrieNodeView> nodes, TrieNodeView current,
-      double delta, boolean siblings) {
+  private void resizeRec(List<TrieNodeView> nodes, TrieNodeView current, double delta, boolean siblings) {
 
-    if (current == null)
+    if (current == null) {
       return;
+    }
 
     if (!nodes.contains(current) && current.isVisible()) {
 
-      if (!siblings)
+      if (!siblings) {
         current.resize(delta);
-      else
+      } else {
         current.resizeSibling(delta);
+      }
 
       resizeRec(nodes, current.getChild(), delta, siblings);
       resizeRec(nodes, current.getSibling(), delta, siblings);
@@ -607,23 +624,23 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
    * Calcula recursivamente los pasos para redimensionar el nodo.
    */
   private int getResizeStepsRec(List<TrieNodeView> nodes, TrieNodeView current,
-      double delta, boolean siblings) {
+		  						double delta, boolean siblings) {
 
-    if (current == null)
+    if (current == null) {
       return 0;
+    }
 
     if (!nodes.contains(current)) {
       int max;
 
-      if (siblings)
+      if (siblings) {
         max = current.getSiblingSteps(delta);
-      else
+      } else {
         max = current.getSteps(delta);
+      }
 
-      max = Math.max(max, getResizeStepsRec(nodes, current.getSibling(), delta,
-          siblings));
-      max = Math.max(max, getResizeStepsRec(nodes, current.getChild(), delta,
-          siblings));
+      max = Math.max(max, getResizeStepsRec(nodes, current.getSibling(), delta, siblings));
+      max = Math.max(max, getResizeStepsRec(nodes, current.getChild(), delta, siblings));
       return max;
     }
 
@@ -679,7 +696,8 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
   }
 
   private void incCountNodesHor(){
-    if (countNodesHor == 0)
+    if (countNodesHor == 0) {
       this.countNodesHor++;
+    }
   }
 }

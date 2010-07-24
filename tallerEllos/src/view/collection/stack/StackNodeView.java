@@ -60,17 +60,18 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
             return;
         }
 
+        shape.moveTo(getPosition());
+        shape.paint((Graphics2D) g);
+        
         if (this.linked) {
 //            Point2D p1 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth() / 2, getPosition().getY() + shape.getBounds().getHeight() / 2);
 //            Point2D p2 = new Point2D.Double(parent.getPosition().getX(), parent.getPosition().getY() + shape.getBounds().getHeight() / 2);
         	Point2D p1 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth() / 2, getPosition().getY() + shape.getBounds().getHeight());
         	Point2D p2 = new Point2D.Double(parent.getPosition().getX() + shape.getBounds().getWidth() / 2, parent.getPosition().getY());
-            Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW);
+            Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW, true);
             arrow.paint(g);
         }
-
-        shape.moveTo(getPosition());
-        shape.paint((Graphics2D) g);
+        
     }
 
     @Override

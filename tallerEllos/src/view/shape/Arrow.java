@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -16,6 +17,7 @@ import java.awt.geom.Point2D;
 public class Arrow {
   private final static Color DEF_COLOR = Color.BLACK;
   private final static BasicStroke DEF_STROKE = new BasicStroke(1.0f);
+  private final static int START_POINT_DIAMETER = 3; // In pixels
   
   private Point2D p1;
   private Point2D p2;
@@ -26,6 +28,7 @@ public class Arrow {
   private GeneralPath path;
   private BasicStroke stroke;
   private Color color;
+  private boolean drawStartPoint;
 
   /**
    * Construye una flecha.
@@ -40,10 +43,12 @@ public class Arrow {
     this.fillHead = fill;
     this.stroke = DEF_STROKE;
     this.color = DEF_COLOR;
-    if (fillHead)
+    this.drawStartPoint = false;
+    if (fillHead) {
       createPath();
-    else
+    } else {
       createLines();
+    }
   }
 
   /**
@@ -55,17 +60,19 @@ public class Arrow {
    * @param stroke trazo utilizado para pintar la flecha
    * @param color color de la flecha
    */
-  public Arrow(Point2D p1, Point2D p2, boolean fill, BasicStroke stroke,
-      Color color) {
+  public Arrow(	Point2D p1, Point2D p2, boolean fill, BasicStroke stroke,
+		  		Color color, boolean drawStartPoint) {
     this.p1 = p1;
     this.p2 = p2;
     this.fillHead = fill;
     this.stroke = stroke;
     this.color = color;
-    if (fillHead)
+    this.drawStartPoint = drawStartPoint;
+    if (fillHead) {
       createPath();
-    else
+    } else {
       createLines();
+    }
   }
 
   /**
@@ -88,11 +95,17 @@ public class Arrow {
     g2.setPaint(this.color);
     g2.setStroke(this.stroke);
 
+    if (drawStartPoint) {
+    	g2.fill(new Ellipse2D.Double(p1.getX() - START_POINT_DIAMETER / 2,
+    								 p1.getY() - START_POINT_DIAMETER / 2,
+    								 START_POINT_DIAMETER, START_POINT_DIAMETER));
+    }
+    
     g2.draw(line);
 
-    if (fillHead)
+    if (fillHead) {
       g2.fill(path);
-    else {
+    } else {
       g2.draw(head1);
       g2.draw(head2);
     }

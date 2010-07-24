@@ -58,7 +58,7 @@ public class DataTrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps 
 
     int index = this.trieView.getWord().getSize();
 
-    if (trieView.isRunningInsertion()){
+    if (trieView.isRunningInsertion()) {
       steps.add(new ShowMessageDialogCommand(TrieMessages.getInstance()
           .getMessageCannotInsertWord(node.getData()), TITLE, MESSAGE_TYPE));
       trieView.changeTrieColor();

@@ -132,7 +132,7 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
     private Arrow createArrow(Point2D parentPosition, Point2D currentPosition) {
         Point2D p1 = new Point2D.Double(parentPosition.getX() + DIAMETER / 2, parentPosition.getY() + DIAMETER / 2);
         Point2D p2 = new Point2D.Double(currentPosition.getX() + DIAMETER / 2, currentPosition.getY());
-        return new Arrow(p1, p2, true, ARROW_STROKE, DEF_COLOR_ARROW);
+        return new Arrow(p1, p2, true, ARROW_STROKE, DEF_COLOR_ARROW, false);
     }
 
     private NodeShape createRect(int x, int y, int width, int height, String label) {

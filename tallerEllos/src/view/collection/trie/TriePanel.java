@@ -4,21 +4,21 @@ import view.common.InteractivePanel;
 import controller.TrieController;
 
 /**
- * Encapsula al panel principal de la aplicacion, que contiene todos los otros
- * paneles.
  * 
  * 
  */
-public class MainPanel extends javax.swing.JPanel {
+public class TriePanel extends javax.swing.JPanel {
+	
   private static final long serialVersionUID = 1L;
+  
   private TrieView trieView;
   private TrieController controller;
 
   /**
-   * Creates new form MainPanel
+   * Creates new form TriePanel
    * @param trieView una vista del trie.
    */
-  public MainPanel(TrieView trieView) {
+  public TriePanel(TrieView trieView) {
     initComponents();
     this.trieView = trieView;
     this.add(trieView, java.awt.BorderLayout.CENTER);

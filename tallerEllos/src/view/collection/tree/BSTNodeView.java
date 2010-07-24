@@ -171,7 +171,7 @@ public class BSTNodeView extends AbstractElementView implements
             Point2D previous = parent.getPosition();
             Point2D p1 = new Point2D.Double(previous.getX()+DIAMETER/2, previous.getY()+DIAMETER/2);
             Point2D p2 = new Point2D.Double(getPosition().getX()+DIAMETER*(2-side)/4, getPosition().getY());
-            Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW);
+            Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW, false);
             arrow.paint(g);
         }
 

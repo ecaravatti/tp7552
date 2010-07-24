@@ -202,13 +202,13 @@ public abstract class PointerView extends AbstractElementView implements Selecta
 
   protected void paintDefArrow(Graphics g) {
     Arrow arrow = new Arrow(this.getInitialPosition(), this.getFinalPosition(),
-        true, this.getStroke(), this.getColor());
+        true, this.getStroke(), this.getColor(), true);
     arrow.paint(g);
   }
 
   protected void paintAltArrow(Graphics g) {
     Arrow arrow = new Arrow(this.getInitialPosition(), this.getFinalPosition(),
-        true, new BasicStroke(3.0f), getFlashingColor());
+        true, new BasicStroke(3.0f), getFlashingColor(), true);
     arrow.paint(g);
   }
 

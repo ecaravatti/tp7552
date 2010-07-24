@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import model.collection.trie.Trie;
-import view.collection.trie.MainPanel;
+import view.collection.trie.TriePanel;
 import view.collection.trie.TrieGenerator;
 import view.collection.trie.TrieMessages;
 import view.command.common.ShowMessageDialogCommand;
@@ -20,7 +20,7 @@ import view.common.InteractivePanel;
 public class TrieController extends InteractiveController {
   private Trie<String> trie;
   private TrieGenerator generator;
-  private MainPanel mainPanel;
+  private TriePanel triePanel;
   private boolean running;
   private int maxlengthHor;
   private int maxlengthVert;
@@ -31,21 +31,21 @@ public class TrieController extends InteractiveController {
   /**
    * Construye un TrieController.
    * @param trie un trie
-   * @param mainPanel el panel principal de la vista
+   * @param triePanel el panel principal de la vista
    * @param operationsLog area de texto donde debe mostrarse los mensajes de las
    *        operaciones
    */
-  public TrieController(Trie<String> trie, MainPanel mainPanel, JTextArea operationsLog) {
-    super(mainPanel.getTrieView(), operationsLog);
+  public TrieController(Trie<String> trie, TriePanel triePanel, JTextArea operationsLog) {
+    super(triePanel.getTrieView(), operationsLog);
     this.trie = trie;
-    this.mainPanel = mainPanel;
+    this.triePanel = triePanel;
     calculateMax();
-    trie.addListener(mainPanel.getTrieView());
+    trie.addListener(triePanel.getTrieView());
     this.countLengthHor = 0;
     this.countLengthVertical = 0;
     this.running = false;
     this.generator = new TrieGenerator(this);
-    getInteractivePanel().setValueSlider(mainPanel.getTrieView().getDelayValue());
+    getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
     //this.getInteractivePanel().setMaximumSlider( 190 );
   }
 
@@ -76,10 +76,10 @@ public class TrieController extends InteractiveController {
       //Logger.getLogger("Log").log(Level.INFO, "Horizontal " + countLengthHor);
       //Logger.getLogger("Log").log(Level.INFO, "Vertical " + countLengthVertical);
       this.setRunning( true );
-      mainPanel.getMainButtonPanel().setEnabledButtons( false );
+      triePanel.getMainButtonPanel().setEnabledButtons( false );
 
       
-      mainPanel.getTrieView().addWord(word);
+      triePanel.getTrieView().addWord(word);
       trie.insert(word, word);
       
      
@@ -93,7 +93,7 @@ public class TrieController extends InteractiveController {
    */
   public void removeWord(String word) {
     showLogMessage("** Eliminando palabra: " + word.toString() );
-    mainPanel.getTrieView().removeWord(word);
+    triePanel.getTrieView().removeWord(word);
     trie.remove(word);
   }
 
@@ -101,16 +101,16 @@ public class TrieController extends InteractiveController {
   public void addInteractivePanel(InteractivePanel panel){
     super.addInteractivePanel( panel );
     getInteractivePanel().addInteractiveController(this);
-    getInteractivePanel().setValueSlider(mainPanel.getTrieView().getDelayValue());
+    getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
   }
   
   @Override
   public void primitiveFinished() {
-    this.mainPanel.getTrieView().showStatistic();
-    this.countLengthVertical = this.mainPanel.getTrieView().countNodesVertical();
-    this.countLengthHor -= this.mainPanel.getTrieView().countNodesHorizontal();
-    mainPanel.getMainButtonPanel().setEnabledButtons(true);
-    mainPanel.getTrieView().restore();
+    this.triePanel.getTrieView().showStatistic();
+    this.countLengthVertical = this.triePanel.getTrieView().countNodesVertical();
+    this.countLengthHor -= this.triePanel.getTrieView().countNodesHorizontal();
+    triePanel.getMainButtonPanel().setEnabledButtons(true);
+    triePanel.getTrieView().restore();
     this.setRunning(false);
     //Logger.getLogger("Log").log(Level.INFO, "********************************************************");
     //Logger.getLogger("Log").log(Level.INFO, "Primitive finished..");
@@ -146,10 +146,10 @@ public class TrieController extends InteractiveController {
    */
   public void clear() {
     this.trie.clear();
-    this.mainPanel.getTrieView().clear();
+    this.triePanel.getTrieView().clear();
     this.countLengthHor = 0;
     this.countLengthVertical = 0;
-    this.mainPanel.getTrieView().repaint();
+    this.triePanel.getTrieView().repaint();
   }
   
   private void calculateMax(){

@@ -73,8 +73,7 @@ public class CannotRemoveNodeAnimationSteps extends AbstractUndoAnimationSteps {
     undoSteps.add(new ChangeColorNodeShapeCommand(word.getLetter(index), color));
     undoSteps.add(new ChangeColorNodeCommand(node, color));
     undoSteps.add(new PaintCommand(trieView));
-    undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node,
-        false, true));
+    undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node, false, true));
 
   }
 

@@ -32,7 +32,7 @@ import view.collection.stack.StackPanel;
 import view.collection.stack.StackView;
 import view.collection.tree.BSTHeightBalancedView;
 import view.collection.tree.BSTPanel;
-import view.collection.trie.MainPanel;
+import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
 import ar.uba.fi.structuresAnimator.doc.HelpPanel;
@@ -56,18 +56,19 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
      * Componentes Generales
      */
     private JTabbedPane tabbedPane;
-    private JSplitPane splitPane;
+    private JSplitPane verticalSplitPane;
     private JSplitPane horizontalSplitPane;
-    private JScrollPane scrollPane;
+    private JScrollPane logPane;
     private JScrollPane codePane;
     private JTextArea operationsLog;
     private JTextArea primitivesCodeArea;
+    private JPanel mainPanel;
     private JPanel bottomPanel;
     private InteractivePanel interactivePanel;
     /**
      * Componentes del Trie
      */
-    private MainPanel mainPanel;
+    private TriePanel triePanel;
     private Trie<String> trie;
     private TrieView trieView;
     private TrieController trieController;
@@ -121,10 +122,10 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
          */
         trie = new Trie<String>();
         trieView = new TrieView();
-        mainPanel = new MainPanel(trieView);
-        trieController = new TrieController(trie, mainPanel, operationsLog);
+        triePanel = new TriePanel(trieView);
+        trieController = new TrieController(trie, triePanel, operationsLog);
         trieController.setPrimitivesCodeArea(primitivesCodeArea);
-        this.mainPanel.addController(trieController);
+        this.triePanel.addController(trieController);
 
         /**
          * Componentes de BST
@@ -184,17 +185,17 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
          */
         tabbedPane = new JTabbedPane();
         tabbedPane.addTab("AYUDA", new HelpPanel());
-        tabbedPane.addTab("Trie", mainPanel);
+        tabbedPane.addTab("Trie", triePanel);
         tabbedPane.addTab("Stack", stackPanel);
         tabbedPane.addTab("Queue", queuePanel);
         tabbedPane.addTab("Heap", heapView);
         tabbedPane.addTab("Arbol Binario de Busqueda Balanceado por Altura", treeHeightPanel);
         tabbedPane.addTab("Arbol Binario de Busqueda Balanceado por Peso", treeWeightPanel);
 
-        operationsLog.setBorder(BorderFactory.createTitledBorder("Operaciones realizadas"));
+        operationsLog.setBorder(BorderFactory.createTitledBorder("Log de Operaciones"));
         operationsLog.setEditable(false);
 
-        scrollPane = new JScrollPane(operationsLog, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        logPane = new JScrollPane(operationsLog, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         primitivesCodeArea.setBorder(BorderFactory.createTitledBorder("Pseudocódigo"));
         primitivesCodeArea.setEditable(false);
@@ -202,19 +203,14 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 
         codePane = new JScrollPane(primitivesCodeArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        horizontalSplitPane.setLeftComponent(scrollPane);
-        horizontalSplitPane.setRightComponent(codePane);
-
+        mainPanel = new JPanel(new BorderLayout());
         bottomPanel = new JPanel(new BorderLayout());
-        //bottomPanel.add(interactivePanel, BorderLayout.SOUTH);
-        //bottomPanel.add(scrollPane, BorderLayout.CENTER);
-        //bottomPanel.add(codePane, BorderLayout.EAST);
-        bottomPanel.add(horizontalSplitPane);
+        mainPanel.add(tabbedPane);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
-        splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-        splitPane.setTopComponent(tabbedPane);
-        splitPane.setBottomComponent(bottomPanel);
+        verticalSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+        verticalSplitPane.setTopComponent(codePane);
+        verticalSplitPane.setBottomComponent(logPane);
 
         tabbedPane.addChangeListener(new ChangeListener() {
 
@@ -224,32 +220,49 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 
             int sel = pane.getSelectedIndex();
 
-            if (sel == 0) return;
+            if (sel == 0) {
+            	if (interactivePanel != null) {
+            		bottomPanel.remove(interactivePanel);
+            	}
+            	horizontalSplitPane.remove(verticalSplitPane);
+            	return;
+            } else if (horizontalSplitPane.getRightComponent() == null) {
+            	horizontalSplitPane.add(verticalSplitPane);
+            	horizontalSplitPane.setDividerLocation(0.7);
+            	verticalSplitPane.setDividerLocation(0.5);
+            	horizontalSplitPane.repaint();
+            }
 
-            if (interactivePanel != null)
+            if (interactivePanel != null) {
               bottomPanel.remove(interactivePanel);
+            }
 
             interactivePanel = controllers.get(sel - 1).getInteractivePanel();
-            bottomPanel.add(interactivePanel, BorderLayout.SOUTH);
+            bottomPanel.add(interactivePanel);
             controllers.get(sel - 1).setWait(false);
 
-            for (int i = 0; i < controllers.size(); i++){
-              if ( controllers.get(i) != controllers.get(sel - 1) )
+            for (int i = 0; i < controllers.size(); i++) {
+              if ( controllers.get(i) != controllers.get(sel - 1) ) {
                 controllers.get(i).setWait(true);
+              }
             }
             bottomPanel.repaint();
           }
         });
+        
+        horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        horizontalSplitPane.setLeftComponent(mainPanel);
+        // El componente de la derecha es agregado cuando se selecciones un tab de una estructura.
 
         this.setSize(800, 600);
-        this.add(splitPane);
+        this.add(horizontalSplitPane);
         this.addComponentListener(this);
     }
 
     @Override
     public void start() {
-        horizontalSplitPane.setDividerLocation(0.5);
-        splitPane.setDividerLocation(0.7);
+    	horizontalSplitPane.setDividerLocation(0.7);
+    	verticalSplitPane.setDividerLocation(0.5);
         trieView.start();
         treeHeightBalancedView.start();
         treeWeightBalancedView.start();
@@ -261,8 +274,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
     @Override
     public void componentResized(ComponentEvent e) {
         // Para cuando se invoca desde un browser
-        horizontalSplitPane.setDividerLocation(0.5);
-        splitPane.setDividerLocation(0.7);
+        horizontalSplitPane.setDividerLocation(0.7);
+        verticalSplitPane.setDividerLocation(0.5);
     }
 
     @Override

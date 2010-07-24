@@ -93,10 +93,11 @@ public class TrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
 
     Color color;
     // Finalizacion de la insercion
-    if (trieView.isRunningInsertion()) 
+    if (trieView.isRunningInsertion()) {
       color = AbstractTrieNodeView.Colors.NODE_ADDED.getColor();
-    else 
+    } else { 
       color = AbstractTrieNodeView.Colors.NODE_FOUND.getColor();
+    }
 
     steps.add(new ChangeColorNodeShapeCommand(letter, color));
     steps.add(new ChangeColorNodeCommand(node, color) );

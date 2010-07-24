@@ -137,7 +137,6 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         double delay = (double) (100 - speed) / 100 * (MAX_DELAY - MIN_DELAY);
         delay += MIN_DELAY;
         commandQueue.setDelay((int) delay);
-
     }
 
     /**
@@ -272,7 +271,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
             this.commandQueue.executeImmediate(list);
             this.wait(false);
         } catch (java.util.EmptyStackException e) {
-            controller.showLogMessage("No hay nada para deshacer...");
+            controller.showLogMessage("No hay operaciones para deshacer...");
             throw new CannotUndoException();
         }
 

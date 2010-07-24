@@ -23,7 +23,7 @@ import view.element.common.Selectable;
 public class NodeShape implements Selectable, Mobile {
   private final static Color DEF_COLOR = new Color(1.0f, 1.0f, 1.0f, 0f);
   private final static Color DEF_BORDER_COLOR = Color.WHITE;
-  private final static Color DEF_NODE_COLOR = new Color(173, 216, 230);
+  private final static Color DEF_NODE_COLOR = new Color(0, 204, 102);
   private final static Color DEF_SELECTION_COLOR = Color.YELLOW.brighter();
   private final static Color DEF_LINE_COLOR = Color.BLACK;
   private final static Color DEF_TEXT_COLOR = Color.black;
@@ -61,8 +61,7 @@ public class NodeShape implements Selectable, Mobile {
       Stroke stroke, boolean rounded) {
     super();
     this.data = data;
-    this.rectNode = new Rectangle2D.Double(pos.getX(), pos.getY(), width,
-        height);
+    this.rectNode = new Rectangle2D.Double(pos.getX(), pos.getY(), width, height);
     this.nodeColor = DEF_NODE_COLOR;
     this.defNodeColor = DEF_NODE_COLOR;
     this.actBorderColor = DEF_BORDER_COLOR;
@@ -128,8 +127,8 @@ public class NodeShape implements Selectable, Mobile {
     paintNode(g2);
 
     if (actBorderColor.equals(DEF_COLOR) && selected) {
-      Color color = new Color(selectionColor.getRed(), selectionColor
-          .getGreen(), selectionColor.getBlue(), ALPHA);
+      Color color = new Color(selectionColor.getRed(), selectionColor.getGreen(),
+    		  				  selectionColor.getBlue(), ALPHA);
       g2.setPaint(color);
       g2.fill(rectNode);
     }
@@ -140,8 +139,7 @@ public class NodeShape implements Selectable, Mobile {
    * @param point posicion final del nodo
    */
   public void moveTo(Point2D point) {
-    this.rectNode.setRect(point.getX(), point.getY(), rectNode.getWidth(),
-        rectNode.getHeight());
+    this.rectNode.setRect(point.getX(), point.getY(), rectNode.getWidth(), rectNode.getHeight());
     this.rectBorder = this.getBorderRect();
   }
 
@@ -304,8 +302,9 @@ public class NodeShape implements Selectable, Mobile {
     double width = rectNode.getWidth() + 2 * DEF_BORDER;
     double height = rectNode.getHeight() + 2 * DEF_BORDER;
 
-    if (rounded)
+    if (rounded) {
       return new RoundRectangle2D.Double(x, y, width, height, DEF_ARC, DEF_ARC);
+    }
 
     return new Rectangle2D.Double(x, y, width, height);
   }
@@ -319,10 +318,10 @@ public class NodeShape implements Selectable, Mobile {
     Rectangle2D bounds = this.rectNode;
     Paint paint = nodeColor;
     
-    if (useGradientPaint){
+    if (useGradientPaint) {
       paint = new GradientPaint((float) bounds.getCenterX(),
-          (float) bounds.getCenterY(), Color.white, (float) bounds.getMaxX(),
-          (float) bounds.getY(), nodeColor, true);
+          (float) bounds.getY(), nodeColor, (float) bounds.getCenterX(),
+          (float) bounds.getMaxY(), new Color(0, 100, 50), true);
     }
       
     paintRectGrad(g2, paint, bounds);
@@ -333,14 +332,13 @@ public class NodeShape implements Selectable, Mobile {
    * @param grad gradiente con que se pinta
    * @param rect rectangulo que se dibuja
    */
-  protected void paintRectGrad(Graphics graphics, Paint grad,
-      Rectangle2D rect) {
+  protected void paintRectGrad(Graphics graphics, Paint grad, Rectangle2D rect) {
     Graphics2D g2 = (Graphics2D) graphics;
     RectangularShape paint = rect;
 
     if (rounded) {
-      paint = new RoundRectangle2D.Double(rect.getX(), rect.getY(), rect
-          .getWidth(), rect.getHeight(), arc, arc);
+      paint = new RoundRectangle2D.Double(rect.getX(), rect.getY(), rect.getWidth(),
+    		  							  rect.getHeight(), arc, arc);
     }
 
     g2.setPaint(grad);

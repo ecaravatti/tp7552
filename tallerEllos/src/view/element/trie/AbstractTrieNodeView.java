@@ -136,8 +136,9 @@ public abstract class AbstractTrieNodeView extends AbstractElementView {
    * @return la posicion final del nodo.
    */
   public Point2D getFinalPosition() {
-    if (hasParent())
+    if (hasParent()) {
       return this.ptrParent.getTargetNodeFinalPosition();
+    }
 
     return null;
   }
@@ -182,9 +183,9 @@ public abstract class AbstractTrieNodeView extends AbstractElementView {
    */
   public void setTransparent(boolean transparent) {
 
-    if (transparent)
+    if (transparent) {
       this.transparent = transparent;
-    else {
+    } else {
       preTransparent = true;
     }
   }
@@ -199,8 +200,9 @@ public abstract class AbstractTrieNodeView extends AbstractElementView {
 
   @Override
   public void setFlashing(int delay) {
-    if (hasParent())
+    if (hasParent()) {
       getParent().stopFlashing();
+    }
 
     super.setFlashing(delay);
   }
@@ -281,10 +283,10 @@ public abstract class AbstractTrieNodeView extends AbstractElementView {
 
     if (!preTransparent) {
       int alpha = color.getAlpha() + 20;
-      if (alpha > 200)
+      if (alpha > 200) {
         alpha = 200;
-      this.transColor = new Color(color.getRed(), color.getGreen(), color
-          .getBlue(), alpha);
+      }
+      this.transColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
       return color;
     } else {
       int alpha = color.getAlpha() - 20;
@@ -293,8 +295,7 @@ public abstract class AbstractTrieNodeView extends AbstractElementView {
         this.transparent = false;
         alpha = DEF_TRANSP.getAlpha();
       }
-      this.transColor = new Color(color.getRed(), color.getGreen(), color
-          .getBlue(), alpha);
+      this.transColor = new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
       return color;
     }
   }
