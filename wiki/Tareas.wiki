@@ -22,6 +22,7 @@ Ejemplos:
     * Cambiar color, tabs, botones, etc. (si se puede)
     * Eliminar la opción “Guardar” porque tira una excepción
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009”
+    * Reorganizar paneles (ver ejemplo en la ppt)
   * Ayuda
     * Agregar info sobre cola circular
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, etc.
