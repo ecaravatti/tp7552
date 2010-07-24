@@ -7,6 +7,7 @@ package controller;
 import javax.swing.JTextArea;
 
 import model.collection.heap.Heap;
+import model.exception.heap.EmptyHeapException;
 import view.collection.heap.HeapPrimitives;
 import view.collection.heap.HeapView;
 import view.command.common.ShowPrimitiveCodeCommand;
@@ -36,7 +37,11 @@ public class HeapController<T extends Comparable<T>> extends InteractiveControll
 
     public void deleteItem() {
       new ShowPrimitiveCodeCommand(this, HeapPrimitives.delete.getCode()).execute();
-      this.heap.remove();
+      try { 
+    	  this.heap.remove();
+      } catch (EmptyHeapException e) {
+    	  
+      }
     }
     
     public void clear() {

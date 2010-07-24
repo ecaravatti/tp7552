@@ -42,4 +42,10 @@ public abstract class HeapObservable<T> extends ObservableBase<HeapListener<T>> 
             listener.itemsSwapped(item1, item2);
         }
     }
+    
+    protected void fireEmptyHeap() {
+        for (HeapListener<T> listener : this.getListeners()) {
+            listener.emptyHeap();
+        }
+    }
 }

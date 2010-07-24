@@ -3,6 +3,8 @@ package model.collection.heap;
 import java.util.List;
 import java.util.Vector;
 
+import model.exception.heap.EmptyHeapException;
+
 public class Heap<T extends Comparable<T>> extends HeapObservable<T> {
 
     private List<T> elements;
@@ -29,11 +31,12 @@ public class Heap<T extends Comparable<T>> extends HeapObservable<T> {
         fireItemAdded(element);
     }
 
-    public T remove() {
+    public T remove() throws EmptyHeapException {
         T root;
 
         if (size() == 0) {
-            return null;
+        	fireEmptyHeap();
+            throw new EmptyHeapException();
         }
         if (size() == 1) {
             root = elements.remove(0);

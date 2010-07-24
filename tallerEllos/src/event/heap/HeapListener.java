@@ -42,4 +42,9 @@ public interface HeapListener<T> extends EventListener {
      * @param item2
      */
     public void itemsSwapped(Integer item1, Integer item2);
+    
+    /**
+     * Event fired when trying to delete from an empty heap.
+     */
+    public void emptyHeap();
 }

@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 
 import model.collection.queue.ArrayListQueueImpl;
 import view.animation.heap.DeleteItemHeapAnimation;
+import view.animation.heap.EmptyAnimation;
 import view.animation.heap.EndAnimation;
 import view.animation.heap.InsertItemHeapAnimation;
 import view.animation.heap.SwapElementsAnimation;
@@ -479,5 +480,10 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
 
     public Integer getSwapCount() {
         return swapCount;
+    }
+    
+    @Override
+    public void emptyHeap() {
+    	this.addAnimationToQueue(new EmptyAnimation<T>(this));
     }
 }

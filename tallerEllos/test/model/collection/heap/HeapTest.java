@@ -2,6 +2,8 @@ package model.collection.heap;
 
 import java.util.List;
 
+import model.exception.heap.EmptyHeapException;
+
 import junit.framework.TestCase;
 
 
@@ -120,7 +122,7 @@ public class HeapTest extends TestCase {
     
   }
   
-  public void testRemove(){
+  public void testRemove() throws EmptyHeapException {
     Heap<Integer> heap = new Heap<Integer>();
     List<Integer> result;
     Integer ret;
@@ -202,7 +204,12 @@ public class HeapTest extends TestCase {
     assertEquals( 0, heap.size() );
     assertEquals( new Integer(20), ret );
     
-    ret = heap.remove();
-    assertNull( ret );
+    try {
+    	ret = heap.remove();
+    	fail("El heap debería estar vacío.");
+    } catch (EmptyHeapException e) {
+    	
+    }
+    
   }
 }
