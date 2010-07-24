@@ -13,14 +13,14 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private QueueController controller;
+	private QueueController<Integer> controller;
 
     /** Creates new form BSTButtonsPanel */
     public QueueButtonsPanel() {
         initComponents();
     }
 
-    void addController(QueueController controller) {
+    void addController(QueueController<Integer> controller) {
         this.controller = controller;
     }
 

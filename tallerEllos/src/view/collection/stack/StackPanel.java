@@ -19,7 +19,7 @@ public class StackPanel<T> extends javax.swing.JPanel {
         this.add(view, BorderLayout.CENTER);
     }
 
-    public void addController(StackController<T> controller) {
+    public void addController(StackController<Integer> controller) {
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }

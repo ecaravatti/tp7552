@@ -13,14 +13,14 @@ public class StackButtonsPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private StackController controller;
+	private StackController<Integer> controller;
 
     /** Creates new form BSTButtonsPanel */
     public StackButtonsPanel() {
         initComponents();
     }
 
-    void addController(StackController controller) {
+    void addController(StackController<Integer> controller) {
         this.controller = controller;
     }
 

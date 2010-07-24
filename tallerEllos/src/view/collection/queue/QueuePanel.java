@@ -19,7 +19,7 @@ public class QueuePanel<T> extends javax.swing.JPanel {
         this.add(view, BorderLayout.CENTER);
     }
 
-    public void addController(QueueController<T> controller) {
+    public void addController(QueueController<Integer> controller) {
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }
