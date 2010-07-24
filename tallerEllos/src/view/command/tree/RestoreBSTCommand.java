@@ -1,12 +1,12 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
 public class RestoreBSTCommand implements Command {
-  private BSTHeightBalancedView bstView;
+  private BinarySearchTreeView bstView;
 
-  public RestoreBSTCommand(BSTHeightBalancedView bstView) {
+  public RestoreBSTCommand(BinarySearchTreeView bstView) {
     super();
     this.bstView = bstView;
   }

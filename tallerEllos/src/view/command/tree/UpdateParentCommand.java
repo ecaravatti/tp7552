@@ -1,13 +1,13 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 
 public class UpdateParentCommand implements Command {
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
 
-    public UpdateParentCommand(BSTHeightBalancedView bstView) {
+    public UpdateParentCommand(BinarySearchTreeView bstView) {
         this.bstView = bstView;
     }
 

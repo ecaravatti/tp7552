@@ -23,8 +23,11 @@ import model.exception.tree.BSTKeyFoundException;
  */
 public class BSTWeightBalanced<K extends Comparable<K>> extends BinarySearchTree<K> {
 
-	public BSTWeightBalanced(int weight) {
+	private int alpha;
+	
+	public BSTWeightBalanced(int alpha) {
 		super();
+		this.alpha = alpha;
 	}
 
     /**
@@ -130,4 +133,8 @@ public class BSTWeightBalanced<K extends Comparable<K>> extends BinarySearchTree
     protected int getNodeBalance(BSTNode<K> node) {
         return getWeight(node);
     }
+
+	public int getAlpha() {
+		return alpha;
+	}
 }

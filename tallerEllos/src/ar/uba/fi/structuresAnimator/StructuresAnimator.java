@@ -30,13 +30,14 @@ import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
 import view.collection.stack.StackPanel;
 import view.collection.stack.StackView;
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTPanel;
 import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
 import ar.uba.fi.structuresAnimator.doc.HelpPanel;
 import controller.BSTHeightBalancedController;
+import controller.BSTWeightBalancedController;
 import controller.HeapController;
 import controller.InteractiveController;
 import controller.QueueController;
@@ -77,12 +78,12 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
      */
     private BSTPanel treeHeightPanel;
     private BSTHeightBalanced<Integer> treeHeightBalanced;
-    private BSTHeightBalancedView treeHeightBalancedView;
+    private BinarySearchTreeView treeHeightBalancedView;
     private BSTHeightBalancedController treeHeightBalancedController;
     private BSTPanel treeWeightPanel;
     private BSTWeightBalanced<Integer> treeWeightBalanced;
-    private BSTHeightBalancedView treeWeightBalancedView;
-    private BSTHeightBalancedController treeWeightBalancedController;
+    private BinarySearchTreeView treeWeightBalancedView;
+    private BSTWeightBalancedController treeWeightBalancedController;
     /**
      * Componentes de Queue.
      */
@@ -131,16 +132,16 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
          * Componentes de BST
          */
         treeHeightBalanced = new BSTHeightBalanced<Integer>(1);
-        treeHeightBalancedView = new BSTHeightBalancedView();
-        treeHeightPanel = new BSTPanel(treeHeightBalancedView, true);
+        treeHeightBalancedView = new BinarySearchTreeView();
+        treeHeightPanel = new BSTPanel(treeHeightBalancedView, true, "Altura Máxima");
         treeHeightBalancedController = new BSTHeightBalancedController(treeHeightBalanced, treeHeightPanel, operationsLog);
         treeHeightBalancedController.setPrimitivesCodeArea(primitivesCodeArea);
         treeHeightPanel.addController(treeHeightBalancedController);
 
         treeWeightBalanced = new BSTWeightBalanced<Integer>(1);
-        treeWeightBalancedView = new BSTHeightBalancedView();
-        treeWeightPanel = new BSTPanel(treeWeightBalancedView, false);
-        treeWeightBalancedController = new BSTHeightBalancedController(treeWeightBalanced, treeWeightPanel, operationsLog);
+        treeWeightBalancedView = new BinarySearchTreeView();
+        treeWeightPanel = new BSTPanel(treeWeightBalancedView, false, "Alpha");
+        treeWeightBalancedController = new BSTWeightBalancedController(treeWeightBalanced, treeWeightPanel, operationsLog);
         treeWeightBalancedController.setPrimitivesCodeArea(primitivesCodeArea);
         treeWeightPanel.addController(treeWeightBalancedController);
 

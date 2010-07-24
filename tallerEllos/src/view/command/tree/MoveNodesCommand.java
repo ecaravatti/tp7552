@@ -1,12 +1,12 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
 public class MoveNodesCommand implements Command{
-  private BSTHeightBalancedView tree;
+  private BinarySearchTreeView tree;
   
-  public MoveNodesCommand(BSTHeightBalancedView tree) {
+  public MoveNodesCommand(BinarySearchTreeView tree) {
     super();
     this.tree = tree;
   }

@@ -1,15 +1,15 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 
 public class RotateCommand implements Command {
     private int side;
     private BSTNodeView node;
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
 
-    public RotateCommand(int side, BSTNodeView node, BSTHeightBalancedView bstView) {
+    public RotateCommand(int side, BSTNodeView node, BinarySearchTreeView bstView) {
         this.side = side;
         this.node = node;
         this.bstView = bstView;

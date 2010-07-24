@@ -1,14 +1,14 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 
 public class RemoveCommand implements Command {
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
     private BSTNodeView node;
 
-    public RemoveCommand(BSTHeightBalancedView bstView, BSTNodeView node) {
+    public RemoveCommand(BinarySearchTreeView bstView, BSTNodeView node) {
         this.bstView = bstView;
         this.node = node;
     }

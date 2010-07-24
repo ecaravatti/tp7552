@@ -1,6 +1,6 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.memento.tree.BSTMemento;
@@ -8,11 +8,11 @@ import view.memento.tree.BSTMemento;
 public class NodeInsertedCommand implements Command {
   private BSTNodeView node;
   private int side;
-  private BSTHeightBalancedView bstView;
+  private BinarySearchTreeView bstView;
   
   
   public NodeInsertedCommand(BSTNodeView node, int side,
-      BSTHeightBalancedView bstView) {
+      BinarySearchTreeView bstView) {
     super();
     this.node = node;
     this.side = side;

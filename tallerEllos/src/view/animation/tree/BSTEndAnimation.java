@@ -3,16 +3,16 @@ package view.animation.tree;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 import view.command.common.PaintCommand;
 import view.command.common.StepFinishedCommand;
 import view.exception.common.CannotUndoException;
 
 public class BSTEndAnimation extends AbstractUndoAnimationSteps {
-  private BSTHeightBalancedView bstView;
+  private BinarySearchTreeView bstView;
   
-  public BSTEndAnimation(BSTHeightBalancedView bstView) {
+  public BSTEndAnimation(BinarySearchTreeView bstView) {
     super();
     this.bstView = bstView;
   }

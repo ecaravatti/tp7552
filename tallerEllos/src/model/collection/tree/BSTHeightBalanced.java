@@ -21,7 +21,7 @@ import model.exception.tree.BSTKeyFoundException;
 public class BSTHeightBalanced<K extends Comparable<K>> extends BinarySearchTree<K> {
 
     private int maxHeight;
-    private int increment;
+	private int increment;
 
     public BSTHeightBalanced(int maxHeight) {
         super();
@@ -122,4 +122,8 @@ public class BSTHeightBalanced<K extends Comparable<K>> extends BinarySearchTree
     protected int getNodeBalance(BSTNode<K> node) {
         return getHeightNode(node);
     }
+    
+    public int getMaxHeight() {
+		return maxHeight;
+	}
 }

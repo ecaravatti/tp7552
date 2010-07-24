@@ -3,7 +3,7 @@ package view.animation.tree;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.command.common.PaintCommand;
@@ -17,7 +17,7 @@ import view.command.tree.UpdateBalanceCommand;
  * 
  */
 public class BSTNodeUpdatedAnimation extends AbstractUndoAnimationSteps {
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
     private BSTNodeView node;
     private Integer balance;
     private Integer oldBalance;
@@ -28,7 +28,7 @@ public class BSTNodeUpdatedAnimation extends AbstractUndoAnimationSteps {
      * @param node
      * @param balance
      */
-    public BSTNodeUpdatedAnimation(BSTHeightBalancedView bstView, BSTNodeView node, int balance) {
+    public BSTNodeUpdatedAnimation(BinarySearchTreeView bstView, BSTNodeView node, int balance) {
         this.bstView = bstView;
         this.node = node;
         this.balance = balance;
@@ -42,7 +42,7 @@ public class BSTNodeUpdatedAnimation extends AbstractUndoAnimationSteps {
      * @param bstView
      * @param node
      */
-    public BSTNodeUpdatedAnimation(BSTHeightBalancedView bstView, BSTNodeView node) {
+    public BSTNodeUpdatedAnimation(BinarySearchTreeView bstView, BSTNodeView node) {
         this.bstView = bstView;
         this.node = node;
         this.balance = null;

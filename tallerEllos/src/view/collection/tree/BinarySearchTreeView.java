@@ -31,7 +31,7 @@ import event.tree.BSTListener;
 /**
  *
  */
-public class BSTHeightBalancedView extends AnimatedPanel implements BSTListener<Integer>, BSTPrimitives {
+public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<Integer>, BSTPrimitives {
 	private static final long serialVersionUID = 1L;
 	private static final int DEF_ROOT_POSITION_Y = 20;
     private final static Font DEF_FONT = new Font("SansSerif", Font.PLAIN, 13);
@@ -54,7 +54,7 @@ public class BSTHeightBalancedView extends AnimatedPanel implements BSTListener<
     private boolean modeDelete;
 	private BSTCaretaker caretaker;
     
-    public BSTHeightBalancedView() {
+    public BinarySearchTreeView() {
         super();
 
         caretaker = new BSTCaretaker();

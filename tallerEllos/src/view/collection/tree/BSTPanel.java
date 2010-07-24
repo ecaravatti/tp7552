@@ -2,7 +2,7 @@ package view.collection.tree;
 
 import java.awt.BorderLayout;
 
-import controller.BSTHeightBalancedController;
+import controller.BSTController;
 
 /**
  *
@@ -11,22 +11,22 @@ public class BSTPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-    private BSTHeightBalancedView view;
+    private BinarySearchTreeView view;
 
     /** Creates new form BSTPanel */
-    public BSTPanel(BSTHeightBalancedView view, boolean withChangeParameter) {
+    public BSTPanel(BinarySearchTreeView view, boolean withChangeParameter, String parameterName) {
         initComponents();
-		buttonsPanel.setWithChangeParameter(withChangeParameter);
+		buttonsPanel.setWithChangeParameter(withChangeParameter, parameterName);
         this.view = view;
         this.add(view, BorderLayout.CENTER);
     }
 
-    public void addController(BSTHeightBalancedController controller) {
+    public void addController(BSTController controller) {
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }
 
-    public BSTHeightBalancedView getView() {
+    public BinarySearchTreeView getView() {
         return view;
     }
 

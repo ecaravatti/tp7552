@@ -1,12 +1,12 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
 public class RotationFinishedCommand implements Command {
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
 
-    public RotationFinishedCommand(BSTHeightBalancedView bstView) {
+    public RotationFinishedCommand(BinarySearchTreeView bstView) {
         this.bstView = bstView;
     }
 

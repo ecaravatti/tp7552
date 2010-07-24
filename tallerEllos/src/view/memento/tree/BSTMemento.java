@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 
 public class BSTMemento {
@@ -20,7 +20,7 @@ public class BSTMemento {
   private int isDobleRotation;
   private boolean modeDelete;
   
-  public BSTMemento(BSTHeightBalancedView bstView, BSTNodeView node) {
+  public BSTMemento(BinarySearchTreeView bstView, BSTNodeView node) {
     this(bstView);
     if (node != null){
       nodes = new ArrayList<BSTNodeMemento>();
@@ -28,7 +28,7 @@ public class BSTMemento {
     }
   }
 
-  public BSTMemento(BSTHeightBalancedView bstView) {
+  public BSTMemento(BinarySearchTreeView bstView) {
     super();
     this.root = bstView.getRoot();
     this.nodes = null;

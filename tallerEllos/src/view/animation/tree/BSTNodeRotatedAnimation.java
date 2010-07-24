@@ -3,7 +3,7 @@ package view.animation.tree;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.command.common.ShowMessageCommand;
@@ -20,10 +20,10 @@ import view.command.tree.UpdateParentCommand;
  * 
  */
 public class BSTNodeRotatedAnimation extends AbstractUndoAnimationSteps {
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
     private int side;
 
-    public BSTNodeRotatedAnimation(BSTHeightBalancedView bstView, int side) {
+    public BSTNodeRotatedAnimation(BinarySearchTreeView bstView, int side) {
         this.bstView = bstView;
         this.side = side;
     }

@@ -1,15 +1,15 @@
 package view.command.tree;
 
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 
 public class DoubleRotationStartedCommand implements Command {
-  private BSTHeightBalancedView bstView;
+  private BinarySearchTreeView bstView;
   private int side;
   private BSTNodeView node;
 
-  public DoubleRotationStartedCommand(BSTHeightBalancedView bstView, BSTNodeView node,
+  public DoubleRotationStartedCommand(BinarySearchTreeView bstView, BSTNodeView node,
           int side) {
     super();
     this.bstView = bstView;

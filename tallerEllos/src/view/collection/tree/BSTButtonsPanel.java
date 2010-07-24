@@ -3,7 +3,7 @@ package view.collection.tree;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 
-import controller.BSTHeightBalancedController;
+import controller.BSTController;
 
 /**
  *
@@ -12,7 +12,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private BSTHeightBalancedController controller;
+	private BSTController controller;
     private static final int PARAMETER_MAX = 10;
 
     /** Creates new form BSTButtonsPanel */
@@ -20,17 +20,29 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    void addController(BSTHeightBalancedController controller) {
+    void addController(BSTController controller) {
         this.controller = controller;
     }
 
-    public void setWithChangeParameter(boolean withChangeParameter) {
+    public void setWithChangeParameter(boolean withChangeParameter, String parameterName) {
         if (withChangeParameter) {
             for (int i = 1; i < PARAMETER_MAX; i++)
                 parameterCombo.addItem(new Integer(i));
         }
-        parameterButton.setVisible(withChangeParameter);
+        parameterLabel.setVisible(withChangeParameter);
         parameterCombo.setVisible(withChangeParameter);
+        
+        parameterLabel.setText(parameterName);
+        
+        parameterCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parameterButtonActionPerformed(evt);
+            }
+        });
+    }
+    
+    public void setParameter(int parameter) {
+    	parameterCombo.setSelectedItem(parameter);
     }
 
     private String getText() {
@@ -64,7 +76,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         removeButton = new javax.swing.JButton();
         traverseButton = new javax.swing.JButton();
         traverseOption = new javax.swing.JComboBox();
-        parameterButton = new javax.swing.JButton();
+        parameterLabel = new javax.swing.JLabel();
         parameterCombo = new javax.swing.JComboBox();
         clearButton = new javax.swing.JButton();
         insertRandomButton = new javax.swing.JButton();
@@ -115,18 +127,6 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
 
         traverseOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In-Order", "Pre-Order", "Post-Order" }));
 
-        parameterButton.setText("Cambiar parametro");
-        parameterButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        parameterButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        parameterButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        parameterButton.setPreferredSize(new java.awt.Dimension(130, 20));
-        parameterButton.setMnemonic(KeyEvent.VK_P);
-        parameterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                parameterButtonActionPerformed(evt);
-            }
-        });
-
         clearButton.setText("Limpiar");
         clearButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         clearButton.setMaximumSize(new java.awt.Dimension(80, 20));
@@ -173,7 +173,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(parameterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(parameterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(parameterCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9))
@@ -190,7 +190,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
                     .addComponent(traverseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(traverseOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(parameterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(parameterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parameterCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -243,7 +243,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
     private javax.swing.JButton clearButton;
     private javax.swing.JButton insertButton;
     private javax.swing.JButton insertRandomButton;
-    private javax.swing.JButton parameterButton;
+    private javax.swing.JLabel parameterLabel;
     private javax.swing.JComboBox parameterCombo;
     private javax.swing.JButton removeButton;
     private javax.swing.JTextField textField;

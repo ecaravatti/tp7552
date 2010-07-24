@@ -5,13 +5,13 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import controller.BSTHeightBalancedController;
+import controller.BSTController;
 
 public class TreeGenerator extends Thread {
   public static int LEFT = 0;
   public static int RIGHT = 1;
   
-  private BSTHeightBalancedController controller;
+  private BSTController controller;
   private int mode;
   static Map< Integer, List<Integer> > map;
   static{
@@ -131,7 +131,7 @@ public class TreeGenerator extends Thread {
     map.put(new Integer(6), list);
   }
   
-  public TreeGenerator(BSTHeightBalancedController controller, int mode) {
+  public TreeGenerator(BSTController controller, int mode) {
     super();
     this.controller = controller;
     this.mode = mode;

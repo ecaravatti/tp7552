@@ -3,7 +3,7 @@ package view.animation.tree;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.collection.tree.BSTHeightBalancedView;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 import view.command.common.SelectElementViewCommand;
@@ -18,7 +18,7 @@ import view.command.tree.ChangeSelectableColorCommand;
  */
 public class BSTNodeVisitedAnimation extends AbstractUndoAnimationSteps {
 
-    private BSTHeightBalancedView bstView;
+    private BinarySearchTreeView bstView;
     private BSTNodeView node;
     SelectionMode mode;
 
@@ -28,7 +28,7 @@ public class BSTNodeVisitedAnimation extends AbstractUndoAnimationSteps {
         TRAVERSED,
     }
 
-    public BSTNodeVisitedAnimation(BSTHeightBalancedView bstView, BSTNodeView node, SelectionMode mode) {
+    public BSTNodeVisitedAnimation(BinarySearchTreeView bstView, BSTNodeView node, SelectionMode mode) {
         this.bstView = bstView;
         this.node = node;
         this.mode = mode;
