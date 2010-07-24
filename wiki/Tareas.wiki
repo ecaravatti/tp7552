@@ -56,12 +56,12 @@ Ejemplos:
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException.
     * Corregir bug que hay cuando se hace una inserción random, se eliminan un par de elementos, y al insertar uno nuevo, éste es insertado muy a la izquierda, como si la cola continuara con la cant. inicial de elementos.
   * Árbol Balanceado por Peso
-    * Permitir ingresar el parámetro de peso
-    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido)
-    * Mostrar cartel de aviso de árbol vacío
+    * Permitir ingresar el parámetro de peso _(Manu)_ *(In Progress)*
+    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
+    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
   * Árbol Balanceado por Altura
-    * Mostrar cartel de aviso de árbol vacío
-    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido)
+    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
+    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
   * Trie
     * Cambiar “Demo” por “Random”
     * Cambiar ejemplos (del random)
