@@ -24,11 +24,9 @@ import view.command.stack.LinkMobilesCommand;
  *
  */
 public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
-
-    private final static int DEF_WIDTH_NODE = 50;
+	
     private final static int DEF_HEIGTH_NODE = 50;
-    private static final int DELTA_HORIZONTAL = 0;//50;
-    private static final int DELTA_VERTICAL = 100;//100;
+    private static final int DELTA_VERTICAL = 25;
     private StackView<T> view;
     private StackNodeView<T> node;
 
@@ -71,7 +69,6 @@ public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
     private void moveNodeToList(StackNodeView<T> node) {
         //first move to the right to the final horizontal position.
         Point2D horizontalPosition = (Point2D) node.getPosition().clone();
-        //horizontalPosition.setLocation(horizontalPosition.getX() - ((this.getNodeIndex(node) - 1) * (DEF_WIDTH_NODE + DELTA_HORIZONTAL)), horizontalPosition.getY());
         horizontalPosition.setLocation(horizontalPosition.getX(), horizontalPosition.getY() - (this.getNodeIndex(node) - 1)*(DEF_HEIGTH_NODE + DELTA_VERTICAL));
 
         steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), horizontalPosition, 8).getSteps());
@@ -80,7 +77,7 @@ public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
         Point2D verticalPosition = (Point2D) horizontalPosition.clone();
         verticalPosition.setLocation(verticalPosition.getX(), verticalPosition.getY() + DELTA_VERTICAL);
 
-        steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition, verticalPosition, 8).getSteps());
+        steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition, verticalPosition, 2).getSteps());
     }
 
     private int getNodeIndex(StackNodeView<T> node) {
