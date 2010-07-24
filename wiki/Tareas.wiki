@@ -68,8 +68,8 @@ Ejemplos:
     * Cambiar ejemplos (del random) _(Dami)_ *(In Progress)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
   * Heap
-    * Mostrar cartel de aviso de heap vacío
-    * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras.
+    * Mostrar cartel de aviso de heap vacío _(Manu)_ *(In Progress)*
+    * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(In Progress)*
   * Frame Principal
     * Agregar scroll
     * Styles
