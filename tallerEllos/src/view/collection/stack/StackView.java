@@ -22,11 +22,8 @@ import event.stack.StackListener;
 public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
-	
-	//private static final int INITIAL_HORIZONTAL = 920;
-    //private static final int INITIAL_VERTICAL = 50;
 	private static final int INITIAL_HORIZONTAL = 50;
-    private static final int INITIAL_VERTICAL = 200;
+    private static final int INITIAL_VERTICAL = 450;
     private List<StackNodeView<T>> stackNodes;
 
     public StackView() {
@@ -57,7 +54,7 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
     @Override
     public void emptyStackCondition() {
         this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.pop.getCode()));
-        this.addCommandToQueue(new ShowMessageCommand(this, "La pila se encuentra vacÃ­a."));
+        this.addCommandToQueue(new ShowMessageCommand(this, "La pila se encuentra vacía."));
         this.addCommandToQueue(new StepFinishedCommand(this, true));
     }
 
