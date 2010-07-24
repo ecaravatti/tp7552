@@ -288,6 +288,12 @@ public class BSTHeightBalancedView extends AnimatedPanel implements BSTListener<
     public void rotateFinishedInDelete(BSTEvent<Integer> event) {
         this.addAnimationToQueue(new BSTNodeInsertedAnimation(this, null, event.getSide()));
     }
+    
+    @Override
+    public void emptyTree(BSTEvent<Integer> event) {
+    	this.addCommandToQueue(new ShowMessageCommand(this, "El árbol se encuentra vacío."));
+    	primitiveFinished();
+    }
 
     private void primitiveFinished() {
         String s;
@@ -430,4 +436,5 @@ public class BSTHeightBalancedView extends AnimatedPanel implements BSTListener<
         throw new CannotUndoException();
     }
     }
+    
 }

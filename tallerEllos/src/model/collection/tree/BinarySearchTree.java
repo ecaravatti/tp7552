@@ -1,5 +1,6 @@
 package model.collection.tree;
 
+import model.exception.tree.BSTEmptyTreeException;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
 
@@ -98,7 +99,11 @@ public abstract class BinarySearchTree<K extends Comparable<K>> extends BinarySe
      * @param data la informacion que identifica al nodo
      * @throws model.exception.tree.BSTKeyNotFoundException si no existe la clave del nodo
      */
-	public void delete(K data) throws BSTKeyNotFoundException {
+	public void delete(K data) throws BSTKeyNotFoundException, BSTEmptyTreeException {
+		if (root == null) {
+			this.fireEmptyTree(this);
+			throw new BSTEmptyTreeException();
+		}
 		root = deleteNode(data, root);
         this.fireRootRemoved(this, root);
 	}

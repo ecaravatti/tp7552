@@ -2,6 +2,7 @@ package model.collection.tree;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import model.exception.tree.BSTEmptyTreeException;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
 
@@ -129,7 +130,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete1() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete1() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
 		treeAVL.insert(new Integer(5));
         assertEquals(1, treeAVL.getHeight());
 		treeAVL.insert(new Integer(3));
@@ -145,7 +146,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete2() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete2() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
 		treeAVL.insert(new Integer(5));
         assertEquals(1, treeAVL.getHeight());
 		treeAVL.insert(new Integer(3));
@@ -161,7 +162,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete3() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete3() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion simple
 
 		treeAVL.insert(new Integer(9));
@@ -183,7 +184,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete4() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete4() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion doble
 
 		treeAVL.insert(new Integer(9));
@@ -206,7 +207,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete5() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete5() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion doble
 
 		treeAVL.insert(new Integer(20));
@@ -233,7 +234,7 @@ public class BinarySearchTreeHeightBalancedTest {// extends TestCase {
     }
 
     @Test
-    public void testAVLDelete6() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete6() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion doble
 
 		treeAVL.insert(new Integer(3));

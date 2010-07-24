@@ -67,5 +67,11 @@ public class BinarySearchTreeObservable<K extends Comparable<K>> extends Observa
             listener.traverseFinished(new BSTEvent<K>(source));
         }
     }
+    
+    protected void fireEmptyTree(BinarySearchTree<K> source) {
+        for (BSTListener<K> listener : this.getListeners()) {
+            listener.emptyTree(new BSTEvent<K>(source));
+        }
+    }
 
 }

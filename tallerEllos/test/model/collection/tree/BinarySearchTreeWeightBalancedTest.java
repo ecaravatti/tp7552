@@ -2,6 +2,7 @@ package model.collection.tree;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import model.exception.tree.BSTEmptyTreeException;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
 
@@ -80,7 +81,7 @@ public class BinarySearchTreeWeightBalancedTest {
     }
 
     @Test
-    public void testDelete1() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testDelete1() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
 		tree.insert(new Integer(5));
         assertEquals(1, tree.getHeight());
 		tree.insert(new Integer(3));
@@ -98,7 +99,7 @@ public class BinarySearchTreeWeightBalancedTest {
     }
 
     @Test
-    public void testDelete2() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testDelete2() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
 		tree.insert(new Integer(9));
         assertEquals(1, tree.getHeight());
 		tree.insert(new Integer(5));
@@ -121,7 +122,7 @@ public class BinarySearchTreeWeightBalancedTest {
     }
 
     @Test
-    public void testDelete3() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testDelete3() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
 		tree.insert(new Integer(5));
         assertEquals(1, tree.getHeight());
 		tree.insert(new Integer(3));
@@ -139,7 +140,7 @@ public class BinarySearchTreeWeightBalancedTest {
     }
 
     @Test
-    public void testDelete5() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testDelete5() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion doble
 
 		tree.insert(new Integer(20));
@@ -166,7 +167,7 @@ public class BinarySearchTreeWeightBalancedTest {
     }
 
     @Test
-    public void testAVLDelete6() throws BSTKeyFoundException, BSTKeyNotFoundException {
+    public void testAVLDelete6() throws BSTKeyFoundException, BSTKeyNotFoundException, BSTEmptyTreeException {
         // Borrado por rotacion doble
 
 		tree.insert(new Integer(3));

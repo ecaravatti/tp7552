@@ -17,4 +17,6 @@ public interface BSTListener<K extends Comparable<K>> extends EventListener {
     public void rootRemoved(BSTEvent<K> event);
     public void rotateFinishedInDelete(BSTEvent<K> event);
     public void traverseFinished(BSTEvent<K> event);
+    public void emptyTree(BSTEvent<K> event);
+    
 }

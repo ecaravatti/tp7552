@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 
 import model.collection.tree.BSTHeightBalanced;
 import model.collection.tree.BinarySearchTree;
+import model.exception.tree.BSTEmptyTreeException;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
 import view.collection.tree.BSTHeightBalancedPrimitives;
@@ -156,6 +157,8 @@ public class BSTHeightBalancedController extends InteractiveController {
 
         } catch (BSTKeyNotFoundException ex) {
             //Logger.getLogger(BSTHeightBalancedController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BSTEmptyTreeException ex) {
+        	
         }
     }
 

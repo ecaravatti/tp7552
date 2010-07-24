@@ -6,6 +6,6 @@ package model.exception.tree;
  */
 public class BSTKeyFoundException extends Exception {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4452111381209988915L;
 
 }
