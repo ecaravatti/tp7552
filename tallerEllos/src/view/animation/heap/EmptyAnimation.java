@@ -33,7 +33,7 @@ public class EmptyAnimation<T> extends AbstractUndoAnimationSteps {
     protected void initializeListSteps() {
         steps = new ArrayList<Command>();
 
-        steps.add(new ShowMessageCommand(view, "El heap se encuentra vacío"));
+        steps.add(new ShowMessageCommand(view, "El heap se encuentra vacío.\n"));
         steps.add(new StepFinishedCommand(view, true));
     }
 }
