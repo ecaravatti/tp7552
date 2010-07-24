@@ -60,6 +60,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
   * Árbol Balanceado por Altura
+    * Permitir ingresar el parámetro de variacion de altura permitida _(Manu)_ *(In Progress)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
   * Trie
