@@ -21,8 +21,8 @@ Ejemplos:
   * Ventana
     * Cambiar color, tabs, botones, etc. (si se puede)
     * Eliminar la opción “Guardar” porque tira una excepción
-    * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009”
-    * Reorganizar paneles (ver ejemplo en la ppt)
+    * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Dami)_ *(In Progress)*
+    * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(In Progress)*
   * Ayuda
     * Agregar info sobre cola circular
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, etc.
@@ -57,15 +57,15 @@ Ejemplos:
     * Corregir bug que hay cuando se hace una inserción random, se eliminan un par de elementos, y al insertar uno nuevo, éste es insertado muy a la izquierda, como si la cola continuara con la cant. inicial de elementos.
   * Árbol Balanceado por Peso
     * Permitir ingresar el parámetro de peso
-    * Permitir especificar el tamaño de la estructura al inicio
+    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido)
     * Mostrar cartel de aviso de árbol vacío
   * Árbol Balanceado por Altura
     * Mostrar cartel de aviso de árbol vacío
-    * Permitir especificar el tamaño de la estructura al inicio
+    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido)
   * Trie
     * Cambiar “Demo” por “Random”
     * Cambiar ejemplos (del random)
-    * Permitir especificar el tamaño de la estructura al inicio
+    * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido)
   * Heap
     * Mostrar cartel de aviso de heap vacío
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras.
