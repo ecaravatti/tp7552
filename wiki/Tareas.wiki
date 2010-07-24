@@ -43,7 +43,7 @@ Ejemplos:
     * Árboles
       * Nodo circular _(Nico)_ *(In Progress)*
   * Pila
-    * Armar estructura en forma vertical _(Lau)_ *(In Progress)*
+    * Armar estructura en forma vertical _(Lau)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(In Progress)*
     * Mostrar cartel de aviso de pila vacía _(Lau)_ *(In Progress)*
     * Poner nombres específicos de las funciones (Push, Pop) _(Lau)_ *(In Progress)*
