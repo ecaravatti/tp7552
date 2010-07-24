@@ -58,10 +58,10 @@ Ejemplos:
   * Árbol Balanceado por Peso
     * Permitir ingresar el parámetro de peso _(Manu)_ *(In Progress)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
-    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
+    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
   * Árbol Balanceado por Altura
-    * Permitir ingresar el parámetro de variacion de altura permitida _(Manu)_ *(In Progress)*
-    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(In Progress)*
+    * Que variar la altura no sea cambiar el "PARAMETRO", o sea que se entienda. _(Manu)_ *(In Progress)*
+    * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(In Progress)*
   * Trie
     * Cambiar “Demo” por “Random”
