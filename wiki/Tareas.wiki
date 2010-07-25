@@ -64,8 +64,8 @@ Ejemplos:
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
   * Trie
-    * Cambiar “Demo” por “Random” _(Dami)_ *(In Progress)*
-    * Cambiar ejemplos (del random) _(Dami)_ *(In Progress)*
+    * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
+    * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
