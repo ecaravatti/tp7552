@@ -43,4 +43,8 @@ public interface Stack<T> {
      */
     public T pop();
    
+    /**
+     * Delete all items.
+     */
+    public void clear();
 }

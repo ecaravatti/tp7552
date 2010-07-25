@@ -34,24 +34,10 @@ public class StackController<T> extends InteractiveController {
     }
 
     public void popAllItem() {
-        boolean showEmptyMessage = true;
-        this.panel.getButtonsPanel().enableComponents(false);
-
-        try {
-            this.view.prepareAnimation();
-
-            Iterator<T> iterator = stack.iterator();
-            while (iterator.hasNext()) {
-                showEmptyMessage = false;
-                stack.pop();
-            }
-        } catch (Exception e) {
-        }
-
-        if (showEmptyMessage) {
-            this.showLogMessage("La pila se encuentra vacía.");
-        }
-
+    	this.panel.getButtonsPanel().enableComponents(false);
+        this.stack.clear();
+        this.view.initStackSampleCapacity(this.stack.getCapacity()); 
+        this.showLogMessage("La pila se encuentra vacia.");
         this.panel.getButtonsPanel().enableComponents(true);
     }
 
@@ -59,6 +45,7 @@ public class StackController<T> extends InteractiveController {
         this.panel.getButtonsPanel().enableComponents(false);
         this.view.prepareAnimation();
         this.stack.push(item);
+        this.panel.getButtonsPanel().enableComponents(true);
     }
 
     public void popItem() {
@@ -68,6 +55,7 @@ public class StackController<T> extends InteractiveController {
             this.stack.pop();
         } catch (Exception e) {
         }
+        this.panel.getButtonsPanel().enableComponents(true);
     }
     
     public boolean stackIsEmpty() {
@@ -79,8 +67,10 @@ public class StackController<T> extends InteractiveController {
     }
     
     public void createStack(Integer capacity) {
+        this.panel.getButtonsPanel().enableComponents(false);
     	stack.setCapacity(capacity);
     	view.initStackSampleCapacity(capacity);
+        this.panel.getButtonsPanel().enableComponents(true);
     }
 
     @Override

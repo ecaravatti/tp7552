@@ -40,7 +40,7 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 	//private GroupLayout
 	private List<Text> labels = new ArrayList<Text>();
 	private List<StackNodeView<T>> stackNodes;
-	private int labelPosX = 260;//53;
+	private int labelPosX = 260;
 	private int labelPosY = 504;
 	private Text lblCapacity = new Text("Stack Capacity", FONT, new Point2D.Double(225,480));
 

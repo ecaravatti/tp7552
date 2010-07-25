@@ -63,6 +63,11 @@ public class ArrayListStackImpl<T> extends StackObservable<T> {
     		return null;
     	}
     }
+    
+    public void clear() {
+    	stack.clear();
+    	top = -1;
+    }
 
     @Override
     public String toString() {

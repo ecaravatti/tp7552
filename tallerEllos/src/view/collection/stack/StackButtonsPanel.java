@@ -10,13 +10,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.common.JTextFieldLimit;
-
-
 import controller.StackController;
 
 /**
@@ -53,12 +52,10 @@ public class StackButtonsPanel extends javax.swing.JPanel {
         this.jlblSize.setEnabled(enable);
     	this.stackSizeComboBox.setEnabled(enable);
     	this.textField.setEnabled(enable);
-        if(enable) {
-        	this.insertButton.setEnabled(!controller.stackIsFull());
-        	this.removeButton.setEnabled(!controller.stackIsEmpty());
-        	this.removeAllButton.setEnabled(!controller.stackIsEmpty());
-        	this.insertRandomButton.setEnabled(!controller.stackIsFull());
-        }
+        this.insertButton.setEnabled(enable && !controller.stackIsFull());
+        this.removeButton.setEnabled(enable && !controller.stackIsEmpty());
+        this.removeAllButton.setEnabled(enable && !controller.stackIsEmpty());
+        this.insertRandomButton.setEnabled(enable && !controller.stackIsFull());
     }
 
     /** This method is called from within the constructor to
@@ -144,7 +141,6 @@ public class StackButtonsPanel extends javax.swing.JPanel {
                 insertRandomButtonActionPerformed(evt);
             }
         });
-        
         jlblSize = new JLabel("Tamaño del stack", SwingConstants.RIGHT);
         stackSizeComboBox = new JComboBox();
         stackSizeComboBox.putClientProperty("JComponent.sizeVariant", "large");
@@ -221,7 +217,13 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllButtonActionPerformed
-        controller.popAllItem();
+        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+                "Vaciar", JOptionPane.YES_NO_OPTION);
+
+        if (res == 0) {
+        	controller.popAllItem();
+        }
+        
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed
@@ -234,7 +236,12 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_insertRandomButtonActionPerformed
     
     private void stackSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed
-		controller.createStack(Integer.valueOf(stackSizeComboBox.getSelectedItem().toString()));
+    	int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+
+        if (res == 0) {
+        	controller.createStack(Integer.valueOf(stackSizeComboBox.getSelectedItem().toString()));
+        }
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
