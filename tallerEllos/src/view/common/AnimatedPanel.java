@@ -134,9 +134,8 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
      * @param speed nueva velocidad
      */
     public void changeSpeed(int speed) {
-        double delay = ((100 - speed)/100.0f) * ((double)(MAX_DELAY - MIN_DELAY));
+        double delay = ((100 - speed)/100.0d) * ((double)(MAX_DELAY - MIN_DELAY));
         delay += (double)MIN_DELAY;
-        System.out.println(delay);
         commandQueue.setDelay(new Double(delay).intValue());
     }
 
