@@ -32,7 +32,7 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
 	private static final int INITIAL_HORIZONTAL = 50;
-	private static final int INITIAL_VERTICAL = 450;
+	private static final int INITIAL_VERTICAL = 435;
 	private static final Font FONT = new Font("SansSerif", Font.BOLD, 12);
 	private static final Stroke STROKE = new BasicStroke(1.0f);
 	private static final int SQUARESIZE = 25;
@@ -41,8 +41,8 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 	private List<Text> labels = new ArrayList<Text>();
 	private List<StackNodeView<T>> stackNodes;
 	private int labelPosX = 260;//53;
-	private int labelPosY = 517;
-	private Text lblCapacity = new Text("Stack Capacity", FONT, new Point2D.Double(225,492));
+	private int labelPosY = 504;
+	private Text lblCapacity = new Text("Stack Capacity", FONT, new Point2D.Double(225,480));
 
 	public StackView() {
 		super();
