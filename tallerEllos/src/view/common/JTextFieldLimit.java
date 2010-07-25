@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.collection.heap;
+package view.common;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -19,12 +19,12 @@ public class JTextFieldLimit extends PlainDocument {
     // optional uppercase conversion
     private boolean toUppercase = false;
 
-    JTextFieldLimit(int limit) {
+    public JTextFieldLimit(int limit) {
         super();
         this.limit = limit;
     }
 
-    JTextFieldLimit(int limit, boolean upper) {
+    public JTextFieldLimit(int limit, boolean upper) {
         super();
         this.limit = limit;
         toUppercase = upper;

@@ -59,7 +59,6 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         setBackground(Color.WHITE);
         
         addComponentListener(this);
-
         resized = false;
         primitiveFinished = true;
         wait = false;
@@ -116,7 +115,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     }
 
     public int getDelayValue() {
-        double value =  (double)(commandQueue.getDelay() - MIN_DELAY) / ((double)(MAX_DELAY - MIN_DELAY));
+        double value = (commandQueue.getDelay() - MIN_DELAY) / ((double)(MAX_DELAY - MIN_DELAY));
         return new Double((1 - value) * 100).intValue();
     }
 
@@ -135,9 +134,10 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
      * @param speed nueva velocidad
      */
     public void changeSpeed(int speed) {
-        double delay = (100 - speed) / (double)(100 * (MAX_DELAY - MIN_DELAY));
-        delay += MIN_DELAY;
-        commandQueue.setDelay((int) delay);
+        double delay = ((100 - speed)/100.0f) * ((double)(MAX_DELAY - MIN_DELAY));
+        delay += (double)MIN_DELAY;
+        System.out.println(delay);
+        commandQueue.setDelay(new Double(delay).intValue());
     }
 
     /**

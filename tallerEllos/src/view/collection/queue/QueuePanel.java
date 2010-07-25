@@ -1,9 +1,5 @@
 package view.collection.queue;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JScrollPane;
-
 import controller.QueueController;
 
 /**
@@ -16,9 +12,9 @@ public class QueuePanel<T> extends javax.swing.JPanel {
 	private QueueView<T> view;
 
     public QueuePanel(QueueView<T> view) {
+    	this.view = view;
+    	//this.view.setBorder(BorderFactory.createLoweredBevelBorder());
         initComponents();
-        this.view = view;
-        this.add(new JScrollPane(this.view), BorderLayout.CENTER);
     }
 
     public void addController(QueueController<Integer> controller) {
@@ -41,16 +37,28 @@ public class QueuePanel<T> extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        buttonsPanel = new QueueButtonsPanel();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(view)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(view))
+        );
+//        //setBackground(new java.awt.Color(255, 255, 255));
 
-        buttonsPanel = new view.collection.queue.QueueButtonsPanel();
-
-        //setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new java.awt.BorderLayout());
-        add(buttonsPanel, java.awt.BorderLayout.PAGE_START);
+//        this.add(buttonsPanel, BorderLayout.NORTH);
+//        this.add(view);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.collection.queue.QueueButtonsPanel buttonsPanel;
+    private QueueButtonsPanel buttonsPanel;
     // End of variables declaration//GEN-END:variables
 }

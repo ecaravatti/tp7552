@@ -196,6 +196,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         queueController = new QueueController<Integer>(queue, queuePanel, operationsLog);
         queueController.setPrimitivesCodeArea(primitivesCodeArea);
         queuePanel.addController(queueController);
+        SwingUtilities.updateComponentTreeUI(queuePanel);
 
         /**
          * Componentes de Stack.
@@ -215,7 +216,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         heapController = new HeapController<Integer>(heap, heapView, operationsLog);
         heapController.setPrimitivesCodeArea(primitivesCodeArea);
         heapView.addController(heapController);
-
+        SwingUtilities.updateComponentTreeUI(heapView);
+        
         controllers.add(trieController);
         controllers.add(stackController);
         controllers.add(queueController);

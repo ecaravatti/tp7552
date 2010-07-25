@@ -242,8 +242,7 @@ public class InteractivePanel extends javax.swing.JPanel {
     public void stateChanged(ChangeEvent event) {
       JSlider source = (JSlider) event.getSource();
       if (!source.getValueIsAdjusting()) {
-        int speed = (int) source.getValue();
-        controller.speedChanged(speed);
+        controller.speedChanged(source.getValue());
       }
     }
   }

@@ -31,6 +31,7 @@ import view.animation.heap.InsertItemHeapAnimation;
 import view.animation.heap.SwapElementsAnimation;
 import view.collection.tree.BSTNodeShape;
 import view.common.AnimatedPanel;
+import view.common.JTextFieldLimit;
 import view.shape.Arrow;
 import view.shape.NodeShape;
 import view.shape.Text;
@@ -158,12 +159,11 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jPanel1 = new JPanel();
-        
-        setBackground(Color.WHITE);
+    	setBackground(Color.WHITE);
         setOpaque(true);
-
+        
         //jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1 = new JPanel();
         jPanel1.setBorder(BorderFactory.createTitledBorder("Control: Heap"));
         
         Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon.png").getPath());
@@ -240,7 +240,6 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
                 heapSizeComboBoxActionPerformed(evt);
             }
         });
-        
         
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -324,9 +323,7 @@ private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
 private void randomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomBtnActionPerformed
     int intGenerated = generator.nextInt(999) + 1;
-
     integerTextField.setText(String.valueOf(intGenerated));
-
     insertBtnActionPerformed(evt);
 }//GEN-LAST:event_randomBtnActionPerformed
 
