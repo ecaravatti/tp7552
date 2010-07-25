@@ -20,7 +20,7 @@ Ejemplos:
     * Eliminar warnings _(Dami / Tifi / Manu)_ *(Done)*
   * Ventana
     * Cambiar color, tabs, botones, etc. (voy a averiguar un poco de esto) _(Nico)_ *(In Progress)*
-    * Eliminar la opción “Guardar” porque tira una excepción
+    * Eliminar la opción “Guardar” porque tira una excepción _(Tifi)_ *(In Progress)*
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(In Progress)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
