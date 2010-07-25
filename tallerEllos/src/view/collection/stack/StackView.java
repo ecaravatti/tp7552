@@ -4,7 +4,6 @@
  */
 package view.collection.stack;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -81,9 +80,4 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 		return stackNodes;
 	}
 
-	@Override
-	public Dimension getPreferredSize() {
-		return new Dimension(30, stackNodes.size() * 100 < 100 ? 100
-				: stackNodes.size() * 100);
-	}
 }

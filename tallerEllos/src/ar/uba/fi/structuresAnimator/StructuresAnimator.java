@@ -1,8 +1,8 @@
 package ar.uba.fi.structuresAnimator;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.ComponentOrientation;
-
 import java.awt.Font;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -43,8 +43,8 @@ import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
 import view.collection.stack.StackPanel;
 import view.collection.stack.StackView;
-import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTPanel;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
@@ -79,7 +79,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
     private JPanel mainPanel;
     private JPanel bottomPanel;
     private InteractivePanel interactivePanel;
-    private JLabel header;
+    private JPanel header;
     
     /**
      * Componentes del Trie
@@ -152,13 +152,17 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         /**
          * Header y logo
          */
+        JLabel headerLabel;
         BufferedImage myPicture = null;
 		try {
 			myPicture = ImageIO.read(new File(getClass().getClassLoader().getResource("head-taller.png").getPath()));
-			header = new JLabel(new ImageIcon(myPicture), SwingConstants.LEFT);
+			headerLabel = new JLabel(new ImageIcon(myPicture), SwingConstants.LEFT);
 		} catch (IOException e) {
-			header = new JLabel();
+			headerLabel = new JLabel();
 		}
+		header = new JPanel();
+		header.setBackground(new Color(214, 217, 223));
+		header.add(headerLabel, BorderLayout.WEST);
 		
         /**
          * Componentes del Trie
@@ -276,8 +280,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
             	return;
             } else if (horizontalSplitPane.getRightComponent() == null) {
             	horizontalSplitPane.add(verticalSplitPane);
-            	horizontalSplitPane.setDividerLocation(0.7);
             	verticalSplitPane.setDividerLocation(0.5);
+            	horizontalSplitPane.setDividerLocation(0.7);
             	horizontalSplitPane.repaint();
             }
 
@@ -303,7 +307,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         horizontalSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         horizontalSplitPane.setLeftComponent(mainPanel);
 
-        this.setSize(1024, 768);
+        this.setSize(800, 600);
         this.add(header, BorderLayout.NORTH);
         this.add(horizontalSplitPane);
         this.addComponentListener(this);
@@ -311,8 +315,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 
     @Override
     public void start() {
-    	horizontalSplitPane.setDividerLocation(0.7);
     	verticalSplitPane.setDividerLocation(0.5);
+    	horizontalSplitPane.setDividerLocation(0.7);
         trieView.start();
         treeHeightBalancedView.start();
         treeWeightBalancedView.start();
@@ -324,8 +328,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
     @Override
     public void componentResized(ComponentEvent e) {
         // Para cuando se invoca desde un browser
+    	verticalSplitPane.setDividerLocation(0.5);
         horizontalSplitPane.setDividerLocation(0.7);
-        verticalSplitPane.setDividerLocation(0.5);
         getRootPane().revalidate();
         getRootPane().repaint();
     }

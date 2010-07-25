@@ -4,7 +4,6 @@
  */
 package view.collection.queue;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -83,9 +82,4 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		return queueNodes;
 	}
 
-	@Override
-	public Dimension getPreferredSize() {
-		return new Dimension(queueNodes.size() * 100 < 1000 ? 1000
-				: queueNodes.size() * 100, 30);
-	}
 }

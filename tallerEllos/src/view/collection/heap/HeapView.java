@@ -428,6 +428,8 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
 
             arrows.add(createArrow(parentPosition, currentPosition));
         }
+        
+        rerender();
     }
 
     public final Text getCurrentLabel() {
@@ -474,6 +476,8 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
             nodes.remove(nodes.size() - 1);
             arrows.remove(arrows.size() - 1);
         } catch (IndexOutOfBoundsException e) {
+        } finally {
+        	rerender();
         }
     }
 

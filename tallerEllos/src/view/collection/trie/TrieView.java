@@ -41,8 +41,7 @@ import event.trie.TrieListener;
  * 
  * 
  */
-public class TrieView extends AnimatedPanel implements TrieListener<String>,
-        TrieViewPrimitives {
+public class TrieView extends AnimatedPanel implements TrieListener<String>, TrieViewPrimitives {
 
   private static final long serialVersionUID = 1L;
   private final static Point2D DEF_TRIE_POS = new Point2D.Double(70, 80);
@@ -702,12 +701,4 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
       this.countNodesHor++;
     }
   }
-  
-  @Override
-	public Dimension getPreferredSize() {
-		Dimension actualDimension = super.getPreferredSize();
-		return new Dimension(
-				actualDimension.width > 800 ? actualDimension.width : 800,
-				actualDimension.height > 600 ? actualDimension.height : 600);
-	}
 }

@@ -1,8 +1,10 @@
 package view.common;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -41,7 +43,6 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     private CommandQueue commandQueue;
     protected InteractiveController controller;
     protected Stack<UndoAnimationSteps> stack;
-    //private List<UndoAnimationSteps> trieNodeNotFoundAnimations;
     private boolean primitiveFinished;
     private boolean executingUndo;
     private boolean wait;
@@ -347,4 +348,23 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     protected void setWait(boolean value){
       this.wait = value;
     }
+    
+    protected BufferedImage getBufferedImage() {
+    	return image;
+    }
+    
+    @Override
+	public Dimension getPreferredSize() {
+	  Rectangle visibleRect = this.getVisibleRect();
+	  Dimension dimension;
+	  if (this.getBufferedImage() != null) {
+		  int imageHeight = this.getBufferedImage().getHeight();
+		  int imageWidth = this.getBufferedImage().getWidth();
+		  dimension = new Dimension(Math.max(visibleRect.width, imageWidth),
+				  					Math.max(visibleRect.height, imageHeight));
+	  } else {
+		  dimension = new Dimension(visibleRect.width, visibleRect.height);
+	  }
+	  return dimension;
+	}
 }
