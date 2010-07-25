@@ -72,7 +72,7 @@ Ejemplos:
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
-    * Agregar scroll _(Dami)_ *(In Progress)*
+    * Agregar scroll _(Dami / Tifi)_ *(In Progress)*
     * Styles
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
