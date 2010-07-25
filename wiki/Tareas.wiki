@@ -23,7 +23,7 @@ Ejemplos:
     * Eliminar la opción “Guardar” porque tira una excepción
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(In Progress)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
-    * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(In progress)*
+    * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
   * Ayuda
     * Agregar info sobre cola circular
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, etc.
