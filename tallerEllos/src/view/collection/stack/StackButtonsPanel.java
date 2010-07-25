@@ -1,8 +1,8 @@
 package view.collection.stack;
-
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+
 
 import controller.StackController;
 
@@ -37,8 +37,14 @@ public class StackButtonsPanel extends javax.swing.JPanel {
      * @param enable
      */
     public void enableComponents(boolean enable) {
-        for (Component component : this.getComponents()) {
-            component.setEnabled(enable);
+        this.jlblSize.setEnabled(enable);
+    	this.stackSizeComboBox.setEnabled(enable);
+    	this.textField.setEnabled(enable);
+        if(enable) {
+        	this.insertButton.setEnabled(!controller.stackIsFull());
+        	this.removeButton.setEnabled(!controller.stackIsEmpty());
+        	this.removeAllButton.setEnabled(!controller.stackIsEmpty());
+        	this.insertRandomButton.setEnabled(!controller.stackIsFull());
         }
     }
 
@@ -50,11 +56,15 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textField = new javax.swing.JTextField();
+        textField = new javax.swing.JTextField(2);
         insertButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         removeAllButton = new javax.swing.JButton();
         insertRandomButton = new javax.swing.JButton();
+        jlblSize = new javax.swing.JLabel();
+        stackSizeComboBox = new javax.swing.JComboBox();
+        removeButton.setEnabled(false);
+    	removeAllButton.setEnabled(false);
 
        // setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -73,26 +83,26 @@ public class StackButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        insertButton.setText("Insertar");
+        insertButton.setText("Apilar");
         insertButton.setAlignmentY(0.0F);
         insertButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         insertButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         insertButton.setMaximumSize(new java.awt.Dimension(80, 20));
         insertButton.setMinimumSize(new java.awt.Dimension(80, 20));
         insertButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        insertButton.setMnemonic(KeyEvent.VK_I);
+        insertButton.setMnemonic(KeyEvent.VK_A);
         insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertButtonActionPerformed(evt);
             }
         });
 
-        removeButton.setText("Eliminar");
+        removeButton.setText("Desapilar");
         removeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         removeButton.setMaximumSize(new java.awt.Dimension(80, 20));
         removeButton.setMinimumSize(new java.awt.Dimension(80, 20));
         removeButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        removeButton.setMnemonic(KeyEvent.VK_E);
+        removeButton.setMnemonic(KeyEvent.VK_D);
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeButtonActionPerformed(evt);
@@ -114,6 +124,18 @@ public class StackButtonsPanel extends javax.swing.JPanel {
             }
         });
 
+        jlblSize.setText("tamaño del stack");
+        
+        stackSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "1", "2", "3", "4", "5", "6", "7"}));
+		stackSizeComboBox.setSelectedIndex(0);
+		stackSizeComboBox.setKeySelectionManager(null);
+		stackSizeComboBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				stackSizeComboBoxActionPerformed(evt);
+			}
+		});
+		
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,8 +151,11 @@ public class StackButtonsPanel extends javax.swing.JPanel {
                 .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
-        );
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlblSize)
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stackSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE)));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -140,9 +165,12 @@ public class StackButtonsPanel extends javax.swing.JPanel {
                     .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblSize)
+                    .addComponent(stackSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+  
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
@@ -155,6 +183,8 @@ public class StackButtonsPanel extends javax.swing.JPanel {
             return;
         }
         controller.pushItem(Integer.valueOf(text));
+       
+        	
     }//GEN-LAST:event_insertButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
@@ -170,19 +200,25 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed
-        for (int counter = 1; counter <= 10; counter++) {
             Random random = new Random();
             int number = random.nextInt();
             number = Math.abs(number);
             number = number % 100;
             controller.pushItem(number);
-        }
+        
     }//GEN-LAST:event_insertRandomButtonActionPerformed
+    
+    private void stackSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed
+		controller.createStack(Integer.valueOf(stackSizeComboBox.getSelectedItem().toString()));
+	}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton insertButton;
     private javax.swing.JButton insertRandomButton;
     private javax.swing.JButton removeAllButton;
     private javax.swing.JButton removeButton;
     private javax.swing.JTextField textField;
+    private javax.swing.JLabel jlblSize;
+    private javax.swing.JComboBox stackSizeComboBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ import controller.StackController;
 public class StackPanel<T> extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private javax.swing.JPanel jPanelCapacity;
 	
     private StackView<T> view;
 
@@ -43,7 +44,6 @@ public class StackPanel<T> extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonsPanel = new view.collection.stack.StackButtonsPanel();
-
         //setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
         add(buttonsPanel, java.awt.BorderLayout.PAGE_START);
