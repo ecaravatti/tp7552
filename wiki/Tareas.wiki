@@ -76,7 +76,7 @@ Ejemplos:
     * Agregar scroll _(Dami / Tifi)_ *(In Progress)*
     * Styles
   * Frame de Operaciones Realizadas
-    * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
+    * Limpiar log de operaciones realizadas cuando se usa una nueva estructura _(Tifi)_ *(In Progress)*
     * Styles
   * Frame de Pseudocódigo
     * Arreglar alineación: hay funciones que tiene if anidados en una sola línea
