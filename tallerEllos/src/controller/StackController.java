@@ -9,14 +9,17 @@ import java.util.Iterator;
 import javax.swing.JTextArea;
 
 import model.collection.stack.StackObservable;
+import view.animation.stack.ItemPushedAnimation;
 import view.collection.stack.StackPanel;
+import view.collection.stack.StackPrimitives;
 import view.collection.stack.StackView;
+import view.command.common.ShowPrimitiveCodeCommand;
+import view.command.common.StepFinishedCommand;
 
 /**
  *
  */
 public class StackController<T> extends InteractiveController {
-
     private StackObservable<T> stack;
     private StackView<T> view;
     private StackPanel<T> panel;
@@ -27,6 +30,7 @@ public class StackController<T> extends InteractiveController {
         this.panel = panel;
         this.view = panel.getView();
         this.stack.addListener(view);
+        this.view.initStackSampleCapacity(this.stack.getCapacity()); 
     }
 
     public void popAllItem() {
@@ -45,7 +49,7 @@ public class StackController<T> extends InteractiveController {
         }
 
         if (showEmptyMessage) {
-            this.showLogMessage("La pila se encuentra vacÃ­a.");
+            this.showLogMessage("La pila se encuentra vacía.");
         }
 
         this.panel.getButtonsPanel().enableComponents(true);
@@ -64,6 +68,19 @@ public class StackController<T> extends InteractiveController {
             this.stack.pop();
         } catch (Exception e) {
         }
+    }
+    
+    public boolean stackIsEmpty() {
+    	return this.stack.isEmpty();
+    }
+    
+    public boolean stackIsFull() {
+    	return this.stack.isFull();
+    }
+    
+    public void createStack(Integer capacity) {
+    	stack.setCapacity(capacity);
+    	view.initStackSampleCapacity(capacity);
     }
 
     @Override
