@@ -67,13 +67,13 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
     private int nodePosX[] = new int[]{450, 250, 650, 150, 350, 550, 750, 100, 200, 300, 400, 500, 600, 700, 800,
         75, 125, 175, 225, 275, 325, 375, 425, 475, 525, 575, 625, 675, 725, 775, 825
     };
-    private int nodePosY[] = new int[]{100, 170, 170, 240, 240, 240, 240, 310, 310, 310, 310, 310, 310, 310, 310,
-        380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380
+    private int nodePosY[] = new int[]{150, 220, 220, 290, 290, 290, 290, 360, 360, 360, 360, 360, 360, 360, 360,
+        430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430, 430
     };
     private int labelPosX[] = new int[]{78, 103, 128, 153, 178, 203, 228, 253, 278, 303, 328, 353, 378, 403,
         428, 453, 478, 503, 528, 553, 578, 603, 628, 653, 678, 703, 728, 753, 778, 803, 828
     };
-    private int labelPosY = 68;
+    private int labelPosY = 118;
     
     // Generador de números aleatorios
     private Random generator = new Random();
@@ -103,11 +103,11 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
         nodes.clear();
         arrows.clear();
 
-        Integer heapSize = Integer.valueOf(heapSizeComboBox.getSelectedItem().toString());
+        int heapSize = Integer.valueOf(heapSizeComboBox.getSelectedItem().toString()).intValue();
 
-        rectangles.add(createRect(50, 50, SQUARESIZE, SQUARESIZE, "ini"));
+        rectangles.add(createRect(50, 100, SQUARESIZE, SQUARESIZE, "ini"));
         for (int i = 1; i < heapSize + 1; i++) {
-            rectangles.add(createRect(i * SQUARESIZE + 50, 50, SQUARESIZE, SQUARESIZE, ""));
+            rectangles.add(createRect(i*SQUARESIZE + 50, 100, SQUARESIZE, SQUARESIZE, ""));
         }
 
         clearHeap();
@@ -117,12 +117,10 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
         labels.clear();
         nodes.clear();
         arrows.clear();
-
         if (controller != null) {
         	HeapController.class.cast(controller).clear();
         }
         current = 0;
-
         repaint();
     }
 
