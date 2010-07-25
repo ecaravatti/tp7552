@@ -110,7 +110,7 @@ public class MainButtonPanel extends javax.swing.JPanel {
     });
     add(removeButton);
 
-    demoButton.setText("Demo");
+    demoButton.setText("Random");
     demoButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
     demoButton.setMaximumSize(new java.awt.Dimension(80, 20));
     demoButton.setMinimumSize(new java.awt.Dimension(80, 20));
@@ -155,8 +155,9 @@ public class MainButtonPanel extends javax.swing.JPanel {
   private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_insertButtonActionPerformed
     String text = this.getText();
     
-    if (text.length() == 0)
+    if (text.length() == 0) {
       return;
+    }
 
     controller.insertWord(text.toLowerCase());
 

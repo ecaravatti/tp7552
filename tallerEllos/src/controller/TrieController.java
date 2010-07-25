@@ -58,7 +58,7 @@ public class TrieController extends InteractiveController {
     int newCountHorizontal = countLengthHor;
     int newCountVertical = countLengthVertical;
     
-    if ( trie.search(word) == null){
+    if (trie.search(word) == null){
       newCountHorizontal++;
       newCountVertical = word.length() + 1; 
     }

@@ -9,42 +9,23 @@ import controller.TrieController;
 public class TrieGenerator{
   private int count = 0;
   static List<String> list; 
-  static{
+  static {
     list = new ArrayList<String>();
-
-    list = new ArrayList<String>();
+    list.add( "auto" );
+    list.add( "don" );
+    list.add( "dragon" );  
+    list.add( "autora" );
+    list.add( "donar" );
+    list.add( "ese" );
+    list.add( "higo" );
+    list.add( "esencia" );
+    list.add( "higuera" );
+    list.add( "himno" );
     list.add( "cara" );
-    list.add( "hola" );
-    list.add( "hoy" );
-    list.add( "la" );
-    list.add( "lata" );
-    list.add( "hoyo" );
-    list.add( "lo" );
-    list.add( "coma" );
-    list.add( "lote" );
-    list.add( "cosa" );
-    list.add( "dado" );
-    list.add( "dedo" );
-    list.add( "dedal" );
-    list.add( "mia" );
-    list.add( "mas" );  
-    list.add( "para" );
-    list.add( "por" );
-    list.add( "poro" );
-    list.add( "dia" );
-    list.add( "puro" );
-    list.add( "mar" );    
-    list.add( "aro" );
-    list.add( "hay" );
-    list.add( "haya" );
-    list.add( "aros" );
-    list.add( "rio" );
-    list.add( "roca" );
-    list.add( "roma" );
-    list.add( "arco" );
-    list.add( "rota" );
-    list.add( "hizo" );
-    list.add( "arma" );
+    list.add( "fluido" );
+    list.add( "caracol" );
+    list.add( "flota" );
+    list.add( "carta" );
   }
   
   private TrieController controller;
@@ -56,21 +37,20 @@ public class TrieGenerator{
     this.count = 0;
   }
 
-  public void insert(){
+  public void insert() {
 	
     reset();
     
-    if ( !this.controller.running() ){
+    if ( !this.controller.running() ) {
       controller.setRunning(true);
-	    controller.insertWord(list.get(count));
-	    count++;
-	  } 
+	  controller.insertWord(list.get(count));
+	  count++;
+	} 
 	  
   }
   
-  private void reset(){
-    
-    if ( count > list.size() ){
+  private void reset() {
+    if ( count >= list.size() ) {
       Collections.shuffle( list );
       count = 0;
     }
