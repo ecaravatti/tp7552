@@ -79,4 +79,8 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
     protected Selectable getSelectable() {
         return shape;
     }
+    
+    public void removeParent() {
+    	this.parent = null;
+    }
 }

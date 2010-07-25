@@ -77,6 +77,9 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
                 MobileAnimationSteps moveRightSteps = new MobileAnimationSteps(view, nodeToMove, nodeToMove.getPosition(), this.moveNodeToRight(nodeToMove), 8);
                 steps.addAll(moveRightSteps.getSteps());
                 steps.add(new AssignNodeIndexCommand<T>(nodeToMove, queueNodes.indexOf(nodeToMove) - 1));
+                if (nodeToMove.getParent().equals(dequeuedNode)) {
+                	nodeToMove.removeParent();
+                }
             }
         }
 
