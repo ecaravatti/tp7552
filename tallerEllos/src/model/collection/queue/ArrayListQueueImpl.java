@@ -59,4 +59,9 @@ public class ArrayListQueueImpl<T> extends QueueObservable<T> {
         return s;
     }
 
+    @Override
+    public void clear() {
+    	queue = new ArrayList<T>();
+    	fullSize = 0;
+    }
 }

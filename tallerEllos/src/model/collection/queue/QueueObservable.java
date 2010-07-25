@@ -39,4 +39,8 @@ public abstract class QueueObservable<T> extends ObservableBase<QueueListener<T>
 
     @Override
     public abstract T dequeue();
+    
+    @Override
+    public abstract void clear();
+    
 }

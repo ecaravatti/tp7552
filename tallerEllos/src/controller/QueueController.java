@@ -70,4 +70,13 @@ public class QueueController<T> extends InteractiveController {
     public void primitiveFinished() {
         this.panel.getButtonsPanel().enableComponents(true);
     }
+    
+    /**
+     * Limpia la vista
+     */
+    public void clear() {
+      this.queue.clear();
+      this.view.clear();
+      this.view.repaint();
+    }
 }

@@ -22,5 +22,10 @@ public interface Queue<T> {
      * Remove and return the least recently added item.
      */
     public T dequeue();
+    
+    /**
+     * Empties the queue.
+     */
+    public void clear();
 
 }

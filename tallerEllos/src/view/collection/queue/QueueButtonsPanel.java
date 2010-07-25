@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -193,7 +194,13 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllButtonActionPerformed
-        controller.dequeueAllItem();
+        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+                "Vaciar", JOptionPane.YES_NO_OPTION);
+
+        if (res == 0) {
+            controller.clear();
+        }
+    	
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed

@@ -82,4 +82,7 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		return queueNodes;
 	}
 
+	public void clear() {
+		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+	}
 }
