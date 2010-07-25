@@ -49,7 +49,7 @@ Ejemplos:
     * Deshabilitar botón apilar y desapilar según la pila esté vacía o llena(Mostrar cartel de aviso de pila vacía) _(Lau)_ *(Done)*
     * Poner nombres específicos de las funciones Apilar y Desapilar (Push, Pop) _(Lau)_ *(Done)*
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException. _(Lau)_ *(In Progress)*
-    * Mostrar gráficamente como afecta la capacidad ingresada (El rectángulito de heap) _(Lau)_ *(In Progress)*
+    * Mostrar gráficamente como afecta la capacidad ingresada (El rectángulito de heap) _(Lau)_ *(Done)*
   * Cola
     * Agregar esquema simultáneo de cola circular _(Manu)_ *(In Progress)*
     * Permitir especificar el tamaño de la estructura al inicio _(Manu)_ *(In Progress)*
