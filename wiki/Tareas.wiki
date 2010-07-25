@@ -45,10 +45,11 @@ Ejemplos:
       * Nodo circular _(Dami / Nico)_ *(In Progress)*
   * Pila
     * Armar estructura en forma vertical _(Lau)_ *(Done)*
-    * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(In Progress)*
-    * Mostrar cartel de aviso de pila vacía _(Lau)_ *(In Progress)*
-    * Poner nombres específicos de las funciones (Push, Pop) _(Lau)_ *(In Progress)*
+    * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(Done)*
+    * Deshabilitar botón apilar y desapilar según la pila esté vacía o llena(Mostrar cartel de aviso de pila vacía) _(Lau)_ *(Done)*
+    * Poner nombres específicos de las funciones Apilar y Desapilar (Push, Pop) _(Lau)_ *(Done)*
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException. _(Lau)_ *(In Progress)*
+    * Mostrar gráficamente como afecta la capacidad ingresada (El rectángulito de heap) _(Lau)_ *(In Progress)*
   * Cola
     * Agregar esquema simultáneo de cola circular
     * Permitir especificar el tamaño de la estructura al inicio
