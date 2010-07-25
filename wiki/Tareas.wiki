@@ -54,7 +54,7 @@ Ejemplos:
     * Agregar esquema simultáneo de cola circular _(Manu)_ *(In Progress)*
     * Permitir especificar el tamaño de la estructura al inicio _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de cola vacía _(Manu)_ *(Done)*
-    * Poner nombres específicos de las funciones (Acolar, Desacolar) _(Manu)_ *(In Progress)*
+    * Poner nombres específicos de las funciones (Acolar, Desacolar) _(Manu)_ *(Done)*
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException.  _(Manu)_ *(Done)*
     * Corregir bug que hay cuando se hace una inserción random, se eliminan un par de elementos, y al insertar uno nuevo, éste es insertado muy a la izquierda, como si la cola continuara con la cant. inicial de elementos. _(Manu)_ *(Done)*
   * Árbol Balanceado por Peso
