@@ -57,6 +57,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         super(true);
         setDoubleBuffered(true);
         setBackground(Color.WHITE);
+        
         addComponentListener(this);
 
         resized = false;
@@ -115,7 +116,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     }
 
     public int getDelayValue() {
-        double value = (double) (commandQueue.getDelay() - MIN_DELAY) / (MAX_DELAY - MIN_DELAY);
+        double value =  (double)(commandQueue.getDelay() - MIN_DELAY) / ((double)(MAX_DELAY - MIN_DELAY));
         return new Double((1 - value) * 100).intValue();
     }
 
@@ -134,7 +135,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
      * @param speed nueva velocidad
      */
     public void changeSpeed(int speed) {
-        double delay = (double) (100 - speed) / 100 * (MAX_DELAY - MIN_DELAY);
+        double delay = (100 - speed) / (double)(100 * (MAX_DELAY - MIN_DELAY));
         delay += MIN_DELAY;
         commandQueue.setDelay((int) delay);
     }
@@ -166,7 +167,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     }
 
     /**
-     * Agrega una animacion que ya fue ejecutado
+     * Agrega una animacion que ya fue ejecutada
      * @param animation animacion a agregar
      */
     public void addExecutedAnimationSteps(UndoAnimationSteps animation) {

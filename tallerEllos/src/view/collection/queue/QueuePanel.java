@@ -44,7 +44,7 @@ public class QueuePanel<T> extends javax.swing.JPanel {
 
         buttonsPanel = new view.collection.queue.QueueButtonsPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        //setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
         add(buttonsPanel, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents

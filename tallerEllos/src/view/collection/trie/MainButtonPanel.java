@@ -67,7 +67,7 @@ public class MainButtonPanel extends javax.swing.JPanel {
     demoButton = new javax.swing.JButton();
     clearButton = new javax.swing.JButton();
 
-    setBackground(new java.awt.Color(255, 255, 255));
+    //setBackground(new java.awt.Color(255, 255, 255));
     setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
     setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 

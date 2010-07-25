@@ -46,7 +46,7 @@ public class BSTPanel extends javax.swing.JPanel {
 
         buttonsPanel = new view.collection.tree.BSTButtonsPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        //setBackground(new java.awt.Color(255, 255, 255));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);

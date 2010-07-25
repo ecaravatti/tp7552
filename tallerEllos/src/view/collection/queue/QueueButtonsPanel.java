@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import javax.swing.SwingUtilities;
+
 import controller.QueueController;
 
 /**
@@ -56,7 +58,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         removeAllButton = new javax.swing.JButton();
         insertRandomButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        //setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(746, 32));
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -72,7 +74,8 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
                 textFieldActionPerformed(evt);
             }
         });
-
+        
+        insertButton.putClientProperty("JComponent.sizeVariant", "large");
         insertButton.setText("Insertar");
         insertButton.setAlignmentY(0.0F);
         insertButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -81,6 +84,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         insertButton.setMinimumSize(new java.awt.Dimension(80, 20));
         insertButton.setPreferredSize(new java.awt.Dimension(80, 20));
         insertButton.setMnemonic(KeyEvent.VK_I);
+        SwingUtilities.updateComponentTreeUI(insertButton);
         insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertButtonActionPerformed(evt);

@@ -1,15 +1,25 @@
 package view.common;
 
 import java.awt.event.KeyEvent;
-import java.util.Hashtable;
 
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import view.exception.common.CannotUndoException;
 import controller.InteractiveController;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 
 /**
  * Contiene todos los elementos que permiten que las operaciones se realicen en
@@ -18,11 +28,13 @@ import controller.InteractiveController;
  * 
  */
 public class InteractivePanel extends javax.swing.JPanel {
-  private static final long serialVersionUID = 1L;
-  private InteractiveController controller;
 
-  private static int MIN = 0;
-  private static int MAX = 200;
+	private static final long serialVersionUID = 1L;
+
+	private InteractiveController controller;
+
+	private static int MIN = 0;
+	private static int MAX = 200;
 
   /** Creates new form InteractivePanel */
   public InteractivePanel() {
@@ -96,68 +108,58 @@ public class InteractivePanel extends javax.swing.JPanel {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     java.awt.GridBagConstraints gridBagConstraints;
-
+    FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+    flowLayout.setHgap(5);
+    flowLayout.setVgap(5);
     buttonPanel = new javax.swing.JPanel();
-    labelStep = new javax.swing.JLabel();
     panel = new javax.swing.JPanel();
-    checkBoxInteractive = new javax.swing.JCheckBox();
-    nextButton = new javax.swing.JButton();
-    undoStepButton = new javax.swing.JButton();
+    
     sliderPanel = new javax.swing.JPanel();
-    jLabel1 = new javax.swing.JLabel();
     slider = new javax.swing.JSlider();
 
     setLayout(new java.awt.GridBagLayout());
 
-    buttonPanel.setBackground(new java.awt.Color(255, 255, 255));
-    buttonPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-    buttonPanel.setMaximumSize(new java.awt.Dimension(270, 45));
-    buttonPanel.setMinimumSize(new java.awt.Dimension(270, 45));
-    buttonPanel.setPreferredSize(new java.awt.Dimension(270, 45));
+    //buttonPanel.setBackground(new java.awt.Color(255, 255, 255));
+    buttonPanel.setBorder(BorderFactory.createTitledBorder("Paso por paso"));
     buttonPanel.setLayout(new javax.swing.BoxLayout(buttonPanel, javax.swing.BoxLayout.Y_AXIS));
 
-    labelStep.setText("Paso por Paso");
-    labelStep.setAlignmentX(0.5F);
-    buttonPanel.add(labelStep);
-
-    panel.setBackground(new java.awt.Color(255, 255, 255));
-    panel.setMaximumSize(new java.awt.Dimension(260, 20));
-    panel.setMinimumSize(new java.awt.Dimension(260, 20));
-    panel.setPreferredSize(new java.awt.Dimension(260, 60));
-    panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-    checkBoxInteractive.setBackground(new java.awt.Color(255, 255, 255));
-    checkBoxInteractive.setText("Interactivo");
-    checkBoxInteractive.setAlignmentX(1.0F);
-    checkBoxInteractive.setMaximumSize(new java.awt.Dimension(85, 20));
-    checkBoxInteractive.setMinimumSize(new java.awt.Dimension(85, 20));
-    checkBoxInteractive.setPreferredSize(new java.awt.Dimension(85, 20));
+    buttonPanel.add(panel, panel.getName());
+    panel.setLayout(flowLayout);
+    //checkBoxInteractive.setBackground(new java.awt.Color(255, 255, 255));
+    
+    Icon playIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Play-icon.png").getPath());
+    Icon pauseIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Pause-icon.png").getPath());
+    checkBoxInteractive = new JCheckBox("Interactivo", pauseIcon, false);
+    checkBoxInteractive.setSelectedIcon(playIcon);
+    checkBoxInteractive.setToolTipText("Modo interactivo");
+    checkBoxInteractive.setAlignmentX(1.0f);
+    checkBoxInteractive.putClientProperty("JComponent.sizeVariant", "large");
     checkBoxInteractive.setMnemonic(KeyEvent.VK_N);
     checkBoxInteractive.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         checkBoxInteractiveActionPerformed(evt);
       }
     });
-    panel.add(checkBoxInteractive);
-
-    nextButton.setText("Siguiente");
+    
+    Icon nextIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Fast-Forward-icon.png").getPath());
+    nextButton = new JButton("Siguiente", nextIcon);
+    nextButton.setToolTipText("Siguiente paso");
     nextButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    nextButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    nextButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    nextButton.setPreferredSize(new java.awt.Dimension(80, 20));
+    nextButton.putClientProperty("JComponent.sizeVariant", "small");
     nextButton.setMnemonic(KeyEvent.VK_S);
+    panel.add(checkBoxInteractive, checkBoxInteractive.getName());
     nextButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         nextButtonActionPerformed(evt);
       }
     });
     panel.add(nextButton);
-
-    undoStepButton.setText("Deshacer");
+    
+    Icon undoIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Rewind-icon.png").getPath());
+    undoStepButton = new javax.swing.JButton("Deshacer", undoIcon);
+    undoStepButton.setToolTipText("Paso anterior");
     undoStepButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    undoStepButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    undoStepButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    undoStepButton.setPreferredSize(new java.awt.Dimension(80, 20));
+    undoStepButton.putClientProperty("JComponent.sizeVariant", "small");
     undoStepButton.setMnemonic(KeyEvent.VK_H);
     undoStepButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,8 +167,6 @@ public class InteractivePanel extends javax.swing.JPanel {
       }
     });
     panel.add(undoStepButton);
-
-    buttonPanel.add(panel);
 
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 0;
@@ -177,25 +177,24 @@ public class InteractivePanel extends javax.swing.JPanel {
     gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
     add(buttonPanel, gridBagConstraints);
 
-    sliderPanel.setBackground(new java.awt.Color(255, 255, 255));
-    sliderPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    //sliderPanel.setBackground(new java.awt.Color(255, 255, 255));
+    sliderPanel.setBorder(BorderFactory.createTitledBorder("Velocidad de animación"));
     sliderPanel.setLayout(new javax.swing.BoxLayout(sliderPanel, javax.swing.BoxLayout.PAGE_AXIS));
-
-    jLabel1.setText("Velocidad");
-    jLabel1.setAlignmentX(0.5F);
-    sliderPanel.add(jLabel1);
-
-    slider.setBackground(new java.awt.Color(255, 255, 255));
+    
+    //slider.setBackground(new java.awt.Color(255, 255, 255));
     slider.setMinorTickSpacing(5);
     slider.setPaintLabels(true);
-    Hashtable<Integer, JLabel> labelTable =  new Hashtable<Integer, JLabel>();
-    labelTable.put(new Integer( 0 ), new JLabel("Lento") );
-    labelTable.put(new Integer( slider.getMaximum() ), new JLabel("Rapido") );
-    slider.setLabelTable(labelTable);
+    slider.putClientProperty("JComponent.sizeVariant", "large");
+    JLabel labelLento = new JLabel("+ lento", SwingConstants.LEFT);
+    labelLento.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 10));
+    JLabel labelRapido = new JLabel("+ rápido", SwingConstants.RIGHT);
+    labelRapido.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 10));    
+    JPanel p = new JPanel(new GridLayout());
+    p.add(labelLento);
+    p.add(labelRapido);
     sliderPanel.add(slider);
-
-    //add(Box.createRigidArea(new Dimension(1,0)));
-
+    sliderPanel.add(p);
+    
     gridBagConstraints = new java.awt.GridBagConstraints();
     gridBagConstraints.gridx = 1;
     gridBagConstraints.gridy = 0;
@@ -203,8 +202,9 @@ public class InteractivePanel extends javax.swing.JPanel {
     gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
     gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
     gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.anchor = GridBagConstraints.CENTER;
     gridBagConstraints.weighty = 1.0;
-    add(sliderPanel, gridBagConstraints);
+    this.add(sliderPanel, gridBagConstraints);
   }// </editor-fold>//GEN-END:initComponents
 
   /**
@@ -251,8 +251,6 @@ public class InteractivePanel extends javax.swing.JPanel {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JPanel buttonPanel;
   private javax.swing.JCheckBox checkBoxInteractive;
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel labelStep;
   private javax.swing.JButton nextButton;
   private javax.swing.JPanel panel;
   private javax.swing.JSlider slider;

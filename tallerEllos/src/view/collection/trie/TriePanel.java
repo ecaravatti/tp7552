@@ -90,7 +90,7 @@ public class TriePanel extends javax.swing.JPanel {
 
 		mainButtonPanel = new view.collection.trie.MainButtonPanel();
 
-		setBackground(new java.awt.Color(255, 255, 255));
+		//setBackground(new java.awt.Color(255, 255, 255));
 		setLayout(new java.awt.BorderLayout(5, 5));
 		add(mainButtonPanel, java.awt.BorderLayout.PAGE_START);
 	}// </editor-fold>//GEN-END:initComponents
