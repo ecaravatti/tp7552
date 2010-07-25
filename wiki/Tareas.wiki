@@ -23,6 +23,7 @@ Ejemplos:
     * Eliminar la opción “Guardar” porque tira una excepción
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(In Progress)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
+    * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(In progress)*
   * Ayuda
     * Agregar info sobre cola circular
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, etc.
@@ -71,7 +72,7 @@ Ejemplos:
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
-    * Agregar scroll _(Dami / Tifi)_ *(In Progress)*
+    * Agregar scroll _(Dami)_ *(In Progress)*
     * Styles
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
