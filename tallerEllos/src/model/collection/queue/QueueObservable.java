@@ -4,6 +4,7 @@
  */
 package model.collection.queue;
 
+import model.exception.queue.QueueFullException;
 import event.ObservableBase;
 import event.queue.QueueListener;
 
@@ -35,7 +36,7 @@ public abstract class QueueObservable<T> extends ObservableBase<QueueListener<T>
     public abstract int getLength();
 
     @Override
-    public abstract void enqueue(T item);
+    public abstract void enqueue(T item) throws QueueFullException;
 
     @Override
     public abstract T dequeue();

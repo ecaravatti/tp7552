@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import model.collection.queue.ArrayListQueueImpl;
+import model.exception.queue.QueueFullException;
 import view.animation.heap.DeleteItemHeapAnimation;
 import view.animation.heap.EmptyAnimation;
 import view.animation.heap.EndAnimation;
@@ -375,10 +376,14 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
         // Encolar las figuras para luego utilizarlas en la animacion
         // (se encola para cuando se ejecute la animación se obtenga la posición
         // real de la figura)
-        parentLabelQueue.enqueue(parentLabel);
-        currentLabelQueue.enqueue(currentLabel);
-        parentNodeQueue.enqueue(parentNode);
-        currentNodeQueue.enqueue(currentNode);
+        try {
+	        parentLabelQueue.enqueue(parentLabel);
+	        currentLabelQueue.enqueue(currentLabel);
+	        parentNodeQueue.enqueue(parentNode);
+	        currentNodeQueue.enqueue(currentNode);
+        } catch (QueueFullException e) {
+        	//Hacer algo?
+        }
 
         this.addAnimationToQueue(new SwapElementsAnimation<T>(this));
 

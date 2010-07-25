@@ -1,6 +1,5 @@
 package view.collection.queue;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -10,6 +9,7 @@ import javax.swing.GroupLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.common.JTextFieldLimit;
-
 import controller.QueueController;
 
 /**
@@ -50,8 +49,16 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
      * @param enable
      */
     public void enableComponents(boolean enable) {
-        for (Component component : this.getComponents()) {
-            component.setEnabled(enable);
+        this.textField.setEnabled(enable);
+        this.jLabel1.setEnabled(enable);
+        this.jLabel2.setEnabled(enable);
+        this.queueSizeComboBox.setEnabled(enable);
+       
+        if(enable) {
+        	this.insertButton.setEnabled(!controller.isQueueFull());
+        	this.removeButton.setEnabled(!controller.isQueueEmpty());
+        	this.removeAllButton.setEnabled(!controller.isQueueEmpty());
+        	this.insertRandomButton.setEnabled(!controller.isQueueFull());
         }
     }
 
@@ -140,6 +147,18 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2 = new JLabel("Tamaño del queue", SwingConstants.RIGHT);
+        queueSizeComboBox = new JComboBox();
+        queueSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        queueSizeComboBox.setSelectedIndex(4);
+        queueSizeComboBox.setKeySelectionManager(null);
+        queueSizeComboBox.setToolTipText("Tamaño del queue");
+        queueSizeComboBox.putClientProperty("JComponent.sizeVariant", "large");
+        queueSizeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	queueSizeComboBoxActionPerformed(evt);
+            }
+        });
        
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -159,6 +178,9 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
                     .addPreferredGap(ComponentPlacement.RELATED)
                     .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(ComponentPlacement.RELATED)
+                    .addComponent(queueSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
         layout.setVerticalGroup(
@@ -169,8 +191,11 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
                 .addComponent(insertButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(queueSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2))
         );
+        
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
@@ -211,6 +236,14 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_insertRandomButtonActionPerformed
 
+    private void queueSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed
+    	int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+
+        if (res == 0) {
+        	controller.setNewCapacity(getSelectedCapacity());
+        }
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton insertButton;
@@ -219,6 +252,12 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     private JButton removeButton;
     private JTextField textField;
     private JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox queueSizeComboBox;
     // End of variables declaration//GEN-END:variables
+    
+    public int getSelectedCapacity() {
+    	return Integer.valueOf(queueSizeComboBox.getSelectedItem().toString());
+    }
 
 }

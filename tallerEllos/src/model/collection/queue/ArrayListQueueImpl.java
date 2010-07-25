@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import model.exception.queue.QueueFullException;
+
 
 public class ArrayListQueueImpl<T> extends QueueObservable<T> {
 
 	private ArrayList<T> queue;
 	private int fullSize = 0;
+	private int capacity = 1000000;
 
     public ArrayListQueueImpl() {
 		queue = new ArrayList<T>();
@@ -22,11 +25,15 @@ public class ArrayListQueueImpl<T> extends QueueObservable<T> {
         return queue.size();
     }
 
-    public void enqueue(T item) {
-		this.queue.add(item);
-		fullSize++;
-
-        this.fireItemEnqueued(item);
+    public void enqueue(T item) throws QueueFullException {
+    	if (!isFull()) {
+			this.queue.add(item);
+			fullSize++;
+	
+	        this.fireItemEnqueued(item);
+    	} else {
+    		throw new QueueFullException();
+    	}
     }
 
     public T dequeue() {
@@ -64,4 +71,20 @@ public class ArrayListQueueImpl<T> extends QueueObservable<T> {
     	queue = new ArrayList<T>();
     	fullSize = 0;
     }
+    
+    @Override
+	public int getCapacity() {
+		return capacity;
+	}
+	
+    @Override
+    public void setCapacity(int capacity) {
+    	this.capacity = capacity;
+    }
+    
+    @Override
+    public boolean isFull() {
+    	return (queue.size() == capacity);
+    }
+
 }

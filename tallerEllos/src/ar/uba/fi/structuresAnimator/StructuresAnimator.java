@@ -200,6 +200,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         queueController = new QueueController<Integer>(queue, queuePanel, operationsLog);
         queueController.setPrimitivesCodeArea(primitivesCodeArea);
         queuePanel.addController(queueController);
+        queuePanel.getButtonsPanel().enableComponents(true);
         SwingUtilities.updateComponentTreeUI(queuePanel);
 
         /**

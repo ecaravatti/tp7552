@@ -1,5 +1,7 @@
 package model.collection.queue;
 
+import model.exception.queue.QueueFullException;
+
 
 public interface Queue<T> {
 
@@ -16,7 +18,7 @@ public interface Queue<T> {
     /**
      * Add an item to the queue.
      */
-    public void enqueue(T item);
+    public void enqueue(T item) throws QueueFullException;
 
     /**
      * Remove and return the least recently added item.
@@ -28,4 +30,18 @@ public interface Queue<T> {
      */
     public void clear();
 
+    /**
+     * Get the capacity of the queue.
+     */
+    public int getCapacity();
+    
+    /**
+     * Set the capacity of the queue.
+     */
+    public void setCapacity(int capacity);
+    
+    /**
+     * Indicate if the queue is full.
+     */
+    public boolean isFull();
 }

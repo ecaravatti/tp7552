@@ -9,6 +9,7 @@ import java.util.Iterator;
 import javax.swing.JTextArea;
 
 import model.collection.queue.QueueObservable;
+import model.exception.queue.QueueFullException;
 import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
 
@@ -27,6 +28,7 @@ public class QueueController<T> extends InteractiveController {
         this.panel = panel;
         this.view = panel.getView();
         this.queue.addListener(view);
+        this.queue.setCapacity(panel.getButtonsPanel().getSelectedCapacity());
     }
 
     public void dequeueAllItem() {
@@ -54,7 +56,11 @@ public class QueueController<T> extends InteractiveController {
     public void enqueueItem(T item) {
         this.panel.getButtonsPanel().enableComponents(false);
         this.view.prepareAnimation();
-        this.queue.enqueue(item);
+        try {
+        	this.queue.enqueue(item);
+        } catch (QueueFullException e) {
+        	//Hacer algo? En realidad no podemos permitir que llegue a esta linea
+        }
     }
 
     public void dequeueItem() {
@@ -78,5 +84,20 @@ public class QueueController<T> extends InteractiveController {
       this.queue.clear();
       this.view.clear();
       this.view.repaint();
+      this.panel.getButtonsPanel().enableComponents(true);
+    }
+    
+    public void setNewCapacity(int capacity) {
+    	this.clear();
+    	this.queue.setCapacity(capacity);
+    	this.panel.getButtonsPanel().enableComponents(true);
+    }
+    
+    public boolean isQueueFull() {
+    	return queue.isFull();
+    }
+    
+    public boolean isQueueEmpty() {
+    	return queue.isEmpty();
     }
 }

@@ -3,6 +3,8 @@ package model.collection.queue;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import model.exception.queue.QueueFullException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,7 +20,7 @@ public class ArrayListQueueImplTest {
     }
 
     @Test
-    public void testIsEmptyUsingFalseCondition() {
+    public void testIsEmptyUsingFalseCondition() throws QueueFullException {
     	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
 
@@ -26,7 +28,7 @@ public class ArrayListQueueImplTest {
     }
 
     @Test
-    public void testGetLength() {
+    public void testGetLength() throws QueueFullException {
     	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
 
@@ -34,7 +36,7 @@ public class ArrayListQueueImplTest {
     }
 
     @Test
-    public void testEnqueue() {
+    public void testEnqueue() throws QueueFullException {
     	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
 
         queue.enqueue(QUEUE_ITEM_1);
@@ -58,7 +60,7 @@ public class ArrayListQueueImplTest {
     }
 
     @Test
-    public void testDequeue() {
+    public void testDequeue() throws QueueFullException {
     	ArrayListQueueImpl<Integer> queue = new ArrayListQueueImpl<Integer>();
         queue.enqueue(QUEUE_ITEM_1);
         queue.enqueue(QUEUE_ITEM_2);
