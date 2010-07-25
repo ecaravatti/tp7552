@@ -30,8 +30,8 @@ import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
 import view.collection.stack.StackPanel;
 import view.collection.stack.StackView;
-import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTPanel;
+import view.collection.tree.BinarySearchTreeView;
 import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
@@ -277,6 +277,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         // Para cuando se invoca desde un browser
         horizontalSplitPane.setDividerLocation(0.7);
         verticalSplitPane.setDividerLocation(0.5);
+        getRootPane().revalidate();
+        getRootPane().repaint();
     }
 
     @Override
