@@ -9,6 +9,21 @@ public interface Stack<T> {
     public boolean isEmpty();
 
     /**
+     * Indicate if the stack is full.
+     */
+    public boolean isFull();
+    
+    /**
+     * Get the capacity of the stack.
+     */
+    public int getCapacity();
+    
+    /**
+     * Set the capacity of the stack.
+     */
+    public void setCapacity(int capacity);
+    
+    /**
      * Get the actual size of the stack.
      */
     public int getSize();
@@ -27,4 +42,5 @@ public interface Stack<T> {
      * Delete and return the most recently added item.
      */
     public T pop();
+   
 }

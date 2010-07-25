@@ -7,6 +7,7 @@ import java.util.Iterator;
 public class ArrayListStackImpl<T> extends StackObservable<T> {
 
 	private int top = -1;
+	private int capacity = 1;
 	private ArrayList<T> stack;
 
     public ArrayListStackImpl() {
@@ -15,6 +16,18 @@ public class ArrayListStackImpl<T> extends StackObservable<T> {
 
     public boolean isEmpty() {
     	return (top == -1);
+    }
+
+    public boolean isFull() {
+    	return (stack.size() == capacity);
+    }
+    
+    public int getCapacity() {
+    	return this.capacity;
+    }
+    
+    public void setCapacity(int capacity) {
+    	this.capacity = capacity;
     }
 
     public int getSize() {
@@ -31,19 +44,24 @@ public class ArrayListStackImpl<T> extends StackObservable<T> {
     }
 
     public void push(T item) {
-		stack.add(item);
-		top++;
-		this.fireItemPushed(item);
+    	if (!this.isFull()) {
+    		stack.add(item);
+    		top++;
+    		this.fireItemPushed(item);
+    	}
     }
 
     public T pop() {
-		T item = this.peek();
-		stack.remove(top);
-		top--;
-
-		this.fireItemPopped(item);
-		
-		return item;
+    	if (!this.isEmpty()) {
+    		T item = this.peek();
+    		stack.remove(top);
+    		top--;
+    		this.fireItemPopped(item);
+    		return item;
+    	}
+    	else {
+    		return null;
+    	}
     }
 
     @Override
