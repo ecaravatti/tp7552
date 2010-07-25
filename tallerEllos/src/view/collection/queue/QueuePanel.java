@@ -1,5 +1,8 @@
 package view.collection.queue;
 
+import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
+
 import controller.QueueController;
 
 /**
@@ -13,7 +16,6 @@ public class QueuePanel<T> extends javax.swing.JPanel {
 
     public QueuePanel(QueueView<T> view) {
     	this.view = view;
-    	//this.view.setBorder(BorderFactory.createLoweredBevelBorder());
         initComponents();
     }
 
@@ -38,23 +40,9 @@ public class QueuePanel<T> extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         buttonsPanel = new QueueButtonsPanel();
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(view)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(view))
-        );
-//        //setBackground(new java.awt.Color(255, 255, 255));
-
-//        this.add(buttonsPanel, BorderLayout.NORTH);
-//        this.add(view);
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.add(buttonsPanel);
+        this.add(new JScrollPane(view, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
     }// </editor-fold>//GEN-END:initComponents
 
 

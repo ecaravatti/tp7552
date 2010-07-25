@@ -1,7 +1,20 @@
 package view.collection.stack;
-import java.awt.Component;
+
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import view.common.JTextFieldLimit;
 
 
 import controller.StackController;
@@ -55,77 +68,86 @@ public class StackButtonsPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        textField = new javax.swing.JTextField(2);
-        insertButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
-        removeAllButton = new javax.swing.JButton();
-        insertRandomButton = new javax.swing.JButton();
-        jlblSize = new javax.swing.JLabel();
-        stackSizeComboBox = new javax.swing.JComboBox();
-        removeButton.setEnabled(false);
-    	removeAllButton.setEnabled(false);
-
-       // setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setPreferredSize(new java.awt.Dimension(746, 32));
+    	// setBackground(new java.awt.Color(255, 255, 255));
+    	this.setBorder(BorderFactory.createTitledBorder("Control: Stack"));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
             }
         });
 
-        textField.setColumns(15);
-        textField.setText("1");
+        jLabel1 = new JLabel("Ingresá un número de 0 a 999");
+        textField = new JTextField();
+        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));        
+        textField.setDocument(new JTextFieldLimit(3));
+        textField.putClientProperty("JComponent.sizeVariant", "large");
         textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldActionPerformed(evt);
             }
         });
 
-        insertButton.setText("Apilar");
-        insertButton.setAlignmentY(0.0F);
-        insertButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon.png").getPath());
+        insertButton = new JButton("Apilar", addIcon);
+        insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        insertButton.putClientProperty("JComponent.sizeVariant", "small");
+        insertButton.setToolTipText("Agregar elemento a la pila");
         insertButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        insertButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        insertButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        insertButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        insertButton.setMnemonic(KeyEvent.VK_A);
+        insertButton.setMnemonic(KeyEvent.VK_I);
         insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertButtonActionPerformed(evt);
             }
         });
 
-        removeButton.setText("Desapilar");
+        Icon deleteIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Delete-icon.png").getPath());
+        removeButton = new JButton("Desapilar", deleteIcon);
+        removeButton.setEnabled(false);
+        removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        removeButton.putClientProperty("JComponent.sizeVariant", "small");
+        removeButton.setToolTipText("Quitar elemento de la pila");
         removeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        removeButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        removeButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        removeButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        removeButton.setMnemonic(KeyEvent.VK_D);
+        removeButton.setMnemonic(KeyEvent.VK_E);
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeButtonActionPerformed(evt);
             }
         });
 
-        removeAllButton.setText("Vaciar");
-        removeAllButton.setPreferredSize(new java.awt.Dimension(80, 20));
+        Icon cleanIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Refresh-icon.png").getPath());
+        removeAllButton = new JButton("Vaciar", cleanIcon);
+        removeAllButton.setEnabled(false);
+        removeAllButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        removeAllButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        removeAllButton.putClientProperty("JComponent.sizeVariant", "small");
+        removeAllButton.setToolTipText("Vaciar pila");
+        removeAllButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        removeAllButton.setMnemonic(KeyEvent.VK_V);
         removeAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAllButtonActionPerformed(evt);
             }
         });
 
-        insertRandomButton.setText("Random");
+        Icon randomIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Help-icon.png").getPath());
+        insertRandomButton = new JButton("Random", randomIcon);
+        insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        insertRandomButton.putClientProperty("JComponent.sizeVariant", "small");
+        insertRandomButton.setToolTipText("Insertar elemento aleatorio");
+        insertRandomButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        insertRandomButton.setMnemonic(KeyEvent.VK_R);
         insertRandomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertRandomButtonActionPerformed(evt);
             }
         });
-
-        jlblSize.setText("tama�o del stack");
         
+        jlblSize = new JLabel("Tamaño del stack", SwingConstants.RIGHT);
+        stackSizeComboBox = new JComboBox();
+        stackSizeComboBox.putClientProperty("JComponent.sizeVariant", "large");
         stackSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel(
 				new String[] { "1", "2", "3", "4", "5", "6", "7"}));
 		stackSizeComboBox.setSelectedIndex(0);
@@ -139,10 +161,12 @@ public class StackButtonsPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addGap(17, 17, 17)
                 .addComponent(insertButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -150,25 +174,26 @@ public class StackButtonsPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlblSize)
 				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stackSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(310, Short.MAX_VALUE)));
+                
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(insertButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertRandomButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlblSize)
-                    .addComponent(stackSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(stackSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
         );
   
     }// </editor-fold>//GEN-END:initComponents
@@ -220,5 +245,6 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textField;
     private javax.swing.JLabel jlblSize;
     private javax.swing.JComboBox stackSizeComboBox;
+    private JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

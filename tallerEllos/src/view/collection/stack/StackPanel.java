@@ -1,7 +1,6 @@
 package view.collection.stack;
 
-import java.awt.BorderLayout;
-
+import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
 
 import controller.StackController;
@@ -12,14 +11,14 @@ import controller.StackController;
 public class StackPanel<T> extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private view.collection.stack.StackButtonsPanel buttonsPanel;
 	private javax.swing.JPanel jPanelCapacity;
 	
     private StackView<T> view;
 
     public StackPanel(StackView<T> view) {
+    	this.view = view;
         initComponents();
-        this.view = view;
-        this.add(new JScrollPane(this.view), BorderLayout.CENTER);
     }
 
     public void addController(StackController<Integer> controller) {
@@ -42,16 +41,10 @@ public class StackPanel<T> extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        buttonsPanel = new view.collection.stack.StackButtonsPanel();
-        //setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new java.awt.BorderLayout());
-        add(buttonsPanel, java.awt.BorderLayout.PAGE_START);
+    	buttonsPanel = new StackButtonsPanel();
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.add(buttonsPanel);
+        this.add(new JScrollPane(view, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
     }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.collection.stack.StackButtonsPanel buttonsPanel;
-    // End of variables declaration//GEN-END:variables
 
 }
