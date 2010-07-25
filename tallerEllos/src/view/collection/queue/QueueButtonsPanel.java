@@ -90,13 +90,13 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         });
         
         Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon.png").getPath());
-        insertButton = new JButton("Insertar", addIcon);
+        insertButton = new JButton("Encolar", addIcon);
         insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
         insertButton.putClientProperty("JComponent.sizeVariant", "small");
         insertButton.setToolTipText("Insertar elemento en la cola");
         insertButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        insertButton.setMnemonic(KeyEvent.VK_I);
+        insertButton.setMnemonic(KeyEvent.VK_E);
         insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertButtonActionPerformed(evt);
@@ -104,13 +104,13 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         });
         
         Icon deleteIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Delete-icon.png").getPath());
-        removeButton = new JButton("Eliminar", deleteIcon);
+        removeButton = new JButton("Desencolar", deleteIcon);
         removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
         removeButton.putClientProperty("JComponent.sizeVariant", "small");
         removeButton.setToolTipText("Eliminar top de la cola");
         removeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        removeButton.setMnemonic(KeyEvent.VK_E);
+        removeButton.setMnemonic(KeyEvent.VK_D);
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeButtonActionPerformed(evt);
