@@ -54,12 +54,10 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         this.jLabel2.setEnabled(enable);
         this.queueSizeComboBox.setEnabled(enable);
        
-        if(enable) {
-        	this.insertButton.setEnabled(!controller.isQueueFull());
-        	this.removeButton.setEnabled(!controller.isQueueEmpty());
-        	this.removeAllButton.setEnabled(!controller.isQueueEmpty());
-        	this.insertRandomButton.setEnabled(!controller.isQueueFull());
-        }
+        this.insertButton.setEnabled(enable && !controller.isQueueFull());
+        this.removeButton.setEnabled(enable && !controller.isQueueEmpty());
+        this.removeAllButton.setEnabled(enable && !controller.isQueueEmpty());
+        this.insertRandomButton.setEnabled(enable && !controller.isQueueFull());
     }
 
     /** This method is called from within the constructor to
@@ -229,7 +227,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed
-        for (int counter = 1; counter <= 10; counter++) {
+        for (int counter = 1; counter <= 1; counter++) {
             Random random = new Random();
             int number = random.nextInt(999) + 1;
             controller.enqueueItem(number);
