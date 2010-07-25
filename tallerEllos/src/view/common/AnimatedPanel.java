@@ -307,6 +307,11 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         this.countAnimations++;
     }
     
+    protected void rerender() {
+		this.revalidate();
+		this.repaint();
+	}
+    
     public CommandQueue getCommandQueue() {
         return commandQueue;
     }

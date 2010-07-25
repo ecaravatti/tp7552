@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import model.collection.trie.Trie;
-import view.collection.trie.TriePanel;
 import view.collection.trie.TrieGenerator;
 import view.collection.trie.TrieMessages;
+import view.collection.trie.TriePanel;
 import view.command.common.ShowMessageDialogCommand;
 import view.common.InteractivePanel;
 
@@ -46,6 +46,7 @@ public class TrieController extends InteractiveController {
     this.running = false;
     this.generator = new TrieGenerator(this);
     getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
+    triePanel.addController(this);
     //this.getInteractivePanel().setMaximumSlider( 190 );
   }
 

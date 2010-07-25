@@ -2,6 +2,8 @@ package view.collection.stack;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JScrollPane;
+
 import controller.StackController;
 
 /**
@@ -16,7 +18,7 @@ public class StackPanel<T> extends javax.swing.JPanel {
     public StackPanel(StackView<T> view) {
         initComponents();
         this.view = view;
-        this.add(view, BorderLayout.CENTER);
+        this.add(new JScrollPane(this.view), BorderLayout.CENTER);
     }
 
     public void addController(StackController<Integer> controller) {

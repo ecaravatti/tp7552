@@ -4,6 +4,7 @@
  */
 package view.collection.stack;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,52 +24,66 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
 	private static final int INITIAL_HORIZONTAL = 50;
-    private static final int INITIAL_VERTICAL = 450;
-    private List<StackNodeView<T>> stackNodes;
+	private static final int INITIAL_VERTICAL = 450;
+	private List<StackNodeView<T>> stackNodes;
 
-    public StackView() {
-        super();
-        this.stackNodes = new LinkedList<StackNodeView<T>>();
-    }
+	public StackView() {
+		super();
+		this.stackNodes = new LinkedList<StackNodeView<T>>();
+	}
 
-    @Override
-    public void itemPushed(T item) {
-        int stackSize = this.stackNodes.size();
-        StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes.get(stackSize - 1) : null;
-        StackNodeView<T> node = new StackNodeView<T>(item, stackSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+	@Override
+	public void itemPushed(T item) {
+		int stackSize = this.stackNodes.size();
+		StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes
+				.get(stackSize - 1) : null;
+		StackNodeView<T> node = new StackNodeView<T>(item, stackSize,
+				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
 
-        this.stackNodes.add(node);
+		this.stackNodes.add(node);
 
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.push.getCode()));
-        this.addAnimationToQueue(new ItemPushedAnimation<T>(this, node));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				StackPrimitives.push.getCode()));
+		this.addAnimationToQueue(new ItemPushedAnimation<T>(this, node));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+		rerender();
+	}
 
-    @Override
-    public void itemPopped(T item) {
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.pop.getCode()));
-        this.addAnimationToQueue(new ItemPoppedAnimation<T>(this));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+	@Override
+	public void itemPopped(T item) {
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				StackPrimitives.pop.getCode()));
+		this.addAnimationToQueue(new ItemPoppedAnimation<T>(this));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+		rerender();
+	}
 
-    @Override
-    public void emptyStackCondition() {
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, StackPrimitives.pop.getCode()));
-        this.addCommandToQueue(new ShowMessageCommand(this, "La pila se encuentra vacía."));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+	@Override
+	public void emptyStackCondition() {
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				StackPrimitives.pop.getCode()));
+		this.addCommandToQueue(new ShowMessageCommand(this,
+				"La pila se encuentra vacï¿½a."));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+	}
 
-    @Override
-    public void paintPanel(Graphics2D graphics) {
-        for (StackNodeView<T> node : getStackNodes()) {
-            node.paintElement(graphics);
-        }
-    }
+	@Override
+	public void paintPanel(Graphics2D graphics) {
+		for (StackNodeView<T> node : getStackNodes()) {
+			node.paintElement(graphics);
+		}
+	}
 
-    /**
-     * @return the stackNodes
-     */
-    public List<StackNodeView<T>> getStackNodes() {
-        return stackNodes;
-    }
+	/**
+	 * @return the stackNodes
+	 */
+	public List<StackNodeView<T>> getStackNodes() {
+		return stackNodes;
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(30, stackNodes.size() * 100 < 100 ? 100
+				: stackNodes.size() * 100);
+	}
 }

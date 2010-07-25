@@ -4,6 +4,7 @@
  */
 package view.collection.queue;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,55 +23,69 @@ import event.queue.QueueListener;
 public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final int INITIAL_HORIZONTAL = 920;
-    private static final int INITIAL_VERTICAL = 50;
-    private List<QueueNodeView<T>> queueNodes;
+	private static final int INITIAL_VERTICAL = 50;
+	private List<QueueNodeView<T>> queueNodes;
 
-    public QueueView() {
-        super();
-        this.queueNodes = new LinkedList<QueueNodeView<T>>();
-    }
+	public QueueView() {
+		super();
+		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+	}
 
-    @Override
-    public void itemEnqueued(T item) {
-        int queueSize = this.queueNodes.size();
-        QueueNodeView<T> parentNode = (queueSize > 0) ? this.getQueueNodes().get(queueSize - 1) : null;
+	@Override
+	public void itemEnqueued(T item) {
+		int queueSize = this.queueNodes.size();
+		QueueNodeView<T> parentNode = (queueSize > 0) ? this.getQueueNodes()
+				.get(queueSize - 1) : null;
 
-        QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+		QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize,
+				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
 
-        this.getQueueNodes().add(node);
+		this.getQueueNodes().add(node);
 
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.enqueue.getCode()));
-        this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				QueuePrimitives.enqueue.getCode()));
+		this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+		rerender();
+	}
 
-    @Override
-    public void itemDequeued(T item) {
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.dequeue.getCode()));
-        this.addAnimationToQueue(new ItemDequeuedAnimation<T>(this));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+	@Override
+	public void itemDequeued(T item) {
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				QueuePrimitives.dequeue.getCode()));
+		this.addAnimationToQueue(new ItemDequeuedAnimation<T>(this));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+		rerender();
+	}
 
-    @Override
-    public void emptyQueueCondition() {
-        this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.dequeue.getCode()));
-        this.addCommandToQueue(new ShowMessageCommand(this, "La cola se encuentra vacía."));
-        this.addCommandToQueue(new StepFinishedCommand(this, true));
-    }
+	@Override
+	public void emptyQueueCondition() {
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				QueuePrimitives.dequeue.getCode()));
+		this.addCommandToQueue(new ShowMessageCommand(this,
+				"La cola se encuentra vacía."));
+		this.addCommandToQueue(new StepFinishedCommand(this, true));
+	}
 
-    @Override
-    public void paintPanel(Graphics2D graphics) {
-        for (QueueNodeView<T> node : getQueueNodes()) {
-            node.paintElement(graphics);
-        }
-    }
+	@Override
+	public void paintPanel(Graphics2D graphics) {
+		for (QueueNodeView<T> node : getQueueNodes()) {
+			node.paintElement(graphics);
+		}
+	}
 
-    /**
-     * @return the queueNodes
-     */
-    public List<QueueNodeView<T>> getQueueNodes() {
-        return queueNodes;
-    }
+	/**
+	 * @return the queueNodes
+	 */
+	public List<QueueNodeView<T>> getQueueNodes() {
+		return queueNodes;
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(queueNodes.size() * 100 < 1000 ? 1000
+				: queueNodes.size() * 100, 30);
+	}
 }

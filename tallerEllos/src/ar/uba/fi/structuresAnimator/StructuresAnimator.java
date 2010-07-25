@@ -126,7 +126,6 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         triePanel = new TriePanel(trieView);
         trieController = new TrieController(trie, triePanel, operationsLog);
         trieController.setPrimitivesCodeArea(primitivesCodeArea);
-        this.triePanel.addController(trieController);
 
         /**
          * Componentes de BST
@@ -194,15 +193,15 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
         tabbedPane.addTab("Arbol Binario de Busqueda Balanceado por Peso", treeWeightPanel);
 
         operationsLog.setBorder(BorderFactory.createTitledBorder("Log de Operaciones"));
-        operationsLog.setEditable(false);
+        operationsLog.setEditable(Boolean.FALSE);
 
-        logPane = new JScrollPane(operationsLog, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        logPane = new JScrollPane(operationsLog, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         primitivesCodeArea.setBorder(BorderFactory.createTitledBorder("Pseudocódigo"));
-        primitivesCodeArea.setEditable(false);
+        primitivesCodeArea.setEditable(Boolean.FALSE);
         primitivesCodeArea.setFont(DEF_FONT);
 
-        codePane = new JScrollPane(primitivesCodeArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        codePane = new JScrollPane(primitivesCodeArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         mainPanel = new JPanel(new BorderLayout());
         bottomPanel = new JPanel(new BorderLayout());
@@ -219,9 +218,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
           public void stateChanged(ChangeEvent evt) {
             JTabbedPane pane = (JTabbedPane)evt.getSource();
 
-            int sel = pane.getSelectedIndex();
+            int selectedTabIndex = pane.getSelectedIndex();
 
-            if (sel == 0) {
+            if (selectedTabIndex == 0) {
             	if (interactivePanel != null) {
             		bottomPanel.remove(interactivePanel);
             	}
@@ -238,13 +237,13 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
               bottomPanel.remove(interactivePanel);
             }
 
-            interactivePanel = controllers.get(sel - 1).getInteractivePanel();
+            interactivePanel = controllers.get(selectedTabIndex - 1).getInteractivePanel();
             bottomPanel.add(interactivePanel);
-            controllers.get(sel - 1).setWait(false);
+            controllers.get(selectedTabIndex - 1).setWait(Boolean.FALSE);
 
             for (int i = 0; i < controllers.size(); i++) {
-              if ( controllers.get(i) != controllers.get(sel - 1) ) {
-                controllers.get(i).setWait(true);
+              if ( controllers.get(i) != controllers.get(selectedTabIndex - 1) ) {
+                controllers.get(i).setWait(Boolean.TRUE);
               }
             }
             bottomPanel.repaint();

@@ -2,6 +2,8 @@ package view.collection.tree;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JScrollPane;
+
 import controller.BSTController;
 
 /**
@@ -18,7 +20,7 @@ public class BSTPanel extends javax.swing.JPanel {
         initComponents();
 		buttonsPanel.setWithChangeParameter(withChangeParameter, parameterName);
         this.view = view;
-        this.add(view, BorderLayout.CENTER);
+        this.add(new JScrollPane(this.view), BorderLayout.CENTER);
     }
 
     public void addController(BSTController controller) {

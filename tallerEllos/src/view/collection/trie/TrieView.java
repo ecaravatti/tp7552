@@ -228,6 +228,7 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
     this.initShowWord(word);
     setMaxAnimations(this.word.getSize());
     this.insertion = true;
+    rerender();
   }
 
   /**
@@ -239,6 +240,7 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
     this.initShowWord(word);
     setMaxAnimations(this.word.getSize() * 2);
     this.insertion = false;
+    rerender();
   }
 
   /**
@@ -700,4 +702,12 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>,
       this.countNodesHor++;
     }
   }
+  
+  @Override
+	public Dimension getPreferredSize() {
+		Dimension actualDimension = super.getPreferredSize();
+		return new Dimension(
+				actualDimension.width > 800 ? actualDimension.width : 800,
+				actualDimension.height > 600 ? actualDimension.height : 600);
+	}
 }

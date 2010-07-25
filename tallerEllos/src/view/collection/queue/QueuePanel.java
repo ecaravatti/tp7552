@@ -2,6 +2,8 @@ package view.collection.queue;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JScrollPane;
+
 import controller.QueueController;
 
 /**
@@ -16,7 +18,7 @@ public class QueuePanel<T> extends javax.swing.JPanel {
     public QueuePanel(QueueView<T> view) {
         initComponents();
         this.view = view;
-        this.add(view, BorderLayout.CENTER);
+        this.add(new JScrollPane(this.view), BorderLayout.CENTER);
     }
 
     public void addController(QueueController<Integer> controller) {
@@ -51,5 +53,4 @@ public class QueuePanel<T> extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.collection.queue.QueueButtonsPanel buttonsPanel;
     // End of variables declaration//GEN-END:variables
-
 }
