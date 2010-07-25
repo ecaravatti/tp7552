@@ -51,7 +51,7 @@ Ejemplos:
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException. _(Lau)_ *(In Progress)*
     * Mostrar gráficamente como afecta la capacidad ingresada (El rectángulito de heap) _(Lau)_ *(Done)*
   * Cola
-    * Agregar esquema simultáneo de cola circular _(Manu)_ *(In Progress)*
+    * Agregar esquema simultáneo de cola circular _(Manu)_ *(Pending. Quiere decir que me lo pueden sacar porque no lo empecé. Simplemente modificando este texto.)*
     * Permitir especificar el tamaño de la estructura al inicio _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de cola vacía _(Manu)_ *(Done)*
     * Poner nombres específicos de las funciones (Acolar, Desacolar) _(Manu)_ *(Done)*
