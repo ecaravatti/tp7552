@@ -19,7 +19,7 @@ Ejemplos:
     * Refactor de convención de sintaxis
     * Eliminar warnings _(Dami / Tifi / Manu)_ *(Done)*
   * Ventana
-    * Cambiar color, tabs, botones, etc. (voy a averiguar un poco de esto)_(Tifi)_ *(In Progress)*
+    * Cambiar color, tabs, botones, etc. (voy a averiguar un poco de esto) _(Nico)_ *(In Progress)*
     * Eliminar la opción “Guardar” porque tira una excepción
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(In Progress)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
@@ -30,18 +30,18 @@ Ejemplos:
     * Acerca de…
   * Imágenes
     * Trie
-      * Nodo cuadrado _(Nico)_ *(In Progress)*
-      * Nodo de lista _(Nico)_ *(In Progress)*
-      * Nodo cuadrado con bordes redondeados _(Nico)_ *(In Progress)*
+      * Nodo cuadrado _(Dami / Nico)_ *(In Progress)*
+      * Nodo de lista _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
     * Stack
-      * Nodo cuadrado con bordes redondeados _(Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
     * Queue
-      * Nodo cuadrado con bordes redondeados _(Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
     * Heap
-      * Nodo cuadrado (array) _(Nico)_ *(In Progress)*
-      * Nodo circular (árbol) _(Nico)_ *(In Progress)*
+      * Nodo cuadrado (array) _(Dami / Nico)_ *(In Progress)*
+      * Nodo circular (árbol) _(Dami / Nico)_ *(In Progress)*
     * Árboles
-      * Nodo circular _(Nico)_ *(In Progress)*
+      * Nodo circular _(Dami / Nico)_ *(In Progress)*
   * Pila
     * Armar estructura en forma vertical _(Lau)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(In Progress)*
@@ -71,7 +71,7 @@ Ejemplos:
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
-    * Agregar scroll
+    * Agregar scroll _(Dami)_ *(In Progress)*
     * Styles
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura
