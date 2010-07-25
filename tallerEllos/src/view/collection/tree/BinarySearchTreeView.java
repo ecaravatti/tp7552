@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import view.animation.common.UndoAnimationSteps;
 import view.animation.tree.BSTDoubleRotationStartedAnimation;
 import view.animation.tree.BSTEndAnimation;
@@ -20,6 +22,7 @@ import view.animation.tree.BSTNodeUpdatedAnimation;
 import view.animation.tree.BSTNodeVisitedAnimation;
 import view.command.common.Command;
 import view.command.common.ShowMessageCommand;
+import view.command.common.ShowMessageDialogCommand;
 import view.common.AnimatedPanel;
 import view.exception.common.CannotUndoException;
 import view.memento.tree.BSTCaretaker;
@@ -292,6 +295,10 @@ public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<I
     @Override
     public void emptyTree(BSTEvent<Integer> event) {
     	this.addCommandToQueue(new ShowMessageCommand(this, "El árbol se encuentra vacío."));
+    	
+    	this.addCommandToQueue(new ShowMessageDialogCommand("El árbol se encuentra vacío.",
+        		"Warning", JOptionPane.WARNING_MESSAGE));
+    	
     	primitiveFinished();
     }
 

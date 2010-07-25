@@ -8,9 +8,12 @@ import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import view.animation.queue.ItemDequeuedAnimation;
 import view.animation.queue.ItemEnqueuedAnimation;
 import view.command.common.ShowMessageCommand;
+import view.command.common.ShowMessageDialogCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.common.StepFinishedCommand;
 import view.common.AnimatedPanel;
@@ -65,6 +68,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 				QueuePrimitives.dequeue.getCode()));
 		this.addCommandToQueue(new ShowMessageCommand(this,
 				"La cola se encuentra vacía."));
+		this.addCommandToQueue(new ShowMessageDialogCommand("La cola se encuentra" +
+				" vacía", "Warning", JOptionPane.WARNING_MESSAGE));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
 	}
 
