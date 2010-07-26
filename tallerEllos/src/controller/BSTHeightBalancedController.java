@@ -1,7 +1,6 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 import model.collection.tree.BSTHeightBalanced;
 import view.collection.tree.BSTHeightBalancedPrimitives;
@@ -9,8 +8,8 @@ import view.collection.tree.BSTPanel;
 
 public class BSTHeightBalancedController extends BSTController {
 
-	public BSTHeightBalancedController(BSTHeightBalanced<Integer> tree, BSTPanel panel, JTextArea operationsLog) {
-		super(tree, panel, operationsLog);
+	public BSTHeightBalancedController(BSTHeightBalanced<Integer> tree, BSTPanel panel) {
+		super(tree, panel);
 	}
 	
     public void changeMaxHeight(int maxHeight) {

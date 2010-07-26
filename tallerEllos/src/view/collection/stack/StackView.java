@@ -9,11 +9,9 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ArrayList;
-
-import javax.swing.GroupLayout;
 
 import view.animation.stack.ItemPoppedAnimation;
 import view.animation.stack.ItemPushedAnimation;

@@ -4,8 +4,6 @@
  */
 package controller;
 
-import javax.swing.JTextArea;
-
 import model.collection.heap.Heap;
 import model.exception.heap.EmptyHeapException;
 import view.collection.heap.HeapPrimitives;
@@ -20,8 +18,8 @@ public class HeapController<T extends Comparable<T>> extends InteractiveControll
     private Heap<T> heap;
     private HeapView<T> view;
 
-    public HeapController(Heap<T> heap, HeapView<T> view, JTextArea operationsLog) {
-        super(view, operationsLog);
+    public HeapController(Heap<T> heap, HeapView<T> view) {
+        super(view);
 
         this.heap = heap;
         this.view = view;

@@ -2,24 +2,28 @@ package view.collection.queue;
 
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
+import view.common.InteractivelyControlled;
 
 import controller.QueueController;
 
 /**
  *
  */
-public class QueuePanel<T> extends javax.swing.JPanel {
+public class QueuePanel<T> extends javax.swing.JPanel implements InteractivelyControlled {
 
 	private static final long serialVersionUID = 1L;
 	
 	private QueueView<T> view;
 
+	private QueueController<Integer> controller;
+	
     public QueuePanel(QueueView<T> view) {
     	this.view = view;
         initComponents();
     }
 
     public void addController(QueueController<Integer> controller) {
+    	this.controller = controller;
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
     }
@@ -49,4 +53,9 @@ public class QueuePanel<T> extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QueueButtonsPanel buttonsPanel;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public QueueController<Integer> getController() {
+    	return controller;
+    }
 }

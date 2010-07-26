@@ -4,17 +4,9 @@
  */
 package controller;
 
-import java.util.Iterator;
-
-import javax.swing.JTextArea;
-
 import model.collection.stack.StackObservable;
-import view.animation.stack.ItemPushedAnimation;
 import view.collection.stack.StackPanel;
-import view.collection.stack.StackPrimitives;
 import view.collection.stack.StackView;
-import view.command.common.ShowPrimitiveCodeCommand;
-import view.command.common.StepFinishedCommand;
 
 /**
  *
@@ -24,8 +16,8 @@ public class StackController<T> extends InteractiveController {
     private StackView<T> view;
     private StackPanel<T> panel;
 
-    public StackController(StackObservable<T> stack, StackPanel<T> panel, JTextArea operationsLog) {
-        super(panel.getView(), operationsLog);
+    public StackController(StackObservable<T> stack, StackPanel<T> panel) {
+        super(panel.getView());
         this.stack = stack;
         this.panel = panel;
         this.view = panel.getView();
@@ -34,7 +26,7 @@ public class StackController<T> extends InteractiveController {
     }
 
     public void popAllItem() {
-    	this.panel.getButtonsPanel().enableComponents(false);
+        this.panel.getButtonsPanel().enableComponents(false);
         this.stack.clear();
         this.view.initStackSampleCapacity(this.stack.getCapacity()); 
         this.showLogMessage("La pila se encuentra vacia.");

@@ -1,7 +1,6 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 import model.collection.tree.BSTWeightBalanced;
 import view.collection.tree.BSTPanel;
@@ -9,8 +8,8 @@ import view.collection.tree.BSTWeightBalancedPrimitives;
 
 public class BSTWeightBalancedController extends BSTController {
 
-	public BSTWeightBalancedController(BSTWeightBalanced<Integer> tree, BSTPanel panel, JTextArea operationsLog) {
-		super(tree, panel, operationsLog);
+	public BSTWeightBalancedController(BSTWeightBalanced<Integer> tree, BSTPanel panel) {
+		super(tree, panel);
 	}
 	
     public void changeWeight(int weight) {

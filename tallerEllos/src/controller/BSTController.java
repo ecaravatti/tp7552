@@ -1,15 +1,14 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 import model.collection.tree.BinarySearchTree;
 import model.exception.tree.BSTEmptyTreeException;
 import model.exception.tree.BSTKeyFoundException;
 import model.exception.tree.BSTKeyNotFoundException;
-import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTPanel;
 import view.collection.tree.BSTTraversePrimitives;
+import view.collection.tree.BinarySearchTreeView;
 
 /**
  *
@@ -23,13 +22,14 @@ public abstract class BSTController extends InteractiveController {
     protected BSTPanel panel;
     private boolean running;
 
-    public BSTController(BinarySearchTree<Integer> tree, BSTPanel panel, JTextArea operationsLog) {
-        super(panel.getView(), operationsLog);
+    public BSTController(BinarySearchTree<Integer> tree, BSTPanel panel) {
+        super(panel.getView());
         this.tree = tree;
         this.panel = panel;
         this.view = panel.getView();
         this.tree.addListener(view);
         this.running = false;
+        panel.addController(this);
     }
 
     public abstract void changeParameter(int parameter);

@@ -20,8 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import model.collection.queue.ArrayListQueueImpl;
 import model.exception.queue.QueueFullException;
@@ -32,6 +32,7 @@ import view.animation.heap.InsertItemHeapAnimation;
 import view.animation.heap.SwapElementsAnimation;
 import view.collection.tree.BSTNodeShape;
 import view.common.AnimatedPanel;
+import view.common.InteractivelyControlled;
 import view.common.JTextFieldLimit;
 import view.shape.Arrow;
 import view.shape.NodeShape;
@@ -42,7 +43,7 @@ import event.heap.HeapListener;
 /**
  *
  */
-public class HeapView<T> extends AnimatedPanel implements HeapListener<T> {
+public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, InteractivelyControlled {
 	
 	private static final long serialVersionUID = 1L;
 	

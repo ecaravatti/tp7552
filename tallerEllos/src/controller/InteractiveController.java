@@ -1,37 +1,40 @@
 package controller;
 
-import javax.swing.JTextArea;
-
 import view.common.AnimatedPanel;
 import view.common.InteractivePanel;
+import view.common.OperationsLogPane;
+import view.common.PseudoCodePane;
 import view.exception.common.CannotUndoException;
 
 public abstract class InteractiveController {
 
     private InteractivePanel interactivePanel;
     private AnimatedPanel animatedPanel;
-    private JTextArea operationsLog;
-    private JTextArea primitivesCodeArea;
+    private OperationsLogPane operationsLogPane;
+    private PseudoCodePane pseudoCodePane;
     private boolean interactive;
 
     /**
      * Construye un InteractiveController
      * @param animatedPanel el panel
-     * @param operationsLog area de texto donde debe mostrarse los mensajes de las
+     * @param operationsLog Panel donde deben loggearse los mensajes de las
      *        operaciones
      */
-    public InteractiveController(AnimatedPanel animatedPanel, JTextArea operationsLog) {
+    public InteractiveController(AnimatedPanel animatedPanel) {
         super();
         this.interactivePanel = new InteractivePanel();
         this.interactivePanel.addInteractiveController(this);
         this.animatedPanel = animatedPanel;
-        this.operationsLog = operationsLog;
         this.interactive = false;
     }
-
-    public void setPrimitivesCodeArea(JTextArea primitivesCodeArea) {
-        this.primitivesCodeArea = primitivesCodeArea;
-    }
+    
+    public void setOperationsLogPane(OperationsLogPane operationsLogPane) {
+		this.operationsLogPane = operationsLogPane;
+	}
+    
+    public void setPseudoCodePane(PseudoCodePane pseudoCodePane) {
+		this.pseudoCodePane = pseudoCodePane;
+	}
 
     /**
      * Agrega el panel interactivo
@@ -71,9 +74,13 @@ public abstract class InteractiveController {
         animatedPanel.nextStep();
     }
 
-    public void showPrimitiveCode(String primitiveCode) {
-        primitivesCodeArea.setText(primitiveCode);
-        primitivesCodeArea.setCaretPosition(0);
+    /**
+     * Muestra el pseudo código en el panel de Pseudo-Código.
+     * @param pseudoCode 
+     * 				El pseudo código a mostrar.
+     */
+    public void showPrimitiveCode(String pseudoCode) {
+        pseudoCodePane.showPseudoCode(pseudoCode);
     }
 
     /**
@@ -90,8 +97,7 @@ public abstract class InteractiveController {
      * @param message mensaje a mostrar.
      */
     public void showLogMessage(String message) {
-        operationsLog.append("\n" + message);
-        operationsLog.setCaretPosition(operationsLog.getText().length());
+        operationsLogPane.logMessage(message);
     }
 
     /**

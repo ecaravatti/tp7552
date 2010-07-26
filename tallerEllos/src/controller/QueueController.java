@@ -6,8 +6,6 @@ package controller;
 
 import java.util.Iterator;
 
-import javax.swing.JTextArea;
-
 import model.collection.queue.QueueObservable;
 import model.exception.queue.QueueFullException;
 import view.collection.queue.QueuePanel;
@@ -22,8 +20,8 @@ public class QueueController<T> extends InteractiveController {
     private QueueView<T> view;
     private QueuePanel<T> panel;
 
-    public QueueController(QueueObservable<T> queue, QueuePanel<T> panel, JTextArea operationsLog) {
-        super(panel.getView(), operationsLog);
+    public QueueController(QueueObservable<T> queue, QueuePanel<T> panel) {
+        super(panel.getView());
         this.queue = queue;
         this.panel = panel;
         this.view = panel.getView();

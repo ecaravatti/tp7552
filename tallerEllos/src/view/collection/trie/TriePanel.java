@@ -3,13 +3,14 @@ package view.collection.trie;
 import javax.swing.JScrollPane;
 
 import view.common.InteractivePanel;
+import view.common.InteractivelyControlled;
 import controller.TrieController;
 
 /**
  * 
  * 
  */
-public class TriePanel extends javax.swing.JPanel {
+public class TriePanel extends javax.swing.JPanel implements InteractivelyControlled {
 
 	private static final long serialVersionUID = 1L;
 

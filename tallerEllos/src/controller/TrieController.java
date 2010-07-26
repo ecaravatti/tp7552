@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 import model.collection.trie.Trie;
 import view.collection.trie.TrieGenerator;
@@ -32,11 +31,13 @@ public class TrieController extends InteractiveController {
    * Construye un TrieController.
    * @param trie un trie
    * @param triePanel el panel principal de la vista
-   * @param operationsLog area de texto donde debe mostrarse los mensajes de las
+   * @param operationsLog Panel donde deben loggearse los mensajes de las
    *        operaciones
+   * @param pseudoCodePane Panel donde se muestra el pseudo código de las
+   * 		operaciones realizadas
    */
-  public TrieController(Trie<String> trie, TriePanel triePanel, JTextArea operationsLog) {
-    super(triePanel.getTrieView(), operationsLog);
+  public TrieController(Trie<String> trie, TriePanel triePanel) {
+    super(triePanel.getTrieView());
     this.trie = trie;
     this.triePanel = triePanel;
     calculateMax();

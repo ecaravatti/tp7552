@@ -4,16 +4,19 @@ import java.awt.BorderLayout;
 
 import javax.swing.JScrollPane;
 
+import view.common.InteractivelyControlled;
 import controller.BSTController;
 
 /**
  *
  */
-public class BSTPanel extends javax.swing.JPanel {
+public class BSTPanel extends javax.swing.JPanel implements InteractivelyControlled {
 
 	private static final long serialVersionUID = 1L;
 	
     private BinarySearchTreeView view;
+    
+    private BSTController controller;
 
     /** Creates new form BSTPanel */
     public BSTPanel(BinarySearchTreeView view, boolean withChangeParameter, String parameterName) {
@@ -26,6 +29,7 @@ public class BSTPanel extends javax.swing.JPanel {
     public void addController(BSTController controller) {
         this.view.addController(controller);
         this.buttonsPanel.addController(controller);
+        this.controller = controller;
     }
 
     public BinarySearchTreeView getView() {
@@ -65,4 +69,8 @@ public class BSTPanel extends javax.swing.JPanel {
     private view.collection.tree.BSTButtonsPanel buttonsPanel;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public BSTController getController() {
+    	return controller;
+    }
 }
