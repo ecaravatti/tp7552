@@ -19,14 +19,14 @@ Ejemplos:
     * Refactor de convención de sintaxis
     * Eliminar warnings _(Dami / Tifi / Manu)_ *(Done)*
   * Ventana
-    * Cambiar color, tabs, botones, etc. (voy a averiguar un poco de esto) _(Nico)_ *(In Progress)*
+    * Cambiar color, tabs, botones, etc. _(Nico)_ *(In Progress)*
     * Eliminar la opción “Guardar” porque tira una excepción _(Tifi)_ *(Cancelled)*
-    * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(In Progress)*
+    * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(Done)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
   * Ayuda
     * Agregar info sobre cola circular
-    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, etc.
+    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc.
     * Styles
     * Acerca de…
   * Imágenes
@@ -46,15 +46,15 @@ Ejemplos:
   * Pila
     * Armar estructura en forma vertical _(Lau)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(Done)*
-    * Deshabilitar botón apilar y desapilar según la pila esté vacía o llena(Mostrar cartel de aviso de pila vacía) _(Lau)_ *(Done)*
+    * Deshabilitar botón apilar y desapilar según la pila esté vacía o llena (Mostrar cartel de aviso de pila vacía) _(Lau)_ *(Done)*
     * Poner nombres específicos de las funciones Apilar y Desapilar (Push, Pop) _(Lau)_ *(Done)*
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException. _(Lau)_ *(Done)*
-    * Mostrar gráficamente como afecta la capacidad ingresada (El rectángulito de heap) _(Lau)_ *(Done)*
+    * Mostrar gráficamente como afecta la capacidad ingresada (El rectangulito de heap) _(Lau)_ *(Done)*
   * Cola
     * Agregar esquema simultáneo de cola circular _(Manu)_ *(Pending. Quiere decir que me lo pueden sacar porque no lo empecé. Simplemente modificando este texto.)*
     * Permitir especificar el tamaño de la estructura al inicio _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de cola vacía _(Manu)_ *(Done)*
-    * Poner nombres específicos de las funciones (Acolar, Desacolar) _(Manu)_ *(Done)*
+    * Poner nombres específicos de las funciones (Encolar, Desencolar) _(Manu)_ *(Done)*
     * Hacer que "Vaciar" funcione como en el Trie, porque sino tira ConcurrentModificationException.  _(Manu)_ *(Done)*
     * Corregir bug que hay cuando se hace una inserción random, se eliminan un par de elementos, y al insertar uno nuevo, éste es insertado muy a la izquierda, como si la cola continuara con la cant. inicial de elementos. _(Manu)_ *(Done)*
   * Árbol Balanceado por Peso
@@ -74,17 +74,18 @@ Ejemplos:
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
     * Agregar scroll _(Dami / Tifi)_ *(In Progress)*
-    * Styles
+    * Styles  _(Nico)_ *(In Progress)*
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura (Voy a poner un log de operaciones por estructura) _(Tifi)_ *(Done)*
-    * Styles
+    * Styles  _(Nico)_ *(Done)*
   * Frame de Pseudocódigo
     * Poner un frame de pseudocodigo por estructura. _(Tifi)_ *(Done)*
-    * Arreglar alineación: hay funciones que tiene if anidados en una sola línea
-    * Styles
+    * Arreglar alineación: hay funciones que tiene if anidados en una sola línea.
+    * Cambiar pseudocódigo de todas las estructuras.
+    * Styles  _(Nico)_ *(Done)*
   * Frame Inferior
-    * Mejorar el Step by Step
-    * Styles
+    * Mejorar el Step by Step. Podemos permitir que se pueda deshacer completamente la operación que se acaba de realizar (inserción/eliminación). Actualmente, cuando se hace una inserción, por ej., hasta que no se completa el paso, no deja realizar nuevas operaciones. Podemos permitir que se pueda deshacer la operación actual (dejando todo en el estado anterior), y que deje realizar una nueva.
+    * Styles _(Nico)_ *(Done)*
   * Página Web para correr el Applet
   * Documentación
     * Documento Técnico
