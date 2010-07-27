@@ -53,6 +53,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     private Graphics2D graphics;
     private BufferedImage image;
     protected boolean resized;
+    protected Dimension graphicDimension;
 
     public AnimatedPanel() {
         super(true);

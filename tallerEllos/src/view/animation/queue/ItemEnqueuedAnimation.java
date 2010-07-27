@@ -28,7 +28,7 @@ public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
     private final static int DEF_WIDTH_NODE = 50;
 //    private final static int DEF_HEIGTH_NODE = 50;
     private static final int DELTA_HORIZONTAL = 50;
-    private static final int DELTA_VERTICAL = 100;
+    private static final int DELTA_VERTICAL = 80;
     private QueueView<T> view;
     private QueueNodeView<T> node;
 
@@ -71,7 +71,7 @@ public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
     private void moveNodeToList(QueueNodeView<T> node) {
         //first move to the right to the final horizontal position.
         Point2D horizontalPosition = (Point2D) node.getPosition().clone();
-        horizontalPosition.setLocation(horizontalPosition.getX() - ((this.getNodeIndex(node) - 1) * (DEF_WIDTH_NODE + DELTA_HORIZONTAL)), horizontalPosition.getY());
+        horizontalPosition.setLocation(horizontalPosition.getX() + ((this.getNodeIndex(node) - 1) * (DEF_WIDTH_NODE + DELTA_HORIZONTAL)), horizontalPosition.getY());
 
         steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), horizontalPosition, 8).getSteps());
 

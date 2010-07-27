@@ -65,9 +65,9 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
         shape.paint((Graphics2D) g);
         
         if (this.linked) {
-            Point2D p1 = new Point2D.Double(parent.getPosition().getX() + shape.getBounds().getWidth() * QueueNodeShape.DEF_PTR_ZONE_FRACTION / 2,
+            Point2D p1 = new Point2D.Double(parent.getPosition().getX() + shape.getBounds().getWidth()*(1 - QueueNodeShape.DEF_PTR_ZONE_FRACTION/2),
             								parent.getPosition().getY() + shape.getBounds().getHeight() / 2);
-            Point2D p2 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth(),
+            Point2D p2 = new Point2D.Double(getPosition().getX(),
             								parent.getPosition().getY() + shape.getBounds().getHeight() / 2);
             Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW, true);
             arrow.paint(g);

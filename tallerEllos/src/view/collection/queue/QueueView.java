@@ -26,8 +26,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int INITIAL_HORIZONTAL = 920;
-	private static final int INITIAL_VERTICAL = 50;
+	private static final int INITIAL_HORIZONTAL = 50;
+	private static final int INITIAL_VERTICAL = 20;
 	private List<QueueNodeView<T>> queueNodes;
 
 	public QueueView() {

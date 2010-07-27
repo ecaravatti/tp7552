@@ -66,7 +66,8 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
         if (this.linked) {
 //            Point2D p1 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth() / 2, getPosition().getY() + shape.getBounds().getHeight() / 2);
 //            Point2D p2 = new Point2D.Double(parent.getPosition().getX(), parent.getPosition().getY() + shape.getBounds().getHeight() / 2);
-        	Point2D p1 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth() / 2, getPosition().getY() + shape.getBounds().getHeight());
+        	Point2D p1 = new Point2D.Double(getPosition().getX() + shape.getBounds().getWidth() / 2,
+        									getPosition().getY() + shape.getBounds().getHeight()*(1 - StackNodeShape.DEF_PTR_ZONE_FRACTION/2));
         	Point2D p2 = new Point2D.Double(parent.getPosition().getX() + shape.getBounds().getWidth() / 2, parent.getPosition().getY());
             Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW, true);
             arrow.paint(g);

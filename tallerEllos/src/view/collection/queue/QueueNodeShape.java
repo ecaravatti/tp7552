@@ -32,9 +32,9 @@ public class QueueNodeShape extends NodeShape {
     public QueueNodeShape(String data, Point2D pos, Integer index) {
         super(data, pos, DEF_WIDTH_NODE, DEF_HEIGTH_NODE, DEF_FONT_NODE, DEF_STROKE, DEF_NODE_ROUNDED);
         Rectangle2D bounds = getRectNode();
-        this.ptrZoneDelimiter = new Line2D.Double(bounds.getX() + DEF_WIDTH_NODE * DEF_PTR_ZONE_FRACTION,
+        this.ptrZoneDelimiter = new Line2D.Double(bounds.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
         										  bounds.getY(),
-        										  bounds.getX() + DEF_WIDTH_NODE * DEF_PTR_ZONE_FRACTION,
+        										  bounds.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
         										  bounds.getY() + DEF_HEIGTH_NODE);
         this.index = index;
     }
@@ -67,9 +67,9 @@ public class QueueNodeShape extends NodeShape {
     @Override
     public void moveTo(Point2D point) {
     	super.moveTo(point);
-    	ptrZoneDelimiter.setLine(point.getX() + DEF_WIDTH_NODE * DEF_PTR_ZONE_FRACTION,
+    	ptrZoneDelimiter.setLine(point.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
     							 point.getY(),
-    							 point.getX() + DEF_WIDTH_NODE * DEF_PTR_ZONE_FRACTION,
+    							 point.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
     							 point.getY() + DEF_HEIGTH_NODE);
     }
 }
