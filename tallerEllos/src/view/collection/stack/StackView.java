@@ -135,4 +135,10 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 		return stackNodes;
 	}
 
+	@Override
+	protected void adjustGraphicDimensionForScrolling() {
+		// TODO Implement!!
+		
+	}
+
 }

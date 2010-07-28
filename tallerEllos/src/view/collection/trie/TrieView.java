@@ -701,4 +701,10 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
       this.countNodesHor++;
     }
   }
+
+	@Override
+	protected void adjustGraphicDimensionForScrolling() {
+		// TODO Implement!!
+		
+	}
 }

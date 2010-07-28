@@ -4,7 +4,10 @@
  */
 package view.collection.queue;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int INITIAL_HORIZONTAL = 50;
+	private static final int INITIAL_HORIZONTAL = 20;
 	private static final int INITIAL_VERTICAL = 20;
 	private List<QueueNodeView<T>> queueNodes;
 
@@ -50,7 +53,6 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 				QueuePrimitives.enqueue.getCode()));
 		this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
-		rerender();
 	}
 
 	@Override
@@ -59,7 +61,6 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 				QueuePrimitives.dequeue.getCode()));
 		this.addAnimationToQueue(new ItemDequeuedAnimation<T>(this));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
-		rerender();
 	}
 
 	@Override
@@ -75,6 +76,11 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	@Override
 	public void paintPanel(Graphics2D graphics) {
+		for (int i = 0; i < structureCapacity; i++) {
+			Rectangle r = new Rectangle(INITIAL_HORIZONTAL + i*(50+50), 100, 50, 50);
+			graphics.setPaint(new Color(204, 214, 229));
+			graphics.fill(r);
+		}
 		for (QueueNodeView<T> node : getQueueNodes()) {
 			node.paintElement(graphics);
 		}
@@ -89,5 +95,11 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	public void clear() {
 		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+	}
+	
+	@Override
+	protected void adjustGraphicDimensionForScrolling() {
+		this.graphicDimension = new Dimension(INITIAL_HORIZONTAL + structureCapacity*100 + INITIAL_HORIZONTAL,
+											  INITIAL_VERTICAL + ((structureCapacity > 0) ? 150 : 0));
 	}
 }

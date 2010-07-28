@@ -495,4 +495,10 @@ private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//
     public void emptyHeap() {
     	this.addAnimationToQueue(new EmptyAnimation<T>(this));
     }
+
+	@Override
+	protected void adjustGraphicDimensionForScrolling() {
+		// TODO Implement!!
+		
+	}
 }

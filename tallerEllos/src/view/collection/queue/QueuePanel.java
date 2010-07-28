@@ -46,7 +46,7 @@ public class QueuePanel<T> extends javax.swing.JPanel implements InteractivelyCo
         buttonsPanel = new QueueButtonsPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.add(buttonsPanel);
-        this.add(new JScrollPane(view, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+        this.add(new JScrollPane(view));
     }// </editor-fold>//GEN-END:initComponents
 
 

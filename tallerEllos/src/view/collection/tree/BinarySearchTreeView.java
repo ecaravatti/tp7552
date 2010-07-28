@@ -443,5 +443,11 @@ public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<I
         throw new CannotUndoException();
     }
     }
+
+	@Override
+	protected void adjustGraphicDimensionForScrolling() {
+		// TODO Implement!!
+		
+	}
     
 }

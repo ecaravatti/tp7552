@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -54,6 +53,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     private BufferedImage image;
     protected boolean resized;
     protected Dimension graphicDimension;
+    protected int structureCapacity;
 
     public AnimatedPanel() {
         super(true);
@@ -70,6 +70,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         this.graphics = null;
         this.stack = new Stack<UndoAnimationSteps>();
         this.controller = null;
+        this.graphicDimension = this.getSize();
     }
 
     /**
@@ -254,6 +255,11 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
      * @param g
      */
     protected abstract void paintPanel(Graphics2D g);
+    
+    /**
+     * Ajusta las dimensiones del area de dibujo para regular las barras de scroll.
+     */
+    protected abstract void adjustGraphicDimensionForScrolling();
 
     /**
      * Ejecuta el ultimo paso que puede deshacerse
@@ -310,6 +316,8 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     }
     
     protected void rerender() {
+    	this.adjustGraphicDimensionForScrolling();
+    	this.setPreferredSize(graphicDimension);
 		this.revalidate();
 		this.repaint();
 	}
@@ -354,18 +362,23 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
     	return image;
     }
     
-    @Override
-	public Dimension getPreferredSize() {
-	  Rectangle visibleRect = this.getVisibleRect();
-	  Dimension dimension;
-	  if (this.getBufferedImage() != null) {
-		  int imageHeight = this.getBufferedImage().getHeight();
-		  int imageWidth = this.getBufferedImage().getWidth();
-		  dimension = new Dimension(Math.max(visibleRect.width, imageWidth),
-				  					Math.max(visibleRect.height, imageHeight));
-	  } else {
-		  dimension = new Dimension(visibleRect.width, visibleRect.height);
-	  }
-	  return dimension;
+//    @Override
+//	public Dimension getPreferredSize() {
+//	  Rectangle visibleRect = this.getVisibleRect();
+//	  Dimension dimension;
+//	  if (this.getBufferedImage() != null) {
+//		  int imageHeight = this.getBufferedImage().getHeight();
+//		  int imageWidth = this.getBufferedImage().getWidth();
+//		  dimension = new Dimension(Math.max(visibleRect.width, imageWidth),
+//				  					Math.max(visibleRect.height, imageHeight));
+//	  } else {
+//		  dimension = new Dimension(visibleRect.width, visibleRect.height);
+//	  }
+//	  return dimension;
+//	}
+    
+    public void setStructureCapacity(int structureCapacity) {
+		this.structureCapacity = structureCapacity;
+		rerender();
 	}
 }

@@ -145,8 +145,8 @@ public class StackButtonsPanel extends javax.swing.JPanel {
         stackSizeComboBox = new JComboBox();
         stackSizeComboBox.putClientProperty("JComponent.sizeVariant", "large");
         stackSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7"}));
-		stackSizeComboBox.setSelectedIndex(0);
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+		stackSizeComboBox.setSelectedIndex(4);
 		stackSizeComboBox.setKeySelectionManager(null);
 		stackSizeComboBox.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {

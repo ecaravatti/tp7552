@@ -27,6 +27,7 @@ public class QueueController<T> extends InteractiveController {
         this.view = panel.getView();
         this.queue.addListener(view);
         this.queue.setCapacity(panel.getButtonsPanel().getSelectedCapacity());
+        this.view.setStructureCapacity(panel.getButtonsPanel().getSelectedCapacity());
     }
 
     public void dequeueAllItem() {
@@ -88,6 +89,7 @@ public class QueueController<T> extends InteractiveController {
     public void setNewCapacity(int capacity) {
     	this.clear();
     	this.queue.setCapacity(capacity);
+    	this.view.setStructureCapacity(capacity);
     	this.panel.getButtonsPanel().enableComponents(true);
     }
     

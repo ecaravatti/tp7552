@@ -1,7 +1,6 @@
 package view.common;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 public class StructurePane<T extends JPanel & InteractivelyControlled> extends JSplitPane {
@@ -24,7 +23,7 @@ public class StructurePane<T extends JPanel & InteractivelyControlled> extends J
 		verticalSplitPane.setTopComponent(pseudoCodePane);
 		verticalSplitPane.setBottomComponent(operationsLogPane);
 
-		setLeftComponent(new JScrollPane(strucurePanel));
+		setLeftComponent(strucurePanel);
 		setDividerLocation(0.7);
 		setRightComponent(verticalSplitPane);
 	}

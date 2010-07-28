@@ -30,7 +30,7 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
     private final static int DEF_WIDTH_NODE = 50;
 //    private final static int DEF_HEIGTH_NODE = 50;
     private static final int DELTA_HORIZONTAL = 50;
-    private static final int DELTA_VERTCAL = 100;
+    private static final int DELTA_VERTCAL = 80;
     private QueueView<T> view;
 
     public ItemDequeuedAnimation(QueueView<T> view) {
@@ -74,7 +74,7 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
         //reassign index to each item in the queue excepto the dequeued one.
         for (QueueNodeView<T> nodeToMove : queueNodes) {
             if (!nodeToMove.equals(dequeuedNode)) {
-                MobileAnimationSteps moveRightSteps = new MobileAnimationSteps(view, nodeToMove, nodeToMove.getPosition(), this.moveNodeToRight(nodeToMove), 8);
+                MobileAnimationSteps moveRightSteps = new MobileAnimationSteps(view, nodeToMove, nodeToMove.getPosition(), this.moveNodeToLeft(nodeToMove), 8);
                 steps.addAll(moveRightSteps.getSteps());
                 steps.add(new AssignNodeIndexCommand<T>(nodeToMove, queueNodes.indexOf(nodeToMove) - 1));
                 if (nodeToMove.getParent().equals(dequeuedNode)) {
@@ -96,9 +96,9 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
         return newPosition;
     }
 
-    private Point2D moveNodeToRight(QueueNodeView<T> node) {
+    private Point2D moveNodeToLeft(QueueNodeView<T> node) {
         Point2D newPosition = (Point2D) node.getPosition().clone();
-        newPosition.setLocation(newPosition.getX() + (DEF_WIDTH_NODE + DELTA_HORIZONTAL), newPosition.getY());
+        newPosition.setLocation(newPosition.getX() - (DEF_WIDTH_NODE + DELTA_HORIZONTAL), newPosition.getY());
 
         return newPosition;
     }
