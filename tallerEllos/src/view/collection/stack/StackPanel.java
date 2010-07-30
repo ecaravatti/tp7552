@@ -1,6 +1,7 @@
 package view.collection.stack;
 
 import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import view.common.InteractivelyControlled;
@@ -9,11 +10,11 @@ import controller.StackController;
 /**
  *
  */
-public class StackPanel<T> extends javax.swing.JPanel implements InteractivelyControlled {
+public class StackPanel<T> extends JPanel implements InteractivelyControlled {
 
 	private static final long serialVersionUID = 1L;
 	private view.collection.stack.StackButtonsPanel buttonsPanel;
-	private javax.swing.JPanel jPanelCapacity;
+	//private javax.swing.JPanel jPanelCapacity;
 	private StackController<Integer> controller;
 	
     private StackView<T> view;

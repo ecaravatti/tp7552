@@ -28,13 +28,12 @@ import java.awt.GridLayout;
  * 
  */
 public class InteractivePanel extends javax.swing.JPanel {
-
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1791141348829770224L;
 
 	private InteractiveController controller;
 
-	private static int MIN = 0;
-	private static int MAX = 200;
+	private static final int MIN = 0;
+	private static final int MAX = 200;
 
   /** Creates new form InteractivePanel */
   public InteractivePanel() {
@@ -213,6 +212,7 @@ public class InteractivePanel extends javax.swing.JPanel {
    */
   private void checkBoxInteractiveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_checkBoxInteractiveActionPerformed
     setEnabledButtons(false);
+    checkBoxInteractive.setFont(checkBoxInteractive.isSelected() ? getFont().deriveFont(Font.ITALIC,14) : getFont().deriveFont(Font.PLAIN,14));
     controller.setInteractive(this.checkBoxInteractive.isSelected());
   }// GEN-LAST:event_checkBoxInteractiveActionPerformed
 

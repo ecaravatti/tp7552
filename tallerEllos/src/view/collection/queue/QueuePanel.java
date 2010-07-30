@@ -44,9 +44,9 @@ public class QueuePanel<T> extends javax.swing.JPanel implements InteractivelyCo
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         buttonsPanel = new QueueButtonsPanel();
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        this.add(buttonsPanel);
-        this.add(new JScrollPane(view));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        add(buttonsPanel);
+        add(new JScrollPane(view));
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -71,7 +71,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     	//setBackground(new java.awt.Color(255, 255, 255));
         //setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         //setPreferredSize(new java.awt.Dimension(746, 32));
-    	this.setBorder(BorderFactory.createTitledBorder("Control: Queue"));
+    	setBorder(BorderFactory.createTitledBorder("Control: Queue"));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -250,8 +250,8 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     private JButton removeButton;
     private JTextField textField;
     private JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JComboBox queueSizeComboBox;
+    private JLabel jLabel2;
+    private JComboBox queueSizeComboBox;
     // End of variables declaration//GEN-END:variables
     
     public int getSelectedCapacity() {

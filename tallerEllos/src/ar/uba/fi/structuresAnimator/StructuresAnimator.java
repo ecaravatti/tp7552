@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JLabel;
@@ -58,10 +59,10 @@ import controller.TrieController;
  *
  */
 public class StructuresAnimator extends JApplet implements ComponentListener {
-
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4834432122881887095L;
 
 	public final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
+	public final static String DEF_LAF = "Nimbus";
 
 	/**
 	 * Componentes Generales
@@ -122,19 +123,18 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		controllers = new ArrayList<InteractiveController>();
 		interactivePanel = null;
 
-		// UIManager.put("control", new Color(204, 214, 229));
-		// UIManager.put("nimbusBlueGrey", new Color(204, 214, 229));
-		// UIManager.put("nimbusSelectedText", new Color(204, 214, 229));
-		// UIManager.put("controlLHighlight", new Color(204, 214, 229));
-		try {
+		UIManager.put("control", new Color(220, 224, 235));
+		UIManager.put("textForeground", new Color(59,59,59));
+
+		try {		
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
+				if (DEF_LAF.equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (UnsupportedLookAndFeelException e) {
-			// If Nimbus is not available, you can set the GUI to another look and feel.
+			// Si Nimbus no está instalado, se utiliza el default Look and Feel (Metal)
 		} catch (Exception e) {
 			// No debe ocurrir.
 		}
@@ -145,14 +145,17 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		JLabel headerLabel;
 		BufferedImage myPicture = null;
 		try {
-			myPicture = ImageIO.read(new File(getClass().getClassLoader().getResource("head-taller.png").getPath()));
-			headerLabel = new JLabel(new ImageIcon(myPicture), SwingConstants.LEFT);
+			myPicture = ImageIO.read(new File(getClass().getClassLoader().getResource("head-taller2.png").getPath()));
+			headerLabel = new JLabel(new ImageIcon(myPicture), SwingConstants.CENTER);
+			headerLabel.setBackground(new Color(220, 224, 235));
+			
 		} catch (IOException e) {
 			headerLabel = new JLabel();
 		}
 		header = new JPanel();
-		header.setBackground(new Color(214, 217, 223));
-		header.add(headerLabel, BorderLayout.WEST);
+		header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));
+		header.setBackground(new Color(220, 224, 235));
+		header.add(headerLabel, BorderLayout.CENTER);
 
 		/**
 		 * Componentes del Trie
@@ -168,7 +171,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		 */
 		treeHeightBalanced = new BSTHeightBalanced<Integer>(1);
 		treeHeightBalancedView = new BinarySearchTreeView();
-		treeHeightPanel = new BSTPanel(treeHeightBalancedView, true, "Altura Máxima");
+		treeHeightPanel = new BSTPanel(treeHeightBalancedView, true, "Altura máxima");
 		treeHeightBalancedController = new BSTHeightBalancedController(treeHeightBalanced, treeHeightPanel);
 		StructurePane<BSTPanel> treeHeightBalancedStructurePanel = new StructurePane<BSTPanel>(
 				treeHeightPanel);
@@ -226,7 +229,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		 */
 		tabbedPane = new JTabbedPane(SwingConstants.TOP);
 		tabbedPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		tabbedPane.putClientProperty("JComponent.sizeVariant", "small");
+		tabbedPane.putClientProperty("JComponent.sizeVariant", "large");
 		tabbedPane.addTab("AYUDA", new HelpPanel());
 		tabbedPane.addTab("Trie", trieStructurePanel);
 		tabbedPane.addTab("Stack", stackStructurePanel);
