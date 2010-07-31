@@ -24,6 +24,7 @@ Ejemplos:
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(Done)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
+    * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
   * Ayuda
     * Agregar info sobre cola circular
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc.
@@ -69,6 +70,7 @@ Ejemplos:
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
+    * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar.
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
