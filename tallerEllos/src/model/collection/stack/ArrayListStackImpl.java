@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class ArrayListStackImpl<T> extends StackObservable<T> {
 
 	private int top = -1;
-	private int capacity = 1;
+	private int capacity = 1000000;
 	private ArrayList<T> stack;
 
     public ArrayListStackImpl() {

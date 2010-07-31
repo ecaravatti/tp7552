@@ -100,4 +100,8 @@ public class QueueController<T> extends InteractiveController {
     public boolean isQueueEmpty() {
     	return queue.isEmpty();
     }
+    
+    public int getQueueCapacity() {
+    	return queue.getCapacity();
+    }
 }

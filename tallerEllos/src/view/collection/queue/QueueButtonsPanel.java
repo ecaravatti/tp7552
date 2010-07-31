@@ -240,6 +240,8 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
 
         if (res == 0) {
         	controller.setNewCapacity(getSelectedCapacity());
+        } else {
+        	queueSizeComboBox.setSelectedItem(String.valueOf(controller.getQueueCapacity()));
         }
 	}
 

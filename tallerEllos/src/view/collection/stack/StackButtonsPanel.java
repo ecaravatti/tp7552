@@ -241,8 +241,14 @@ public class StackButtonsPanel extends javax.swing.JPanel {
 
         if (res == 0) {
         	controller.createStack(Integer.valueOf(stackSizeComboBox.getSelectedItem().toString()));
+        } else {
+        	stackSizeComboBox.setSelectedItem(String.valueOf(controller.getStackCapacity()));
         }
 	}
+    
+    public int getSelectedCapacity() {
+    	return Integer.valueOf(stackSizeComboBox.getSelectedItem().toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton insertButton;

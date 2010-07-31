@@ -22,6 +22,8 @@ public class StackController<T> extends InteractiveController {
         this.panel = panel;
         this.view = panel.getView();
         this.stack.addListener(view);
+        this.stack.setCapacity(panel.getButtonsPanel().getSelectedCapacity());
+        this.view.setStructureCapacity(panel.getButtonsPanel().getSelectedCapacity());
         this.view.initStackSampleCapacity(this.stack.getCapacity()); 
     }
 
@@ -37,7 +39,6 @@ public class StackController<T> extends InteractiveController {
         this.panel.getButtonsPanel().enableComponents(false);
         this.view.prepareAnimation();
         this.stack.push(item);
-        this.panel.getButtonsPanel().enableComponents(true);
     }
 
     public void popItem() {
@@ -47,7 +48,6 @@ public class StackController<T> extends InteractiveController {
             this.stack.pop();
         } catch (Exception e) {
         }
-        this.panel.getButtonsPanel().enableComponents(true);
     }
     
     public boolean stackIsEmpty() {
@@ -56,6 +56,10 @@ public class StackController<T> extends InteractiveController {
     
     public boolean stackIsFull() {
     	return this.stack.isFull();
+    }
+    
+    public int getStackCapacity() {
+    	return stack.getCapacity();
     }
     
     public void createStack(Integer capacity) {
