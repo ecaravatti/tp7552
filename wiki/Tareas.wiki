@@ -10,7 +10,8 @@ Ejemplos:
   * Tarea 3 _(Lau)_
 
 = Details =
-
+  * Common
+    * Uniformizar el idioma. Usar español (Ej, top, tail, etc).
   * Paquetes *(Done)*
     * Refactor de nombres _(Dami)_ *(Done)*
     * Refactor de orden _(Dami)_ *(Done)*
@@ -26,10 +27,11 @@ Ejemplos:
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
   * Ayuda
-    * Agregar info sobre cola circular
-    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc.
-    * Styles
+    * Agregar info sobre cola circular _(Lau)_*(In Progress)*
+    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(In Progress)*
+    * Styles_(Lau)_*(In Progress)*
     * Acerca de…
+    * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar
   * Imágenes
     * Trie
       * Nodo cuadrado _(Dami / Nico)_ *(In Progress)*
