@@ -39,7 +39,7 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	public void addController(TrieController controller) {
 		this.controller = controller;
 		this.trieView.addController(controller);
-		this.mainButtonPanel.addController(controller);
+		this.trieButtonsPanel.addController(controller);
 	}
 
 	/**
@@ -56,8 +56,8 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	 * 
 	 * @return el panel principal que contiene los botones
 	 */
-	public MainButtonPanel getMainButtonPanel() {
-		return this.mainButtonPanel;
+	public TrieButtonsPanel getMainButtonPanel() {
+		return this.trieButtonsPanel;
 	}
 
 	/**
@@ -89,15 +89,15 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-		mainButtonPanel = new view.collection.trie.MainButtonPanel();
+		trieButtonsPanel = new view.collection.trie.TrieButtonsPanel();
 
 		//setBackground(new java.awt.Color(255, 255, 255));
 		setLayout(new java.awt.BorderLayout(5, 5));
-		add(mainButtonPanel, java.awt.BorderLayout.PAGE_START);
+		add(trieButtonsPanel, java.awt.BorderLayout.PAGE_START);
 	}// </editor-fold>//GEN-END:initComponents
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private view.collection.trie.MainButtonPanel mainButtonPanel;
+	private view.collection.trie.TrieButtonsPanel trieButtonsPanel;
 	// End of variables declaration//GEN-END:variables
 
 }

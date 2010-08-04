@@ -41,6 +41,7 @@ import model.collection.stack.StackObservable;
 import model.collection.tree.BSTHeightBalanced;
 import model.collection.tree.BSTWeightBalanced;
 import model.collection.trie.Trie;
+import view.collection.heap.HeapPanel;
 import view.collection.heap.HeapView;
 import view.collection.queue.QueuePanel;
 import view.collection.queue.QueueView;
@@ -118,6 +119,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	/**
 	 * Componentes de Heap.
 	 */
+	private HeapPanel<Integer> heapPanel;
 	private Heap<Integer> heap;
 	private HeapView<Integer> heapView;
 	private HeapController<Integer> heapController;
@@ -255,10 +257,12 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		 */
 		heap = new Heap<Integer>();
 		heapView = new HeapView<Integer>();
-		heapController = new HeapController<Integer>(heap, heapView);
-		StructurePane<HeapView<Integer>> heapStructurePanel = new StructurePane<HeapView<Integer>>(
-				heapView);
-		SwingUtilities.updateComponentTreeUI(heapView);
+		heapPanel = new HeapPanel<Integer>(heapView);
+		heapController = new HeapController<Integer>(heap, heapPanel);
+		heapPanel.addController(heapController);
+		StructurePane<HeapPanel<Integer>> heapStructurePanel = new StructurePane<HeapPanel<Integer>>(
+				heapPanel);
+		SwingUtilities.updateComponentTreeUI(heapPanel);
 
 		controllers.add(trieController);
 		controllers.add(stackController);

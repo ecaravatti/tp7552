@@ -28,7 +28,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
 	
 	private QueueController<Integer> controller;
 
-    /** Creates new form BSTButtonsPanel */
+    /** Creates new form QueueButtonsPanel */
     public QueueButtonsPanel() {
         initComponents();
     }
@@ -227,11 +227,11 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed
-        for (int counter = 1; counter <= 1; counter++) {
+//        for (int counter = 1; counter <= 10; counter++) {
             Random random = new Random();
             int number = random.nextInt(999) + 1;
             controller.enqueueItem(number);
-        }
+//        }
     }//GEN-LAST:event_insertRandomButtonActionPerformed
 
     private void queueSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed

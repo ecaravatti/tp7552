@@ -53,8 +53,7 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 		this.getQueueNodes().add(node);
 
-		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
-				QueuePrimitives.enqueue.getCode()));
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.enqueue.getCode()));
 		this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
 	}

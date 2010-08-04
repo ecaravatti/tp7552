@@ -7,17 +7,17 @@ import javax.swing.JOptionPane;
 import controller.TrieController;
 
 /**
- * Representa al panel principal que contiene los botones.
+ * Representa al panel que contiene los botones de operaciones para el Trie.
  * 
  * 
  */
-public class MainButtonPanel extends javax.swing.JPanel {
+public class TrieButtonsPanel extends javax.swing.JPanel {
   private static final long serialVersionUID = 1L;
 
   private TrieController controller;
 
   /** Creates new form Panel */
-  public MainButtonPanel() {
+  public TrieButtonsPanel() {
     this.controller = null;
     initComponents();
   }

@@ -11,6 +11,7 @@ import model.collection.tree.BSTNode;
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
 import view.shape.Arrow;
+import view.shape.DefaultShapeSettings;
 import event.tree.BSTNodeEvent;
 import event.tree.BSTNodeListener;
 
@@ -32,7 +33,6 @@ public class BSTNodeView extends AbstractElementView implements
     public static final int RIGHT = 1;
     private static final int DELTA_VERTICAL = 50;
     private static final int DELTA_HORIZONTAL = 60;
-    private static final int DIAMETER = 35;
 
     private BSTNodeView parent;
     private Point2D finalPosition;
@@ -45,11 +45,14 @@ public class BSTNodeView extends AbstractElementView implements
     private BSTNodeShape shape;
 
     public BSTNodeView(BSTNode<Integer> node, BSTPrimitives view) {
-        super(new Point2D.Double(), DIAMETER, DIAMETER, true);
+        super(	new Point2D.Double(), DefaultShapeSettings.TREE_NODE_DIAMETER,
+        		DefaultShapeSettings.TREE_NODE_DIAMETER, true);
         node.addListener(this);
         this.data = node.getData();
         this.bstView = view;
-        this.shape = new BSTNodeShape(data.toString(), String.valueOf(node.getBalance()), DIAMETER, DEF_FONT_NODE, DEF_FONT_BALANCE, DEF_STROKE);
+        this.shape = new BSTNodeShape(data.toString(), String.valueOf(node.getBalance()),
+        							  DefaultShapeSettings.TREE_NODE_DIAMETER,
+        							  DEF_FONT_NODE, DEF_FONT_BALANCE, DEF_STROKE);
         setVisible(false);
         this.parent = null;
         this.finalPosition = null;
@@ -159,26 +162,32 @@ public class BSTNodeView extends AbstractElementView implements
 
     @Override
     protected void paintElement(Graphics g) {
-        if (! isVisible())
+        if (!isVisible()) {
             return;
+        }
 
         int side = RIGHT;
 
         if (parent != null) {
-            if (parent.left == this)
+            if (parent.left == this) {
                 side = LEFT;
+            }
 
             Point2D previous = parent.getPosition();
-            Point2D p1 = new Point2D.Double(previous.getX()+DIAMETER/2, previous.getY()+DIAMETER/2);
-            Point2D p2 = new Point2D.Double(getPosition().getX()+DIAMETER*(2-side)/4, getPosition().getY());
+            Point2D p1 = new Point2D.Double(previous.getX()+DefaultShapeSettings.TREE_NODE_DIAMETER/2,
+            								previous.getY()+DefaultShapeSettings.TREE_NODE_DIAMETER/2);
+            Point2D p2 = new Point2D.Double(getPosition().getX()+DefaultShapeSettings.TREE_NODE_DIAMETER
+            								*(2-side)/4, getPosition().getY());
             Arrow arrow = new Arrow(p1, p2, true, DEF_STROKE, DEF_COLOR_ARROW, false);
             arrow.paint(g);
         }
 
-        if (left != null)
+        if (left != null) {
             left.paintElement(g);
-        if (right != null)
+        }
+        if (right != null) { 
             right.paintElement(g);
+        }
 
         shape.moveTo(getPosition());
         shape.paint((Graphics2D) g, side);
@@ -210,19 +219,20 @@ public class BSTNodeView extends AbstractElementView implements
         double x = position.getX();
         double y = position.getY();
 
-        if (side != 0)
+        if (side != 0) {
             y += DELTA_VERTICAL;
+        }
 
-        if (side == LEFT)
+        if (side == LEFT) {
             x -= node.rightWidth;
-        else if (side == RIGHT)
+        } else if (side == RIGHT) {
             x += node.leftWidth;
+        }
 
         if (! setFinalLocation) {
             node.getPosition().setLocation(x, y);
             pos = node.getPosition();
-        }
-        else {
+        } else {
             node.finalPosition = new Point2D.Double(x, y);
             pos = node.getFinalPosition();
         }
@@ -257,15 +267,17 @@ public class BSTNodeView extends AbstractElementView implements
 
     public double getLeftWidth() {
         double w = 0;
-        if (left != null)
+        if (left != null) {
             w = left.getLeftWidth();
+        }
         return leftWidth + w;
     }
 
     public double getRightWidth() {
         double w = 0;
-        if (right != null)
+        if (right != null) {
             w = right.getRightWidth();
+        }
         return rightWidth + w;
     }
 }

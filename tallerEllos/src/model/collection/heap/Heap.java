@@ -8,6 +8,7 @@ import model.exception.heap.EmptyHeapException;
 public class Heap<T extends Comparable<T>> extends HeapObservable<T> {
 
     private List<T> elements;
+    private int capacity = 1000000;
 
     /**
      * Construye un heap vacio.
@@ -155,5 +156,21 @@ public class Heap<T extends Comparable<T>> extends HeapObservable<T> {
 
 
         elements.set(current, element);
+    }
+    
+    public boolean isEmpty() {
+    	return elements.isEmpty();
+    }
+
+    public boolean isFull() {
+    	return (elements.size() == capacity);
+    }
+    
+    public int getCapacity() {
+    	return this.capacity;
+    }
+    
+    public void setCapacity(int capacity) {
+    	this.capacity = capacity;
     }
 }

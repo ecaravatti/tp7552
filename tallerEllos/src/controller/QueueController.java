@@ -53,9 +53,9 @@ public class QueueController<T> extends InteractiveController {
     }
 
     public void enqueueItem(T item) {
-        this.panel.getButtonsPanel().enableComponents(false);
-        this.view.prepareAnimation();
         try {
+        	this.panel.getButtonsPanel().enableComponents(false);
+        	this.view.prepareAnimation();
         	this.queue.enqueue(item);
         } catch (QueueFullException e) {
         	//Hacer algo? En realidad no podemos permitir que llegue a esta linea
@@ -63,8 +63,8 @@ public class QueueController<T> extends InteractiveController {
     }
 
     public void dequeueItem() {
-        this.panel.getButtonsPanel().enableComponents(false);
         try {
+        	this.panel.getButtonsPanel().enableComponents(false);
             this.view.prepareAnimation();
             this.queue.dequeue();
         } catch (Exception e) {
@@ -87,7 +87,8 @@ public class QueueController<T> extends InteractiveController {
     }
     
     public void setNewCapacity(int capacity) {
-    	this.clear();
+    	this.queue.clear();
+        this.view.clear();
     	this.queue.setCapacity(capacity);
     	this.view.initCapacity(capacity);
     	this.panel.getButtonsPanel().enableComponents(true);

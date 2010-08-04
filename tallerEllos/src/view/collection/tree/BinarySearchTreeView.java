@@ -35,7 +35,9 @@ import event.tree.BSTListener;
  *
  */
 public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<Integer>, BSTPrimitives {
+	
 	private static final long serialVersionUID = 1L;
+	
 	private static final int DEF_ROOT_POSITION_Y = 20;
     private final static Font DEF_FONT = new Font("SansSerif", Font.PLAIN, 13);
     private final static Color DEF_COLOR_TEXT = Color.BLACK;
@@ -162,8 +164,9 @@ public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<I
             
             root.paintElement(graphics);
         }
-        if (nodeRemoved != null)
+        if (nodeRemoved != null) {
             nodeRemoved.paintElement(graphics);
+        }
 
         int x = DEF_ROOT_POSITION_Y;
         int y = DEF_FONT.getSize();
@@ -439,15 +442,17 @@ public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<I
         getCommandQueue().executeImmediate(list);
         this.wait(false);
     } catch (java.util.EmptyStackException e) {
-        controller.showLogMessage("No hay nada para deshacer...");
+        controller.showLogMessage("No hay operaciones para deshacer...");
         throw new CannotUndoException();
     }
     }
 
-	@Override
+    @Override
 	protected void adjustGraphicDimensionForScrolling() {
-		// TODO Implement!!
-		
+//		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL +
+//											  structureCapacity * (QueueNodeShape.DEF_WIDTH_NODE +
+//													  	DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+//											  2*INITIAL_VERTICAL + 3*QueueNodeShape.DEF_HEIGHT_NODE);
 	}
     
 }

@@ -6,9 +6,7 @@ package controller;
 
 import model.collection.heap.Heap;
 import model.exception.heap.EmptyHeapException;
-import view.collection.heap.HeapPrimitives;
-import view.collection.heap.HeapView;
-import view.command.common.ShowPrimitiveCodeCommand;
+import view.collection.heap.HeapPanel;
 
 /**
  *
@@ -16,26 +14,31 @@ import view.command.common.ShowPrimitiveCodeCommand;
 public class HeapController<T extends Comparable<T>> extends InteractiveController {
 
     private Heap<T> heap;
-    private HeapView<T> view;
+    private HeapPanel<T> panel;
 
-    public HeapController(Heap<T> heap, HeapView<T> view) {
-        super(view);
+    public HeapController(Heap<T> heap, HeapPanel<T> panel) {
+        super(panel.getView());
 
         this.heap = heap;
-        this.view = view;
+        this.panel = panel;
 
-        heap.addListener(view);
-        view.addController(this);
+        this.heap.addListener(panel.getView());
+        this.panel.getView().addController(this);
+        
+        this.heap.setCapacity(this.panel.getButtonsPanel().getSelectedCapacity());
+        this.panel.getView().initCapacity(this.panel.getButtonsPanel().getSelectedCapacity());
     }
 
     public void addItem(T item) {
-      new ShowPrimitiveCodeCommand(this, HeapPrimitives.insert.getCode()).execute();
-      this.heap.insert(item);
+    	this.panel.getButtonsPanel().enableComponents(false);
+    	this.panel.getView().prepareAnimation();
+    	this.heap.insert(item);
     }
 
     public void deleteItem() {
-      new ShowPrimitiveCodeCommand(this, HeapPrimitives.delete.getCode()).execute();
-      try { 
+      try {
+    	  this.panel.getButtonsPanel().enableComponents(false);
+          this.panel.getView().prepareAnimation();
     	  this.heap.remove();
       } catch (EmptyHeapException e) {
     	  
@@ -43,11 +46,33 @@ public class HeapController<T extends Comparable<T>> extends InteractiveControll
     }
     
     public void clear() {
+    	this.panel.getButtonsPanel().enableComponents(false);
         this.heap.clear();
+        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
+        this.panel.getButtonsPanel().enableComponents(true);
+    }
+    
+    public void setNewCapacity(int capacity) {
+    	this.heap.clear();
+    	this.heap.setCapacity(capacity);
+        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
+    	this.panel.getButtonsPanel().enableComponents(true);
     }
 
     @Override
     public void primitiveFinished() {
-        view.setEnabledButtons(true);
+    	panel.getButtonsPanel().enableComponents(true);
+    }
+    
+    public boolean isHeapFull() {
+    	return heap.isFull();
+    }
+    
+    public boolean isHeapEmpty() {
+    	return heap.isEmpty();
+    }
+    
+    public int getHeapCapacity() {
+    	return heap.getCapacity();
     }
 }
