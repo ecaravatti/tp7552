@@ -31,7 +31,7 @@ Ejemplos:
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(In Progress)*
     * Styles_(Lau)_*(In Progress)*
     * Acerca de…
-    * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Tifi)_ *(In Progress)*
+    * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Tifi)_ *(Done)*
   * Imágenes
     * Trie
       * Nodo cuadrado _(Dami / Nico)_ *(In Progress)*
