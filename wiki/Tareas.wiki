@@ -66,15 +66,18 @@ Ejemplos:
     * Permitir ingresar el parámetro de peso _(Manu)_ *(Done)* (lo dejé oculto por falta de implementación en el modelo)
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
+    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío.
   * Árbol Balanceado por Altura
     * Que variar la altura no sea cambiar el "PARAMETRO", o sea que se entienda. _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
+    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío.
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
     * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar.
+    * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío.
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
