@@ -18,6 +18,7 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
 
     private final static BasicStroke DEF_STROKE = new BasicStroke(1.5f);
     private final static Color DEF_COLOR_ARROW = Color.BLACK;
+    
     private T item;
     private StackNodeView<T> parent;
     private boolean linked = false;

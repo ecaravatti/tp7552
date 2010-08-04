@@ -47,8 +47,9 @@ public class MobileAnimationSteps implements AnimationSteps {
     Segment mov1 = new Segment(this.point1, this.point2, delta);
     ArrayList<Point2D> points = mov1.getPoints();
 
-    for (Point2D p : points)
+    for (Point2D p : points) {
       commands.add(new MoveCommand(component, mobile, p));
+    }
 
     return commands;
   }

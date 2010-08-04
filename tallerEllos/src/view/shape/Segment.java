@@ -39,8 +39,9 @@ public class Segment {
     double sX = getSign(p1.getX(), p2.getX());
     double sY = getSign(p1.getY(), p2.getY());
 
-    if (point.equals(p2))
+    if (point.equals(p2)) {
       return array;
+    }
 
     double angle = getAngle();
     double incX = sX * delta * Math.cos(angle);
@@ -68,8 +69,9 @@ public class Segment {
     double sX = getSign(p1.getX(), p2.getX());
     double sY = getSign(p1.getY(), p2.getY());
 
-    if (point.equals(p2))
+    if (point.equals(p2)) {
       return array;
+    }
 
     double angle = getAngle();
     double incX = sX * delta * Math.cos(angle);

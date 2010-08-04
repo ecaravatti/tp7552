@@ -4,10 +4,11 @@
  */
 package view.collection.queue;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import view.command.common.ShowMessageDialogCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.common.StepFinishedCommand;
 import view.common.AnimatedPanel;
+import view.shape.DefaultShapeSettings;
 import event.queue.QueueListener;
 
 /**
@@ -31,6 +33,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	private static final int INITIAL_HORIZONTAL = 20;
 	private static final int INITIAL_VERTICAL = 20;
+	
+	private List<Shape> capacityPreviewNodes = new ArrayList<Shape>();
 	private List<QueueNodeView<T>> queueNodes;
 
 	public QueueView() {
@@ -76,10 +80,9 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	@Override
 	public void paintPanel(Graphics2D graphics) {
-		for (int i = 0; i < structureCapacity; i++) {
-			Rectangle r = new Rectangle(INITIAL_HORIZONTAL + i*(50+50), 100, 50, 50);
-			graphics.setPaint(new Color(204, 214, 229));
-			graphics.fill(r);
+		for (Shape shape : capacityPreviewNodes) {
+			graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
+			graphics.fill(shape);
 		}
 		for (QueueNodeView<T> node : getQueueNodes()) {
 			node.paintElement(graphics);
@@ -97,9 +100,28 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		this.queueNodes = new LinkedList<QueueNodeView<T>>();
 	}
 	
+	public void initCapacity(Integer capacity) {
+		capacityPreviewNodes.clear();
+		queueNodes.clear();
+		
+		for (int i = 0; i < capacity; i++) {
+			new Rectangle(INITIAL_HORIZONTAL + i*(50+50), 100, 50, 50);
+			capacityPreviewNodes.add(new Rectangle(INITIAL_HORIZONTAL + i*(QueueNodeShape.DEF_WIDTH_NODE +
+														DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+												   INITIAL_VERTICAL + (QueueNodeShape.DEF_HEIGHT_NODE +
+														DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+												   QueueNodeShape.DEF_WIDTH_NODE,
+												   QueueNodeShape.DEF_HEIGHT_NODE));
+		}
+		
+		setStructureCapacity(capacity);
+	}
+	
 	@Override
 	protected void adjustGraphicDimensionForScrolling() {
-		this.graphicDimension = new Dimension(INITIAL_HORIZONTAL + structureCapacity*100 + INITIAL_HORIZONTAL,
-											  INITIAL_VERTICAL + ((structureCapacity > 0) ? 150 : 0));
+		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL +
+											  structureCapacity * (QueueNodeShape.DEF_WIDTH_NODE +
+													  	DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+											  2*INITIAL_VERTICAL + 3*QueueNodeShape.DEF_HEIGHT_NODE);
 	}
 }

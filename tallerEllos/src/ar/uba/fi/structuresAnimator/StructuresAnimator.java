@@ -3,6 +3,7 @@ package ar.uba.fi.structuresAnimator;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,8 +28,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -302,7 +303,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		});
 		updateInteractivePanel(0);
 
-		this.setSize(1278, 700);
+		Dimension screenResolution = this.getToolkit().getScreenSize();
+		this.setSize(new Double(screenResolution.getWidth()).intValue() - 15,
+					 new Double(screenResolution.getHeight()).intValue() - 125);
 		this.add(header, BorderLayout.NORTH);
 		this.add(mainPanel);
 		this.addComponentListener(this);

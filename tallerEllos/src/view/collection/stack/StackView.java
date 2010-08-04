@@ -4,11 +4,10 @@
  */
 package view.collection.stack;
 
-import java.awt.BasicStroke;
-import java.awt.Font;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
-import java.awt.geom.Point2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,8 +18,7 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.ShowPrimitiveCodeCommand;
 import view.command.common.StepFinishedCommand;
 import view.common.AnimatedPanel;
-import view.shape.NodeShape;
-import view.shape.Text;
+import view.shape.DefaultShapeSettings;
 import event.stack.StackListener;
 
 /**
@@ -29,18 +27,13 @@ import event.stack.StackListener;
 public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
-	private static final int INITIAL_HORIZONTAL = 50;
-	private static final int INITIAL_VERTICAL = 435;
-	private static final Font FONT = new Font("SansSerif", Font.BOLD, 12);
-	private static final Stroke STROKE = new BasicStroke(1.0f);
-	private static final int SQUARESIZE = 25;
-	private List<NodeShape> rectangles = new ArrayList<NodeShape>();
+	
+	private static final int INITIAL_HORIZONTAL = 250;
+	private static final int INITIAL_VERTICAL = 20;
+
 	//private GroupLayout
-	private List<Text> labels = new ArrayList<Text>();
+	private List<Shape> capacityPreviewNodes = new ArrayList<Shape>();
 	private List<StackNodeView<T>> stackNodes;
-	private int labelPosX = 260;
-	private int labelPosY = 504;
-	private Text lblCapacity = new Text("Stack Capacity", FONT, new Point2D.Double(225,480));
 
 	public StackView() {
 		super();
@@ -51,12 +44,9 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 	public void itemPushed(T item) {
 		int stackSize = this.stackNodes.size();
 		
-		this.labels.add(createLabel(String.valueOf(item)));
-		
-		StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes
-				.get(stackSize - 1) : null;
-		StackNodeView<T> node = new StackNodeView<T>(item, stackSize,
-				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+		StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes.get(stackSize - 1) : null;
+		StackNodeView<T> node = new StackNodeView<T>(item, stackSize, INITIAL_HORIZONTAL,
+													 INITIAL_VERTICAL, parentNode);
 
 		this.stackNodes.add(node);
 
@@ -64,19 +54,14 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 				StackPrimitives.push.getCode()));
 		this.addAnimationToQueue(new ItemPushedAnimation<T>(this, node));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
-		
-		rerender();
 	}
 
 	@Override
 	public void itemPopped(T item) {
-		this.labels.remove(this.labels.size() - 1);
-		
 		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
 				StackPrimitives.pop.getCode()));
 		this.addAnimationToQueue(new ItemPoppedAnimation<T>(this));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
-		rerender();
 	}
 
 	@Override
@@ -90,44 +75,31 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	@Override
 	public void paintPanel(Graphics2D graphics) {
-		lblCapacity.paint(graphics);
-		
-		for (NodeShape nodeShape : rectangles) {
-			nodeShape.paint(graphics);
-		}
-		for (Text label : labels) {
-			label.paint(graphics);
+		for (Shape shape : capacityPreviewNodes) {
+			graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
+			graphics.fill(shape);
 		}
 		for (StackNodeView<T> node : getStackNodes()) {
 			node.paintElement(graphics);
 		}
 	}
 	
-	private Text createLabel(String title) {
-		int current = this.stackNodes.size();
-		Point2D currentPosition = new Point2D.Double(labelPosX + (current - 1) * 25,
-				labelPosY);
-		return new Text(title, FONT, currentPosition);
-	}
-	
-	
-	public void initStackSampleCapacity(Integer capacity) {
-		rectangles.clear();
-		labels.clear();
+	public void initCapacity(Integer capacity) {
+		capacityPreviewNodes.clear();
 		stackNodes.clear();
 		
-		for (int i = 1; i < capacity + 1; i++) {
-			rectangles.add(createRect(i * SQUARESIZE + 200, INITIAL_VERTICAL + 50, SQUARESIZE, SQUARESIZE, ""));
+		for (int i = 0; i < capacity; i++) {
+			capacityPreviewNodes.add(new Rectangle(INITIAL_HORIZONTAL,
+												   INITIAL_VERTICAL +
+												   (StackNodeShape.DEF_HEIGHT_NODE +
+													DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES)*(i+1),
+												   StackNodeShape.DEF_WIDTH_NODE,
+												   StackNodeShape.DEF_HEIGHT_NODE));
 		}
-		repaint();
-	}
-	private NodeShape createRect(int x, int y, int width, int height, String label) {
-		Point2D position = new Point2D.Double(x, y);
-		// Nodo rectangular con colores por defecto
-		return new NodeShape(label, position, width, height, FONT, STROKE, false);
+		
+		setStructureCapacity(capacity);
 	}
 	
-
 	/**
 	 * @return the stackNodes
 	 */
@@ -137,8 +109,11 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	@Override
 	protected void adjustGraphicDimensionForScrolling() {
-		// TODO Implement!!
-		
+		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL + StackNodeShape.DEF_WIDTH_NODE,
+											  2*INITIAL_VERTICAL + 
+											  (StackNodeShape.DEF_HEIGHT_NODE +
+											   DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES) *
+											   (structureCapacity+1));
 	}
 
 }

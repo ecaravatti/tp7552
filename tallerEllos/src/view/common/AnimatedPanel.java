@@ -381,4 +381,8 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
 		this.structureCapacity = structureCapacity;
 		rerender();
 	}
+    
+    public int getStructureCapacity() {
+    	return structureCapacity;
+    }
 }

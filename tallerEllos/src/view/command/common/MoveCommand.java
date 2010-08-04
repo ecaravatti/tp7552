@@ -35,6 +35,8 @@ public class MoveCommand implements Command {
   @Override
   public void execute() {
     mobile.moveTo(point);
+//    component.scrollRectToVisible(new Rectangle(new Double(point.getX()).intValue(),
+//    											new Double(point.getY()).intValue(), 50, 50));
     component.repaint();
   }
 }

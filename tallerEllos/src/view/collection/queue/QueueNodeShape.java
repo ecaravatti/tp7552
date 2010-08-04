@@ -22,20 +22,21 @@ public class QueueNodeShape extends NodeShape {
     private final static Font DEF_FONT_NODE = new Font("SansSerif", Font.BOLD, 12);
     private final static BasicStroke DEF_STROKE = new BasicStroke(1.5f);
     private final static boolean DEF_NODE_ROUNDED = true;
-    private final static int DEF_WIDTH_NODE = 50;
-    private final static int DEF_HEIGTH_NODE = 50;
+    public final static int DEF_WIDTH_NODE = 50;
+    public final static int DEF_HEIGHT_NODE = 50;
     public final static double DEF_PTR_ZONE_FRACTION = 0.15;
+    
     private Line2D ptrZoneDelimiter;
     private Integer index;
     private QueueNodeRoles role;
 
     public QueueNodeShape(String data, Point2D pos, Integer index) {
-        super(data, pos, DEF_WIDTH_NODE, DEF_HEIGTH_NODE, DEF_FONT_NODE, DEF_STROKE, DEF_NODE_ROUNDED);
+        super(data, pos, DEF_WIDTH_NODE, DEF_HEIGHT_NODE, DEF_FONT_NODE, DEF_STROKE, DEF_NODE_ROUNDED);
         Rectangle2D bounds = getRectNode();
         this.ptrZoneDelimiter = new Line2D.Double(bounds.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
         										  bounds.getY(),
         										  bounds.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
-        										  bounds.getY() + DEF_HEIGTH_NODE);
+        										  bounds.getY() + DEF_HEIGHT_NODE);
         this.index = index;
     }
 
@@ -70,6 +71,6 @@ public class QueueNodeShape extends NodeShape {
     	ptrZoneDelimiter.setLine(point.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
     							 point.getY(),
     							 point.getX() + DEF_WIDTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
-    							 point.getY() + DEF_HEIGTH_NODE);
+    							 point.getY() + DEF_HEIGHT_NODE);
     }
 }

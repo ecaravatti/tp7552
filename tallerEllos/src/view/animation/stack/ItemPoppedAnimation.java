@@ -12,6 +12,7 @@ import java.util.List;
 import view.animation.common.AbstractUndoAnimationSteps;
 import view.animation.common.MobileAnimationSteps;
 import view.collection.stack.StackNodeRoles;
+import view.collection.stack.StackNodeShape;
 import view.collection.stack.StackNodeView;
 import view.collection.stack.StackView;
 import view.command.common.Command;
@@ -20,14 +21,13 @@ import view.command.common.StepFinishedCommand;
 import view.command.stack.AssignNodeRoleCommand;
 import view.command.stack.LinkMobilesCommand;
 import view.command.stack.RemoveNodeCommand;
+import view.shape.DefaultShapeSettings;
 
 /**
  *
  */
 public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
 
-//    private static final int DELTA_HORIZONTAL = 100;
-    private static final int DELTA_VERTCAL = 100;
     private StackView<T> view;
 
     public ItemPoppedAnimation(StackView<T> view) {
@@ -71,7 +71,8 @@ public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private Point2D moveNodeToInitialPosition(StackNodeView<T> node) {
         Point2D newPosition = (Point2D) node.getPosition().clone();
-        newPosition.setLocation(newPosition.getX(), newPosition.getY() - DELTA_VERTCAL);
+        newPosition.setLocation(newPosition.getX(), newPosition.getY()
+        		- StackNodeShape.DEF_HEIGHT_NODE - DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES);
 
         return newPosition;
     }

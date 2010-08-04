@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import view.animation.common.AbstractUndoAnimationSteps;
 import view.animation.common.MobileAnimationSteps;
 import view.collection.stack.StackNodeRoles;
+import view.collection.stack.StackNodeShape;
 import view.collection.stack.StackNodeView;
 import view.collection.stack.StackView;
 import view.command.common.Command;
@@ -19,14 +20,13 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
 import view.command.stack.AssignNodeRoleCommand;
 import view.command.stack.LinkMobilesCommand;
+import view.shape.DefaultShapeSettings;
 
 /**
  *
  */
 public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private final static int DEF_HEIGHT_NODE = 50;
-    private static final int DELTA_VERTICAL = 25;
     private StackView<T> view;
     private StackNodeView<T> node;
 
@@ -68,26 +68,21 @@ public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private void moveNodeToList(StackNodeView<T> node) {
         //first move to the right to the final horizontal position.
-        Point2D horizontalPosition = (Point2D) node.getPosition().clone();
-        horizontalPosition.setLocation(horizontalPosition.getX(), horizontalPosition.getY() - (this.getNodeIndex(node) - 1)*(DEF_HEIGHT_NODE + DELTA_VERTICAL));
-
-        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), horizontalPosition, 8).getSteps());
+//        Point2D initialPosition = (Point2D) node.getPosition().clone();
+//        initialPosition.setLocation(initialPosition.getX(), initialPosition.getY() - (this.getNodeIndex(node) - 1)*(StackNodeShape.DEF_HEIGHT_NODE + DELTA_VERTICAL));
+//
+//        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), initialPosition, 8).getSteps());
 
         //then move to the final vertical position.
-        Point2D verticalPosition = (Point2D) horizontalPosition.clone();
-        verticalPosition.setLocation(verticalPosition.getX(), verticalPosition.getY() + DELTA_VERTICAL);
+        Point2D finalPosition = (Point2D) node.getPosition().clone();
+        finalPosition.setLocation(finalPosition.getX(), finalPosition.getY() +
+        					(this.getNodeIndex(node)+1)*(StackNodeShape.DEF_HEIGHT_NODE +
+        												 DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES));
 
-        steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition, verticalPosition, 2).getSteps());
+        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), finalPosition, 2).getSteps());
     }
 
     private int getNodeIndex(StackNodeView<T> node) {
-        int index = 1;
-        StackNodeView<T> parentNode = node.getParent();
-        while (parentNode != null) {
-            index++;
-            parentNode = parentNode.getParent();
-        }
-
-        return index;
+        return view.getStructureCapacity() - view.getStackNodes().size();
     }
 }

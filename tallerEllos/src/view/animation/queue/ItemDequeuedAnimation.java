@@ -12,6 +12,7 @@ import java.util.List;
 import view.animation.common.AbstractUndoAnimationSteps;
 import view.animation.common.MobileAnimationSteps;
 import view.collection.queue.QueueNodeRoles;
+import view.collection.queue.QueueNodeShape;
 import view.collection.queue.QueueNodeView;
 import view.collection.queue.QueueView;
 import view.command.common.Command;
@@ -21,16 +22,13 @@ import view.command.queue.AssignNodeIndexCommand;
 import view.command.queue.AssignNodeRoleCommand;
 import view.command.queue.LinkMobilesCommand;
 import view.command.queue.RemoveNodeCommand;
+import view.shape.DefaultShapeSettings;
 
 /**
  *
  */
 public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private final static int DEF_WIDTH_NODE = 50;
-//    private final static int DEF_HEIGTH_NODE = 50;
-    private static final int DELTA_HORIZONTAL = 50;
-    private static final int DELTA_VERTCAL = 80;
     private QueueView<T> view;
 
     public ItemDequeuedAnimation(QueueView<T> view) {
@@ -91,14 +89,16 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
 
     private Point2D moveNodeToInitialPosition(QueueNodeView<T> node) {
         Point2D newPosition = (Point2D) node.getPosition().clone();
-        newPosition.setLocation(newPosition.getX(), newPosition.getY() - DELTA_VERTCAL);
+        newPosition.setLocation(newPosition.getX(), newPosition.getY()
+        											- DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES * 2);
 
         return newPosition;
     }
 
     private Point2D moveNodeToLeft(QueueNodeView<T> node) {
         Point2D newPosition = (Point2D) node.getPosition().clone();
-        newPosition.setLocation(newPosition.getX() - (DEF_WIDTH_NODE + DELTA_HORIZONTAL), newPosition.getY());
+        newPosition.setLocation(newPosition.getX() - QueueNodeShape.DEF_WIDTH_NODE
+        						- DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES, newPosition.getY());
 
         return newPosition;
     }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import view.animation.common.AbstractUndoAnimationSteps;
 import view.animation.common.MobileAnimationSteps;
 import view.collection.queue.QueueNodeRoles;
+import view.collection.queue.QueueNodeShape;
 import view.collection.queue.QueueNodeView;
 import view.collection.queue.QueueView;
 import view.command.common.Command;
@@ -19,16 +20,13 @@ import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
 import view.command.queue.AssignNodeRoleCommand;
 import view.command.queue.LinkMobilesCommand;
+import view.shape.DefaultShapeSettings;
 
 /**
  *
  */
 public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private final static int DEF_WIDTH_NODE = 50;
-//    private final static int DEF_HEIGTH_NODE = 50;
-    private static final int DELTA_HORIZONTAL = 50;
-    private static final int DELTA_VERTICAL = 80;
     private QueueView<T> view;
     private QueueNodeView<T> node;
 
@@ -71,13 +69,13 @@ public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
     private void moveNodeToList(QueueNodeView<T> node) {
         //first move to the right to the final horizontal position.
         Point2D horizontalPosition = (Point2D) node.getPosition().clone();
-        horizontalPosition.setLocation(horizontalPosition.getX() + ((this.getNodeIndex(node) - 1) * (DEF_WIDTH_NODE + DELTA_HORIZONTAL)), horizontalPosition.getY());
+        horizontalPosition.setLocation(horizontalPosition.getX() + ((this.getNodeIndex(node) - 1) * (QueueNodeShape.DEF_WIDTH_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES)), horizontalPosition.getY());
 
         steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), horizontalPosition, 8).getSteps());
 
         //then move to the final vertical position.
         Point2D verticalPosition = (Point2D) horizontalPosition.clone();
-        verticalPosition.setLocation(verticalPosition.getX(), verticalPosition.getY() + DELTA_VERTICAL);
+        verticalPosition.setLocation(verticalPosition.getX(), verticalPosition.getY() + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES * 2);
 
         steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition, verticalPosition, 8).getSteps());
     }

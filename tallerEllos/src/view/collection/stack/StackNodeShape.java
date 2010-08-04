@@ -23,20 +23,21 @@ public class StackNodeShape extends NodeShape {
     private final static Font DEF_FONT_NODE = new Font("SansSerif", Font.BOLD, 12);
     private final static BasicStroke DEF_STROKE = new BasicStroke(1.5f);
     private final static boolean DEF_NODE_ROUNDED = true;
-    private final static int DEF_WIDTH_NODE = 50;
-    private final static int DEF_HEIGTH_NODE = 50;
+    public final static int DEF_WIDTH_NODE = 50;
+    public final static int DEF_HEIGHT_NODE = 40;
     public final static double DEF_PTR_ZONE_FRACTION = 0.15;
+    
     private Line2D ptrZoneDelimiter;
     private Integer index;
     private StackNodeRoles role;
 
     public StackNodeShape(String data, Point2D pos, Integer index) {
-        super(data, pos, DEF_WIDTH_NODE, DEF_HEIGTH_NODE, DEF_FONT_NODE, DEF_STROKE, DEF_NODE_ROUNDED);
+        super(data, pos, DEF_WIDTH_NODE, DEF_HEIGHT_NODE, DEF_FONT_NODE, DEF_STROKE, DEF_NODE_ROUNDED);
         Rectangle2D bounds = getRectNode();
         this.ptrZoneDelimiter = new Line2D.Double(bounds.getX(),
-        										  bounds.getY() + DEF_HEIGTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
+        										  bounds.getY() + DEF_HEIGHT_NODE * (1-DEF_PTR_ZONE_FRACTION),
         										  bounds.getX() + DEF_WIDTH_NODE,
-        										  bounds.getY() + DEF_HEIGTH_NODE * (1-DEF_PTR_ZONE_FRACTION));
+        										  bounds.getY() + DEF_HEIGHT_NODE * (1-DEF_PTR_ZONE_FRACTION));
         this.index = index;
     }
 
@@ -50,8 +51,8 @@ public class StackNodeShape extends NodeShape {
         
         ((Graphics2D)g).draw(ptrZoneDelimiter);
         
-        double horizontalRoleOffset = 0;
-        double verticalRoleOffset = this.getRectNode().getHeight() * (1.4);
+        double horizontalRoleOffset = -StackNodeShape.DEF_WIDTH_NODE;
+        double verticalRoleOffset = this.getRectNode().getHeight() / 2;
 
         g.drawString((this.role != null) ? role.toString() : "", (int) (this.getPosition().getX() + horizontalRoleOffset), (int) (this.getPosition().getY() + verticalRoleOffset));
 
@@ -66,8 +67,8 @@ public class StackNodeShape extends NodeShape {
     public void moveTo(Point2D point) {
     	super.moveTo(point);
     	ptrZoneDelimiter.setLine(point.getX(),
-    							 point.getY() + DEF_HEIGTH_NODE * (1-DEF_PTR_ZONE_FRACTION),
+    							 point.getY() + DEF_HEIGHT_NODE * (1-DEF_PTR_ZONE_FRACTION),
     							 point.getX() + DEF_WIDTH_NODE,
-    							 point.getY() + DEF_HEIGTH_NODE * (1-DEF_PTR_ZONE_FRACTION));
+    							 point.getY() + DEF_HEIGHT_NODE * (1-DEF_PTR_ZONE_FRACTION));
     }
 }
