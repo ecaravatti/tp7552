@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
@@ -13,9 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -63,6 +68,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 
 	public final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
 	public final static String DEF_LAF = "Nimbus";
+	
+	private final static Icon HELP_ICON = new ImageIcon(ClassLoader.getSystemResource("Button-Help-icon-big.png").getPath());
+	private final static Icon BACK_ICON = new ImageIcon(ClassLoader.getSystemResource("Button-Reload-icon-big.png").getPath());
 
 	/**
 	 * Componentes Generales
@@ -72,6 +80,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	private JPanel bottomPanel;
 	private InteractivePanel interactivePanel;
 	private JPanel header;
+	private Boolean helpVisible = Boolean.FALSE;
 
 	/**
 	 * Componentes del Trie
@@ -152,10 +161,43 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		} catch (IOException e) {
 			headerLabel = new JLabel();
 		}
+		
 		header = new JPanel();
-		header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));
+		header.add(Box.createHorizontalStrut(10));
+		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
 		header.setBackground(new Color(220, 224, 235));
-		header.add(headerLabel, BorderLayout.CENTER);
+		header.add(headerLabel);
+
+		final HelpPanel helpPanel = new HelpPanel();
+		final JButton helpButton = new JButton("Ayuda", HELP_ICON);
+		helpButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				helpVisible = !helpVisible;
+				if (helpVisible) {
+					mainPanel.remove(tabbedPane);
+					mainPanel.remove(bottomPanel);
+					mainPanel.add(helpPanel);
+				} else {
+					mainPanel.remove(helpPanel);
+					mainPanel.add(tabbedPane);
+					mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+				}
+				
+				// Update the button text and icon
+				helpButton.setIcon(helpVisible ? BACK_ICON : HELP_ICON);
+				helpButton.setText(helpVisible ? "Volver" : "Ayuda");
+
+				// Repaint the whole applet
+				getRootPane().revalidate();
+				getRootPane().repaint();
+			}
+		});
+		header.add(Box.createHorizontalGlue());
+		helpButton.setAlignmentY(BOTTOM_ALIGNMENT);
+		header.add(helpButton);
+		header.add(Box.createHorizontalStrut(10));
+		
 
 		/**
 		 * Componentes del Trie
@@ -230,13 +272,12 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		tabbedPane = new JTabbedPane(SwingConstants.TOP);
 		tabbedPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		tabbedPane.putClientProperty("JComponent.sizeVariant", "large");
-		tabbedPane.addTab("AYUDA", new HelpPanel());
 		tabbedPane.addTab("Trie", trieStructurePanel);
-		tabbedPane.addTab("Stack", stackStructurePanel);
-		tabbedPane.addTab("Queue", queueStructurePanel);
+		tabbedPane.addTab("Pila", stackStructurePanel);
+		tabbedPane.addTab("Cola", queueStructurePanel);
 		tabbedPane.addTab("Heap", heapStructurePanel);
-		tabbedPane.addTab("Árbol binario balanceado por altura", treeHeightBalancedStructurePanel);
-		tabbedPane.addTab("Árbol binario balanceado por peso", treeWeightBalancedStructurePanel);
+		tabbedPane.addTab("Árbol AVL por altura", treeHeightBalancedStructurePanel);
+		tabbedPane.addTab("Árbol AVL por peso", treeWeightBalancedStructurePanel);
 		SwingUtilities.updateComponentTreeUI(tabbedPane);
 
 		mainPanel = new JPanel(new BorderLayout());
@@ -252,38 +293,36 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 
 				int selectedTabIndex = pane.getSelectedIndex();
 
-				if (selectedTabIndex == 0) {
-					if (interactivePanel != null) {
-						bottomPanel.remove(interactivePanel);
-					}
-					return;
-				} else {
-					StructurePane.class.cast(pane.getSelectedComponent())
-							.update();
-				}
+				StructurePane.class.cast(pane.getSelectedComponent()).update();
 
-				if (interactivePanel != null) {
-					bottomPanel.remove(interactivePanel);
-				}
-
-				interactivePanel = controllers.get(selectedTabIndex - 1).getInteractivePanel();
-				SwingUtilities.updateComponentTreeUI(interactivePanel);
-				bottomPanel.add(interactivePanel);
-				controllers.get(selectedTabIndex - 1).setWait(Boolean.FALSE);
-
-				for (int i = 0; i < controllers.size(); i++) {
-					if (controllers.get(i) != controllers.get(selectedTabIndex - 1)) {
-						controllers.get(i).setWait(Boolean.TRUE);
-					}
-				}
+				updateInteractivePanel(selectedTabIndex);
 				bottomPanel.repaint();
 			}
+			
 		});
+		updateInteractivePanel(0);
 
-		this.setSize(1280, 700);
+		this.setSize(1278, 700);
 		this.add(header, BorderLayout.NORTH);
 		this.add(mainPanel);
 		this.addComponentListener(this);
+	}
+	
+	private void updateInteractivePanel(int selectedTabIndex) {
+		if (interactivePanel != null) {
+			bottomPanel.remove(interactivePanel);
+		}
+
+		interactivePanel = controllers.get(selectedTabIndex).getInteractivePanel();
+		SwingUtilities.updateComponentTreeUI(interactivePanel);
+		bottomPanel.add(interactivePanel);
+		controllers.get(selectedTabIndex).setWait(Boolean.FALSE);
+
+		for (int i = 0; i < controllers.size(); i++) {
+			if (controllers.get(i) != controllers.get(selectedTabIndex)) {
+				controllers.get(i).setWait(Boolean.TRUE);
+			}
+		}
 	}
 
 	@Override
@@ -299,9 +338,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	@Override
 	public void componentResized(ComponentEvent e) {
 		// Para cuando se invoca desde un browser
-		if (tabbedPane.getSelectedIndex() != 0) {
-			StructurePane.class.cast(tabbedPane.getSelectedComponent()).update();
-		}
+		StructurePane.class.cast(tabbedPane.getSelectedComponent()).update();
 		getRootPane().revalidate();
 		getRootPane().repaint();
 	}
