@@ -91,7 +91,7 @@ Ejemplos:
     * Styles  _(Nico)_ *(Done)*
   * Frame de Pseudocódigo
     * Poner un frame de pseudocodigo por estructura. _(Tifi)_ *(Done)*
-    * Completar primitivas faltantes y arreglar alineación (faltan saltos de línea, hay funciones que tiene if anidados en una sola línea).
+    * Completar primitivas faltantes y arreglar alineación (faltan saltos de línea, hay funciones que tiene if anidados en una sola línea). _(Tifi)_ *(In Progress)*
     * Styles  _(Nico)_ *(Done)*
   * Frame Inferior
     * Mejorar el Step by Step. Podemos permitir que se pueda deshacer completamente la operación que se acaba de realizar (inserción/eliminación). Actualmente, cuando se hace una inserción, por ej., hasta que no se completa el paso, no deja realizar nuevas operaciones. Podemos permitir que se pueda deshacer la operación actual (dejando todo en el estado anterior), y que deje realizar una nueva.
