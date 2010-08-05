@@ -2,9 +2,9 @@
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
 <!-- (If you delete it and reopen the project it will be recreated.) -->
-<project name="Animador" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Animador.</description>
-    <import file="nbproject/build-impl.xml"/>
+<project name="StructuresAnimator" default="default" basedir=".">
+    <description>Builds the Project StructuresAnimator</description>
+    <import file="config/build-impl.xml"/>
     <!--
 
     There exist several targets which are by default empty and which can be 
@@ -36,7 +36,7 @@
         </target>
 
     For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
+    config/build-impl.xml file. 
 
 
     Another way to customize the build is by overriding existing main targets.
@@ -63,7 +63,7 @@
     Notice that the overridden target depends on the jar target and not only on 
     the compile target as the regular run target does. Again, for a list of available 
     properties which you can use, check the target you are overriding in the
-    nbproject/build-impl.xml file. 
+    config/build-impl.xml file. 
 
     -->
 </project>
