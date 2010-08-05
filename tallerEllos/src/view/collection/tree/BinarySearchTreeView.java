@@ -1,6 +1,7 @@
 package view.collection.tree;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentEvent;
@@ -27,6 +28,7 @@ import view.common.AnimatedPanel;
 import view.exception.common.CannotUndoException;
 import view.memento.tree.BSTCaretaker;
 import view.memento.tree.BSTMemento;
+import view.shape.DefaultShapeSettings;
 import view.shape.Segment;
 import event.tree.BSTEvent;
 import event.tree.BSTListener;
@@ -449,10 +451,11 @@ public class BinarySearchTreeView extends AnimatedPanel implements BSTListener<I
 
     @Override
 	protected void adjustGraphicDimensionForScrolling() {
-//		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL +
-//											  structureCapacity * (QueueNodeShape.DEF_WIDTH_NODE +
-//													  	DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
-//											  2*INITIAL_VERTICAL + 3*QueueNodeShape.DEF_HEIGHT_NODE);
+		int width = new Double(Math.max(200, Math.pow(2, treeHeight-1) *
+											 DefaultShapeSettings.TREE_NODE_DIAMETER * 1.2)).intValue();
+		int height = Math.max(200, treeHeight * DefaultShapeSettings.TREE_NODE_DIAMETER * 2);
+		
+		this.graphicDimension = new Dimension(width, height);
 	}
     
 }

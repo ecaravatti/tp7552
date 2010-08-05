@@ -31,8 +31,8 @@ public class BSTNodeView extends AbstractElementView implements
     public final static Color DEF_COLOR_FOUND = Color.RED;
     public static final int LEFT = -1;
     public static final int RIGHT = 1;
-    private static final int DELTA_VERTICAL = 50;
-    private static final int DELTA_HORIZONTAL = 60;
+    public static final int DELTA_VERTICAL = 50;
+    public static final int DELTA_HORIZONTAL = 60;
 
     private BSTNodeView parent;
     private Point2D finalPosition;

@@ -84,6 +84,8 @@ public abstract class BSTController extends InteractiveController {
             showPrimitiveCode(primitiveCode);
 
             tree.insert(value);
+            
+            this.view.rerender();
 
         } catch (BSTKeyFoundException ex) {
             //Logger.getLogger(BSTHeightBalancedController.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,6 +110,8 @@ public abstract class BSTController extends InteractiveController {
             showPrimitiveCode(primitiveCode);
 
             tree.delete(value);
+            
+            this.view.rerender();
 
         } catch (BSTKeyNotFoundException ex) {
             //Logger.getLogger(BSTHeightBalancedController.class.getName()).log(Level.SEVERE, null, ex);

@@ -315,7 +315,7 @@ public abstract class AnimatedPanel extends JPanel implements ComponentListener 
         this.countAnimations++;
     }
     
-    protected void rerender() {
+    public void rerender() {
     	this.adjustGraphicDimensionForScrolling();
     	this.setPreferredSize(graphicDimension);
 		this.revalidate();
