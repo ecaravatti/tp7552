@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ar.uba.fi.structuresAnimator.StructuresAnimator;
+
 import view.common.JTextFieldLimit;
 import controller.QueueController;
 
@@ -89,7 +91,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon.png").getPath());
+        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
         insertButton = new JButton("Encolar", addIcon);
         insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -103,7 +105,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon deleteIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Delete-icon.png").getPath());
+        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
         removeButton = new JButton("Desencolar", deleteIcon);
         removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -117,7 +119,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon cleanIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Refresh-icon.png").getPath());
+        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
         removeAllButton = new JButton("Vaciar", cleanIcon);
         removeAllButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeAllButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -131,7 +133,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon randomIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Help-icon.png").getPath());
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);

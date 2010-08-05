@@ -5,20 +5,16 @@ import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
@@ -71,8 +67,25 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	public final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
 	public final static String DEF_LAF = "Nimbus";
 	
-	private final static Icon HELP_ICON = new ImageIcon(ClassLoader.getSystemResource("Button-Help-icon-big.png").getPath());
-	private final static Icon BACK_ICON = new ImageIcon(ClassLoader.getSystemResource("Button-Reload-icon-big.png").getPath());
+	public static Image HELP_IMAGE;
+	public static Image BACK_IMAGE;
+	public static Image HEADER_IMAGE;
+	
+	public static Image BUTTON_ADD_IMAGE;
+	public static Image BUTTON_DELETE_IMAGE;
+	public static Image BUTTON_HELP_IMAGE;
+	public static Image BUTTON_REFRESH_IMAGE;
+	
+	public static Image BUTTON_ADD_BIG_IMAGE;
+	public static Image BUTTON_DELETE_BIG_IMAGE;
+	public static Image BUTTON_HELP_BIG_IMAGE;
+	public static Image BUTTON_REFRESH_BIG_IMAGE;
+	public static Image BUTTON_RELOAD_BIG_IMAGE;
+	
+	public static Image BUTTON_PLAY_IMAGE;
+	public static Image BUTTON_PAUSE_IMAGE;
+	public static Image BUTTON_FAST_FORWARD_IMAGE;
+	public static Image BUTTON_REWIND_IMAGE;
 
 	/**
 	 * Componentes Generales
@@ -132,6 +145,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	 */
 	@Override
 	public void init() {
+		initImages();
 		controllers = new ArrayList<InteractiveController>();
 		interactivePanel = null;
 
@@ -155,15 +169,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		 * Header y logo
 		 */
 		JLabel headerLabel;
-		BufferedImage myPicture = null;
-		try {
-			myPicture = ImageIO.read(new File(getClass().getClassLoader().getResource("head-taller2.png").getPath()));
-			headerLabel = new JLabel(new ImageIcon(myPicture), SwingConstants.CENTER);
-			headerLabel.setBackground(new Color(220, 224, 235));
-			
-		} catch (IOException e) {
-			headerLabel = new JLabel();
-		}
+
+		headerLabel = new JLabel(new ImageIcon(HEADER_IMAGE), SwingConstants.CENTER);
+		headerLabel.setBackground(new Color(220, 224, 235));
 		
 		header = new JPanel();
 		header.add(Box.createHorizontalStrut(10));
@@ -172,7 +180,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		header.add(headerLabel);
 
 		final HelpPanel helpPanel = new HelpPanel();
-		final JButton helpButton = new JButton("Ayuda", HELP_ICON);
+		final JButton helpButton = new JButton("Ayuda", new ImageIcon(HELP_IMAGE));
 		helpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -188,7 +196,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 				}
 				
 				// Update the button text and icon
-				helpButton.setIcon(helpVisible ? BACK_ICON : HELP_ICON);
+				helpButton.setIcon(helpVisible ? new ImageIcon(BACK_IMAGE) : new ImageIcon(HELP_IMAGE));
 				helpButton.setText(helpVisible ? "Volver" : "Ayuda");
 
 				// Repaint the whole applet
@@ -362,6 +370,27 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	public void componentHidden(ComponentEvent e) {
 	}
 
+	public void initImages() {
+		HELP_IMAGE = getImage(getCodeBase(), "Button-Help-icon-big.png");
+		BACK_IMAGE = getImage(getCodeBase(), "Button-Reload-icon-big.png");
+		HEADER_IMAGE = getImage(getCodeBase(), "head-taller2.png");
+		
+		BUTTON_ADD_IMAGE = getImage(getCodeBase(), "Button-Add-icon.png");
+		BUTTON_DELETE_IMAGE = getImage(getCodeBase(), "Button-Delete-icon.png");
+		BUTTON_HELP_IMAGE = getImage(getCodeBase(), "Button-Help-icon.png");
+		BUTTON_REFRESH_IMAGE = getImage(getCodeBase(), "Button-Refresh-icon.png");
+		
+		BUTTON_ADD_BIG_IMAGE = getImage(getCodeBase(), "Button-Add-icon-big.png");
+		BUTTON_DELETE_BIG_IMAGE = getImage(getCodeBase(), "Button-Delete-icon-big.png");
+		BUTTON_HELP_BIG_IMAGE = getImage(getCodeBase(), "Button-Help-icon-big.png");
+		BUTTON_REFRESH_BIG_IMAGE = getImage(getCodeBase(), "Button-Refresh-icon-big.png");
+		BUTTON_RELOAD_BIG_IMAGE = getImage(getCodeBase(), "Button-Reload-icon-big.png");
+		
+		BUTTON_PLAY_IMAGE = getImage(getCodeBase(), "Button-Play-icon.png");
+		BUTTON_PAUSE_IMAGE = getImage(getCodeBase(), "Button-Pause-icon.png");
+		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(), "Button-Fast-Forward-icon.png");
+		BUTTON_REWIND_IMAGE = getImage(getCodeBase(), "Button-Rewind-icon.png");
+	}
 	// TODO solo esta para hacer mas facil la depuracion
 	/*public static void main(String s[]) {
 	    JFrame f = new JFrame("StructuresAnimator");

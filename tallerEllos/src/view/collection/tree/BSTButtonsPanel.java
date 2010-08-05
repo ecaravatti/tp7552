@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.text.MaskFormatter;
 
+import ar.uba.fi.structuresAnimator.StructuresAnimator;
+
 import controller.BSTController;
 
 /**
@@ -100,7 +102,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         textField.putClientProperty("JComponent.sizeVariant", "large");
 
         
-        Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon-big.png").getPath());
+        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_BIG_IMAGE);
         insertButton = new JButton("Insertar", addIcon);
         insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -114,7 +116,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        Icon deleteIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Delete-icon-big.png").getPath());
+        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_BIG_IMAGE);
         removeButton = new JButton("Eliminar", deleteIcon);
         removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -128,7 +130,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon traverseIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Reload-icon-big.png").getPath());
+        Icon traverseIcon = new ImageIcon(StructuresAnimator.BUTTON_RELOAD_BIG_IMAGE);
         traverseButton = new JButton("Recorrer", traverseIcon);
         traverseButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         traverseButton.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -146,7 +148,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         traverseOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In-Order", "Pre-Order", "Post-Order" }));
         traverseOption.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon cleanIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Refresh-icon-big.png").getPath());
+        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_BIG_IMAGE);
         clearButton = new JButton("Vaciar", cleanIcon);
         clearButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         clearButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -160,7 +162,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        Icon randomIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Help-icon-big.png").getPath());
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_BIG_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);

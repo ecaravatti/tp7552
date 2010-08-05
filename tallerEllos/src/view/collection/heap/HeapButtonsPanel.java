@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ar.uba.fi.structuresAnimator.StructuresAnimator;
+
 import view.common.JTextFieldLimit;
 import controller.HeapController;
 
@@ -83,7 +85,7 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
         integerTextField.setDocument(new JTextFieldLimit(3));
         integerTextField.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon addIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Add-icon.png").getPath());
+        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
         insertBtn = new JButton("Insertar", addIcon);
         insertBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -97,7 +99,7 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon deleteIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Delete-icon.png").getPath());
+        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
         deleteBtn = new JButton("Eliminar", deleteIcon);
         deleteBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         deleteBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -111,7 +113,7 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon randomIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Help-icon.png").getPath());
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_IMAGE);
         randomBtn = new JButton("Random", randomIcon);
         randomBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         randomBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -125,7 +127,7 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon cleanIcon = new ImageIcon(getClass().getClassLoader().getResource("Button-Refresh-icon.png").getPath());
+        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
         cleanBtn = new JButton("Limpiar", cleanIcon);
         cleanBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         cleanBtn.setHorizontalTextPosition(SwingConstants.CENTER);
