@@ -82,7 +82,7 @@ Ejemplos:
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
-    * Agregar scroll _(Dami / Tifi)_ *(In Progress)*
+    * Agregar scroll _(Dami / Tifi)_ *(Done)*
     * Styles  _(Nico)_ *(In Progress)*
     * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc.
   * Frame de Operaciones Realizadas
