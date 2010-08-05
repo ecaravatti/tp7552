@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Taller de Programación II - Estructuras de Datos</title>
+</head>
+<body id="home">
+	<div class="wrap">
+		<div id="logo">
+			<h1><a href="#" title="Home">Estructuras de Datos</a></h1>
+			<p>Taller de Programación II - UBA</p>
+		</div>
+		<ul id="nav">
+			<li><a class="current" href="#" accesskey="h"><span class="akey">I</span>nicio</a></li>
+			<li><a href="#" accesskey="a"><span class="akey">A</span>cerca de</a></li>
+			<li><a href="#" accesskey="m"><span class="akey">R</span>eferencias</a></li>
+			<li><a href="#integrantes|outline" accesskey="r"><span class="akey">I</span>ntegrantes</a></li>
+			<li><a href="#" accesskey="c"><span class="akey"></span></a></li>
+			<li><a href="#" accesskey="t"><span class="akey"></span></a></li>
+		</ul>
+	</div>
+	<div class="wrap">
+		<div class="left">
+			<h2>Introducción</h2>
+				<p>Una estructura de datos es una forma de organizar un conjunto de datos elementales con el objetivo de facilitar su manipulación.
+				   Define la organización, interrelación y conjunto de operaciones sobre datos elementales, siendo un dato elemental la mínima información que se tiene en un sistema.
+				   Las operaciones básicas son:
+				</p>  
+			   
+				<ul>
+					<li>Alta, agregar un nuevo elemento a la estructura.</li>
+					<li>Baja, borrar un elemento de la estructura.</li>
+					<li>Búsqueda, encontrar un determinado elemento en la estructura para realizar una operación</li>
+				</ul>
+			<p> Esta aplicación interactiva intenta mostrar de modo didáctico el funcionamiento de distintas estructuras tales como:
+				pilas, colas, heap, trie, árboles balanceados por peso y altura.
+				En cada animación es posible ver no solo la disposición de cada una de ellas, sino también el pseudocódigo invocado ante una operación.
+				También es posible asignar un tamaño máximo de elementos de modo de estudiar un conjunto reducido de valores.
+				A continuación se detallan cada una de las estructuras de estudio en este trabajo práctico y el modo en que la aplicación demuestra los cambios ocurridos, ante una operación.
+			</p>
+		</div>	
+		<div id="right">
+			<h2>Estructuras de datos</h2>
+			<ul>
+				<li><a href="#pila|outline">Pila</a></li>
+				<li><a href="#cola|outline">Cola</a></li>
+				<li><a href="#heap|outline">Heap</a></li>
+				<li><a href="#trie|outline">Trie</a></li>
+				<li><a href="#arbolb-ba|outline">Árbol B balanceado por altura</a></li>
+				<li><a href="#arbolb-bp|outline">Árbol B balanceado por peso</a></li>
+			</ul>
+			<div id="tagcloud">
+			
+			</div>
+		</div>
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><a name="pila|outline"></a>Pila</h2>
+				<p>
+					Una pila es una estructura de datos basada en LIFO, es decir, el último elemento en ingresar a la pila es el primero en salir.
+					Este elemento es conocido como tope, y solo se permite hacer operaciones sobre este.
+					Esta estructura es quizá la más fundamental de todas las estructuras usadas. La misma, ha sido adaptada para almacenar desde un simple número hasta tipos de datos definidos por el usuario.
+					La implementación de las pilas requieren staisfacer las siguientes condiciones:
+				</p>
+				<ul>
+					<li>No se pueden desapilar elementos de una pila vacía</li>
+					<li>El acceso a cualquier elemento no está permitido - Solo el elemento "tope" puede ser leído o desapilado</li>
+					<li>Agregar un nuevo elemento a la pila, implica que este solo puede ser agregado en el tope de la misma</li>
+				</ul>
+				<p>
+					Las operaciones fundamentales de esta estructura son:
+				</p>
+				<ul>
+					<li>Vaciar() - Destruye todo el contenido de la pila, dejandola vacía</li>
+					<li>Apilar() [Push()] - Agrega un nuevo elemento al tope de la pila</li>
+					<li>Desapilar() [Pop()]- Remueve el elemento tope de la pila y lo retorna al usuario</li>
+					<li>Tope() - Retorna el elemento tope de la pila al usuario, sin modificar la estructura</li>
+					<li>EstaVacia() - Retorna verdadero si la pila esta vacía, de lo contrario retorna falso</li>
+				</ul>
+					
+				<p style="margin-bottom: 0cm"><IMG SRC="images/pila.png" NAME="pila" ALIGN="BOTTOM"  BORDER="0" /></p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+					<ul>
+						<li>Vaciar</li>
+						<li>Apilar</li>
+						<li>Desapilar</li>
+						<li>Random - Agrega un valor aleatorio al tope de la pila</li>
+						<li>Tamaño máximo - Establece una capacidad límite a la pila</li>
+					</ul>
+			</div>
+		</div>
+		
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><a name="cola|outline"></a>Cola</h2>
+				<p>
+					Una cola es una estructura de datos basada en FIFO, es decir, el primer elemento en ingresar es el primero en salir.
+					La misma es caracterizada por ser una secuencia de elementos en la que la operación de inserción "push" o "Encolar" se realiza por un extremo
+					y la operación de extracción "pop" o "Desencolar" por el otro. 
+					Las colas se utilizan en sistemas informáticos, transportes y operaciones de investigación (entre otros), dónde los objetos, personas o eventos son tomados como datos que se almacenan y se guardan mediante colas para su posterior procesamiento. 
+					Este tipo de estructura de datos abstracta se implementa en lenguajes orientados a objetos mediante clases, en forma de listas enlazadas.
+				
+					Las operaciones fundamentales de esta estructura son:
+					<ul>
+						<li>Vaciar() - Destruye todo el contenido de la cola, dejandola vacía</li>
+						<li>Encolar() [Push()] - Agrega un nuevo elemento a la cola</li>
+						<li>Desencolar() [Pop()]- Remueve el primer elemento de la cola y lo retorna al usuario</li>
+						<li>Frente() - Retorna el primer elemento de la cola al usuario, sin modificar la estructura</li>
+					</ul>
+					
+					<p style="margin-bottom: 0cm"><IMG SRC="images/cola.png" NAME="pila" ALIGN="BOTTOM"  BORDER=0>
+					<p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+						<ul>
+							<li>Vaciar</li>
+							<li>Encolar</li>
+							<li>Desencolar</li>
+							<li>Random - Agrega un valor aleatorio a la cola</li>
+							<li>Tamaño máximo - Establece una capacidad límite a la cola</li>
+						</ul>
+					<p>	
+						<h3>Cola circular</h3>
+						Una cola circular o anillo es una estructura de datos en la que los elementos están de forma circular y cada elemento tiene un sucesor y un predecesor. 
+						Los elementos pueden cosultarse, añadirse y eliminarse unicamente desde la cabeza del anillo que es una posición distinguida. 
+						Existen dos operaciones de rotaciones, una en cada sentido, de manera que la cabeza del anillo pasa a ser el elemento sucesor, o el predecesor, 
+						respectivamente, de la cabeza actual.
+					</p>
+					</p>
+				</p>
+			</div>
+		</div>
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><A NAME="heap|outline"></A>Heap</h2>
+				<p></p>
+				<p style="margin-bottom: 0cm"><IMG SRC="images/heap.png" NAME="heap" ALIGN=BOTTOM  BORDER=0>
+			</div>
+		</div>
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><A NAME="trie|outline"></A>Trie</h2>
+				<p>
+					Un trie es b&aacute;sicamente un árbol de prefijos. Un trie posee una estructura de &aacute;rbol en la que la que cada nodo (excepto la ra&iacute;z) est&aacute; etiquetado con un car&aacute;cter (a,..,z) o una marca de fin.
+					Adem&aacute;s un camino de la ra&iacute;z a una hoja con una marca de fin se corresponde a una palabra. Cada nodo del &aacute;rbol exceptuando la ra&iacute;z y las hojas corresponden a un prefijo del conjunto.				</p>
+					Las operaciones fundamentales de esta estructura son:
+					<ul>
+						<li>Insertar() - Inserta una clave al trie</li>
+						<LI>Eliminar() - Elimina una clave del trie</li>
+						<LI>Vaciar() - Destruye todo el contenido del trie dejandolo vac&iacute;o</li>
+					</ul>
+				<p style="margin-bottom: 0cm"><IMG SRC="images/trie.png" NAME="pila" ALIGN=BOTTOM  BORDER=0>
+				<p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+						<ul>
+							<li>Vaciar</li>
+							<li>Insertar</li>
+							<li>Eliminar</li>
+							<li>Random - Agrega un valor aleatorio al trie</li>
+						</ul>
+					<p>	
+				</p>
+			</div>
+		</div>
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><A NAME="arbolb-ba|outline"></A>Árbol B balanceado por altura</h2>
+				<p></p>
+			</div>
+		</div>
+		
+		<div class="wrap">
+			<div class="left">
+				<h2><A NAME="arbolb-bp|outline"></A>Árbol B balanceado por peso</h2>
+				<p></p>
+			</div>
+		</div>
+		
+		<hr>
+		
+
+		
+		<div id="footer">
+			<p><strong><a name="#integrantes|outline"></a>Integrantes:</strong> Cabrera Manuel &middot; Caravatti Estefanía &middot; Fantone Nicolás &middot; Pisaturo Damián &middot; Rodríguez María Laura &middot;</p>
+			<!--<p><strong>Network:</strong> <a href="#">Network site #1</a> &middot;  <a href="#">Network site #2</a> &middot;  <a href="#">Network site #3</a> &middot;  <a href="#">Network site #4</a></p>
+			<p>Design: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>-->
+		</div>		
+	</div>
+</body>
+</html>

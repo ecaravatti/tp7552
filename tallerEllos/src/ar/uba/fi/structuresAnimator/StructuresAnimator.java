@@ -24,8 +24,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -49,7 +49,7 @@ import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
 import view.common.StructurePane;
-import ar.uba.fi.structuresAnimator.doc.HelpPanel;
+import ar.uba.fi.structuresAnimator.doc.NewHelpPanel;
 import controller.BSTHeightBalancedController;
 import controller.BSTWeightBalancedController;
 import controller.HeapController;
@@ -179,7 +179,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		header.setBackground(new Color(220, 224, 235));
 		header.add(headerLabel);
 
-		final HelpPanel helpPanel = new HelpPanel();
+		final NewHelpPanel helpPanel = new NewHelpPanel();
 		final JButton helpButton = new JButton("Ayuda", new ImageIcon(HELP_IMAGE));
 		helpButton.addActionListener(new ActionListener() {
 			@Override
