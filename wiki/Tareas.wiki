@@ -41,6 +41,7 @@ Ejemplos:
       * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
     * Queue
       * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
+      * Nodo de cola circular _(Dami / Nico)_ *(In Progress)*
     * Heap
       * Nodo cuadrado (array) _(Dami / Nico)_ *(In Progress)*
       * Nodo circular (árbol) _(Dami / Nico)_ *(In Progress)*
@@ -55,7 +56,7 @@ Ejemplos:
     * Mostrar gráficamente como afecta la capacidad ingresada (El rectangulito de heap) _(Lau)_ *(Done)*
     * Mejorar la representación de la capacidad. _(Dami)_ *(Done)*
   * Cola
-    * Agregar esquema simultáneo de cola circular _(Dami)_ *(In Progress)*
+    * Agregar esquema simultáneo de cola circular _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de cola vacía _(Manu)_ *(Done)*
     * Poner nombres específicos de las funciones (Encolar, Desencolar) _(Manu)_ *(Done)*
