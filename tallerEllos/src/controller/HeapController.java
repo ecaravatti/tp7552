@@ -12,7 +12,9 @@ import view.collection.heap.HeapPanel;
  *
  */
 public class HeapController<T extends Comparable<T>> extends InteractiveController {
-
+	public static final int MIN_VALUE = 0;
+	public static final int MAX_VALUE = 999;
+	
     private Heap<T> heap;
     private HeapPanel<T> panel;
 

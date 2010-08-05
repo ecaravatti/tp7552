@@ -11,21 +11,24 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import view.common.JTextFieldLimit;
+
 import ar.uba.fi.structuresAnimator.StructuresAnimator;
 
-import view.common.JTextFieldLimit;
 import controller.StackController;
 
 /**
  *
  */
-public class StackButtonsPanel extends javax.swing.JPanel {
+public class StackButtonsPanel extends JPanel {
+	private static final long serialVersionUID = -4385917560382590202L;
 
-	private static final long serialVersionUID = 1L;
+	private static final int MAX_INPUT_LENGTH = 3;
 	
 	private StackController<Integer> controller;
 
@@ -68,17 +71,20 @@ public class StackButtonsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
     	// setBackground(new java.awt.Color(255, 255, 255));
-    	this.setBorder(BorderFactory.createTitledBorder("Control: Stack"));
+    	this.setBorder(BorderFactory.createTitledBorder("Control: Pila"));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
             }
         });
+        
+        jLabel1 = new JLabel("Ingresá un número de " + StackController.MIN_VALUE + " a " + StackController.MAX_VALUE);
+        jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 
-        jLabel1 = new JLabel("Ingresá un número de 0 a 999");
-        textField = new JTextField();
-        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));        
-        textField.setDocument(new JTextFieldLimit(3));
+		textField = new JTextField();
+        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        textField.setDocument(new JTextFieldLimit(MAX_INPUT_LENGTH));
+        textField.setColumns(MAX_INPUT_LENGTH);
         textField.putClientProperty("JComponent.sizeVariant", "large");
         textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +136,7 @@ public class StackButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_IMAGE);
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -202,12 +208,21 @@ public class StackButtonsPanel extends javax.swing.JPanel {
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         String text = getText();
-        if (text.length() == 0) {
-            return;
+        if (text == null || text.isEmpty()) {
+    		controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+        } else {
+	        try {
+	        	Integer value = Integer.valueOf(text);
+	        	if (value.intValue() > StackController.MAX_VALUE || value.intValue() < StackController.MIN_VALUE) {
+	        		throw new NumberFormatException();
+	        	}
+	        	controller.pushItem(value);
+	        } catch (NumberFormatException e) {
+	        	controller.showLogMessage("ERROR: El valor ingresado (" + text + ") debe ser un Número Entero entre " + StackController.MIN_VALUE + " y " + StackController.MAX_VALUE + ".");
+	        } finally {
+	        	textField.setText("");
+	        }
         }
-        controller.pushItem(Integer.valueOf(text));
-       
-        	
     }//GEN-LAST:event_insertButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed

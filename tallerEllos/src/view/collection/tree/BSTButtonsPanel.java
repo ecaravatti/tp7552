@@ -3,19 +3,19 @@ package view.collection.tree;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.text.ParseException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.text.MaskFormatter;
+
+import view.common.JTextFieldLimit;
 
 import ar.uba.fi.structuresAnimator.StructuresAnimator;
 
@@ -24,11 +24,12 @@ import controller.BSTController;
 /**
  *
  */
-public class BSTButtonsPanel extends javax.swing.JPanel {
+public class BSTButtonsPanel extends JPanel {
 	private static final long serialVersionUID = 5778728138331331309L;
 	
 	private BSTController controller;
     private static final int PARAMETER_MAX = 10;
+    private static final int MAX_INPUT_LENGTH = 3;
 
     /** Creates new form BSTButtonsPanel */
     public BSTButtonsPanel() {
@@ -90,19 +91,17 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         //setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         //setPreferredSize(new java.awt.Dimension(840, 32));
         
-        jLabel1 = new JLabel("Ingresá un número de 0 a 999");
-        try {
-			textField = new JFormattedTextField(new MaskFormatter("###"));
-		} catch (ParseException e) {
-			// No debe suceder
-		}
-        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        textField.setColumns(3);
-        //textField.setDocument(new JTextFieldLimit(3));
-        textField.putClientProperty("JComponent.sizeVariant", "large");
 
+        jLabel1 = new JLabel("Ingresá un número de " + BSTController.MIN_VALUE + " a " + BSTController.MAX_VALUE);
+        jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+
+		textField = new JTextField();
+        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        textField.setDocument(new JTextFieldLimit(MAX_INPUT_LENGTH));
+        textField.setColumns(MAX_INPUT_LENGTH);
+        textField.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_BIG_IMAGE);
+        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
         insertButton = new JButton("Insertar", addIcon);
         insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -116,27 +115,27 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_BIG_IMAGE);
+        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
         removeButton = new JButton("Eliminar", deleteIcon);
         removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
         removeButton.putClientProperty("JComponent.sizeVariant", "small");
         removeButton.setToolTipText("Eliminar elemento del árbol");
         removeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        removeButton.setMnemonic(KeyEvent.VK_D);
+        removeButton.setMnemonic(KeyEvent.VK_E);
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeButtonActionPerformed(evt);
             }
         });
         
-        Icon traverseIcon = new ImageIcon(StructuresAnimator.BUTTON_RELOAD_BIG_IMAGE);
+        Icon traverseIcon = new ImageIcon(StructuresAnimator.BUTTON_TRAVERSE_IMAGE);
         traverseButton = new JButton("Recorrer", traverseIcon);
-        traverseButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         traverseButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         traverseButton.setHorizontalTextPosition(SwingConstants.CENTER);
         traverseButton.putClientProperty("JComponent.sizeVariant", "small");
         traverseButton.setToolTipText("Recorrer árbol");
+        traverseButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
         traverseButton.setMnemonic(KeyEvent.VK_C);
         traverseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +147,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
         traverseOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In-Order", "Pre-Order", "Post-Order" }));
         traverseOption.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_BIG_IMAGE);
+        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
         clearButton = new JButton("Vaciar", cleanIcon);
         clearButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         clearButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -162,7 +161,7 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
             }
         });
 
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_BIG_IMAGE);
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -230,18 +229,28 @@ public class BSTButtonsPanel extends javax.swing.JPanel {
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         String text = getText();
-        if (text.length() == 0) {
-            return;
+        try {
+	        if (text == null || text.isEmpty()) {
+	        	controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+	        } else {
+	        	controller.insert(text);
+	        }
+        } finally {
+        	textField.setText("");
         }
-        controller.insert(text);
     }//GEN-LAST:event_insertButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         String text = getText();
-        if (text.length() == 0) {
-            return;
+        try {
+	        if (text == null || text.isEmpty()) {
+	        	controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+	        } else {
+	        	controller.remove(text);
+	        }
+        } finally {
+        	textField.setText("");
         }
-        controller.remove(text);
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void traverseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_traverseButtonActionPerformed

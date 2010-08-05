@@ -60,9 +60,9 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
     private int nodePosY[] = new int[] { 100, 170, 170, 240, 240, 240, 240, 290, 290, 290, 290, 290, 290,
     									 290, 290, 340, 340, 340, 340, 340, 340, 340, 340, 340, 340, 340,
     									 340, 340, 340, 340 };
-    private int labelPosX[] = new int[] { 53, 78, 103, 128, 153, 178, 203, 228, 253, 278, 303, 328, 353,
-    									  378, 403, 428, 453, 478, 503, 528, 553, 578, 603, 628, 653, 678,
-    									  703, 728, 753, 778 };
+    private int labelPosX[] = new int[] { 51, 76, 101, 126, 151, 176, 201, 226, 251, 276, 301, 326, 351,
+    									  376, 401, 426, 451, 476, 501, 526, 551, 576, 601, 626, 651, 676,
+    									  701, 726, 751, 776 };
     private int labelPosY = 48;
     
     private ArrayListQueueImpl<Text> currentLabelQueue = new ArrayListQueueImpl<Text>();

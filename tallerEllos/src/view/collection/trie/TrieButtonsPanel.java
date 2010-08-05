@@ -1,8 +1,22 @@
 package view.collection.trie;
 
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import view.common.JTextFieldLimit;
+
+import ar.uba.fi.structuresAnimator.StructuresAnimator;
 
 import controller.TrieController;
 
@@ -11,16 +25,17 @@ import controller.TrieController;
  * 
  * 
  */
-public class TrieButtonsPanel extends javax.swing.JPanel {
-  private static final long serialVersionUID = 1L;
+public class TrieButtonsPanel extends JPanel {
+	private static final long serialVersionUID = 1202333466570609044L;
+	private static final int MAX_INPUT_LENGTH = 15;
+	
+	private TrieController controller;
 
-  private TrieController controller;
-
-  /** Creates new form Panel */
-  public TrieButtonsPanel() {
-    this.controller = null;
-    initComponents();
-  }
+	/** Creates new form Panel */
+	public TrieButtonsPanel() {
+		this.controller = null;
+		initComponents();
+	}
 
   /**
    * Agrega un controlador
@@ -59,80 +74,87 @@ public class TrieButtonsPanel extends javax.swing.JPanel {
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-
-    textField = new javax.swing.JTextField();
-    jPanel1 = new javax.swing.JPanel();
-    insertButton = new javax.swing.JButton();
-    removeButton = new javax.swing.JButton();
-    demoButton = new javax.swing.JButton();
-    clearButton = new javax.swing.JButton();
-
     //setBackground(new java.awt.Color(255, 255, 255));
-    setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-    setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+    setBorder(BorderFactory.createTitledBorder("Control: Trie"));
+    setLayout(new FlowLayout(java.awt.FlowLayout.LEFT));
+    
+    jLabel1 = new JLabel("Ingresá hasta " + MAX_INPUT_LENGTH + " caracteres");
+    jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 
-    textField.setColumns(15);
+	textField = new JTextField();
+	textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+	textField.setDocument(new JTextFieldLimit(MAX_INPUT_LENGTH));
+	textField.setColumns(MAX_INPUT_LENGTH);
+    textField.putClientProperty("JComponent.sizeVariant", "large");
     textField.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         textFieldActionPerformed(evt);
       }
     });
+    add(jLabel1);
     add(textField);
 
+    jPanel1 = new JPanel();
     jPanel1.setLayout(new java.awt.GridLayout(1, 0));
     add(jPanel1);
-
-    insertButton.setText("Insertar");
-    insertButton.setAlignmentY(0.0F);
-    insertButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    
+    Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
+    insertButton = new JButton("Insertar", addIcon);
+    insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+    insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
+    insertButton.putClientProperty("JComponent.sizeVariant", "small");
+    insertButton.setToolTipText("Insertar elemento en el árbol");
     insertButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    insertButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    insertButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    insertButton.setPreferredSize(new java.awt.Dimension(80, 20));
     insertButton.setMnemonic(KeyEvent.VK_I);
     insertButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        insertButtonActionPerformed(evt);
-      }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            insertButtonActionPerformed(evt);
+        }
     });
     add(insertButton);
 
-    removeButton.setText("Eliminar");
+    Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
+    removeButton = new JButton("Eliminar", deleteIcon);
+    removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+    removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
+    removeButton.putClientProperty("JComponent.sizeVariant", "small");
+    removeButton.setToolTipText("Eliminar elemento del árbol");
     removeButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    removeButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    removeButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    removeButton.setPreferredSize(new java.awt.Dimension(80, 20));
     removeButton.setMnemonic(KeyEvent.VK_E);
     removeButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        removeButtonActionPerformed(evt);
-      }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            removeButtonActionPerformed(evt);
+        }
     });
     add(removeButton);
 
-    demoButton.setText("Random");
+    Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
+    demoButton = new JButton("Random", randomIcon);
+    demoButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+    demoButton.setHorizontalTextPosition(SwingConstants.CENTER);
+    demoButton.putClientProperty("JComponent.sizeVariant", "small");
+    demoButton.setToolTipText("Insertar elemento aleatorio");
     demoButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    demoButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    demoButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    demoButton.setPreferredSize(new java.awt.Dimension(80, 20));
-    demoButton.setMnemonic(KeyEvent.VK_D);
+    demoButton.setMnemonic(KeyEvent.VK_R);
     demoButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        demoButtonActionPerformed(evt);
-      }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            demoButtonActionPerformed(evt);
+        }
     });
     add(demoButton);
 
-    clearButton.setText("Limpiar");
+    Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);;
+    clearButton = new JButton("Vaciar", cleanIcon);
+    clearButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+    clearButton.setHorizontalTextPosition(SwingConstants.CENTER);
+    clearButton.putClientProperty("JComponent.sizeVariant", "small");
+    clearButton.setToolTipText("Vaciar árbol");
     clearButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-    clearButton.setMaximumSize(new java.awt.Dimension(80, 20));
-    clearButton.setMinimumSize(new java.awt.Dimension(80, 20));
-    clearButton.setPreferredSize(new java.awt.Dimension(80, 20));
-    clearButton.setMnemonic(KeyEvent.VK_L);
+    clearButton.setMnemonic(KeyEvent.VK_V);
     clearButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        clearButtonActionPerformed(evt);
-      }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            clearButtonActionPerformed(evt);
+        }
     });
     add(clearButton);
   }// </editor-fold>//GEN-END:initComponents
@@ -144,24 +166,29 @@ public class TrieButtonsPanel extends javax.swing.JPanel {
   private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
                                          
     int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-            "Limpiar", JOptionPane.YES_NO_OPTION);
+            "Vaciar", JOptionPane.YES_NO_OPTION);
 
     if (res == 0) {
         controller.clear();
     }
 
   }//GEN-LAST:event_clearButtonActionPerformed
-
+  
+  
   private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_insertButtonActionPerformed
-    String text = this.getText();
-    
-    if (text.length() == 0) {
-      return;
-    }
-
-    controller.insertWord(text.toLowerCase());
-
-  }// GEN-LAST:event_insertButtonActionPerformed
+	  String text = getText();
+	  try {
+		  if (text == null || text.isEmpty()) {
+			  controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+		  } else if (!text.matches("[A-Za-z0-9]*")) {
+			  controller.showLogMessage("ERROR: El texto ingresado debe contener sólo carácteres alfanuméricos.");
+		  } else {
+			  controller.insertWord(text.toLowerCase());
+		  }
+	  } finally {
+		  textField.setText("");
+	  }
+	}// GEN-LAST:event_insertButtonActionPerformed
 
   private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_textFieldActionPerformed
 
@@ -169,28 +196,35 @@ public class TrieButtonsPanel extends javax.swing.JPanel {
   }// GEN-LAST:event_textFieldActionPerformed
 
   private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_removeButtonActionPerformed
-   String text = this.getText();
-    if (text.length() == 0)
-      return;
-
-    controller.removeWord(text.toLowerCase());
-    this.setEnabledButtons(false);
+	  String text = getText();
+	  try {
+		  if (text == null || text.isEmpty()) {
+			  controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+		  } else if (!text.matches("[A-Za-z0-9]*")) {
+			  controller.showLogMessage("ERROR: El texto ingresado debe contener sólo caracteres alfanuméricos.");
+		  } else {
+			  controller.removeWord(text.toLowerCase());
+		  }
+	  } finally {
+		  textField.setText("");
+		  setEnabledButtons(false);
+	  }
   }// GEN-LAST:event_removeButtonActionPerformed
 
   private String getText() {
     String text = textField.getText();
-
     textField.grabFocus();
     textField.selectAll();
     return text;
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton clearButton;
-  private javax.swing.JButton demoButton;
-  private javax.swing.JButton insertButton;
-  private javax.swing.JPanel jPanel1;
-  private javax.swing.JButton removeButton;
-  private javax.swing.JTextField textField;
+  private JButton clearButton;
+  private JButton demoButton;
+  private JButton insertButton;
+  private JPanel jPanel1;
+  private JButton removeButton;
+  private JTextField textField;
+  private JLabel jLabel1;
   // End of variables declaration//GEN-END:variables
 }

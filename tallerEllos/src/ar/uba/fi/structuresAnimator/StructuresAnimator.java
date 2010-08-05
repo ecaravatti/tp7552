@@ -24,8 +24,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -73,14 +73,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	
 	public static Image BUTTON_ADD_IMAGE;
 	public static Image BUTTON_DELETE_IMAGE;
-	public static Image BUTTON_HELP_IMAGE;
+	public static Image BUTTON_RANDOM_IMAGE;
 	public static Image BUTTON_REFRESH_IMAGE;
-	
-	public static Image BUTTON_ADD_BIG_IMAGE;
-	public static Image BUTTON_DELETE_BIG_IMAGE;
-	public static Image BUTTON_HELP_BIG_IMAGE;
-	public static Image BUTTON_REFRESH_BIG_IMAGE;
-	public static Image BUTTON_RELOAD_BIG_IMAGE;
+	public static Image BUTTON_TRAVERSE_IMAGE;
 	
 	public static Image BUTTON_PLAY_IMAGE;
 	public static Image BUTTON_PAUSE_IMAGE;
@@ -289,8 +284,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		tabbedPane.addTab("Pila", stackStructurePanel);
 		tabbedPane.addTab("Cola", queueStructurePanel);
 		tabbedPane.addTab("Heap", heapStructurePanel);
-		tabbedPane.addTab("Árbol AVL por altura", treeHeightBalancedStructurePanel);
-		tabbedPane.addTab("Árbol AVL por peso", treeWeightBalancedStructurePanel);
+		tabbedPane.addTab("ABB por altura", treeHeightBalancedStructurePanel);
+		tabbedPane.addTab("ABB por peso", treeWeightBalancedStructurePanel);
 		SwingUtilities.updateComponentTreeUI(tabbedPane);
 
 		mainPanel = new JPanel(new BorderLayout());
@@ -371,25 +366,20 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	}
 
 	public void initImages() {
-		HELP_IMAGE = getImage(getCodeBase(), "Button-Help-icon-big.png");
-		BACK_IMAGE = getImage(getCodeBase(), "Button-Reload-icon-big.png");
+		HELP_IMAGE = getImage(getCodeBase(), "Info-icon-big.png");
+		BACK_IMAGE = getImage(getCodeBase(), "Return-icon.png");
 		HEADER_IMAGE = getImage(getCodeBase(), "head-taller2.png");
 		
-		BUTTON_ADD_IMAGE = getImage(getCodeBase(), "Button-Add-icon.png");
-		BUTTON_DELETE_IMAGE = getImage(getCodeBase(), "Button-Delete-icon.png");
-		BUTTON_HELP_IMAGE = getImage(getCodeBase(), "Button-Help-icon.png");
-		BUTTON_REFRESH_IMAGE = getImage(getCodeBase(), "Button-Refresh-icon.png");
+		BUTTON_ADD_IMAGE = getImage(getCodeBase(), "Add-icon-big.png");
+		BUTTON_DELETE_IMAGE = getImage(getCodeBase(), "Delete-icon-big.png");
+		BUTTON_RANDOM_IMAGE = getImage(getCodeBase(), "Random-icon-big.png");
+		BUTTON_REFRESH_IMAGE = getImage(getCodeBase(), "Refresh-icon-big.png");
+		BUTTON_TRAVERSE_IMAGE = getImage(getCodeBase(), "Configure-icon-big.png");		
 		
-		BUTTON_ADD_BIG_IMAGE = getImage(getCodeBase(), "Button-Add-icon-big.png");
-		BUTTON_DELETE_BIG_IMAGE = getImage(getCodeBase(), "Button-Delete-icon-big.png");
-		BUTTON_HELP_BIG_IMAGE = getImage(getCodeBase(), "Button-Help-icon-big.png");
-		BUTTON_REFRESH_BIG_IMAGE = getImage(getCodeBase(), "Button-Refresh-icon-big.png");
-		BUTTON_RELOAD_BIG_IMAGE = getImage(getCodeBase(), "Button-Reload-icon-big.png");
-		
-		BUTTON_PLAY_IMAGE = getImage(getCodeBase(), "Button-Play-icon.png");
-		BUTTON_PAUSE_IMAGE = getImage(getCodeBase(), "Button-Pause-icon.png");
-		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(), "Button-Fast-Forward-icon.png");
-		BUTTON_REWIND_IMAGE = getImage(getCodeBase(), "Button-Rewind-icon.png");
+		BUTTON_PLAY_IMAGE = getImage(getCodeBase(), "Play-Enabled-icon-big.png");
+		BUTTON_PAUSE_IMAGE = getImage(getCodeBase(), "Play-Disabled-icon-big.png");
+		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(), "Forward-icon-big.png");
+		BUTTON_REWIND_IMAGE = getImage(getCodeBase(), "Back-icon-big.png");
 	}
 	// TODO solo esta para hacer mas facil la depuracion
 	/*public static void main(String s[]) {

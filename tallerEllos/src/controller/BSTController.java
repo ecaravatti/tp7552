@@ -13,9 +13,9 @@ import view.collection.tree.BinarySearchTreeView;
 /**
  *
  */
-public abstract class BSTController extends InteractiveController {
-
-    private static final int MAX_VALUE = 999;
+public abstract class BSTController extends InteractiveController {	
+	public static final int MIN_VALUE = 0;
+	public static final int MAX_VALUE = 999;
 
     protected BinarySearchTree<Integer> tree;
     protected BinarySearchTreeView view;
@@ -54,12 +54,12 @@ public abstract class BSTController extends InteractiveController {
         try {
             value = Integer.valueOf(text);
 
-            if (value > MAX_VALUE) {
+            if (value.intValue() > MAX_VALUE || value.intValue() < MIN_VALUE) {
                 throw new NumberFormatException();
             }
 
         } catch (NumberFormatException e) {
-            showLogMessage("ERROR: El valor ingresado (" + text + ") debe ser un Número Entero entre 0 y " + MAX_VALUE + ".");
+            showLogMessage("ERROR: El valor ingresado (" + text + ") debe ser un Número Entero entre " + MIN_VALUE + " y " + MAX_VALUE + ".");
             return null;
         }
         return value;

@@ -15,6 +15,8 @@ import view.collection.queue.QueueView;
  *
  */
 public class QueueController<T> extends InteractiveController {
+	public static final int MIN_VALUE = 0;
+	public static final int MAX_VALUE = 999;
 
     private QueueObservable<T> queue;
     private QueueView<T> view;

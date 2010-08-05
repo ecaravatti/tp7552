@@ -155,8 +155,8 @@ public class InteractivePanel extends javax.swing.JPanel {
       }
     });
     panel.add(nextButton);
-    
-    Icon undoIcon = new ImageIcon(StructuresAnimator.BUTTON_REWIND_IMAGE);
+
+	Icon undoIcon = new ImageIcon(StructuresAnimator.BUTTON_REWIND_IMAGE);
     undoStepButton = new javax.swing.JButton("Deshacer", undoIcon);
     undoStepButton.setToolTipText("Paso anterior");
     undoStepButton.setMargin(new java.awt.Insets(2, 5, 2, 5));

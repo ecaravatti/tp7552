@@ -1,5 +1,7 @@
 package view.collection.trie;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JScrollPane;
 
 import view.common.InteractivePanel;
@@ -11,9 +13,8 @@ import controller.TrieController;
  * 
  */
 public class TriePanel extends javax.swing.JPanel implements InteractivelyControlled {
-
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 7509567922969971430L;
+	
 	private TrieView trieView;
 	private TrieController controller;
 
@@ -24,10 +25,8 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	 *            una vista del trie.
 	 */
 	public TriePanel(TrieView trieView) {
-		initComponents();
 		this.trieView = trieView;
-		this.add(new JScrollPane(this.trieView),
-				java.awt.BorderLayout.CENTER);
+		initComponents();
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	 *            el panel interactivo
 	 */
 	public void addInteractivePanel(InteractivePanel interactivePanel) {
-		this.add(interactivePanel, java.awt.BorderLayout.PAGE_END);
+		this.add(interactivePanel, BorderLayout.PAGE_END);
 	}
 
 	/**
@@ -89,15 +88,16 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-		trieButtonsPanel = new view.collection.trie.TrieButtonsPanel();
+		trieButtonsPanel = new TrieButtonsPanel();
 
 		//setBackground(new java.awt.Color(255, 255, 255));
-		setLayout(new java.awt.BorderLayout(5, 5));
-		add(trieButtonsPanel, java.awt.BorderLayout.PAGE_START);
+		setLayout(new BorderLayout(5, 5));
+		add(trieButtonsPanel, BorderLayout.PAGE_START);
+		add(new JScrollPane(trieView), BorderLayout.CENTER);
 	}// </editor-fold>//GEN-END:initComponents
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private view.collection.trie.TrieButtonsPanel trieButtonsPanel;
+	private TrieButtonsPanel trieButtonsPanel;
 	// End of variables declaration//GEN-END:variables
 
 }

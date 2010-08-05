@@ -12,6 +12,9 @@ import view.collection.stack.StackView;
  *
  */
 public class StackController<T> extends InteractiveController {
+	public static final int MIN_VALUE = 0;
+	public static final int MAX_VALUE = 999;
+	
     private StackObservable<T> stack;
     private StackView<T> view;
     private StackPanel<T> panel;

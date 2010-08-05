@@ -11,21 +11,24 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import view.common.JTextFieldLimit;
+
 import ar.uba.fi.structuresAnimator.StructuresAnimator;
 
-import view.common.JTextFieldLimit;
 import controller.HeapController;
 
 /**
  *
  */
-public class HeapButtonsPanel extends javax.swing.JPanel {
+public class HeapButtonsPanel extends JPanel {
+	private static final long serialVersionUID = -4427696412210245581L;
 
-	private static final long serialVersionUID = 1L;
+	private static final int MAX_INPUT_LENGTH = 3;
 	
 	private HeapController<Integer> controller;
 	// Generador de números aleatorios
@@ -77,12 +80,15 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
             }
-        });
-        
-        jLabel1 = new JLabel("Ingresá un número de 0 a 999");
-        integerTextField = new JTextField();
+        });        
+
+        jLabel1 = new JLabel("Ingresá un número de " + HeapController.MIN_VALUE + " a " + HeapController.MAX_VALUE);
+        jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+
+		integerTextField = new JTextField();
         integerTextField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        integerTextField.setDocument(new JTextFieldLimit(3));
+        integerTextField.setDocument(new JTextFieldLimit(MAX_INPUT_LENGTH));
+        integerTextField.setColumns(MAX_INPUT_LENGTH);
         integerTextField.putClientProperty("JComponent.sizeVariant", "large");
         
         Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
@@ -113,7 +119,7 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_IMAGE);
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
         randomBtn = new JButton("Random", randomIcon);
         randomBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         randomBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -128,13 +134,13 @@ public class HeapButtonsPanel extends javax.swing.JPanel {
         });
         
         Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
-        cleanBtn = new JButton("Limpiar", cleanIcon);
+        cleanBtn = new JButton("Vaciar", cleanIcon);
         cleanBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         cleanBtn.setHorizontalTextPosition(SwingConstants.CENTER);
         cleanBtn.setToolTipText("Comenzar de nuevo");
         cleanBtn.setMargin(new java.awt.Insets(2, 5, 2, 5));
         cleanBtn.putClientProperty("JComponent.sizeVariant", "small");
-        cleanBtn.setMnemonic(KeyEvent.VK_L);
+        cleanBtn.setMnemonic(KeyEvent.VK_V);
         cleanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanBtnActionPerformed(evt);
@@ -196,14 +202,20 @@ private void insertBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     try {
     	String text = getText();
-    	if (text.length() == 0) {
-    		return;
+    	if (text == null || text.isEmpty()) {
+    		controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+    	} else {    	
+	    	try { 
+	    		Integer valueToInsert = Integer.valueOf(text);
+		        if (valueToInsert.intValue() < HeapController.MIN_VALUE || valueToInsert.intValue() > HeapController.MAX_VALUE) {
+		            throw new NumberFormatException();
+		        }
+		        controller.addItem(valueToInsert);
+	    	} catch (NumberFormatException e) {
+	    		setEnabled(true);
+	    		controller.showLogMessage("ERROR: El valor ingresado (" + text + ") debe ser un Número Entero entre " + HeapController.MIN_VALUE + " y " + HeapController.MAX_VALUE + ".");
+	    	}
     	}
-        Integer valueToInsert = Integer.valueOf(text);
-        if (valueToInsert < 0 || valueToInsert > 999) {
-            return;
-        }
-        controller.addItem(Integer.valueOf(text));
     } catch (Exception e) {
         setEnabled(true);
     } finally {

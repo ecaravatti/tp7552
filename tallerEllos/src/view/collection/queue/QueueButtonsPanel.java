@@ -16,17 +16,19 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import view.common.JTextFieldLimit;
+
 import ar.uba.fi.structuresAnimator.StructuresAnimator;
 
-import view.common.JTextFieldLimit;
 import controller.QueueController;
 
 /**
  *
  */
 public class QueueButtonsPanel extends javax.swing.JPanel {
-
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5153552329549381792L;
+	
+	private static final int MAX_INPUT_LENGTH = 3;
 	
 	private QueueController<Integer> controller;
 
@@ -73,18 +75,21 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     	//setBackground(new java.awt.Color(255, 255, 255));
         //setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         //setPreferredSize(new java.awt.Dimension(746, 32));
-    	setBorder(BorderFactory.createTitledBorder("Control: Queue"));
+    	setBorder(BorderFactory.createTitledBorder("Control: Cola"));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
             }
         });
         
-        jLabel1 = new JLabel("Ingresá un número de 0 a 999");
-        textField = new JTextField();
+        jLabel1 = new JLabel("Ingresá un número de " + QueueController.MIN_VALUE + " a " + QueueController.MAX_VALUE);
+        jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        
+		textField = new JTextField();
         textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));        
-        textField.setDocument(new JTextFieldLimit(3));
         textField.putClientProperty("JComponent.sizeVariant", "large");
+        textField.setDocument(new JTextFieldLimit(MAX_INPUT_LENGTH));
+        textField.setColumns(MAX_INPUT_LENGTH);
         textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldActionPerformed(evt);
@@ -126,14 +131,14 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
         removeAllButton.putClientProperty("JComponent.sizeVariant", "small");
         removeAllButton.setToolTipText("Vaciar cola");
         removeAllButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        removeAllButton.setMnemonic(KeyEvent.VK_L);
+        removeAllButton.setMnemonic(KeyEvent.VK_V);
         removeAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAllButtonActionPerformed(evt);
             }
         });
         
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_HELP_IMAGE);
+        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -204,10 +209,21 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         String text = getText();
-        if (text.length() == 0) {
-            return;
+        if (text == null || text.isEmpty()) {
+    		controller.showLogMessage("ERROR: El valor ingresado no debe ser vacío.");
+        } else {
+	        try {
+	        	Integer value = Integer.valueOf(text);
+	        	if (value.intValue() > QueueController.MAX_VALUE || value.intValue() < QueueController.MIN_VALUE) {
+	        		throw new NumberFormatException();
+	        	}
+	        	controller.enqueueItem(value);
+	        } catch (NumberFormatException e) {
+	        	controller.showLogMessage("ERROR: El valor ingresado (" + text + ") debe ser un Número Entero entre " + QueueController.MIN_VALUE +  " y " + QueueController.MAX_VALUE + ".");
+	        } finally {
+	        	textField.setText("");
+	        }
         }
-        controller.enqueueItem(Integer.valueOf(text));
     }//GEN-LAST:event_insertButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
