@@ -16,11 +16,12 @@ import view.element.common.Selectable;
 import view.shape.NodeShape;
 
 /**
- * Esta define como se representa visualmente una palabra.
+ * Define la representación gráfica de una palabra.
  * 
  * 
  */
 public class WordView extends AbstractElementView{
+	
   private final static Color LETTER_SELECTION_COLOR = Color.blue.brighter();
   private final static int DEF_SPACING = 10;
   private final static int DEF_LETTER_WIDTH = 30;
@@ -92,8 +93,9 @@ public class WordView extends AbstractElementView{
     int height = this.letterHeight;
     int width = 0;
 
-    for (int i = 0; i < word.length() ; i++)
+    for (int i = 0; i < word.length(); i++) {
       width += this.letterWidth + this.spacing;
+    }
 
     width += letterWidth;
     return new Dimension(width, height);
@@ -165,8 +167,10 @@ public class WordView extends AbstractElementView{
   public NodeShape getAssociateLetter(AbstractTrieNodeView node){
     int i = 0;
     
-    for (AbstractTrieNodeView current : nodes ){
-      if (node == current) return this.letters.get(i).getNodeShape(); 
+    for (AbstractTrieNodeView current : nodes) {
+      if (node == current) {
+    	  return this.letters.get(i).getNodeShape(); 
+      }
       i++;
     }
     
@@ -180,8 +184,9 @@ public class WordView extends AbstractElementView{
    * @param visible true si debe ser visible, false en caso contrario
    */
   public void setVisible(int index, boolean visible){
-    if ( index < this.getSize() - 1 )
+    if ( index < this.getSize() - 1 ) {
       letters.get(index).setVisible(visible);
+    }
   }
   
   /**
@@ -189,21 +194,22 @@ public class WordView extends AbstractElementView{
    * @param index indice asociado a la letra
    * @return true si la letra es visible, false en caso contrario.
    */
-  public boolean isVisible(int index){
-    if ( index < this.getSize() )
+  public boolean isVisible(int index) {
+    if ( index < this.getSize() ) {
       return this.letters.get(index).isVisible();
+    }
     return false;
   }
   
   /**
    * Mueve todas las letras de acuerdo a la posicion del nodo asociado con ellas.
    */
-  public void move(){
+  public void move() {
     int i = 0;
     
-    for (Letter letter : letters){
+    for (Letter letter : letters) {
       AbstractTrieNodeView node = nodes.get(i);
-      if ( node != null && node.isVisible() ){
+      if ( node != null && node.isVisible() ) {
         Point2D posNode = nodes.get(i).getPosition();
         Point2D posLetter = letter.getNodeShape().getPosition();
         letter.getNodeShape().moveTo( new Point2D.Double( posLetter.getX(), posNode.getY()) );
@@ -213,7 +219,7 @@ public class WordView extends AbstractElementView{
   }
   
   @Override
-  public Selectable getSelectable(){
+  public Selectable getSelectable() {
     return getLetter(index);
   }
 
@@ -224,10 +230,10 @@ public class WordView extends AbstractElementView{
     for (Letter letter : letters) {
       NodeShape node = letter.getNodeShape();
         
-      if ( letter.isVisible() ){
+      if ( letter.isVisible() ) {
         node.paint(g);
 
-        if (!node.isSelected() )  {
+        if (!node.isSelected()) {
           Color fill = node.getNodeColor();
           g.setPaint(new Color(fill.getRed(), fill.getGreen(), fill.getBlue(), 100));
           g.fill(node.getBounds());
@@ -240,7 +246,7 @@ public class WordView extends AbstractElementView{
    * Obtiene la palabra
    * @return la palabra
    */
-  public String getWord(){
+  public String getWord() {
     return word;
   }
   
@@ -248,8 +254,9 @@ public class WordView extends AbstractElementView{
    * Vacia la palabre
    */
   public void clear() {
-    if (letters != null)
+    if (letters != null) {
       this.letters.clear();
+    }
   }
 
   /**
@@ -269,8 +276,7 @@ public class WordView extends AbstractElementView{
       Letter letter = new Letter(nodeShape, true);
       this.letters.add(letter);
       this.nodes.add(null);
-      lettPos = new Point2D.Double(lettPos.getX() + letterWidth + spacing,
-          lettPos.getY());
+      lettPos = new Point2D.Double(lettPos.getX() + letterWidth + spacing, lettPos.getY());
     }
     
     NodeShape nodeShape = new NodeShape(word.substring(0, 1), lettPos, letterWidth, letterHeight, font,
@@ -284,7 +290,7 @@ public class WordView extends AbstractElementView{
     nodeShape.setLineColor( Color.BLUE.darker() );
   }
   
-  private class Letter{
+  private class Letter {
     private NodeShape node;
     private boolean visible;
     

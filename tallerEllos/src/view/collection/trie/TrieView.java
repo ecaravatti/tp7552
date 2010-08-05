@@ -44,12 +44,16 @@ import event.trie.TrieListener;
 public class TrieView extends AnimatedPanel implements TrieListener<String>, TrieViewPrimitives {
 
   private static final long serialVersionUID = 1L;
+  
   private final static Point2D DEF_TRIE_POS = new Point2D.Double(70, 80);
   private final static double DEF_WORD_POS_Y = 20;
-  private static double DEF_DELTA = 8;
+  private static final double DEF_DELTA = 8;
+  private static final int HORIZONTAL_MARGIN = 20;
+  private static final int VERTICAL_MARGIN = 20;
   
   private TrieNodeView root;
   private TrieNodeView current;
+  private DataTrieNodeView lastDataNode;
   private WordView word;
   private boolean insertion;
   private int wordIndex;
@@ -106,6 +110,8 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
     data.calculateWidth((Graphics2D) this.getGraphics());
     Command command = new ShowMessageCommand(getController(), TrieMessages.getInstance().getMessageDataTrieNodeAdded(data.getData()));
     this.createAddTrieNodeAnimationSteps(parent, data, command);
+    this.lastDataNode = data;
+    rerender();
   }
 
   @Override
@@ -227,7 +233,6 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
     this.initShowWord(word);
     setMaxAnimations(this.word.getSize());
     this.insertion = true;
-    rerender();
   }
 
   /**
@@ -239,7 +244,6 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
     this.initShowWord(word);
     setMaxAnimations(this.word.getSize() * 2);
     this.insertion = false;
-    rerender();
   }
 
   /**
@@ -659,7 +663,7 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
     getCommandQueue().addCommand(new CreateAnimationCommand(this, animation,
         getCountAnimations()));
     this.wordIndex++;
-    this.setCountAnimations( getCountAnimations() + 1);
+    this.setCountAnimations(getCountAnimations() + 1);
     this.countNewNodes++;
   }
 
@@ -702,9 +706,20 @@ public class TrieView extends AnimatedPanel implements TrieListener<String>, Tri
     }
   }
 
-	@Override
+  	@Override
 	protected void adjustGraphicDimensionForScrolling() {
-		// TODO Implement!!
+		int width, height;
 		
+		if (lastDataNode != null) {
+			width = new Double(Math.max(graphicDimension.getWidth(), lastDataNode.getFinalPosition().getX()
+								+ lastDataNode.getWidth() + HORIZONTAL_MARGIN*3)).intValue();
+			height = new Double(Math.max(graphicDimension.getHeight(), lastDataNode.getFinalPosition().getY()
+									+ lastDataNode.getHeight() + VERTICAL_MARGIN*3)).intValue();
+		} else {
+			width = 200;
+			height = 200;
+		}
+		
+		this.graphicDimension = new Dimension(width, height);
 	}
 }

@@ -20,7 +20,8 @@ import event.trie.TrieNodeListener;
  *  
  * 
  */
-public class TrieNodeView extends AbstractTrieNodeView implements TrieNodeListener<String>{
+public class TrieNodeView extends AbstractTrieNodeView implements TrieNodeListener<String> {
+	
   public final static int DEF_LENGTH = 20;
   private final static Font DEF_FONT = new Font("SansSerif", Font.BOLD, 14);
   private final static int DEF_SEP_CHILD = 20;

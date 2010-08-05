@@ -12,8 +12,9 @@ public class TrieMessages {
    * @return la instancia
    */
   static public TrieMessages getInstance() {
-    if (instance == null)
+    if (instance == null) {
       instance = new TrieMessages();
+    }
     return instance;
   }
 

@@ -21,8 +21,9 @@ public class TrieObservable<Data> extends ObservableBase< TrieListener<Data> > {
    * @param root la raiz
    */
   protected void fireRootAdded(Trie<Data> trie, TrieNode<Data> root) {
-    for (TrieListener<Data> list : getListeners())
+    for (TrieListener<Data> list : getListeners()) {
       list.rootAdded(new TrieEvent<Data>(trie, root));
+    }
   }
 
   /**
@@ -32,8 +33,9 @@ public class TrieObservable<Data> extends ObservableBase< TrieListener<Data> > {
    */
   protected void fireCannotRemoveTrieNode(Trie<Data> trie,
       TrieNode<Data> current) {
-    for (TrieListener<Data> list : getListeners())
+    for (TrieListener<Data> list : getListeners()) {
       list.cannotRemoveTrieNode(new TrieEvent<Data>(trie, current));
+    }
   }
 
   /**

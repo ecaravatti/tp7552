@@ -60,18 +60,17 @@ public class TrieController extends InteractiveController {
     int newCountHorizontal = countLengthHor;
     int newCountVertical = countLengthVertical;
     
-    if (trie.search(word) == null){
+    if (trie.search(word) == null) {
       newCountHorizontal++;
       newCountVertical = word.length() + 1; 
     }
     
-    if ( (newCountHorizontal > maxlengthHor) || (newCountVertical > maxlengthVert)){
+    if ((newCountHorizontal > maxlengthHor) || (newCountVertical > maxlengthVert)) {
       new ShowMessageDialogCommand( TrieMessages.getInstance().getMessageFullTrie(word),
           "Error", JOptionPane.ERROR_MESSAGE).execute();
       this.primitiveFinished(); 
       return false;
-    }
-    else{
+    } else {
       countLengthHor = newCountHorizontal;
       countLengthVertical = Math.max(countLengthVertical, newCountVertical);
       showLogMessage("** Insertando palabra: " + word.toString() );
@@ -79,12 +78,8 @@ public class TrieController extends InteractiveController {
       //Logger.getLogger("Log").log(Level.INFO, "Vertical " + countLengthVertical);
       this.setRunning( true );
       triePanel.getMainButtonPanel().setEnabledButtons( false );
-
-      
       triePanel.getTrieView().addWord(word);
       trie.insert(word, word);
-      
-     
       return true;
     }
   }
@@ -100,7 +95,7 @@ public class TrieController extends InteractiveController {
   }
 
   @Override
-  public void addInteractivePanel(InteractivePanel panel){
+  public void addInteractivePanel(InteractivePanel panel) {
     super.addInteractivePanel( panel );
     getInteractivePanel().addInteractiveController(this);
     getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
@@ -124,7 +119,7 @@ public class TrieController extends InteractiveController {
    * Determina si hay alguna primitiva corriendo.
    * @return true si esta corriendo alguna primitiva, false en caso contrario.
    */
-  public synchronized boolean running(){
+  public synchronized boolean running() {
     return running;
   }
   
@@ -132,14 +127,14 @@ public class TrieController extends InteractiveController {
    * Indica al contralador si debe comenzar a ejecutar (o no)
    * @param b
    */
-  public synchronized void setRunning(boolean b){
+  public synchronized void setRunning(boolean b) {
     this.running = b;
   }
 
   /**
    * Genera una palabra para insercion
    */
-  public void generateWords(){
+  public void generateWords() {
     generator.insert();
   }
 
