@@ -96,7 +96,7 @@ Ejemplos:
   * Frame Inferior
     * Mejorar el Step by Step. Podemos permitir que se pueda deshacer completamente la operación que se acaba de realizar (inserción/eliminación). Actualmente, cuando se hace una inserción, por ej., hasta que no se completa el paso, no deja realizar nuevas operaciones. Podemos permitir que se pueda deshacer la operación actual (dejando todo en el estado anterior), y que deje realizar una nueva.
     * Styles _(Nico)_ *(Done)*
-  * Página Web para correr el Applet
+  * Página Web para correr el Applet _(Manu)_ *(Done)*
   * Documentación
     * Documento Técnico
     * Documento con el estándar de codificación
