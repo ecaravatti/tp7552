@@ -75,8 +75,8 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	@Override
 	public void paintPanel(Graphics2D graphics) {
+		graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
 		for (Shape shape : capacityPreviewNodes) {
-			graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
 			graphics.fill(shape);
 		}
 		for (StackNodeView<T> node : getStackNodes()) {
@@ -98,6 +98,10 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 		}
 		
 		setStructureCapacity(capacity);
+	}
+	
+	public void clear() {
+		this.stackNodes.clear();
 	}
 	
 	/**

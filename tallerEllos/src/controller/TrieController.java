@@ -90,6 +90,7 @@ public class TrieController extends InteractiveController {
    */
   public void removeWord(String word) {
     showLogMessage("** Eliminando palabra: " + word.toString() );
+    triePanel.getMainButtonPanel().setEnabledButtons( false );
     triePanel.getTrieView().removeWord(word);
     trie.remove(word);
   }

@@ -207,7 +207,6 @@ public class TrieButtonsPanel extends JPanel {
 		  }
 	  } finally {
 		  textField.setText("");
-		  setEnabledButtons(false);
 	  }
   }// GEN-LAST:event_removeButtonActionPerformed
 

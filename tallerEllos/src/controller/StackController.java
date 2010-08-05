@@ -32,6 +32,8 @@ public class StackController<T> extends InteractiveController {
     public void popAllItem() {
         this.panel.getButtonsPanel().enableComponents(false);
         this.stack.clear();
+        this.view.clear();
+        this.view.repaint();
         this.showLogMessage("La pila se encuentra vacia.");
         this.panel.getButtonsPanel().enableComponents(true);
     }
@@ -43,11 +45,12 @@ public class StackController<T> extends InteractiveController {
     }
 
     public void popItem() {
-        this.panel.getButtonsPanel().enableComponents(false);
         try {
+        	this.panel.getButtonsPanel().enableComponents(false);
             this.view.prepareAnimation();
             this.stack.pop();
         } catch (Exception e) {
+        	
         }
     }
     

@@ -141,9 +141,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 	}
 
 	public void clear() {
-		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+		this.queueNodes.clear();
 		circularQueueIndex = 0;
-		arcAngle = 0;
 	}
 	
 	public void initCapacity(Integer capacity) {
