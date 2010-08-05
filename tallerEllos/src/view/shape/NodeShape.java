@@ -360,4 +360,11 @@ public class NodeShape implements Selectable, Mobile {
   protected Rectangle2D getRectNode() {
     return this.rectNode;
   }
+  
+  /**
+   * @return texto del nodo
+   */
+  public String getData() {
+	return data;
+  }
 }

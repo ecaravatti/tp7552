@@ -21,11 +21,13 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
     private boolean linked = false;
     private QueueNodeShape shape;
 
-    public QueueNodeView(T item, int index, int x, int y, QueueNodeView<T> parent) {
+    public QueueNodeView(T item, int index, int x, int y, QueueNodeView<T> parent,
+    					 int circularQueueIndex, double arcAngle) {
         super(new Point2D.Double(x, y), true);
         this.item = item;
         this.parent = parent;
-        this.shape = new QueueNodeShape(item.toString(), this.getPosition(), index);
+        this.shape = new QueueNodeShape(item.toString(), this.getPosition(), index,
+        								circularQueueIndex, arcAngle);
         setVisible(false);
     }
 

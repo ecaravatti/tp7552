@@ -4,6 +4,8 @@
  */
 package view.collection.queue;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -36,10 +38,14 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 	
 	private List<Shape> capacityPreviewNodes = new ArrayList<Shape>();
 	private List<QueueNodeView<T>> queueNodes;
+	private int circularQueueIndex;
+	private double arcAngle;
 
 	public QueueView() {
 		super();
 		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+		this.circularQueueIndex = 0;
+		this.arcAngle = 0;
 	}
 
 	@Override
@@ -48,10 +54,11 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		QueueNodeView<T> parentNode = (queueSize > 0) ? this.getQueueNodes()
 				.get(queueSize - 1) : null;
 
-		QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize,
-				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
+		QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL,
+													 parentNode, circularQueueIndex, arcAngle);
 
 		this.getQueueNodes().add(node);
+		this.circularQueueIndex = (this.circularQueueIndex + 1) % structureCapacity;
 
 		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.enqueue.getCode()));
 		this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
@@ -79,10 +86,48 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	@Override
 	public void paintPanel(Graphics2D graphics) {
+		graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
+		graphics.setStroke(new BasicStroke(3f));
+
+		// Vista previa de la capacidad de la cola
 		for (Shape shape : capacityPreviewNodes) {
-			graphics.setPaint(DefaultShapeSettings.SHADOW_COLOR);
 			graphics.fill(shape);
 		}
+		
+		int initial_offset = DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL;
+		int max_radius = DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS;
+		int min_radius = DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS;
+		
+		// Círculo de radio mayor
+		graphics.fillOval(initial_offset, initial_offset, max_radius*2, max_radius*2);
+		
+		graphics.setPaint(new Color(0, 0, 0));
+		
+		int centerX = initial_offset + max_radius;
+		int centerY = centerX;
+		
+		// Índices de la cola circular
+		for (int i = 0; i < structureCapacity; i++) {
+			int finalX = (int) (centerX - (max_radius * Math.cos(i * arcAngle + Math.PI/32) * 1.1));
+			int finalY = (int) (centerY - (max_radius * Math.sin(i * arcAngle + Math.PI/32) * 1.1));
+			graphics.drawString(String.valueOf(i), finalX, finalY);
+		}
+
+		graphics.setPaint(new Color(255, 255, 255));
+		
+		// Separadores de nodos de la cola circular
+		if (structureCapacity > 1) {
+			for (int i = 0; i < structureCapacity; i++) {
+				int finalX = (int) (centerX - max_radius * Math.cos(i * arcAngle));
+				int finalY = (int) (centerY - max_radius * Math.sin(i * arcAngle));
+				graphics.drawLine(centerX, centerY, finalX, finalY);
+			}
+		}
+		
+		// Círculo de radio menor
+		graphics.fillOval(initial_offset + min_radius, initial_offset + min_radius, max_radius, max_radius);
+		
+		// Nodos
 		for (QueueNodeView<T> node : getQueueNodes()) {
 			node.paintElement(graphics);
 		}
@@ -97,6 +142,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	public void clear() {
 		this.queueNodes = new LinkedList<QueueNodeView<T>>();
+		circularQueueIndex = 0;
+		arcAngle = 0;
 	}
 	
 	public void initCapacity(Integer capacity) {
@@ -104,7 +151,6 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		queueNodes.clear();
 		
 		for (int i = 0; i < capacity; i++) {
-			new Rectangle(INITIAL_HORIZONTAL + i*(50+50), 100, 50, 50);
 			capacityPreviewNodes.add(new Rectangle(INITIAL_HORIZONTAL + i*(QueueNodeShape.DEF_WIDTH_NODE +
 														DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
 												   INITIAL_VERTICAL + (QueueNodeShape.DEF_HEIGHT_NODE +
@@ -112,6 +158,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 												   QueueNodeShape.DEF_WIDTH_NODE,
 												   QueueNodeShape.DEF_HEIGHT_NODE));
 		}
+		
+		arcAngle = 2 * Math.PI / capacity;
 		
 		setStructureCapacity(capacity);
 	}
@@ -121,6 +169,8 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL +
 											  structureCapacity * (QueueNodeShape.DEF_WIDTH_NODE +
 													  	DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
-											  2*INITIAL_VERTICAL + 3*QueueNodeShape.DEF_HEIGHT_NODE);
+											  DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL
+											  + DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS * 2
+											  + INITIAL_VERTICAL);
 	}
 }
