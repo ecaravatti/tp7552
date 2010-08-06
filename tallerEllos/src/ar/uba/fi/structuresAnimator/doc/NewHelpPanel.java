@@ -70,6 +70,7 @@ public class NewHelpPanel extends JPanel {
 
 			// Setear el HTMLDocument creado en el helpPane
 			helpPane.setDocument(htmlDoc);
+			helpPane.setPage(getClass().getResource(HTML_RESOURCE));
 
 		} catch (IOException exception) {
 			exception.printStackTrace();
