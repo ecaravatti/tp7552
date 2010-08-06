@@ -20,19 +20,19 @@ Ejemplos:
     * Refactor de convención de sintaxis
     * Eliminar warnings _(Dami / Tifi / Manu)_ *(Done)*
   * Ventana
-    * Cambiar color, tabs, botones, etc. _(Nico)_ *(In Progress)*
+    * Cambiar color, tabs, botones, etc. _(Nico)_ *(Done)*
     * Eliminar la opción “Guardar” porque tira una excepción _(Tifi)_ *(Cancelled)*
     * Header con logo de la facultad y texto: “Taller de Programación II – Cátedra Lic. A. Servetto – 1er. Cuat. 2009” _(Nico)_ *(Done)*
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
-    * Achicar header al orden del botón de ayuda para liberar espacio._(Nico)_ *(In Progress)*
+    * Achicar header al orden del botón de ayuda para liberar espacio._(Nico)_ *(Done)*
   * Ayuda
     * Agregar info sobre cola circular _(Lau)_*(Done)*
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(Done)*
     * Styles_(Lau)_*(Done)*
     * Acerca de…_(Lau)_*(Done)*
-    * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Tifi)_ *(Done)*
+    * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Nico)_ *(Done)*
   * Imágenes
     * Trie
       * Nodo cuadrado _(Dami / Nico)_ *(In Progress)*
@@ -75,7 +75,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
     * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura._(Lau)_ *(Done)*
-    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo.
+    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo._(Nico)_ *(Cancelled?)*
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
@@ -87,7 +87,7 @@ Ejemplos:
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
     * Agregar scroll _(Dami / Tifi)_ *(Done)*
-    * Styles  _(Nico)_ *(In Progress)*
+    * Styles  _(Nico)_ *(Done)*
     * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc._(Lau)_ *(Done)*
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura (Voy a poner un log de operaciones por estructura) _(Tifi)_ *(Done)*
