@@ -12,7 +12,7 @@ public enum QueueNodeRoles {
 
     head() {
 
-        private static final String HEAD_ROLE = "front";
+        private static final String HEAD_ROLE = "frente";
 
         @Override
         public String getRoleName() {
@@ -21,7 +21,7 @@ public enum QueueNodeRoles {
     },
     tail() {
 
-        private static final String TAIL_ROLE = "back";
+        private static final String TAIL_ROLE = "final";
 
         @Override
         public String getRoleName() {

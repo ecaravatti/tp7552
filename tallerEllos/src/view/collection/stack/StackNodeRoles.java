@@ -12,7 +12,7 @@ public enum StackNodeRoles {
 
     top() {
 
-        private static final String TOP_ROLE = "top";
+        private static final String TOP_ROLE = "tope";
 
         @Override
         public String getRoleName() {
@@ -21,7 +21,7 @@ public enum StackNodeRoles {
     },
     bottom() {
 
-        private static final String BOTTOM_ROLE = "bottom";
+        private static final String BOTTOM_ROLE = "final";
 
         @Override
         public String getRoleName() {
