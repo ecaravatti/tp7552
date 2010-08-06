@@ -2,39 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Taller de Programación II - Estructuras de Datos</title>
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen, projection" />
+	<title>Estructuras de datos</title>
 </head>
 <body id="home">
 	<div class="wrap">
 		<div id="logo">
-			<h1><a href="#" title="Home">Estructuras de Datos</a></h1>
+			<h1>Estructuras de Datos</h1>
 			<p>Taller de Programación II - UBA</p>
 		</div>
 		<ul id="nav">
-			<li><a class="current" href="#" accesskey="h"><span class="akey">I</span>nicio</a></li>
-			<li><a href="#" accesskey="a"><span class="akey">A</span>cerca de</a></li>
+			<li><a class="current" href="#intro|outline" accesskey="h"><span class="akey">I</span>nicio</a></li>
+			<li><a href="#acercade|outline" accesskey="a"><span class="akey">A</span>cerca de</a></li>
 			<li><a href="#" accesskey="m"><span class="akey">R</span>eferencias</a></li>
-			<li><a href="#integrantes|outline" accesskey="r"><span class="akey">I</span>ntegrantes</a></li>
-			<li><a href="#" accesskey="c"><span class="akey"></span></a></li>
-			<li><a href="#" accesskey="t"><span class="akey"></span></a></li>
+			<li><a href="#integrantes"><span class="akey">I</span>ntegrantes</a></li>
 		</ul>
 	</div>
 	<div class="wrap">
-		<div class="left">
-			<h2>Introducción</h2>
+		<div id="left">
+		
+			<h2><A NAME="intro|outline"></A>Introducción</h2>
 				<p>Una estructura de datos es una forma de organizar un conjunto de datos elementales con el objetivo de facilitar su manipulación.
 				   Define la organización, interrelación y conjunto de operaciones sobre datos elementales, siendo un dato elemental la mínima información que se tiene en un sistema.
 				   Las operaciones básicas son:
-				</p>  
 			   
 				<ul>
 					<li>Alta, agregar un nuevo elemento a la estructura.</li>
 					<li>Baja, borrar un elemento de la estructura.</li>
 					<li>Búsqueda, encontrar un determinado elemento en la estructura para realizar una operación</li>
 				</ul>
+				</p>  
 			<p> Esta aplicación interactiva intenta mostrar de modo didáctico el funcionamiento de distintas estructuras tales como:
-				pilas, colas, heap, trie, árboles balanceados por peso y altura.
-				En cada animación es posible ver no solo la disposición de cada una de ellas, sino también el pseudocódigo invocado ante una operación.
+				pilas, colas, heap, trie, &aacute;rboles balanceados por peso y altura.
+				En cada animación es posible ver no solo la disposición de cada una de ellas, sino también el pseudoc&oacute;digo invocado ante una operación.
 				También es posible asignar un tamaño máximo de elementos de modo de estudiar un conjunto reducido de valores.
 				A continuación se detallan cada una de las estructuras de estudio en este trabajo práctico y el modo en que la aplicación demuestra los cambios ocurridos, ante una operación.
 			</p>
@@ -46,8 +46,10 @@
 				<li><a href="#cola|outline">Cola</a></li>
 				<li><a href="#heap|outline">Heap</a></li>
 				<li><a href="#trie|outline">Trie</a></li>
-				<li><a href="#arbolb-ba|outline">Árbol B balanceado por altura</a></li>
-				<li><a href="#arbolb-bp|outline">Árbol B balanceado por peso</a></li>
+				<li><a href="#arbolintro|outline">Introducci&oacute;n &aacute;rbol balanceado</a></li>
+				<li><a href="#arbolb-ba|outline">Árbol binario balanceado por altura</a></li>
+				<li><a href="#arbolb-bp|outline">Árbol binario balanceado por peso</a></li>
+				<li><a href="#panel|outline">Panel de control interactivo</a></li>
 			</ul>
 			<div id="tagcloud">
 			
@@ -55,46 +57,46 @@
 		</div>
 		
 		<div class="wrap">
-			<div class="left">
-				<h2><a name="pila|outline"></a>Pila</h2>
+			<div id="left">
+				<h2><A NAME="pila|outline"></A>Pila</h2>
 				<p>
 					Una pila es una estructura de datos basada en LIFO, es decir, el último elemento en ingresar a la pila es el primero en salir.
 					Este elemento es conocido como tope, y solo se permite hacer operaciones sobre este.
 					Esta estructura es quizá la más fundamental de todas las estructuras usadas. La misma, ha sido adaptada para almacenar desde un simple número hasta tipos de datos definidos por el usuario.
 					La implementación de las pilas requieren staisfacer las siguientes condiciones:
-				</p>
-				<ul>
-					<li>No se pueden desapilar elementos de una pila vacía</li>
-					<li>El acceso a cualquier elemento no está permitido - Solo el elemento "tope" puede ser leído o desapilado</li>
-					<li>Agregar un nuevo elemento a la pila, implica que este solo puede ser agregado en el tope de la misma</li>
-				</ul>
-				<p>
-					Las operaciones fundamentales de esta estructura son:
-				</p>
-				<ul>
-					<li>Vaciar() - Destruye todo el contenido de la pila, dejandola vacía</li>
-					<li>Apilar() [Push()] - Agrega un nuevo elemento al tope de la pila</li>
-					<li>Desapilar() [Pop()]- Remueve el elemento tope de la pila y lo retorna al usuario</li>
-					<li>Tope() - Retorna el elemento tope de la pila al usuario, sin modificar la estructura</li>
-					<li>EstaVacia() - Retorna verdadero si la pila esta vacía, de lo contrario retorna falso</li>
-				</ul>
-					
-				<p style="margin-bottom: 0cm"><IMG SRC="images/pila.png" NAME="pila" ALIGN="BOTTOM"  BORDER="0" /></p>
-					<h3>Funcionalidad provista por la aplicación</h3>
 					<ul>
-						<li>Vaciar</li>
-						<li>Apilar</li>
-						<li>Desapilar</li>
-						<li>Random - Agrega un valor aleatorio al tope de la pila</li>
-						<li>Tamaño máximo - Establece una capacidad límite a la pila</li>
+						<li>No se pueden desapilar elementos de una pila vacía</li>
+						<li>El acceso a cualquier elemento no está permitido - Solo el elemento "tope" puede ser leído o desapilado</li>
+						<li>Agregar un nuevo elemento a la pila, implica que este solo puede ser agregado en el tope de la misma</li>
 					</ul>
+					Las operaciones fundamentales de esta estructura son:
+					<ul>
+						<li>Vaciar() - Destruye todo el contenido de la pila, dejandola vacía</li>
+						<li>Apilar() [Push()] - Agrega un nuevo elemento al tope de la pila</li>
+						<li>Desapilar() [Pop()]- Remueve el elemento tope de la pila y lo retorna al usuario</li>
+						<li>Tope() - Retorna el elemento tope de la pila al usuario, sin modificar la estructura</li>
+						<li>EstaVacia() - Retorna verdadero si la pila esta vacía, de lo contrario retorna falso</li>
+					</ul>
+					
+					<p style="margin-bottom: 0cm"><IMG SRC="resource/pila.png" NAME="pila" ALIGN=BOTTOM  BORDER=0>
+					<p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+						<ul>
+							<li>Vaciar</li>
+							<li>Apilar</li>
+							<li>Desapilar</li>
+							<li>Random - Agrega un valor aleatorio al tope de la pila</li>
+							<li>Tamaño máximo - Establece una capacidad límite a la pila</li>
+						</ul>
+					</p>
+				</p>
 			</div>
 		</div>
 		
 		
 		<div class="wrap">
-			<div class="left">
-				<h2><a name="cola|outline"></a>Cola</h2>
+			<div id="left">
+				<h2><A NAME="cola|outline"></A>Cola</h2>
 				<p>
 					Una cola es una estructura de datos basada en FIFO, es decir, el primer elemento en ingresar es el primero en salir.
 					La misma es caracterizada por ser una secuencia de elementos en la que la operación de inserción "push" o "Encolar" se realiza por un extremo
@@ -110,7 +112,7 @@
 						<li>Frente() - Retorna el primer elemento de la cola al usuario, sin modificar la estructura</li>
 					</ul>
 					
-					<p style="margin-bottom: 0cm"><IMG SRC="images/cola.png" NAME="pila" ALIGN="BOTTOM"  BORDER=0>
+					<p style="margin-bottom: 0cm"><IMG SRC="resource/cola.png" NAME="cola" ALIGN=BOTTOM  BORDER=0>
 					<p>
 					<h3>Funcionalidad provista por la aplicación</h3>
 						<ul>
@@ -127,21 +129,59 @@
 						Existen dos operaciones de rotaciones, una en cada sentido, de manera que la cabeza del anillo pasa a ser el elemento sucesor, o el predecesor, 
 						respectivamente, de la cabeza actual.
 					</p>
+					<p style="margin-bottom: 0cm"><IMG SRC="resource/cola-circular.png" NAME="cola-circular" ALIGN=BOTTOM  BORDER=0>
 					</p>
 				</p>
 			</div>
 		</div>
 		
 		<div class="wrap">
-			<div class="left">
+			<div id="left">
 				<h2><A NAME="heap|outline"></A>Heap</h2>
-				<p></p>
-				<p style="margin-bottom: 0cm"><IMG SRC="images/heap.png" NAME="heap" ALIGN=BOTTOM  BORDER=0>
+				<P>Un heap es una estructura de &aacute;rbol con informaci&oacute;n
+					perteneciente a un conjunto ordenado. El heap tiene la caracter&iacute;stica
+					de que cada nodo padre tiene un valor mayor &oacute; menor que el de
+					todos sus nodos hijos.
+					Un &aacute;rbol cumple la condici&oacute;n de heap si satisface
+					dicha condici&oacute;n y adem&aacute;s es un &aacute;rbol binario
+					completo. Un &aacute;rbol binario es completo cuando todos los
+					niveles est&aacute;n llenos, con la excepci&oacute;n del &uacute;ltimo
+					que puede quedar exento de dicho cumplimiento, pudiendo faltar los
+					nodos a la derecha a partir de uno determinado.
+					Si bien se puede utilizar un &aacute;rbol binario para representar
+					un heap, la condici&oacute;n de &aacute;rbol completo permite
+					representar f&aacute;cilmente un heap en un vector colocando los
+					elementos por niveles y en cada nivel, los elementos de izquierda a
+					derecha. El nodo ra&iacute;z se almacena en la primera posici&oacute;n
+					del vector. Siempre se puede calcular la posici&oacute;n de los hijos
+					o la del padre a partir de la posici&oacute;n de un nodo en el
+					arreglo (contando las posiciones del arreglo a partir de cero): 
+					</P>
+					<UL>
+						<LI><P>El nodo ra&iacute;z se almacena en la posici&oacute;n 0 del
+						arreglo.</P>
+						<LI><P>Los hijos de un nodo almacenado en la posici&oacute;n <I>k</I>
+						se almacenan en las posiciones <I>2k+1</I> y <I>2k+2</I>
+						respectivamente. 
+						</P>	
+					</UL>
+					<P><BR><BR>
+				</P>
+				<p style="margin-bottom: 0cm"><IMG SRC="resource/heap.png" NAME="heap" ALIGN=BOTTOM  BORDER=0>
+				<p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+						<ul>
+							<li>Vaciar</li>
+							<li>Insertar</li>
+							<li>Eliminar</li>
+							<li>Random - Agrega un valor aleatorio al heap</li>
+						</ul>
+					</p>	
 			</div>
 		</div>
 		
 		<div class="wrap">
-			<div class="left">
+			<div id="left">
 				<h2><A NAME="trie|outline"></A>Trie</h2>
 				<p>
 					Un trie es b&aacute;sicamente un árbol de prefijos. Un trie posee una estructura de &aacute;rbol en la que la que cada nodo (excepto la ra&iacute;z) est&aacute; etiquetado con un car&aacute;cter (a,..,z) o una marca de fin.
@@ -152,7 +192,7 @@
 						<LI>Eliminar() - Elimina una clave del trie</li>
 						<LI>Vaciar() - Destruye todo el contenido del trie dejandolo vac&iacute;o</li>
 					</ul>
-				<p style="margin-bottom: 0cm"><IMG SRC="images/trie.png" NAME="pila" ALIGN=BOTTOM  BORDER=0>
+				<p style="margin-bottom: 0cm"><IMG SRC="resource/trie.png" NAME="trie" ALIGN=BOTTOM  BORDER=0>
 				<p>
 					<h3>Funcionalidad provista por la aplicación</h3>
 						<ul>
@@ -161,33 +201,120 @@
 							<li>Eliminar</li>
 							<li>Random - Agrega un valor aleatorio al trie</li>
 						</ul>
-					<p>	
+					</p>	
 				</p>
 			</div>
 		</div>
 		
 		<div class="wrap">
-			<div class="left">
-				<h2><A NAME="arbolb-ba|outline"></A>Árbol B balanceado por altura</h2>
-				<p></p>
+			<div id="left">
+				<h2><a name="arbolintro|outline"></a>Introducci&oacute;n &aacute;rbol balanceado</h2>
+				<p>
+					En esta secci&oacute;n se intenta dar una breve definici&oacute;n de t&eacute;rminos que se van a utilizar tanto en &aacute;rbol balanceado por altura como por peso.
+					Los &aacute;rboles balanceados surgen con el objeto de mejorar el rendimiento en las búsquedas.
+					La idea central de estos es la de realizar reacomodos o balanceos después de inserciones o eliminaciones de elementos. 
+					Estos árboles también nombrados recientemente AVL en honor a sus inventores, dos matemáticos rusos Adelson-Velskii y Landis.
+					Un árbol balanceado es un árbol binario en el cual las alturas de los dos subárboles para cada nodo nunca difieren en más de una unidad.
+					Las caracter&iacute;sticas de los &aacute;rboles binarios de b&uacute;squeda, ABB en adelante, son las siguientes:
+					
+					<ul>
+						<li>Cada nodo tiene a lo sumo 2 hijos</li>
+						<li>Para todo nodo del &aacute;rbol se verifica valor del subárbol izquierdo < valor del nodo < valor del subárbol derecho</li>
+					</ul>
+					
+					Siendo sub&aacute;rbol derecho de un nodo el ABB que tiene como ra&iacute;z al nodo hijo derecho de otro nodo del &aacute;rbol y 
+					sub&aacute;rbol izquierdo de un nodo el ABB que tiene como ra&iacute;z al nodo hijo izquierdo de otro nodo del &aacute;rbol.
+					<p style="margin-bottom: 0cm"><IMG SRC="resource/arbol.png" NAME="heap" ALIGN=BOTTOM  BORDER=0>
+				</p>
 			</div>
 		</div>
 		
 		<div class="wrap">
-			<div class="left">
-				<h2><A NAME="arbolb-bp|outline"></A>Árbol B balanceado por peso</h2>
-				<p></p>
+			<div id="left">
+				<h2><A NAME="arbolb-ba|outline"></A>Árbol binario balanceado por altura</h2>
+				<p>
+		
+					Un ABB está Balanceado por Altura cuando para cada uno de sus nodos ocurre que las alturas de sus dos subarboles difieren a lo sumo en K (parámetro entero no nulo).
+					Para el caso particular en que K vale 1, a este árbol se lo llama Árbol AVL (por sus autores Adel'son-Vels'ki y Landis).
+					Gracias a este balanceo, se cumple que la altura total del arbol [h(n)] con n nodos está acotada por:
+					<br></br>
+						log2(n+1) ≤ h(n) ≤ 1.44042 * log2(n+2) - 0.33772
+					<br></br>
+					Es decir, la altura total es O(log(n)).
+				</p>
+				<p>
+					<h3>Funcionalidad provista por la aplicación</h3>
+						<ul>
+							<li>Vaciar</li>
+							<li>Insertar</li>
+							<li>Eliminar</li>
+							<li>Random - Agrega un valor aleatorio al &aacute;rbol</li>
+							<li>Recorrido - Permite seleccionar el tipo de recorrido, post-orden, in-orden, pre-orden</li>
+							<li>Recorrer - Luego de seleccionar el tipo de recorrido muestra el mismo en modo animaci&oacute;n</li>
+						</ul>
+					</p>	
+				</p>
 			</div>
 		</div>
 		
-		<hr>
+		<div class="wrap">
+			<div id="left">
+				<h2><A NAME="arbolb-bp|outline"></A>Árbol binario balanceado por peso</h2>
+				<p>
+					Un ABB está Balanceado por Peso cuando para cada uno de sus nodos ocurre que el balance p(t) está acotado por:
+					<br></br>
+					[a, 1-a], con a tal que 0 ≤ a ≤ 1/2.
+					<br></br>
+					El balance del nodo t, p(t), se define como:
+					<br></br>
+					p(t) = cant_nodos en t_izquierdo / cant_nodos en t
+					<br></br>
+					Para esta implementacion, el parámetro a vale 1/3.
+					Se cumple que la altura total del arbol [h(n)] con n nodos está acotada por:
+					<br></br>
+					log2(n+1) ≤ h(n) ≤ log2(n)/log2(1 - a)
+					<br></br>
+					Es decir, la altura total es O(log(n)).
+				</p>
+			</div>
+		</div>
 		
-
+		<div class="wrap">
+			<div id="left">
+				<h2><A NAME="panel|outline"></A>Panel de control interactivo</h2>
+				<p>
+					La aplicaci&oacute;n cuenta con distintos paneles que proporcionan cierta informaci&oacute;n de las estructuras o proveen funcionalidad
+					para realizar algunas de las operaciones detalladas en en cada una de las estructuras. A continuaci&oacute;n se detallan los mismos.
+					
+					<p style="margin-bottom: 0cm"><IMG SRC="resource/panel-control.png" NAME="panel-control" ALIGN=BOTTOM  BORDER=0>
+					<ul>
+						<li><b>1)</b> Bot&oacute;n de ayuda, despliega una ventana con una explicaci&oacute;n de las estructuras que contempla la aplicaci&oacute;n</li>
+						<li><b>2)</b> Tabs de estructuras, al seleccionar un tab correspondiente a una estructura, se habilita el panel de botones para realizar operaciones de la estructura elegida</li>
+						<li><b>3)</b> Panel de pseudoc&oacute;digo, se muestra el pseudoc&oacute;digo ejecutado al realizar una operaci&oacute;n</li>
+						<li><b>4)</b> Log de operaciones, se muestra una descripci&oacute;n de lo sucedido al ejecutar una operaci&oacute;n</li>
+						<li><b>5)</b> Panel de botoneras, Permite ingresar el valor a insertar a la estructura y realizar las distintas operaciones previamente detalladas seg&uacute;n la estructura correspondiente</li>
+						<li><b>6)</b> Panel interactivo, Permite seleccionar el modo interactivo y poder realizar operaciones paso por paso</li>
+						<li><b>7)</b> Velocidad de animaci&oacute;n, permite cambiar la veloacidad de la animaci&oacute;n de las operaciones</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div id="left">
+				<h2><A NAME="referencias|outline"></A>Referencias</h2>
+				<p>
+					<ul>
+						<li>Handbook of algorithms and data structures (2&ordm;editon) - Gonnet, Baeza-Yates. Addison-Wesley, 1991.</li>
+						<li>Handbook of Data Structures and Applications - Mehta,Sahni. Chapman and Hall, 2005</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+		
 		
 		<div id="footer">
-			<p><strong><a name="#integrantes|outline"></a>Integrantes:</strong> Cabrera Manuel &middot; Caravatti Estefanía &middot; Fantone Nicolás &middot; Pisaturo Damián &middot; Rodríguez María Laura &middot;</p>
-			<!--<p><strong>Network:</strong> <a href="#">Network site #1</a> &middot;  <a href="#">Network site #2</a> &middot;  <a href="#">Network site #3</a> &middot;  <a href="#">Network site #4</a></p>
-			<p>Design: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.solucija.com/">Solucija</a></p>-->
+			<p><a name="integrantes"><strong>Integrantes:</strong></a> Cabrera Manuel &middot; Caravatti Estefanía &middot; Fantone Nicolás &middot; Pisaturo Damián &middot; Rodríguez María Laura &middot;</p>
+			<p><strong><a name="acercade|outline">Acerca de:</strong></a> Trabajo pr&aacute;ctico correspondiente a la materia Taller de programaci&oacute;n II &middot; C&aacute;tedra Lic. Servetto &middot; Universidad de Buenos Aires &middot;</p>
 		</div>		
 	</div>
 </body>
