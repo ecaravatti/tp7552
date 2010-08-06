@@ -85,7 +85,7 @@ Ejemplos:
   * Frame Principal
     * Agregar scroll _(Dami / Tifi)_ *(Done)*
     * Styles  _(Nico)_ *(In Progress)*
-    * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc._(Lau)_ *(In Progress)*
+    * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc._(Lau)_ *(Done)*
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura (Voy a poner un log de operaciones por estructura) _(Tifi)_ *(Done)*
     * Styles  _(Nico)_ *(Done)*
