@@ -9,8 +9,6 @@ import view.element.common.ElementView;
 /**
  * Este comando debe ejecutarse cuando se desea seleccionars, un elemento del
  * vista.
- * 
- * 
  */
 public class SelectElementViewCommand implements Command {
 	private JComponent component;

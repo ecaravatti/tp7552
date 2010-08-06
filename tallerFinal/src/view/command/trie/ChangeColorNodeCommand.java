@@ -7,8 +7,6 @@ import view.element.trie.AbstractTrieNodeView;
 
 /**
  * Este comando debe ejecutarse cuando se desea cambiar el color de un nodo.
- * 
- * 
  */
 public class ChangeColorNodeCommand implements Command {
 	private AbstractTrieNodeView node;

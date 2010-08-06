@@ -4,6 +4,9 @@ import view.collection.tree.BSTNodeView;
 import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
+/**
+ * Comando para eliminar un nodo.
+ */
 public class RemoveCommand implements Command {
 	private BinarySearchTreeView bstView;
 	private BSTNodeView node;

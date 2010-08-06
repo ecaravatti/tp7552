@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.command.common;
 
 import java.awt.Color;
@@ -9,8 +5,7 @@ import java.awt.Color;
 import view.shape.Text;
 
 /**
- *
- * 
+ * Comando para cambiar el color del texto.
  */
 public class ChangeTextColorCommand implements Command {
 

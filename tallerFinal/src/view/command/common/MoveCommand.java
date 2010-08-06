@@ -8,7 +8,6 @@ import view.element.common.Mobile;
 
 /**
  * Este comando debe ejecutarse para mover un elemento.
- * 
  */
 public class MoveCommand implements Command {
 	private Point2D point;

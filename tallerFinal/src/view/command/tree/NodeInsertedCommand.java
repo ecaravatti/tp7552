@@ -5,6 +5,9 @@ import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 import view.memento.tree.BSTMemento;
 
+/**
+ * Comando para insertar un nodo.
+ */
 public class NodeInsertedCommand implements Command {
 	private BSTNodeView node;
 	private int side;

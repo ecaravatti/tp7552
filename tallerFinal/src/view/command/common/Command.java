@@ -3,7 +3,6 @@ package view.command.common;
 /**
  * Representa a un comando
  * 
- * 
  */
 public interface Command {
 

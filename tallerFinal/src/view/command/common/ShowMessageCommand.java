@@ -5,8 +5,6 @@ import controller.InteractiveController;
 
 /**
  * Este comando debe ejecutarse cuando se desea mostrar un mensaje
- * 
- * 
  */
 public class ShowMessageCommand implements Command {
 

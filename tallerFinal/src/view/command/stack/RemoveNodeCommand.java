@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.command.stack;
 
 import view.collection.stack.StackNodeView;
@@ -10,7 +5,7 @@ import view.collection.stack.StackView;
 import view.command.common.Command;
 
 /**
- *
+ * Comando para remover un nodo de la pila.
  */
 public class RemoveNodeCommand<T> implements Command {
 

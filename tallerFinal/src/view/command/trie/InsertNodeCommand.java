@@ -7,8 +7,6 @@ import view.shape.DefaultShapeSettings;
 
 /**
  * Este comando debe ejecutarse cuando se ha insertado un nodo.
- * 
- * 
  */
 public class InsertNodeCommand implements Command {
 	private TrieView trie;

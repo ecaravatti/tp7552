@@ -4,7 +4,6 @@ import javax.swing.JComponent;
 
 /**
  * Este comando debe ejecutarse cuando se desea re-pintar el trie
- * 
  */
 public class PaintCommand implements Command {
 	private JComponent component;

@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.command.queue;
 
 import view.command.common.Command;
 import view.element.common.LinkableMobile;
 
 /**
- *
+ * Marca un mobile como linkeado o deslinkeado.
  */
 public class LinkMobilesCommand implements Command {
 

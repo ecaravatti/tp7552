@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.command.stack;
 
 import view.collection.stack.StackNodeRoles;
@@ -10,8 +5,7 @@ import view.collection.stack.StackNodeView;
 import view.command.common.Command;
 
 /**
- *
- * 
+ * Comando para asignarle un rol a un nodo. (Roles = tope o final)
  */
 public class AssignNodeRoleCommand<T> implements Command {
 

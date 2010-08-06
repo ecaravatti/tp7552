@@ -7,7 +7,7 @@ import view.common.AnimatedPanel;
 import view.element.common.AbstractElementView;
 
 /**
- *
+ * Comando para cambiar el color de seleccion de un elemento.
  * 
  */
 public class ChangeSelectableColorCommand implements Command {

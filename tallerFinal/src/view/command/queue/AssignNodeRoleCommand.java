@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.command.queue;
 
 import view.collection.queue.QueueNodeRoles;
@@ -10,7 +5,7 @@ import view.collection.queue.QueueNodeView;
 import view.command.common.Command;
 
 /**
- *
+ * Comando para asignarle un rol a un nodo (Roles= frente o final)
  */
 public class AssignNodeRoleCommand<T> implements Command {
 

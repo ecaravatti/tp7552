@@ -1,15 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.command.queue;
 
 import view.collection.queue.QueueNodeView;
 import view.command.common.Command;
 
 /**
- *
- * 
+ * Comando para asignarle un indice a un nodo.
  */
 public class AssignNodeIndexCommand<T> implements Command {
 

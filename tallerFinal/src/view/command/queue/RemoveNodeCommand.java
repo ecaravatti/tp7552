@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.command.queue;
 
 import view.collection.queue.QueueNodeView;
@@ -10,7 +5,7 @@ import view.collection.queue.QueueView;
 import view.command.common.Command;
 
 /**
- *
+ * Comando para remover un nodo de la cola.
  */
 public class RemoveNodeCommand<T> implements Command {
 

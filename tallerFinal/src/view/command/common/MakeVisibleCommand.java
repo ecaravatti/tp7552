@@ -4,8 +4,7 @@ import view.common.AnimatedPanel;
 import view.element.common.ElementView;
 
 /**
- *
- * 
+ * Comando para hacer visible un elemento.
  */
 public class MakeVisibleCommand implements Command {
 	private AnimatedPanel component;

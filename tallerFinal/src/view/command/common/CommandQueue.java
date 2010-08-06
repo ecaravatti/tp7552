@@ -4,8 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 
- * 
+ * Cola de Comandos. Ejecuta los comandos que se le agregan.
  */
 public class CommandQueue implements Runnable {
 	private LinkedList<Command> queue;

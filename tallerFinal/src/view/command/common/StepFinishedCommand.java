@@ -4,6 +4,9 @@ import view.animation.common.AbstractUndoAnimationSteps;
 import view.common.AnimatedPanel;
 import controller.InteractiveController;
 
+/**
+ * Comando que marca la finalizacion de una animacion.
+ */
 public class StepFinishedCommand implements Command {
 
 	private AnimatedPanel component;

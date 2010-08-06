@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 
 /**
  * Este comando debe ejecutarse cuando se desea mostrar un mensaje de Dialogo
- * 
  */
 public class ShowMessageDialogCommand implements Command {
 	private String message;

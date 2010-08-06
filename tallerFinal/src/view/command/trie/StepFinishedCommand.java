@@ -9,8 +9,6 @@ import controller.InteractiveController;
 
 /**
  * Este comando debe ejecutarse cuando se finaliza un paso (modo interactivo)
- * 
- * 
  */
 public class StepFinishedCommand implements Command {
 	private TrieView trieView;

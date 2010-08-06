@@ -8,8 +8,6 @@ import view.element.trie.TrieNodeView;
 
 /**
  * Este comando debe ejecutarse cuando se desea mover el primer hijo del nodo
- * 
- * 
  */
 public class MoveFirstChildCommand implements Command {
 	private TrieView trieView;

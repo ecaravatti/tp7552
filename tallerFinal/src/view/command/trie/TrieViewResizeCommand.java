@@ -9,8 +9,6 @@ import view.element.trie.TrieNodeView;
 
 /**
  * Este comando debe ejecutarse cuando se debe redimensionar cada nodo del trie
- * 
- * 
  */
 public class TrieViewResizeCommand implements Command {
 	private TrieView trie;

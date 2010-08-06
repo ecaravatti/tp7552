@@ -7,7 +7,6 @@ import view.element.common.ElementView;
 /**
  * Este comando debe ejecutarse cuando se desea que un elemento deje de
  * parpadear
- * 
  */
 public class StopFlashingElementViewCommand implements Command {
 	private JComponent component;

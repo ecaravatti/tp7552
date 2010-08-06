@@ -4,6 +4,9 @@ import view.collection.tree.BSTNodeView;
 import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
+/**
+ * Comando para empezar una doble rotacion.
+ */
 public class DoubleRotationStartedCommand implements Command {
 	private BinarySearchTreeView bstView;
 	private int side;

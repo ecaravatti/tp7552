@@ -3,6 +3,9 @@ package view.command.tree;
 import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 
+/**
+ * Comando para mover los nodos del tree. 
+ */
 public class MoveNodesCommand implements Command {
 	private BinarySearchTreeView tree;
 

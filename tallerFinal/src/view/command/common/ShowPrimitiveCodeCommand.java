@@ -6,8 +6,6 @@ import controller.InteractiveController;
 /**
  * Este comando debe ejecutarse cuando se desea mostrar el pseudocodigo de una
  * primitiva.
- * 
- * 
  */
 public class ShowPrimitiveCodeCommand implements Command {
 
