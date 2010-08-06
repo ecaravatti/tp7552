@@ -74,7 +74,7 @@ Ejemplos:
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
-    * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura.
+    * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura._(Lau)_ *(In Progress)*
     * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo.
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
