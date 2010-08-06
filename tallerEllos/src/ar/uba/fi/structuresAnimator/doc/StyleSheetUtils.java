@@ -47,14 +47,14 @@ public class StyleSheetUtils {
 						"#nav li a { display:block; padding: 10px 12px 15px; color:#768998; text-decoration:none; border: 0; margin:0 1px 0 0; }");
 		styleSheet
 				.addRule(
-						"#nav li a:hover, #nav li a.current { background: url(../images/barbg.gif) no-repeat bottom center; color:#879aa9; }");
+						"#nav li a:hover, #nav li a.current { color:#879aa9; }");
 		styleSheet.addRule(
 				".akey { border-bottom: 1px dotted #4B5761; }");
 		styleSheet.addRule(
 				".left { width: 570px; margin: 0 0 20px 0; }"); /*float: left; */
 		styleSheet
 				.addRule(
-						".left h2 { float: left; font: 2.1em \"Trebuchet MS\", Arial; background: url(../images/h2bg.gif) repeat-x bottom; color:#121212; letter-spacing:-1px; margin: 0px 0 20px 0; clear:left; }");
+						".left h2 { float: left; font: 2.1em \"Trebuchet MS\", Arial; color:#121212; letter-spacing:-1px; margin: 0px 0 20px 0; clear:left; }");
 		styleSheet
 				.addRule(
 						".left h2 a { color:#121212; text-decoration:none; border: 0; }");
@@ -65,7 +65,7 @@ public class StyleSheetUtils {
 				"#right {	width:230px; float:right; margin: 0 0 20px 0; }");
 		styleSheet
 				.addRule(
-						"#right h2 { color:#ffffff; margin: 0 0 5px 0; font: bold 1.2em \"Trebuchet MS\", Arial; background: #ffffff url(../images/sideh2bg.gif) repeat-x; padding: 4px 10px; border-bottom: 2px solid #000; }");
+						"#right h2 { color:#ffffff; margin: 0 0 5px 0; font: bold 1.2em \"Trebuchet MS\", Arial; background: #ffffff ; padding: 4px 10px; border-bottom: 2px solid #000; }");
 		styleSheet
 				.addRule(
 						"#right ul { list-style:none; 	border-top:1px solid #eeeeee; border:none; padding:0; margin:0 0 15px 0; }");
