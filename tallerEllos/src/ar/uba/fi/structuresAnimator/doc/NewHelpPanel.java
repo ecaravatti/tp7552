@@ -2,8 +2,10 @@ package ar.uba.fi.structuresAnimator.doc;
 
 import java.awt.Desktop;
 import java.awt.Dimension;
-import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 
 import javax.swing.GroupLayout;
@@ -53,14 +55,15 @@ public class NewHelpPanel extends JPanel {
 		HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
 		htmlDoc.setBase(getClass().getResource(HTML_RESOURCE));
 
-		FileReader reader = null;
+
+		BufferedReader reader = null;
 		// Crear parser para el archivo
 		HTMLEditorKit.Parser parser = new ParserDelegator();
 		HTMLEditorKit.ParserCallback callback = htmlDoc.getReader(0);
 
 		try {
-			reader = new FileReader(getClass().getResource(HTML_RESOURCE)
-					.getPath());
+			InputStream is = getClass().getResourceAsStream(HTML_RESOURCE);
+			reader = new BufferedReader(new InputStreamReader(is));
 
 			// Parsear el archivo
 			parser.parse(reader, callback, true);
