@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
 import view.common.JTextFieldLimit;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import controller.TrieController;
 
@@ -98,7 +98,7 @@ public class TrieButtonsPanel extends JPanel {
     jPanel1.setLayout(new java.awt.GridLayout(1, 0));
     add(jPanel1);
     
-    Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
+    Icon addIcon = new ImageIcon(DataStructureApplet.BUTTON_ADD_IMAGE);
     insertButton = new JButton("Insertar", addIcon);
     insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
     insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -113,7 +113,7 @@ public class TrieButtonsPanel extends JPanel {
     });
     add(insertButton);
 
-    Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
+    Icon deleteIcon = new ImageIcon(DataStructureApplet.BUTTON_DELETE_IMAGE);
     removeButton = new JButton("Eliminar", deleteIcon);
     removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
     removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -128,7 +128,7 @@ public class TrieButtonsPanel extends JPanel {
     });
     add(removeButton);
 
-    Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
+    Icon randomIcon = new ImageIcon(DataStructureApplet.BUTTON_RANDOM_IMAGE);
     demoButton = new JButton("Random", randomIcon);
     demoButton.setVerticalTextPosition(SwingConstants.BOTTOM);
     demoButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -143,7 +143,7 @@ public class TrieButtonsPanel extends JPanel {
     });
     add(demoButton);
 
-    Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);;
+    Icon cleanIcon = new ImageIcon(DataStructureApplet.BUTTON_REFRESH_IMAGE);;
     clearButton = new JButton("Vaciar", cleanIcon);
     clearButton.setVerticalTextPosition(SwingConstants.BOTTOM);
     clearButton.setHorizontalTextPosition(SwingConstants.CENTER);

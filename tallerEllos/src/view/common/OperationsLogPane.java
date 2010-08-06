@@ -4,7 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 /**
  * Panel que logea las operaciones realizadas sobre una estructura.
@@ -22,7 +22,7 @@ public class OperationsLogPane extends JScrollPane {
 		logTextArea = new JTextArea();
 		logTextArea.setBorder(BorderFactory.createTitledBorder(PANE_TITLE));
 		logTextArea.setEditable(Boolean.FALSE);
-		logTextArea.setFont(StructuresAnimator.DEF_FONT);
+		logTextArea.setFont(DataStructureApplet.DEF_FONT);
 
 		this.setViewportView(logTextArea);
 	}

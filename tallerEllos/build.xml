@@ -2,8 +2,8 @@
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
 <!-- (If you delete it and reopen the project it will be recreated.) -->
-<project name="StructuresAnimator" default="default" basedir=".">
-    <description>Builds the Project StructuresAnimator</description>
+<project name="DataStructureApplet" default="default" basedir=".">
+    <description>Builds the Project DataStructureApplet</description>
     <import file="config/build-impl.xml"/>
     <!--
 

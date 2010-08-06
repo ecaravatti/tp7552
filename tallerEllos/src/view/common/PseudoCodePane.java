@@ -4,7 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 /**
  * Panel que muestra el pseudocodigo de las operaciones realizadas sobre las
@@ -24,7 +24,7 @@ public class PseudoCodePane extends JScrollPane {
 		pseudoCodeTextArea.setBorder(BorderFactory
 				.createTitledBorder(PANE_TITLE));
 		pseudoCodeTextArea.setEditable(Boolean.FALSE);
-		pseudoCodeTextArea.setFont(StructuresAnimator.DEF_FONT);
+		pseudoCodeTextArea.setFont(DataStructureApplet.DEF_FONT);
 
 		setViewportView(pseudoCodeTextArea);
 	}

@@ -18,7 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.common.JTextFieldLimit;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import controller.HeapController;
 
@@ -91,7 +91,7 @@ public class HeapButtonsPanel extends JPanel {
         integerTextField.setColumns(MAX_INPUT_LENGTH);
         integerTextField.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
+        Icon addIcon = new ImageIcon(DataStructureApplet.BUTTON_ADD_IMAGE);
         insertBtn = new JButton("Insertar", addIcon);
         insertBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -105,7 +105,7 @@ public class HeapButtonsPanel extends JPanel {
             }
         });
         
-        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
+        Icon deleteIcon = new ImageIcon(DataStructureApplet.BUTTON_DELETE_IMAGE);
         deleteBtn = new JButton("Eliminar", deleteIcon);
         deleteBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         deleteBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -119,7 +119,7 @@ public class HeapButtonsPanel extends JPanel {
             }
         });
         
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
+        Icon randomIcon = new ImageIcon(DataStructureApplet.BUTTON_RANDOM_IMAGE);
         randomBtn = new JButton("Random", randomIcon);
         randomBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         randomBtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -133,7 +133,7 @@ public class HeapButtonsPanel extends JPanel {
             }
         });
         
-        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
+        Icon cleanIcon = new ImageIcon(DataStructureApplet.BUTTON_REFRESH_IMAGE);
         cleanBtn = new JButton("Vaciar", cleanIcon);
         cleanBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
         cleanBtn.setHorizontalTextPosition(SwingConstants.CENTER);

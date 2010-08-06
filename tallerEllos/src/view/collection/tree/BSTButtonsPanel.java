@@ -17,7 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.common.JTextFieldLimit;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import controller.BSTController;
 
@@ -104,7 +104,7 @@ public class BSTButtonsPanel extends JPanel {
         textField.setColumns(MAX_INPUT_LENGTH);
         textField.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon addIcon = new ImageIcon(StructuresAnimator.BUTTON_ADD_IMAGE);
+        Icon addIcon = new ImageIcon(DataStructureApplet.BUTTON_ADD_IMAGE);
         insertButton = new JButton("Insertar", addIcon);
         insertButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -118,7 +118,7 @@ public class BSTButtonsPanel extends JPanel {
             }
         });
 
-        Icon deleteIcon = new ImageIcon(StructuresAnimator.BUTTON_DELETE_IMAGE);
+        Icon deleteIcon = new ImageIcon(DataStructureApplet.BUTTON_DELETE_IMAGE);
         removeButton = new JButton("Eliminar", deleteIcon);
         removeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         removeButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -132,7 +132,7 @@ public class BSTButtonsPanel extends JPanel {
             }
         });
         
-        Icon traverseIcon = new ImageIcon(StructuresAnimator.BUTTON_TRAVERSE_IMAGE);
+        Icon traverseIcon = new ImageIcon(DataStructureApplet.BUTTON_TRAVERSE_IMAGE);
         traverseButton = new JButton("Recorrer", traverseIcon);
         traverseButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         traverseButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -150,7 +150,7 @@ public class BSTButtonsPanel extends JPanel {
         traverseOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In-Order", "Pre-Order", "Post-Order" }));
         traverseOption.putClientProperty("JComponent.sizeVariant", "large");
         
-        Icon cleanIcon = new ImageIcon(StructuresAnimator.BUTTON_REFRESH_IMAGE);
+        Icon cleanIcon = new ImageIcon(DataStructureApplet.BUTTON_REFRESH_IMAGE);
         clearButton = new JButton("Vaciar", cleanIcon);
         clearButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         clearButton.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -164,7 +164,7 @@ public class BSTButtonsPanel extends JPanel {
             }
         });
 
-        Icon randomIcon = new ImageIcon(StructuresAnimator.BUTTON_RANDOM_IMAGE);
+        Icon randomIcon = new ImageIcon(DataStructureApplet.BUTTON_RANDOM_IMAGE);
         insertRandomButton = new JButton("Random", randomIcon);
         insertRandomButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         insertRandomButton.setHorizontalTextPosition(SwingConstants.CENTER);

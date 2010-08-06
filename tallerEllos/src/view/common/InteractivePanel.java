@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import ar.uba.fi.structuresAnimator.StructuresAnimator;
+import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import view.exception.common.CannotUndoException;
 import controller.InteractiveController;
@@ -128,8 +128,8 @@ public class InteractivePanel extends javax.swing.JPanel {
     panel.setLayout(flowLayout);
     //checkBoxInteractive.setBackground(new java.awt.Color(255, 255, 255));
     
-    Icon playIcon = new ImageIcon(StructuresAnimator.BUTTON_PLAY_IMAGE);
-    Icon pauseIcon = new ImageIcon(StructuresAnimator.BUTTON_PAUSE_IMAGE);
+    Icon playIcon = new ImageIcon(DataStructureApplet.BUTTON_PLAY_IMAGE);
+    Icon pauseIcon = new ImageIcon(DataStructureApplet.BUTTON_PAUSE_IMAGE);
     checkBoxInteractive = new JCheckBox("Interactivo", pauseIcon, false);
     checkBoxInteractive.setSelectedIcon(playIcon);
     checkBoxInteractive.setToolTipText("Modo interactivo");
@@ -142,7 +142,7 @@ public class InteractivePanel extends javax.swing.JPanel {
       }
     });
     
-    Icon nextIcon = new ImageIcon(StructuresAnimator.BUTTON_FAST_FORWARD_IMAGE);
+    Icon nextIcon = new ImageIcon(DataStructureApplet.BUTTON_FAST_FORWARD_IMAGE);
     nextButton = new JButton("Siguiente", nextIcon);
     nextButton.setToolTipText("Siguiente paso");
     nextButton.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -156,7 +156,7 @@ public class InteractivePanel extends javax.swing.JPanel {
     });
     panel.add(nextButton);
 
-	Icon undoIcon = new ImageIcon(StructuresAnimator.BUTTON_REWIND_IMAGE);
+	Icon undoIcon = new ImageIcon(DataStructureApplet.BUTTON_REWIND_IMAGE);
     undoStepButton = new javax.swing.JButton("Deshacer", undoIcon);
     undoStepButton.setToolTipText("Paso anterior");
     undoStepButton.setMargin(new java.awt.Insets(2, 5, 2, 5));

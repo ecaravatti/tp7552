@@ -61,7 +61,7 @@ import controller.TrieController;
 /**
  *
  */
-public class StructuresAnimator extends JApplet implements ComponentListener {
+public class DataStructureApplet extends JApplet implements ComponentListener {
 	private static final long serialVersionUID = -4834432122881887095L;
 
 	public final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
