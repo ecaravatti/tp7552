@@ -80,7 +80,7 @@ Ejemplos:
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
-    * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar. _(Dami)_ *(In Progress)*
+    * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar. _(Tifi)_ *(In Progress)*
     * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío._(Nico)_ *(Done)*
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
