@@ -12,7 +12,13 @@ public enum BSTTraversePrimitives {
 
     inorder() {
 
-        private static final String TRAVERSE_CODE = "funcion recorrer_inorder(subarbol t)\n  si t no es nulo\n    recorrer_inorder(t.izq)\n    // procesar t\n    recorrer_inorder(t.der)\n  fin si\nfin funcion";
+        private static final String TRAVERSE_CODE = "función recorrer_inorder(subarbol t) {\n" +
+        											"  si (t no es nulo) entonces {\n" +
+        											"    recorrer_inorder(t.izq);\n" +
+        											"    // procesar t\n" +
+        											"    recorrer_inorder(t.der);\n" +
+        											"  }\n" +
+        											"}";
 
         @Override
         public String getCode() {
@@ -21,7 +27,13 @@ public enum BSTTraversePrimitives {
     },
     preorder() {
 
-        private static final String TRAVERSE_CODE = "funcion recorrer_preorder(subarbol t)\n  si t no es nulo\n    // procesar t\n    recorrer_preorder(t.izq)\n    recorrer_preorder(t.der)\n  fin si\nfin funcion";
+        private static final String TRAVERSE_CODE = "función recorrer_preorder(subarbol t) {\n" +
+        											"  si (t no es nulo) entonces {\n" +
+        											"    // procesar t\n" +
+        											"    recorrer_preorder(t.izq);\n" +
+        											"    recorrer_preorder(t.der);\n" +
+        											"  }\n" +
+        											"}";
 
         @Override
         public String getCode() {
@@ -30,7 +42,13 @@ public enum BSTTraversePrimitives {
     },
     postorder() {
 
-        private static final String TRAVERSE_CODE = "funcion recorrer_postorder(subarbol t)\n  si t no es nulo\n    recorrer_postorder(t.izq)\n    recorrer_postorder(t.der)\n    // procesar t\n  fin si\nfin funcion";
+        private static final String TRAVERSE_CODE = "función recorrer_postorder(subarbol t) {\n" +
+        											"  si (t no es nulo) entonces {\n" +
+        											"    recorrer_postorder(t.izq)\n" +
+        											"    recorrer_postorder(t.der)\n" +
+        											"    // procesar t\n" +
+        											"  }\n" +
+        											"}";
 
         @Override
         public String getCode() {

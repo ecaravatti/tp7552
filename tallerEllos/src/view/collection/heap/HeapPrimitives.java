@@ -27,7 +27,7 @@ public enum HeapPrimitives {
                                                   "    intercambiar heap.Vector[i div 2] y heap.Vector[i]; \n" +
                                                   "    i := i div 2 \n" +
                                                   "  } \n" +
-                                                  "}\n";
+                                                  "}";
 
         @Override
         public String getCode() {
@@ -38,7 +38,7 @@ public enum HeapPrimitives {
 
         private static final String DELETE_CODE = "función EliminarMax( heap ) : Tipo_elemento { \n" +
                                                   "  si (heap_vacio( heap )) entonces {\n" +
-                                                  "    error \"Monticulo vacío\";\n" +
+                                                  "    error \"Heap vacío\";\n" +
                                                   "  } sino {\n" +
                                                   "    x := heap.Vector[1];  \n" +
                                                   "    heap.Vector[1] := heap.Vector[heap.Tamaño];  \n" +
@@ -63,7 +63,7 @@ public enum HeapPrimitives {
                                                   "    }\n" +
                                                   "    intercambiar heap.Vector[j] y heap.Vector[i];  \n" +
                                                   "  } hasta j=i /* Si j=i el nodo alcanzó su posición final */\n" +
-                                                  "}\n";
+                                                  "}";
 
         @Override
         public String getCode() {
