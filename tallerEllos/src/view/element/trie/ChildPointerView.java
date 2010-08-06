@@ -13,9 +13,9 @@ public class ChildPointerView extends PointerView {
   private final static BasicStroke DEF_STROKE = new BasicStroke(1.4f);
   private final static Color DEF_COLOR = Color.BLACK;
   private final static float DEF_DASH[] = { 1f };
-  private final static BasicStroke DEF_DATA_STROKE = new BasicStroke(1.4f,
+  private final static BasicStroke DEF_DATA_STROKE = new BasicStroke(1.5f,
       BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, DEF_DASH, 0.0f);
-  private final static Color DEF_DATA_COLOR = Color.BLUE.darker();
+  private final static Color DEF_DATA_COLOR = new Color(100, 100, 200);
 
   /**
    * Construye un ChildPointerView

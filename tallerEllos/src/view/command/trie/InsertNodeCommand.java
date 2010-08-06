@@ -15,15 +15,17 @@ import view.element.trie.AbstractTrieNodeView;
 public class InsertNodeCommand implements Command {
   private TrieView trie;
   private AbstractTrieNodeView node;
+  private int letterIndex;
 
   /**
    * @param trie el trie en el que se ha insertado el nodo.
    * @param node el nodo que se ha insertado.
    */
-  public InsertNodeCommand(TrieView trie, AbstractTrieNodeView node) {
+  public InsertNodeCommand(TrieView trie, AbstractTrieNodeView node, int letterIndex) {
     super();
     this.trie = trie;
     this.node = node;
+    this.letterIndex = letterIndex;
   }
 
   @Override
@@ -33,6 +35,7 @@ public class InsertNodeCommand implements Command {
 
   @Override
   public void execute() {
+	trie.getWord().setVisible(letterIndex, false);
     node.setVisible(true);
     node.setInvisible(false);
     node.setFlashingColor(Color.yellow.brighter());

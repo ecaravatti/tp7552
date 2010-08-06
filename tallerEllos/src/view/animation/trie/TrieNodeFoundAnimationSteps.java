@@ -1,6 +1,5 @@
 package view.animation.trie;
 
-import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import view.shape.NodeShape;
  * 
  */
 public class TrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
-  private static int DEF_INITIAL = 20;
+//  private static int DEF_INITIAL = 20;
   
   private AbstractTrieNodeView node;
   private TrieView trieView;
@@ -80,27 +79,27 @@ public class TrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
     // Muevo la letra a la posicion final
     NodeShape letter = trieView.getWord().getLetter(index);
     initPosLetter = letter.getPosition();
-    Point2D initPos = initPosLetter;
-    Point2D finPos = new Point2D.Double(DEF_INITIAL, letter.getPosition()
-        .getY());
+//    Point2D initPos = initPosLetter;
+//    Point2D finPos = new Point2D.Double(DEF_INITIAL, letter.getPosition()
+//        .getY());
     
     steps.add( new StopFlashingElementViewCommand(trieView, trieView.getWord()) );
-    this.moveLetter(steps, letter, initPos, finPos, trieView.getDelta());
+//    this.moveLetter(steps, letter, initPos, finPos, trieView.getDelta());
+//
+//    initPos = finPos;
+//    finPos = new Point2D.Double(initPos.getX(), node.getPosition().getY());
+//    this.moveLetter(steps, letter, initPos, finPos, trieView.getDelta() + 2);
 
-    initPos = finPos;
-    finPos = new Point2D.Double(initPos.getX(), node.getPosition().getY());
-    this.moveLetter(steps, letter, initPos, finPos, trieView.getDelta() + 2);
-
-    Color color;
+//    Color color;
     // Finalizacion de la insercion
-    if (trieView.isRunningInsertion()) {
-      color = AbstractTrieNodeView.Colors.NODE_ADDED.getColor();
-    } else { 
-      color = AbstractTrieNodeView.Colors.NODE_FOUND.getColor();
-    }
+//    if (trieView.isRunningInsertion()) {
+//      color = AbstractTrieNodeView.Colors.NODE_ADDED.getColor();
+//    } else { 
+//      color = AbstractTrieNodeView.Colors.NODE_FOUND.getColor();
+//    }
 
-    steps.add(new ChangeColorNodeShapeCommand(letter, color));
-    steps.add(new ChangeColorNodeCommand(node, color) );
+//    steps.add(new ChangeColorNodeShapeCommand(letter, color));
+//    steps.add(new ChangeColorNodeCommand(node, color) );
     steps.add(new StepFinishedCommand(trieView, this, index + 1, node, true,
         false));
   }
@@ -124,12 +123,12 @@ public class TrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
 
   }
 
-  private void moveLetter(List<Command> list, NodeShape letter,
-      Point2D initPos, Point2D finPos, double delta) {
-    AnimationSteps move = new MobileAnimationSteps(trieView, letter, initPos,
-        finPos, delta);
-    list.addAll(move.getSteps());
-    steps.addAll( trieView.getPaintCommands() );
-  }
+//  private void moveLetter(List<Command> list, NodeShape letter,
+//      Point2D initPos, Point2D finPos, double delta) {
+//    AnimationSteps move = new MobileAnimationSteps(trieView, letter, initPos,
+//        finPos, delta);
+//    list.addAll(move.getSteps());
+//    steps.addAll( trieView.getPaintCommands() );
+//  }
 
 }

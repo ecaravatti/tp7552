@@ -310,7 +310,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 			}
 			
 		});
-		updateInteractivePanel(0);
+		tabbedPane.setSelectedIndex(5);
+		updateInteractivePanel(5);
 
 		Dimension screenResolution = this.getToolkit().getScreenSize();
 		this.setSize(new Double(screenResolution.getWidth()).intValue() - 15,

@@ -1,13 +1,10 @@
 package view.animation.trie;
 
-import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.animation.common.AnimationSteps;
-import view.animation.common.MobileAnimationSteps;
 import view.collection.trie.TrieMessages;
 import view.collection.trie.TrieView;
 import view.command.common.ChangeColorNodeShapeCommand;
@@ -16,7 +13,6 @@ import view.command.common.MoveCommand;
 import view.command.common.PaintCommand;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StopFlashingElementViewCommand;
-import view.command.trie.ChangeColorNodeCommand;
 import view.command.trie.InsertNodeCommand;
 import view.command.trie.MakeInvisibleCommand;
 import view.command.trie.MoveFirstChildCommand;
@@ -33,7 +29,7 @@ import view.shape.Segment;
  * 
  */
 public class AddTrieNodeAnimationSteps extends AbstractUndoAnimationSteps {
-  private static int DEF_INITIAL = 20;
+//  private static int DEF_INITIAL = 20;
   
   private TrieView trieView;
   private TrieNodeView parent;
@@ -109,33 +105,34 @@ public class AddTrieNodeAnimationSteps extends AbstractUndoAnimationSteps {
     this.initAddNode(steps, mov1.getPoints(), trieView.getDelta());
 
     this.moveForwardFirstChild();
+    
 
     steps.add(new PaintCommand(trieView));
     steps.add(new PaintCommand(trieView));
     steps.add(new PaintCommand(trieView));
-    steps.add(new InsertNodeCommand(trieView, node));
+    steps.add(new InsertNodeCommand(trieView, node, index));
     steps.add(new PaintCommand(trieView));
     steps.add(new PaintCommand(trieView));
 
     // Movimiento de la letra desde el lugar de insercion a la posicion final
-    Point2D finalPos = this.getFinalPosNode();
-
-    AnimationSteps move = new MobileAnimationSteps(trieView, letter, node
-        .getPosition(), new Point2D.Double(DEF_INITIAL, finalPos.getY()),
-        trieView.getDelta());
-    steps.addAll(move.getSteps());
+//    Point2D finalPos = this.getFinalPosNode();
+//
+//    AnimationSteps move = new MobileAnimationSteps(trieView, letter, node
+//        .getPosition(), new Point2D.Double(DEF_INITIAL, finalPos.getY()),
+//        trieView.getDelta());
+//    steps.addAll(move.getSteps());
 
     // Cambio de color de la letra
-    Color color = AbstractTrieNodeView.Colors.NODE_ADDED.getColor();
-    steps.add(new ChangeColorNodeShapeCommand(letter, color));
-    steps.addAll( trieView.getPaintCommands() );
+//    Color color = AbstractTrieNodeView.Colors.NODE_ADDED.getColor();
+//    steps.add(new ChangeColorNodeShapeCommand(letter, color));
+//    steps.addAll( trieView.getPaintCommands() );
 
-    // Dimensionar el trie al tama�o final
+    // Dimensionar el trie al tamaño final
     this.resizeTrie(steps);
     steps.addAll( trieView.getPaintCommands() );
 
     // Finalizacion de la insercion
-    steps.add(new ChangeColorNodeCommand(node, color) );
+//    steps.add(new ChangeColorNodeCommand(node, color) );
     steps.add(new StepFinishedCommand(trieView, this, index + 1, node, true,
         false));
 
@@ -227,12 +224,12 @@ public class AddTrieNodeAnimationSteps extends AbstractUndoAnimationSteps {
 
   }
 
-  private Point2D getFinalPosNode() {
-    if (node.hasParent())
-      return node.getFinalPosition();
-    
-    return node.getPosition();
-  }
+//  private Point2D getFinalPosNode() {
+//    if (node.hasParent())
+//      return node.getFinalPosition();
+//    
+//    return node.getPosition();
+//  }
 
   /**
    * Agraga los comandos necesarios para redimensionar el trie

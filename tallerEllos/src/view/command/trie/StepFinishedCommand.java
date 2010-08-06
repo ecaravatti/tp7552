@@ -51,6 +51,9 @@ public class StepFinishedCommand implements Command {
     InteractiveController controller = trieView.getController();
 
     if (!undo) {
+      if (nextIndex > 0) {
+    	  trieView.getWord().setVisible(nextIndex-1, false);
+      }
       trieView.nextAnimation();
       trieView.addExecutedAnimationSteps(animation);
       if (node != null)

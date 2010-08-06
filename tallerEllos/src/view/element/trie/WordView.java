@@ -20,14 +20,14 @@ import view.shape.NodeShape;
  * 
  * 
  */
-public class WordView extends AbstractElementView{
+public class WordView extends AbstractElementView {
 	
-  private final static Color LETTER_SELECTION_COLOR = Color.blue.brighter();
+  private final static Color LETTER_SELECTION_COLOR = Color.RED.brighter();
   private final static int DEF_SPACING = 10;
   private final static int DEF_LETTER_WIDTH = 30;
   private final static int DEF_LETTER_HEIGHT = 30;
-  private final static Color DEF_LETTER_COLOR = new Color(70, 130, 180);
-  private final static Stroke DEF_LETTER_STROKE = new BasicStroke(3.0f);
+//  private final static Color DEF_LETTER_COLOR = new Color(128, 0, 0);
+  private final static Stroke DEF_LETTER_STROKE = new BasicStroke(1.5f);
   private final static Font DEF_FONT = new Font("SansSerif", Font.BOLD, 14);
 
   private List<Letter> letters;
@@ -37,7 +37,7 @@ public class WordView extends AbstractElementView{
   private int letterHeight;
   private Font font;
   private Stroke stroke;
-  private Color fillLetter;
+//  private Color fillLetter;
   private int index;
   private int spacing;
 
@@ -61,7 +61,7 @@ public class WordView extends AbstractElementView{
     this.letterHeight = letterHeight;
     this.font = font;
     this.stroke = stroke;
-    this.fillLetter = colorFillLetter;
+//    this.fillLetter = colorFillLetter;
     this.index = 0;
     this.spacing = DEF_SPACING;
     this.setFlashingColor( LETTER_SELECTION_COLOR );
@@ -80,7 +80,7 @@ public class WordView extends AbstractElementView{
     this.letterHeight = DEF_LETTER_HEIGHT;
     this.font = DEF_FONT;
     this.stroke = DEF_LETTER_STROKE;
-    this.fillLetter = DEF_LETTER_COLOR;
+//    this.fillLetter = DEF_LETTER_COLOR;
     this.index = 0;
     this.spacing = DEF_SPACING;
     this.setFlashingColor(LETTER_SELECTION_COLOR);
@@ -270,9 +270,10 @@ public class WordView extends AbstractElementView{
     for (int i = 0; i < word.length(); i++) {
       NodeShape nodeShape = new NodeShape(word.substring(i, i + 1), lettPos,
           letterWidth, letterHeight, font, stroke, false);
-      nodeShape.setNodeColor(fillLetter);
-      nodeShape.setDefaultNodeColor(fillLetter);
-      nodeShape.setLineColor( Color.BLUE.darker() );
+//      nodeShape.setNodeColor(fillLetter);
+//      nodeShape.setDefaultNodeColor(fillLetter);
+//      nodeShape.setLineColor( Color.BLUE.darker() );
+      nodeShape.restoreModifiedNodeColors();
       Letter letter = new Letter(nodeShape, true);
       this.letters.add(letter);
       this.nodes.add(null);
@@ -285,9 +286,10 @@ public class WordView extends AbstractElementView{
     letter.setVisible(false);
     this.letters.add(letter);
     this.nodes.add(null);
-    nodeShape.setNodeColor(fillLetter);
-    nodeShape.setDefaultNodeColor(fillLetter);
-    nodeShape.setLineColor( Color.BLUE.darker() );
+//    nodeShape.setNodeColor(fillLetter);
+//    nodeShape.setDefaultNodeColor(fillLetter);
+//    nodeShape.setLineColor( Color.BLUE.darker() );
+    nodeShape.restoreModifiedNodeColors();
   }
   
   private class Letter {

@@ -35,13 +35,13 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
 	private static final long serialVersionUID = 1L;
 	
 	// Constantes
-    private static final Font FONT = new Font(Font.SANS_SERIF, Font.BOLD, 14);
-    private static final Stroke STROKE = new BasicStroke(1.0f);
-    private final static BasicStroke ARROW_STROKE = new BasicStroke(2.0f);
+    private static final Font FONT = new Font(Font.SANS_SERIF, Font.BOLD, 12);
+    private static final Stroke STROKE = new BasicStroke(1.5f);
+    private final static BasicStroke ARROW_STROKE = new BasicStroke(1.5f);
     private static final Integer SQUARESIZE = 25;
     private static final Font DEF_FONT_BALANCE = new Font(Font.SANS_SERIF, Font.BOLD, 12);
-    private static final Color DEF_COLOR_ARROW = Color.GRAY;
-    private static final int INITIAL_HORIZONTAL = 50;
+    private static final Color DEF_COLOR_ARROW = new Color(100, 100, 200);
+    private static final int INITIAL_HORIZONTAL = 48;
     private static final int INITIAL_VERTICAL = 30;
     
     // Elemento actual del heap
