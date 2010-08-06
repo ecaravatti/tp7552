@@ -235,28 +235,31 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllButtonActionPerformed
-        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-                "Vaciar", JOptionPane.YES_NO_OPTION);
+    	int res = JOptionPane.OK_OPTION;
+    	if (!controller.isQueueEmpty()) {
+	    	res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	                "Vaciar", JOptionPane.YES_NO_OPTION);
+    	}
 
-        if (res == 0) {
+        if (res == JOptionPane.OK_OPTION) {
             controller.clear();
         }
     	
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void insertRandomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertRandomButtonActionPerformed
-//        for (int counter = 1; counter <= 10; counter++) {
-            Random random = new Random();
-            int number = random.nextInt(999) + 1;
-            controller.enqueueItem(number);
-//        }
+    	Random random = new Random();
+    	int number = random.nextInt(999) + 1;
+    	controller.enqueueItem(number);
     }//GEN-LAST:event_insertRandomButtonActionPerformed
 
     private void queueSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed
-    	int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
-
-        if (res == 0) {
+    	int res = JOptionPane.OK_OPTION;
+    	if (!controller.isQueueEmpty()) {
+	    	res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+    	}
+        if (res == JOptionPane.OK_OPTION) {
         	controller.setNewCapacity(getSelectedCapacity());
         } else {
         	queueSizeComboBox.setSelectedItem(String.valueOf(controller.getQueueCapacity()));

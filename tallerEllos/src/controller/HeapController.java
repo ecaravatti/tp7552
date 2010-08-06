@@ -38,20 +38,28 @@ public class HeapController<T extends Comparable<T>> extends InteractiveControll
     }
 
     public void deleteItem() {
-      try {
-    	  this.panel.getButtonsPanel().enableComponents(false);
-          this.panel.getView().prepareAnimation();
-    	  this.heap.remove();
-      } catch (EmptyHeapException e) {
-    	  
-      }
-    }
+		if (isHeapEmpty()) {
+			showLogMessage("Ningún nodo para eliminar");
+		} else {
+			try {
+				this.panel.getButtonsPanel().enableComponents(false);
+				this.panel.getView().prepareAnimation();
+				this.heap.remove();
+			} catch (EmptyHeapException e) {
+
+			}
+		}
+	}
     
     public void clear() {
-    	this.panel.getButtonsPanel().enableComponents(false);
-        this.heap.clear();
-        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
-        this.panel.getButtonsPanel().enableComponents(true);
+		if (isHeapEmpty()) {
+			showLogMessage("El heap ya se encuentra vacío");
+		} else {
+	    	this.panel.getButtonsPanel().enableComponents(false);
+	        this.heap.clear();
+	        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
+	        this.panel.getButtonsPanel().enableComponents(true);
+		}
     }
     
     public void setNewCapacity(int capacity) {

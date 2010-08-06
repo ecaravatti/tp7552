@@ -212,6 +212,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		trieView = new TrieView();
 		triePanel = new TriePanel(trieView);
 		trieController = new TrieController(trie, triePanel);
+
 		StructurePane<TriePanel> trieStructurePanel = new StructurePane<TriePanel>(triePanel);
 
 		/**
@@ -221,15 +222,15 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		treeHeightBalancedView = new BinarySearchTreeView();
 		treeHeightPanel = new BSTPanel(treeHeightBalancedView, true, "Altura máxima");
 		treeHeightBalancedController = new BSTHeightBalancedController(treeHeightBalanced, treeHeightPanel);
-		StructurePane<BSTPanel> treeHeightBalancedStructurePanel = new StructurePane<BSTPanel>(
-				treeHeightPanel);
+		StructurePane<BSTPanel> treeHeightBalancedStructurePanel = new StructurePane<BSTPanel>(treeHeightPanel);
+		treeHeightPanel.getButtonsPanel().enableComponents(true);
 
 		treeWeightBalanced = new BSTWeightBalanced<Integer>(1);
 		treeWeightBalancedView = new BinarySearchTreeView();
 		treeWeightPanel = new BSTPanel(treeWeightBalancedView, false, "Alpha");
 		treeWeightBalancedController = new BSTWeightBalancedController(treeWeightBalanced, treeWeightPanel);
-		StructurePane<BSTPanel> treeWeightBalancedStructurePanel = new StructurePane<BSTPanel>(
-				treeWeightPanel);
+		StructurePane<BSTPanel> treeWeightBalancedStructurePanel = new StructurePane<BSTPanel>(treeWeightPanel);
+		treeWeightPanel.getButtonsPanel().enableComponents(true);
 
 		/**
 		 * Componentes de Queue.
@@ -263,6 +264,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		heapPanel = new HeapPanel<Integer>(heapView);
 		heapController = new HeapController<Integer>(heap, heapPanel);
 		heapPanel.addController(heapController);
+		heapPanel.getButtonsPanel().enableComponents(true);
 		StructurePane<HeapPanel<Integer>> heapStructurePanel = new StructurePane<HeapPanel<Integer>>(
 				heapPanel);
 		SwingUtilities.updateComponentTreeUI(heapPanel);

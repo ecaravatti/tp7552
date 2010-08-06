@@ -62,8 +62,8 @@ public class HeapButtonsPanel extends JPanel {
         
         insertBtn.setEnabled(enable && !controller.isHeapFull());
         deleteBtn.setEnabled(enable && !controller.isHeapEmpty());
-        randomBtn.setEnabled(enable && !controller.isHeapFull());
         cleanBtn.setEnabled(enable && !controller.isHeapEmpty());
+        randomBtn.setEnabled(enable && !controller.isHeapFull());
     }
 
     /** This method is called from within the constructor to
@@ -235,19 +235,25 @@ private void randomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_randomBtnActionPerformed
 
 private void cleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanBtnActionPerformed
-    int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	int res = JOptionPane.OK_OPTION;
+	if (!controller.isHeapEmpty()) {
+		res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
             "Limpiar", JOptionPane.YES_NO_OPTION);
+	}
 
-    if (res == 0) {
+    if (res == JOptionPane.OK_OPTION) {
         controller.clear();
     }
 }//GEN-LAST:event_cleanBtnActionPerformed
 
 private void heapSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heapSizeComboBoxActionPerformed
-	int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-            "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+	int res = JOptionPane.OK_OPTION;
+	if (!controller.isHeapEmpty()) {
+		res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	            "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+	}
 
-    if (res == 0) {
+    if (res == JOptionPane.OK_OPTION) {
     	controller.setNewCapacity(getSelectedCapacity());
     } else {
     	heapSizeComboBox.setSelectedItem(String.valueOf(controller.getHeapCapacity()));

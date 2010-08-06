@@ -13,10 +13,13 @@ public class BSTWeightBalancedController extends BSTController {
 	}
 	
     public void changeWeight(int weight) {
-        int res = JOptionPane.showConfirmDialog(null, "Al cambiar el alpha del árbol, se eliminarán todos sus nodos.\n¿Continuar?",
+    	int res = JOptionPane.OK_OPTION;
+    	if (!isTreeEmpty()) {
+    		res = JOptionPane.showConfirmDialog(null, "Al cambiar el alpha del árbol, se eliminarán todos sus nodos.\n¿Continuar?",
                 "Cambiar Alpha", JOptionPane.YES_NO_OPTION);
+    	}
 
-        if (res == 0) {
+        if (res == JOptionPane.OK_OPTION) {
             tree.clear();
             tree.removeListener(view);
             view.clear();

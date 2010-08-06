@@ -30,12 +30,16 @@ public class StackController<T> extends InteractiveController {
     }
 
     public void popAllItem() {
-        this.panel.getButtonsPanel().enableComponents(false);
-        this.stack.clear();
-        this.view.clear();
-        this.view.repaint();
-        this.showLogMessage("La pila se encuentra vacia.");
-        this.panel.getButtonsPanel().enableComponents(true);
+    	if (stackIsEmpty()) {
+    		showLogMessage("La pila ya se encuentra vacía.");
+    	} else {
+	        this.panel.getButtonsPanel().enableComponents(false);
+	        this.stack.clear();
+	        this.view.clear();
+	        this.view.repaint();
+	        this.showLogMessage("La pila se encuentra vacía.");
+	        this.panel.getButtonsPanel().enableComponents(true);
+    	}
     }
 
     public void pushItem(T item) {
@@ -45,13 +49,17 @@ public class StackController<T> extends InteractiveController {
     }
 
     public void popItem() {
-        try {
-        	this.panel.getButtonsPanel().enableComponents(false);
-            this.view.prepareAnimation();
-            this.stack.pop();
-        } catch (Exception e) {
-        	
-        }
+    	if (stackIsEmpty()) {
+    		showLogMessage("Ningún elemento para desapilar.");
+    	} else {
+	        try {
+	        	this.panel.getButtonsPanel().enableComponents(false);
+	            this.view.prepareAnimation();
+	            this.stack.pop();
+	        } catch (Exception e) {
+	        	//
+	        }
+    	}
     }
     
     public boolean stackIsEmpty() {

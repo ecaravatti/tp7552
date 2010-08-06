@@ -9,10 +9,10 @@ import controller.HeapController;
 /**
  *
  */
-public class HeapPanel<T> extends javax.swing.JPanel implements InteractivelyControlled {
+public class HeapPanel<T> extends javax.swing.JPanel implements InteractivelyControlled {	
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -4699806047069257635L;
+
 	private HeapView<T> view;
 
 	private HeapController<Integer> controller;

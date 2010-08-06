@@ -77,6 +77,10 @@ public class BSTButtonsPanel extends JPanel {
         for (Component component : this.getComponents()) {
             component.setEnabled(enable);
         }
+        
+        this.traverseButton.setEnabled(enable && !controller.isTreeEmpty());
+        this.removeButton.setEnabled(enable && !controller.isTreeEmpty());
+        this.clearButton.setEnabled(enable && !controller.isTreeEmpty());
     }
 
     /** This method is called from within the constructor to
@@ -89,8 +93,7 @@ public class BSTButtonsPanel extends JPanel {
         //setBackground(new java.awt.Color(255, 255, 255));
         setBorder(BorderFactory.createTitledBorder("Control: Árbol binario"));
         //setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        //setPreferredSize(new java.awt.Dimension(840, 32));
-        
+        //setPreferredSize(new java.awt.Dimension(840, 32));        
 
         jLabel1 = new JLabel("Ingresá un número de " + BSTController.MIN_VALUE + " a " + BSTController.MAX_VALUE);
         jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));

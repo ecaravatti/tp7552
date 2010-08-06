@@ -57,6 +57,7 @@ public class StackButtonsPanel extends JPanel {
         this.jlblSize.setEnabled(enable);
     	this.stackSizeComboBox.setEnabled(enable);
     	this.textField.setEnabled(enable);
+    	
         this.insertButton.setEnabled(enable && !controller.stackIsFull());
         this.removeButton.setEnabled(enable && !controller.stackIsEmpty());
         this.removeAllButton.setEnabled(enable && !controller.stackIsEmpty());
@@ -234,10 +235,13 @@ public class StackButtonsPanel extends JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllButtonActionPerformed
-        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+        int res = JOptionPane.OK_OPTION;
+    	if (!controller.stackIsEmpty()) {
+    		res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
                 "Vaciar", JOptionPane.YES_NO_OPTION);
+    	}
 
-        if (res == 0) {
+        if (res == JOptionPane.OK_OPTION) {
         	controller.popAllItem();
         }
         
@@ -253,10 +257,12 @@ public class StackButtonsPanel extends JPanel {
     }//GEN-LAST:event_insertRandomButtonActionPerformed
     
     private void stackSizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_stackSizeComboBoxActionPerformed
-    	int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
-
-        if (res == 0) {
+    	int res = JOptionPane.OK_OPTION;
+    	if (!controller.stackIsEmpty()) {
+	    	res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	                "Nuevo tamaño", JOptionPane.YES_NO_OPTION);
+    	}
+        if (res == JOptionPane.OK_OPTION) {
         	controller.createStack(Integer.valueOf(stackSizeComboBox.getSelectedItem().toString()));
         } else {
         	stackSizeComboBox.setSelectedItem(String.valueOf(controller.getStackCapacity()));

@@ -33,25 +33,30 @@ public class QueueController<T> extends InteractiveController {
     }
 
     public void dequeueAllItem() {
-        boolean showEmptyMessage = true;
-        this.panel.getButtonsPanel().enableComponents(false);
-
-        try {
-            this.view.prepareAnimation();
-
-            Iterator<T> iterator = queue.iterator();
-            while (iterator.hasNext()) {
-                showEmptyMessage = false;
-                queue.dequeue();
-            }
-        } catch (Exception e) {
-        }
-
-        if (showEmptyMessage) {
-            this.showLogMessage("La cola se encuentra vacía.");
-        }
-
-        this.panel.getButtonsPanel().enableComponents(true);
+    	if (isQueueEmpty()) {
+    		showLogMessage("La cola ya se encuentras vacía.");
+    	} else {
+	        boolean showEmptyMessage = true;
+	        this.panel.getButtonsPanel().enableComponents(false);
+	
+	        try {
+	            this.view.prepareAnimation();
+	
+	            Iterator<T> iterator = queue.iterator();
+	            while (iterator.hasNext()) {
+	                showEmptyMessage = false;
+	                queue.dequeue();
+	            }
+	        } catch (Exception e) {
+	        	//
+	        }
+	
+	        if (showEmptyMessage) {
+	            this.showLogMessage("La cola se encuentra vacía.");
+	        }
+	
+	        this.panel.getButtonsPanel().enableComponents(true);
+    	}
     }
 
     public void enqueueItem(T item) {
@@ -65,12 +70,17 @@ public class QueueController<T> extends InteractiveController {
     }
 
     public void dequeueItem() {
-        try {
-        	this.panel.getButtonsPanel().enableComponents(false);
-            this.view.prepareAnimation();
-            this.queue.dequeue();
-        } catch (Exception e) {
-        }
+    	if (isQueueEmpty()) {
+    		showLogMessage("Ningún elemento para desencolar.");
+    	} else {
+	        try {
+	        	this.panel.getButtonsPanel().enableComponents(false);
+	            this.view.prepareAnimation();
+	            this.queue.dequeue();
+	        } catch (Exception e) {
+	        	//
+	        }
+    	}
     }
 
     @Override

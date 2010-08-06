@@ -52,9 +52,9 @@ public class TrieButtonsPanel extends JPanel {
    */
   public void setEnabledButtons(boolean b) {
     this.insertButton.setEnabled(b);
-    this.removeButton.setEnabled(b);
+    this.removeButton.setEnabled(b && !controller.isTrieEmpty());
     this.demoButton.setEnabled(b);
-    this.clearButton.setEnabled(b);
+    this.clearButton.setEnabled(b && !controller.isTrieEmpty());
     this.textField.setEnabled(b);
   }
   
@@ -164,11 +164,13 @@ public class TrieButtonsPanel extends JPanel {
   }//GEN-LAST:event_demoButtonActionPerformed
 
   private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-                                         
-    int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
-            "Vaciar", JOptionPane.YES_NO_OPTION);
+	int res = JOptionPane.OK_OPTION;                               
+	if (!controller.isTrieEmpty()) {
+		res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los elementos.\n¿Continuar?",
+	            "Vaciar", JOptionPane.YES_NO_OPTION);
+	}
 
-    if (res == 0) {
+    if (res == JOptionPane.OK_OPTION) {
         controller.clear();
     }
 

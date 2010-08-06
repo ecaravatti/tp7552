@@ -35,13 +35,17 @@ public abstract class BSTController extends InteractiveController {
     public abstract void changeParameter(int parameter);
     
     public void clear() {
-        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los nodos.\n¿Continuar?",
-                "Limpiar", JOptionPane.YES_NO_OPTION);
+    	if (!isTreeEmpty()) {
+	        int res = JOptionPane.showConfirmDialog(null, "Se eliminarán todos los nodos.\n¿Continuar?",
+	                "Limpiar", JOptionPane.YES_NO_OPTION);
+	        if (res == JOptionPane.OK_OPTION) {
+	        	tree.clear();
+	        	view.clear();
+	        }
+    	} else {
+    		showLogMessage("El árbol ya se encuentra vacío");
+    	}
 
-        if (res == 0) {
-            tree.clear();
-            view.clear();
-        }
     }
 
     public void insertRandom() {
@@ -95,31 +99,38 @@ public abstract class BSTController extends InteractiveController {
     public abstract String getInsertPrimitiveCode();
 
     public void remove(String text) {
-        Integer value = readValue(text);
-        if (value == null) {
-            return;
-        }
-
-        this.panel.getButtonsPanel().enableComponents(false);
-        try {
-            this.setRunning(true);
-            showLogMessage("** Eliminando nodo: " + value.toString());
-            this.view.prepareAction(true);
-
-            String primitiveCode = getDeletePrimitiveCode();
-            showPrimitiveCode(primitiveCode);
-
-            tree.delete(value);
-            
-            this.view.rerender();
-
-        } catch (BSTKeyNotFoundException ex) {
-            //Logger.getLogger(BSTHeightBalancedController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (BSTEmptyTreeException ex) {
-        	
-        }
+    	if (isTreeEmpty()) {
+    		showLogMessage("Ningún nodo para eliminar");
+    	} else {
+	        Integer value = readValue(text);
+	        if (value == null) {
+	            return;
+	        }
+	
+	        this.panel.getButtonsPanel().enableComponents(false);
+	        try {
+	            this.setRunning(true);
+	            showLogMessage("** Eliminando nodo: " + value.toString());
+	            this.view.prepareAction(true);
+	
+	            String primitiveCode = getDeletePrimitiveCode();
+	            showPrimitiveCode(primitiveCode);
+	
+	            tree.delete(value);
+	            
+	            this.view.rerender();
+	
+	        } catch (BSTKeyNotFoundException ex) {
+	            //Logger.getLogger(BSTHeightBalancedController.class.getName()).log(Level.SEVERE, null, ex);
+	        } catch (BSTEmptyTreeException ex) {
+	        	
+	        }	        
+    	}
     }
     
+    public boolean isTreeEmpty() {
+    	return (tree.getSize() <= 0);
+    }
     public abstract String getDeletePrimitiveCode();
 
     public void traversePreOrder() {

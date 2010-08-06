@@ -48,6 +48,7 @@ public class TrieController extends InteractiveController {
     this.generator = new TrieGenerator(this);
     getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
     triePanel.addController(this);
+    triePanel.getMainButtonPanel().setEnabledButtons(true);
     //this.getInteractivePanel().setMaximumSlider( 190 );
   }
 
@@ -90,9 +91,13 @@ public class TrieController extends InteractiveController {
    */
   public void removeWord(String word) {
     showLogMessage("** Eliminando palabra: " + word.toString() );
-    triePanel.getMainButtonPanel().setEnabledButtons( false );
-    triePanel.getTrieView().removeWord(word);
-    trie.remove(word);
+    if (isTrieEmpty()) {
+    	showLogMessage("Ningún nodo para eliminar.");
+	} else {
+	    triePanel.getMainButtonPanel().setEnabledButtons(false);
+	    triePanel.getTrieView().removeWord(word);
+	    trie.remove(word);
+	}
   }
 
   @Override
@@ -110,10 +115,10 @@ public class TrieController extends InteractiveController {
     triePanel.getMainButtonPanel().setEnabledButtons(true);
     triePanel.getTrieView().restore();
     this.setRunning(false);
-    //Logger.getLogger("Log").log(Level.INFO, "********************************************************");
-    //Logger.getLogger("Log").log(Level.INFO, "Primitive finished..");
-    //Logger.getLogger("Log").log(Level.INFO, "Horizontal " + countLengthHor);
-    //Logger.getLogger("Log").log(Level.INFO, "Vertical " + countLengthVertical);
+  }
+  
+  public boolean isTrieEmpty() {
+	  return (trie.getRoot() == null);
   }
   
   /**
@@ -143,11 +148,15 @@ public class TrieController extends InteractiveController {
    * Limpia todos las vistas
    */
   public void clear() {
-    this.trie.clear();
-    this.triePanel.getTrieView().clear();
-    this.countLengthHor = 0;
-    this.countLengthVertical = 0;
-    this.triePanel.getTrieView().repaint();
+	if (isTrieEmpty()) {
+		showLogMessage("El trie ya se encuentra vacío.");
+	} else {
+	    this.trie.clear();
+	    this.triePanel.getTrieView().clear();
+	    this.countLengthHor = 0;
+	    this.countLengthVertical = 0;
+	    this.triePanel.getTrieView().repaint();
+	}
   }
   
   private void calculateMax(){

@@ -13,10 +13,13 @@ public class BSTHeightBalancedController extends BSTController {
 	}
 	
     public void changeMaxHeight(int maxHeight) {
-        int res = JOptionPane.showConfirmDialog(null, "Al cambiar la altura máxima del árbol, se eliminarán todos sus nodos.\n¿Continuar?",
-                "Cambiar Altura Máxima", JOptionPane.YES_NO_OPTION);
+    	int res = JOptionPane.OK_OPTION;
+        if (!isTreeEmpty()) {
+	    	res = JOptionPane.showConfirmDialog(null, "Al cambiar la altura máxima del árbol, se eliminarán todos sus nodos.\n¿Continuar?",
+	                "Cambiar Altura Máxima", JOptionPane.YES_NO_OPTION);
+        }
 
-        if (res == 0) {
+        if (res == JOptionPane.OK_OPTION) {
             tree.clear();
             tree.removeListener(view);
             view.clear();
