@@ -26,7 +26,7 @@ Ejemplos:
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
-    * Achicar header al orden del botón de ayuda para liberar espacio.
+    * Achicar header al orden del botón de ayuda para liberar espacio._(Nico)_ *(In Progress)*
   * Ayuda
     * Agregar info sobre cola circular _(Lau)_*(Done)*
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(Done)*
@@ -68,12 +68,12 @@ Ejemplos:
     * Permitir ingresar el parámetro de peso _(Manu)_ *(Done)* (lo dejé oculto por falta de implementación en el modelo)
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
-    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío.
+    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
   * Árbol Balanceado por Altura
     * Que variar la altura no sea cambiar el "PARAMETRO", o sea que se entienda. _(Manu)_ *(Done)*
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
-    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío.
+    * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
     * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura.
     * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo.
   * Trie
@@ -81,7 +81,7 @@ Ejemplos:
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
     * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar. _(Dami)_ *(In Progress)*
-    * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío.
+    * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío._(Nico)_ *(Done)*
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
