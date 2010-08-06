@@ -11,33 +11,36 @@ import view.collection.heap.HeapPanel;
 /**
  *
  */
-public class HeapController<T extends Comparable<T>> extends InteractiveController {
+public class HeapController<T extends Comparable<T>> extends
+		InteractiveController {
 	public static final int MIN_VALUE = 0;
 	public static final int MAX_VALUE = 999;
-	
-    private Heap<T> heap;
-    private HeapPanel<T> panel;
 
-    public HeapController(Heap<T> heap, HeapPanel<T> panel) {
-        super(panel.getView());
+	private Heap<T> heap;
+	private HeapPanel<T> panel;
 
-        this.heap = heap;
-        this.panel = panel;
+	public HeapController(Heap<T> heap, HeapPanel<T> panel) {
+		super(panel.getView());
 
-        this.heap.addListener(panel.getView());
-        this.panel.getView().addController(this);
-        
-        this.heap.setCapacity(this.panel.getButtonsPanel().getSelectedCapacity());
-        this.panel.getView().initCapacity(this.panel.getButtonsPanel().getSelectedCapacity());
-    }
+		this.heap = heap;
+		this.panel = panel;
 
-    public void addItem(T item) {
-    	this.panel.getButtonsPanel().enableComponents(false);
-    	this.panel.getView().prepareAnimation();
-    	this.heap.insert(item);
-    }
+		this.heap.addListener(panel.getView());
+		this.panel.getView().addController(this);
 
-    public void deleteItem() {
+		this.heap.setCapacity(this.panel.getButtonsPanel()
+				.getSelectedCapacity());
+		this.panel.getView().initCapacity(
+				this.panel.getButtonsPanel().getSelectedCapacity());
+	}
+
+	public void addItem(T item) {
+		this.panel.getButtonsPanel().enableComponents(false);
+		this.panel.getView().prepareAnimation();
+		this.heap.insert(item);
+	}
+
+	public void deleteItem() {
 		if (isHeapEmpty()) {
 			showLogMessage("Ningún nodo para eliminar");
 		} else {
@@ -50,39 +53,41 @@ public class HeapController<T extends Comparable<T>> extends InteractiveControll
 			}
 		}
 	}
-    
-    public void clear() {
+
+	public void clear() {
 		if (isHeapEmpty()) {
 			showLogMessage("El heap ya se encuentra vacío");
 		} else {
-	    	this.panel.getButtonsPanel().enableComponents(false);
-	        this.heap.clear();
-	        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
-	        this.panel.getButtonsPanel().enableComponents(true);
+			this.panel.getButtonsPanel().enableComponents(false);
+			this.heap.clear();
+			this.panel.getView().initCapacity(
+					panel.getButtonsPanel().getSelectedCapacity());
+			this.panel.getButtonsPanel().enableComponents(true);
 		}
-    }
-    
-    public void setNewCapacity(int capacity) {
-    	this.heap.clear();
-    	this.heap.setCapacity(capacity);
-        this.panel.getView().initCapacity(panel.getButtonsPanel().getSelectedCapacity());
-    	this.panel.getButtonsPanel().enableComponents(true);
-    }
+	}
 
-    @Override
-    public void primitiveFinished() {
-    	panel.getButtonsPanel().enableComponents(true);
-    }
-    
-    public boolean isHeapFull() {
-    	return heap.isFull();
-    }
-    
-    public boolean isHeapEmpty() {
-    	return heap.isEmpty();
-    }
-    
-    public int getHeapCapacity() {
-    	return heap.getCapacity();
-    }
+	public void setNewCapacity(int capacity) {
+		this.heap.clear();
+		this.heap.setCapacity(capacity);
+		this.panel.getView().initCapacity(
+				panel.getButtonsPanel().getSelectedCapacity());
+		this.panel.getButtonsPanel().enableComponents(true);
+	}
+
+	@Override
+	public void primitiveFinished() {
+		panel.getButtonsPanel().enableComponents(true);
+	}
+
+	public boolean isHeapFull() {
+		return heap.isFull();
+	}
+
+	public boolean isHeapEmpty() {
+		return heap.isEmpty();
+	}
+
+	public int getHeapCapacity() {
+		return heap.getCapacity();
+	}
 }

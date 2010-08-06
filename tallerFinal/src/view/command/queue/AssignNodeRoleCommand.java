@@ -13,23 +13,23 @@ import view.command.common.Command;
  *
  */
 public class AssignNodeRoleCommand<T> implements Command {
-    
-    private QueueNodeView<T> node;
-    private QueueNodeRoles role;
 
-    public AssignNodeRoleCommand(QueueNodeView<T> node, QueueNodeRoles role) {
-        this.node = node;
-        this.role = role;
-    }
+	private QueueNodeView<T> node;
+	private QueueNodeRoles role;
 
-    @Override
-    public boolean canExecute() {
-        return true;
-    }
+	public AssignNodeRoleCommand(QueueNodeView<T> node, QueueNodeRoles role) {
+		this.node = node;
+		this.role = role;
+	}
 
-    @Override
-    public void execute() {
-        this.node.assignRole(this.role);
-    }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
+
+	@Override
+	public void execute() {
+		this.node.assignRole(this.role);
+	}
 
 }

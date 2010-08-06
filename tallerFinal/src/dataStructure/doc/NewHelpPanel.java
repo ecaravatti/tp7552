@@ -55,7 +55,6 @@ public class NewHelpPanel extends JPanel {
 		HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
 		htmlDoc.setBase(getClass().getResource(HTML_RESOURCE));
 
-
 		BufferedReader reader = null;
 		// Crear parser para el archivo
 		HTMLEditorKit.Parser parser = new ParserDelegator();

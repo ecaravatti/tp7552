@@ -12,12 +12,12 @@ public class BSTNodeEvent<K extends Comparable<K>> extends EventObject {
 	private static final long serialVersionUID = 1L;
 
 	public BSTNodeEvent(BSTNode<K> source) {
-        super(source);
-    }
+		super(source);
+	}
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
-    public BSTNode<K> getSource() {
-        return (BSTNode<K>) source;
-    }
+	public BSTNode<K> getSource() {
+		return (BSTNode<K>) source;
+	}
 }

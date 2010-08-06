@@ -24,60 +24,65 @@ import view.element.trie.AbstractTrieNodeView;
  * 
  */
 public class DataTrieNodeFoundAnimationSteps extends AbstractUndoAnimationSteps {
-  private static String TITLE = "Warning";
-  private static int MESSAGE_TYPE = JOptionPane.WARNING_MESSAGE;
-  
-  private TrieView trieView;
-  private AbstractTrieNodeView node;
-  private Color selectionColor;
-  
-  public DataTrieNodeFoundAnimationSteps(TrieView trieView, AbstractTrieNodeView node, 
-      Color selectionColor) {
-    super();
-    this.trieView = trieView;
-    this.node = node;
-    this.selectionColor = selectionColor;
-  }
+	private static String TITLE = "Warning";
+	private static int MESSAGE_TYPE = JOptionPane.WARNING_MESSAGE;
 
-  @Override
-  protected void initializeListSteps() {
-    steps = new ArrayList<Command>();
+	private TrieView trieView;
+	private AbstractTrieNodeView node;
+	private Color selectionColor;
 
-    steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-        .getInstance().getMessageDataTrieNodeFound()));
+	public DataTrieNodeFoundAnimationSteps(TrieView trieView,
+			AbstractTrieNodeView node, Color selectionColor) {
+		super();
+		this.trieView = trieView;
+		this.node = node;
+		this.selectionColor = selectionColor;
+	}
 
-    steps.add( new StopFlashingElementViewCommand(trieView, trieView.getWord()) );
-    steps.add(new SelectElementViewCommand(trieView, trieView.getFlashingDelay(),
-            node.getParent(), node.getParent().getFlashingColor()));
+	@Override
+	protected void initializeListSteps() {
+		steps = new ArrayList<Command>();
 
-    steps.addAll( trieView.getPaintCommands() );
-    steps.add( new StopFlashingElementViewCommand(trieView, trieView.getWord()) );
-    steps.add(new SelectElementViewCommand(trieView, trieView.getFlashingDelay(),
-            node, selectionColor));
-    steps.addAll( trieView.getPaintCommands() );
+		steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
+				.getInstance().getMessageDataTrieNodeFound()));
 
-    int index = this.trieView.getWord().getSize();
+		steps.add(new StopFlashingElementViewCommand(trieView, trieView
+				.getWord()));
+		steps.add(new SelectElementViewCommand(trieView, trieView
+				.getFlashingDelay(), node.getParent(), node.getParent()
+				.getFlashingColor()));
 
-    if (trieView.isRunningInsertion()) {
-      steps.add(new ShowMessageDialogCommand(TrieMessages.getInstance()
-          .getMessageCannotInsertWord(node.getData()), TITLE, MESSAGE_TYPE));
-      trieView.changeTrieColor();
-    }  
-    
-    steps.add(new ChangeColorNodeCommand(node, AbstractTrieNodeView.Colors.NODE_FOUND.getColor()) );
-    steps.add(new StepFinishedCommand(trieView, this, index + 1, node, false,
-        false));
-  }
+		steps.addAll(trieView.getPaintCommands());
+		steps.add(new StopFlashingElementViewCommand(trieView, trieView
+				.getWord()));
+		steps.add(new SelectElementViewCommand(trieView, trieView
+				.getFlashingDelay(), node, selectionColor));
+		steps.addAll(trieView.getPaintCommands());
 
-  @Override
-  protected void initializeListUndoSteps() {
-    undoSteps = new ArrayList<Command>();
+		int index = this.trieView.getWord().getSize();
 
-    undoSteps.add(new ChangeColorNodeCommand(node, node.getDefaultColor()));
-    undoSteps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-        .getInstance().getMessageUndoDataTrieNodeFound()));
-    int index = this.trieView.getWord().getSize();
-    undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node,
-        false, true));
-  }
+		if (trieView.isRunningInsertion()) {
+			steps.add(new ShowMessageDialogCommand(TrieMessages.getInstance()
+					.getMessageCannotInsertWord(node.getData()), TITLE,
+					MESSAGE_TYPE));
+			trieView.changeTrieColor();
+		}
+
+		steps.add(new ChangeColorNodeCommand(node,
+				AbstractTrieNodeView.Colors.NODE_FOUND.getColor()));
+		steps.add(new StepFinishedCommand(trieView, this, index + 1, node,
+				false, false));
+	}
+
+	@Override
+	protected void initializeListUndoSteps() {
+		undoSteps = new ArrayList<Command>();
+
+		undoSteps.add(new ChangeColorNodeCommand(node, node.getDefaultColor()));
+		undoSteps.add(new ShowMessageCommand(trieView.getController(),
+				TrieMessages.getInstance().getMessageUndoDataTrieNodeFound()));
+		int index = this.trieView.getWord().getSize();
+		undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node,
+				false, true));
+	}
 }

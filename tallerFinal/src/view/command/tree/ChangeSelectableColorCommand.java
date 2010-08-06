@@ -11,25 +11,26 @@ import view.element.common.AbstractElementView;
  * 
  */
 public class ChangeSelectableColorCommand implements Command {
-    private AnimatedPanel component;
-    private AbstractElementView element;
-    private Color color;
+	private AnimatedPanel component;
+	private AbstractElementView element;
+	private Color color;
 
-    public ChangeSelectableColorCommand(AnimatedPanel component, AbstractElementView element, Color color) {
-        this.component = component;
-        this.element = element;
-        this.color = color;
-    }
+	public ChangeSelectableColorCommand(AnimatedPanel component,
+			AbstractElementView element, Color color) {
+		this.component = component;
+		this.element = element;
+		this.color = color;
+	}
 
-    @Override
-    public boolean canExecute() {
-        return true;
-    }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 
-    @Override
-    public void execute() {
-        element.changeSelectionColor(color);
-        component.repaint();
-    }
+	@Override
+	public void execute() {
+		element.changeSelectionColor(color);
+		component.repaint();
+	}
 
 }

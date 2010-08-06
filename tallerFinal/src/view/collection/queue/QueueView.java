@@ -35,7 +35,7 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 
 	private static final int INITIAL_HORIZONTAL = 20;
 	private static final int INITIAL_VERTICAL = 20;
-	
+
 	private List<Shape> capacityPreviewNodes = new ArrayList<Shape>();
 	private List<QueueNodeView<T>> queueNodes;
 	private int circularQueueIndex;
@@ -54,13 +54,16 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		QueueNodeView<T> parentNode = (queueSize > 0) ? this.getQueueNodes()
 				.get(queueSize - 1) : null;
 
-		QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize, INITIAL_HORIZONTAL, INITIAL_VERTICAL,
-													 parentNode, circularQueueIndex, arcAngle);
+		QueueNodeView<T> node = new QueueNodeView<T>(item, queueSize,
+				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode,
+				circularQueueIndex, arcAngle);
 
 		this.getQueueNodes().add(node);
-		this.circularQueueIndex = (this.circularQueueIndex + 1) % structureCapacity;
+		this.circularQueueIndex = (this.circularQueueIndex + 1)
+				% structureCapacity;
 
-		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this, QueuePrimitives.enqueue.getCode()));
+		this.addCommandToQueue(new ShowPrimitiveCodeCommand(this,
+				QueuePrimitives.enqueue.getCode()));
 		this.addAnimationToQueue(new ItemEnqueuedAnimation<T>(this, node));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
 	}
@@ -79,8 +82,9 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 				QueuePrimitives.dequeue.getCode()));
 		this.addCommandToQueue(new ShowMessageCommand(this,
 				"La cola se encuentra vacía."));
-		this.addCommandToQueue(new ShowMessageDialogCommand("La cola se encuentra" +
-				" vacía", "Warning", JOptionPane.WARNING_MESSAGE));
+		this.addCommandToQueue(new ShowMessageDialogCommand(
+				"La cola se encuentra" + " vacía", "Warning",
+				JOptionPane.WARNING_MESSAGE));
 		this.addCommandToQueue(new StepFinishedCommand(this, true));
 	}
 
@@ -93,40 +97,46 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		for (Shape shape : capacityPreviewNodes) {
 			graphics.fill(shape);
 		}
-		
+
 		int initial_offset = DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL;
 		int max_radius = DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS;
 		int min_radius = DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS;
-		
+
 		// Círculo de radio mayor
-		graphics.fillOval(initial_offset, initial_offset, max_radius*2, max_radius*2);
-		
+		graphics.fillOval(initial_offset, initial_offset, max_radius * 2,
+				max_radius * 2);
+
 		graphics.setPaint(new Color(0, 0, 0));
-		
+
 		int centerX = initial_offset + max_radius;
 		int centerY = centerX;
-		
+
 		// Índices de la cola circular
 		for (int i = 0; i < structureCapacity; i++) {
-			int finalX = (int) (centerX - (max_radius * Math.cos(i * arcAngle + Math.PI/32) * 1.1));
-			int finalY = (int) (centerY - (max_radius * Math.sin(i * arcAngle + Math.PI/32) * 1.1));
+			int finalX = (int) (centerX - (max_radius
+					* Math.cos(i * arcAngle + Math.PI / 32) * 1.1));
+			int finalY = (int) (centerY - (max_radius
+					* Math.sin(i * arcAngle + Math.PI / 32) * 1.1));
 			graphics.drawString(String.valueOf(i), finalX, finalY);
 		}
 
 		graphics.setPaint(new Color(255, 255, 255));
-		
+
 		// Separadores de nodos de la cola circular
 		if (structureCapacity > 1) {
 			for (int i = 0; i < structureCapacity; i++) {
-				int finalX = (int) (centerX - max_radius * Math.cos(i * arcAngle));
-				int finalY = (int) (centerY - max_radius * Math.sin(i * arcAngle));
+				int finalX = (int) (centerX - max_radius
+						* Math.cos(i * arcAngle));
+				int finalY = (int) (centerY - max_radius
+						* Math.sin(i * arcAngle));
 				graphics.drawLine(centerX, centerY, finalX, finalY);
 			}
 		}
-		
+
 		// Círculo de radio menor
-		graphics.fillOval(initial_offset + min_radius, initial_offset + min_radius, max_radius, max_radius);
-		
+		graphics.fillOval(initial_offset + min_radius, initial_offset
+				+ min_radius, max_radius, max_radius);
+
 		// Nodos
 		for (QueueNodeView<T> node : getQueueNodes()) {
 			node.paintElement(graphics);
@@ -144,32 +154,37 @@ public class QueueView<T> extends AnimatedPanel implements QueueListener<T> {
 		this.queueNodes.clear();
 		circularQueueIndex = 0;
 	}
-	
+
 	public void initCapacity(Integer capacity) {
 		capacityPreviewNodes.clear();
 		queueNodes.clear();
-		
+
 		for (int i = 0; i < capacity; i++) {
-			capacityPreviewNodes.add(new Rectangle(INITIAL_HORIZONTAL + i*(QueueNodeShape.DEF_WIDTH_NODE +
-														DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
-												   INITIAL_VERTICAL + (QueueNodeShape.DEF_HEIGHT_NODE +
-														DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
-												   QueueNodeShape.DEF_WIDTH_NODE,
-												   QueueNodeShape.DEF_HEIGHT_NODE));
+			capacityPreviewNodes
+					.add(new Rectangle(
+							INITIAL_HORIZONTAL
+									+ i
+									* (QueueNodeShape.DEF_WIDTH_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+							INITIAL_VERTICAL
+									+ (QueueNodeShape.DEF_HEIGHT_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+							QueueNodeShape.DEF_WIDTH_NODE,
+							QueueNodeShape.DEF_HEIGHT_NODE));
 		}
-		
+
 		arcAngle = 2 * Math.PI / capacity;
-		
+
 		setStructureCapacity(capacity);
 	}
-	
+
 	@Override
 	protected void adjustGraphicDimensionForScrolling() {
-		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL +
-											  structureCapacity * (QueueNodeShape.DEF_WIDTH_NODE +
-													  	DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
-											  DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL
-											  + DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS * 2
-											  + INITIAL_VERTICAL);
+		this.graphicDimension = new Dimension(
+				2
+						* INITIAL_HORIZONTAL
+						+ structureCapacity
+						* (QueueNodeShape.DEF_WIDTH_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES),
+				DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL
+						+ DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS * 2
+						+ INITIAL_VERTICAL);
 	}
 }

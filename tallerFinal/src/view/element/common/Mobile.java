@@ -9,16 +9,19 @@ import java.awt.geom.Point2D;
  */
 public interface Mobile {
 
-  /**
-   * Obtiene la posicion actual.
-   * @return la posicion actual.
-   */
-  public Point2D getPosition();
+	/**
+	 * Obtiene la posicion actual.
+	 * 
+	 * @return la posicion actual.
+	 */
+	public Point2D getPosition();
 
-  /**
-   * Mueve el objeto a la posicion pasada como parametro.
-   * @param position la nueva posicion.
-   */
-  public void moveTo(Point2D position);
+	/**
+	 * Mueve el objeto a la posicion pasada como parametro.
+	 * 
+	 * @param position
+	 *            la nueva posicion.
+	 */
+	public void moveTo(Point2D position);
 
 }

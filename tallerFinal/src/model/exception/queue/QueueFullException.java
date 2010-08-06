@@ -2,7 +2,7 @@ package model.exception.queue;
 
 /**
  * Excepcion indicando que el queue está lleno.
- *
+ * 
  */
 public class QueueFullException extends Exception {
 

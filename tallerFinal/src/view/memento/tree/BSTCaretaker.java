@@ -3,19 +3,18 @@ package view.memento.tree;
 import model.collection.stack.ArrayListStackImpl;
 
 public class BSTCaretaker {
-  private ArrayListStackImpl<BSTMemento> savedStates;
-  
-  
-  public BSTCaretaker() {
-    super();
-    this.savedStates = new ArrayListStackImpl<BSTMemento>();
-  }
+	private ArrayListStackImpl<BSTMemento> savedStates;
 
-  public void addMemento(BSTMemento m) {
-      savedStates.push(m);
-  }
+	public BSTCaretaker() {
+		super();
+		this.savedStates = new ArrayListStackImpl<BSTMemento>();
+	}
 
-  public BSTMemento getMemento() {
-      return savedStates.pop();
-  }
+	public void addMemento(BSTMemento m) {
+		savedStates.push(m);
+	}
+
+	public BSTMemento getMemento() {
+		return savedStates.pop();
+	}
 }

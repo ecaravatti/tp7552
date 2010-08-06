@@ -6,7 +6,6 @@ import javax.swing.JTextArea;
 
 import dataStructure.DataStructureApplet;
 
-
 /**
  * Panel que logea las operaciones realizadas sobre una estructura.
  * 
@@ -29,8 +28,8 @@ public class OperationsLogPane extends JScrollPane {
 	}
 
 	/**
-	 * Logs a message into this pane.
-	 * Area
+	 * Logs a message into this pane. Area
+	 * 
 	 * @param message
 	 *            The message to log.
 	 */

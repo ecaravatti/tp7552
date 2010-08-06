@@ -2,7 +2,7 @@ package model.exception.tree;
 
 /**
  * Excepcion indicando que el árbol se encuentra vacío.
- *
+ * 
  */
 public class BSTEmptyTreeException extends Exception {
 

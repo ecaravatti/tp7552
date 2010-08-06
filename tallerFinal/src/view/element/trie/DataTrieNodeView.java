@@ -17,93 +17,102 @@ import view.shape.NodeShape;
  * 
  */
 public class DataTrieNodeView extends AbstractTrieNodeView {
-  private final static Font DEF_FONT = new Font("SansSerif", Font.BOLD, 10);
-  private final static int DEF_MARGIN = 5;
-  
-  private boolean defaultSizeChanged;
+	private final static Font DEF_FONT = new Font("SansSerif", Font.BOLD, 10);
+	private final static int DEF_MARGIN = 5;
 
-  /**
-   * Construye un DataTrieNodeView
-   * @param data el dato
-   * @param position posicion del nodo
-   * @param parent padre del nodo
-   * @param trieView 
-   */
-  public DataTrieNodeView(String data, Point2D position, PointerView parent,
-          TrieViewPrimitives trieView) {
-    super(data, position, parent, trieView);
-    this.defaultSizeChanged = false;
-    this.setDepthSibling(1);
-  }
+	private boolean defaultSizeChanged;
 
-  @Override
-  public void moveTo(Point2D position) {
-    super.moveTo(position);
-    shape.moveTo(position);
-  }
+	/**
+	 * Construye un DataTrieNodeView
+	 * 
+	 * @param data
+	 *            el dato
+	 * @param position
+	 *            posicion del nodo
+	 * @param parent
+	 *            padre del nodo
+	 * @param trieView
+	 */
+	public DataTrieNodeView(String data, Point2D position, PointerView parent,
+			TrieViewPrimitives trieView) {
+		super(data, position, parent, trieView);
+		this.defaultSizeChanged = false;
+		this.setDepthSibling(1);
+	}
 
-  /**
-   * Determina si el tamano por defecto cambio
-   * @return true si el tamano por defecto cambio, false en caso contrario
-   */
-  public boolean defaultSizeChanged() {
-    return defaultSizeChanged;
-  }
+	@Override
+	public void moveTo(Point2D position) {
+		super.moveTo(position);
+		shape.moveTo(position);
+	}
 
-  /**
-   * Calcula el tamano del nodo de acuerdo al ancho del texto que debe ser
-   * mostrado
-   * @param g2 contexto grafico
-   * @param word palabra a dibujar
-   */
-  public void calculateWidth(Graphics2D g2) {
-    g2.setFont(DEF_FONT);
-    FontMetrics fontMetrics = g2.getFontMetrics();
-    Rectangle stringBounds = fontMetrics.getStringBounds(getData(), g2)
-        .getBounds();
-    int widthFont = stringBounds.width + 2 * DEF_MARGIN;
-    if (widthFont > this.getWidth()) {
-      
-      if (widthFont > (this.getWidth() + TrieNodeView.DEF_LENGTH - 5)){
-        this.setDepthSibling((double) getWidth() / widthFont);
-        this.defaultSizeChanged = true;
-        
-      }
-      this.setWidth(widthFont);
-    }
+	/**
+	 * Determina si el tamano por defecto cambio
+	 * 
+	 * @return true si el tamano por defecto cambio, false en caso contrario
+	 */
+	public boolean defaultSizeChanged() {
+		return defaultSizeChanged;
+	}
 
-    getParent().getSourceNode().changeFirstChildPosition(this);
-  }
+	/**
+	 * Calcula el tamano del nodo de acuerdo al ancho del texto que debe ser
+	 * mostrado
+	 * 
+	 * @param g2
+	 *            contexto grafico
+	 * @param word
+	 *            palabra a dibujar
+	 */
+	public void calculateWidth(Graphics2D g2) {
+		g2.setFont(DEF_FONT);
+		FontMetrics fontMetrics = g2.getFontMetrics();
+		Rectangle stringBounds = fontMetrics.getStringBounds(getData(), g2)
+				.getBounds();
+		int widthFont = stringBounds.width + 2 * DEF_MARGIN;
+		if (widthFont > this.getWidth()) {
 
-  @Override
-  public void setVisible(boolean visible) {
-    if (visible != isVisible())
-      getParent().getSourceNode().setVisiblePtrData(visible);
+			if (widthFont > (this.getWidth() + TrieNodeView.DEF_LENGTH - 5)) {
+				this.setDepthSibling((double) getWidth() / widthFont);
+				this.defaultSizeChanged = true;
 
-    super.setVisible(visible);
-  }
-  
-  @Override
-  protected NodeShape createShape(){
-    NodeShape node = new NodeShape(	getData(), getPosition(), getWidth(),
-    								getHeight(), DEF_FONT, DEF_STROKE, true);
-    node.setGradientBackground(new Color(255, 219, 111), DefaultShapeSettings.ORANGE_COLOR);
-    node.setDefaultNodeColor(new Color(255, 219, 111));
-    node.setTextColor(Color.BLACK);
-    return node;
-  }
-  
-  @Override
-  protected void paintTrieNode(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g;
+			}
+			this.setWidth(widthFont);
+		}
 
-    if (isVisible()) {
-      shape.paint(g);
+		getParent().getSourceNode().changeFirstChildPosition(this);
+	}
 
-      if (this.isTransparent()) {
-        g2.setPaint(this.getTransparentColor());
-        g2.fill(shape.getBounds());
-      }
-    }
-  }
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible != isVisible())
+			getParent().getSourceNode().setVisiblePtrData(visible);
+
+		super.setVisible(visible);
+	}
+
+	@Override
+	protected NodeShape createShape() {
+		NodeShape node = new NodeShape(getData(), getPosition(), getWidth(),
+				getHeight(), DEF_FONT, DEF_STROKE, true);
+		node.setGradientBackground(new Color(255, 219, 111),
+				DefaultShapeSettings.ORANGE_COLOR);
+		node.setDefaultNodeColor(new Color(255, 219, 111));
+		node.setTextColor(Color.BLACK);
+		return node;
+	}
+
+	@Override
+	protected void paintTrieNode(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+
+		if (isVisible()) {
+			shape.paint(g);
+
+			if (this.isTransparent()) {
+				g2.setPaint(this.getTransparentColor());
+				g2.fill(shape.getBounds());
+			}
+		}
+	}
 }

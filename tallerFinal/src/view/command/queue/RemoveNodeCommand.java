@@ -14,22 +14,22 @@ import view.command.common.Command;
  */
 public class RemoveNodeCommand<T> implements Command {
 
-    private QueueView<T> view;
-    private QueueNodeView<T> node;
+	private QueueView<T> view;
+	private QueueNodeView<T> node;
 
-    public RemoveNodeCommand(QueueView<T> view, QueueNodeView<T> node) {
-        this.view = view;
-        this.node = node;
-    }
+	public RemoveNodeCommand(QueueView<T> view, QueueNodeView<T> node) {
+		this.view = view;
+		this.node = node;
+	}
 
-    @Override
-    public boolean canExecute() {
-        return true;
-    }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 
-    @Override
-    public void execute() {
-        this.view.getQueueNodes().remove(node);
-    }
+	@Override
+	public void execute() {
+		this.view.getQueueNodes().remove(node);
+	}
 
 }

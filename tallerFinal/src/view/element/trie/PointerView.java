@@ -15,212 +15,239 @@ import view.shape.DefaultShapeSettings;
  * 
  * 
  */
-public abstract class PointerView extends AbstractElementView implements Selectable {
-  private final static Color DEF_COLOR = DefaultShapeSettings.ORANGE_COLOR;
-    
-  private TrieNodeView srcNode;
-  private AbstractTrieNodeView trgNode;
-  private Point2D initPointerPos;
-  private int defLength;
-  private double length;
-  private boolean paintDefArrow;
+public abstract class PointerView extends AbstractElementView implements
+		Selectable {
+	private final static Color DEF_COLOR = DefaultShapeSettings.ORANGE_COLOR;
 
-  /**
-   * Crea un PointerView
-   * @param srcNode nodo fuente
-   * @param trgNode nodo destino
-   * @param initPointerPosition posicion inicial del puntero
-   * @param defLength longitud por defecto del puntero
-   */
-  public PointerView(TrieNodeView srcNode, AbstractTrieNodeView trgNode,
-      Point2D initPointerPosition, int defLength) {
-    super(initPointerPosition, true);
-    this.srcNode = srcNode;
-    this.trgNode = trgNode;
-    this.setSelectionColor(DEF_COLOR);
-    this.initPointerPos = initPointerPosition;
-    this.defLength = defLength;
-    this.length = 0;
-    this.paintDefArrow = true;
-  }
+	private TrieNodeView srcNode;
+	private AbstractTrieNodeView trgNode;
+	private Point2D initPointerPos;
+	private int defLength;
+	private double length;
+	private boolean paintDefArrow;
 
-  /**
-   * Obtiene el nodo fuente
-   * @return el nodo fuente
-   */
-  public TrieNodeView getSourceNode() {
-    return srcNode;
-  }
+	/**
+	 * Crea un PointerView
+	 * 
+	 * @param srcNode
+	 *            nodo fuente
+	 * @param trgNode
+	 *            nodo destino
+	 * @param initPointerPosition
+	 *            posicion inicial del puntero
+	 * @param defLength
+	 *            longitud por defecto del puntero
+	 */
+	public PointerView(TrieNodeView srcNode, AbstractTrieNodeView trgNode,
+			Point2D initPointerPosition, int defLength) {
+		super(initPointerPosition, true);
+		this.srcNode = srcNode;
+		this.trgNode = trgNode;
+		this.setSelectionColor(DEF_COLOR);
+		this.initPointerPos = initPointerPosition;
+		this.defLength = defLength;
+		this.length = 0;
+		this.paintDefArrow = true;
+	}
 
-  /**
-   * Cambia el nodo fuente
-   * @param srcNode nodo fuente
-   */
-  public void setSourceNode(TrieNodeView srcNode) {
-    this.srcNode = srcNode;
-  }
+	/**
+	 * Obtiene el nodo fuente
+	 * 
+	 * @return el nodo fuente
+	 */
+	public TrieNodeView getSourceNode() {
+		return srcNode;
+	}
 
-  /**
-   * Obtiene el nodo destino
-   * @return el nodo destino
-   */
-  public AbstractTrieNodeView getTargetNode() {
-    return trgNode;
-  }
+	/**
+	 * Cambia el nodo fuente
+	 * 
+	 * @param srcNode
+	 *            nodo fuente
+	 */
+	public void setSourceNode(TrieNodeView srcNode) {
+		this.srcNode = srcNode;
+	}
 
-  /**
-   * Cambia el nodo destino
-   * @param trgNode nuevo nodo destino
-   */
-  public void setTargetNode(AbstractTrieNodeView trgNode) {
-    this.trgNode = trgNode;
-  }
+	/**
+	 * Obtiene el nodo destino
+	 * 
+	 * @return el nodo destino
+	 */
+	public AbstractTrieNodeView getTargetNode() {
+		return trgNode;
+	}
 
-  /**
-   * Obtiene la posicion del nodo destino
-   * @return posicion del nodo destino
-   */
-  abstract public Point2D getTargetNodePosition();
+	/**
+	 * Cambia el nodo destino
+	 * 
+	 * @param trgNode
+	 *            nuevo nodo destino
+	 */
+	public void setTargetNode(AbstractTrieNodeView trgNode) {
+		this.trgNode = trgNode;
+	}
 
-  /**
-   * Obtiene la posicion final del nodo destino
-   * @return posicion final del nodo destino
-   */
-  abstract public Point2D getTargetNodeFinalPosition();
+	/**
+	 * Obtiene la posicion del nodo destino
+	 * 
+	 * @return posicion del nodo destino
+	 */
+	abstract public Point2D getTargetNodePosition();
 
-  /**
-   * Cambia la distancia del nodo destino. Teniendo en cuenta las restricciones
-   * impuestas por la posicion final del nodo.
-   * @param delta variacion de la distancia
-   */
-  abstract public void setDistanceTargetNode(double delta);
+	/**
+	 * Obtiene la posicion final del nodo destino
+	 * 
+	 * @return posicion final del nodo destino
+	 */
+	abstract public Point2D getTargetNodeFinalPosition();
 
-  /**
-   * Cambia la distancia del nodo destino a cero.
-   */
-  public void changeDistanceTargetNode() {
-    this.length = 0;
-  }
+	/**
+	 * Cambia la distancia del nodo destino. Teniendo en cuenta las
+	 * restricciones impuestas por la posicion final del nodo.
+	 * 
+	 * @param delta
+	 *            variacion de la distancia
+	 */
+	abstract public void setDistanceTargetNode(double delta);
 
-  /**
-   * Obtiene el trazo utilizado para dibujar el puntero
-   * @return el stroke
-   */
-  abstract public BasicStroke getStroke();
+	/**
+	 * Cambia la distancia del nodo destino a cero.
+	 */
+	public void changeDistanceTargetNode() {
+		this.length = 0;
+	}
 
-  /**
-   * Obtiene el color utilizado para dibujar el puntero
-   * @return el color
-   */
-  abstract public Color getColor();
+	/**
+	 * Obtiene el trazo utilizado para dibujar el puntero
+	 * 
+	 * @return el stroke
+	 */
+	abstract public BasicStroke getStroke();
 
-  /**
-   * Obtiene la posicion inicial del puntero
-   * @return la posicion inicial del puntero
-   */
-  public Point2D getInitialPosition() {
-    return this.initPointerPos;
-  }
+	/**
+	 * Obtiene el color utilizado para dibujar el puntero
+	 * 
+	 * @return el color
+	 */
+	abstract public Color getColor();
 
-  /**
-   * Cambia la posicion inicial del puntero
-   * @param position la nueva posicion
-   */
-  public void setInitialPosition(Point2D position) {
-    this.initPointerPos = position;
-  }
+	/**
+	 * Obtiene la posicion inicial del puntero
+	 * 
+	 * @return la posicion inicial del puntero
+	 */
+	public Point2D getInitialPosition() {
+		return this.initPointerPos;
+	}
 
-  /**
-   * @return la longitud por defecto del puntero.
-   */
-  public int getDefaultLength() {
-    return this.defLength;
-  }
+	/**
+	 * Cambia la posicion inicial del puntero
+	 * 
+	 * @param position
+	 *            la nueva posicion
+	 */
+	public void setInitialPosition(Point2D position) {
+		this.initPointerPos = position;
+	}
 
-  /**
-   * @param length la nueva longitud por defecto
-   */
-  public void setDefaultLength(int length) {
-    this.defLength = length;
-  }
+	/**
+	 * @return la longitud por defecto del puntero.
+	 */
+	public int getDefaultLength() {
+		return this.defLength;
+	}
 
-  /**
-   * Obtiene la posicion final del puntero
-   * @return la posicion final del puntero
-   */
-  abstract public Point2D getFinalPosition();
+	/**
+	 * @param length
+	 *            la nueva longitud por defecto
+	 */
+	public void setDefaultLength(int length) {
+		this.defLength = length;
+	}
 
-  @Override
-  public void changeColor() {
-    this.paintDefArrow = !paintDefArrow;
-  }
+	/**
+	 * Obtiene la posicion final del puntero
+	 * 
+	 * @return la posicion final del puntero
+	 */
+	abstract public Point2D getFinalPosition();
 
-  @Override
-  public void restoreColor() {
-    this.paintDefArrow = true;
-  }
+	@Override
+	public void changeColor() {
+		this.paintDefArrow = !paintDefArrow;
+	}
 
-  @Override
-  public void setSelectionColor(Color color) {
-    this.setFlashingColor(color);
-  }
+	@Override
+	public void restoreColor() {
+		this.paintDefArrow = true;
+	}
 
- 
-  @Override
-  public void setFlashing(int delay) {
-    srcNode.stopFlashing();
-    if (hasTargetNode())
-      trgNode.stopFlashing();
-    super.setFlashing(delay);
-  }
+	@Override
+	public void setSelectionColor(Color color) {
+		this.setFlashingColor(color);
+	}
 
-  /**
-   * Obtiene la longitud del puntero
-   * @return la longitud del puntero
-   */
-  protected double getLength() {
-    return length;
-  }
+	@Override
+	public void setFlashing(int delay) {
+		srcNode.stopFlashing();
+		if (hasTargetNode())
+			trgNode.stopFlashing();
+		super.setFlashing(delay);
+	}
 
-  /**
-   * Cambia la longitud del puntero
-   * @param length nueva longitud del puntero
-   */
-  protected void setLength(double length) {
-    this.length = length;
-  }
+	/**
+	 * Obtiene la longitud del puntero
+	 * 
+	 * @return la longitud del puntero
+	 */
+	protected double getLength() {
+		return length;
+	}
 
-  @Override
-  protected Selectable getSelectable() {
-    return this;
-  }
+	/**
+	 * Cambia la longitud del puntero
+	 * 
+	 * @param length
+	 *            nueva longitud del puntero
+	 */
+	protected void setLength(double length) {
+		this.length = length;
+	}
 
-  @Override
-  protected void paintElement(Graphics g) {
-    if (hasTargetNode() && trgNode.isVisible())
-      this.paintArrow(g);
-  }
+	@Override
+	protected Selectable getSelectable() {
+		return this;
+	}
 
-  protected void paintDefArrow(Graphics g) {
-    Arrow arrow = new Arrow(this.getInitialPosition(), this.getFinalPosition(),
-        true, this.getStroke(), this.getColor(), true);
-    arrow.paint(g);
-  }
+	@Override
+	protected void paintElement(Graphics g) {
+		if (hasTargetNode() && trgNode.isVisible())
+			this.paintArrow(g);
+	}
 
-  protected void paintAltArrow(Graphics g) {
-    Arrow arrow = new Arrow(this.getInitialPosition(), this.getFinalPosition(),
-        true, new BasicStroke(3.0f), getFlashingColor(), true);
-    arrow.paint(g);
-  }
+	protected void paintDefArrow(Graphics g) {
+		Arrow arrow = new Arrow(this.getInitialPosition(),
+				this.getFinalPosition(), true, this.getStroke(),
+				this.getColor(), true);
+		arrow.paint(g);
+	}
 
-  protected void paintArrow(Graphics g) {
-    if (paintDefArrow)
-      this.paintDefArrow(g);
-    else
-      this.paintAltArrow(g);
-  }
+	protected void paintAltArrow(Graphics g) {
+		Arrow arrow = new Arrow(this.getInitialPosition(),
+				this.getFinalPosition(), true, new BasicStroke(3.0f),
+				getFlashingColor(), true);
+		arrow.paint(g);
+	}
 
-  protected boolean hasTargetNode() {
-    return (this.trgNode != null);
-  }
+	protected void paintArrow(Graphics g) {
+		if (paintDefArrow)
+			this.paintDefArrow(g);
+		else
+			this.paintAltArrow(g);
+	}
+
+	protected boolean hasTargetNode() {
+		return (this.trgNode != null);
+	}
 }

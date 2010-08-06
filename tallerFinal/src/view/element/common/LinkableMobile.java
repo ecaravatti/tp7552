@@ -10,7 +10,7 @@ package view.element.common;
  */
 public interface LinkableMobile {
 
-    public void markAsLinked();
+	public void markAsLinked();
 
-    public void markAsUnlinked();
+	public void markAsUnlinked();
 }

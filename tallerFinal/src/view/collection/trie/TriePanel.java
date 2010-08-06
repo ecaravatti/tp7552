@@ -12,9 +12,10 @@ import controller.TrieController;
  * 
  * 
  */
-public class TriePanel extends javax.swing.JPanel implements InteractivelyControlled {
+public class TriePanel extends javax.swing.JPanel implements
+		InteractivelyControlled {
 	private static final long serialVersionUID = 7509567922969971430L;
-	
+
 	private TrieView trieView;
 	private TrieController controller;
 
@@ -89,12 +90,12 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 	private void initComponents() {
 
 		trieButtonsPanel = new TrieButtonsPanel();
-		//setBackground(new java.awt.Color(255, 255, 255));
+		// setBackground(new java.awt.Color(255, 255, 255));
 		setLayout(new BorderLayout(5, 5));
 		add(trieButtonsPanel, BorderLayout.PAGE_START);
 		add(new JScrollPane(trieView), BorderLayout.CENTER);
 	}// </editor-fold>//GEN-END:initComponents
-	
+
 	public TrieButtonsPanel getButtonsPanel() {
 		return trieButtonsPanel;
 	}

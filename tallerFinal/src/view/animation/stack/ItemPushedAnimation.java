@@ -27,62 +27,74 @@ import view.shape.DefaultShapeSettings;
  */
 public class ItemPushedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private StackView<T> view;
-    private StackNodeView<T> node;
+	private StackView<T> view;
+	private StackNodeView<T> node;
 
-    public ItemPushedAnimation(StackView<T> view, StackNodeView<T> node) {
-        this.view = view;
-        this.node = node;
-    }
+	public ItemPushedAnimation(StackView<T> view, StackNodeView<T> node) {
+		this.view = view;
+		this.node = node;
+	}
 
-    @Override
-    protected void initializeListUndoSteps() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected void initializeListUndoSteps() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
-    @Override
-    protected void initializeListSteps() {
-        this.steps = new ArrayList<Command>();
-        StackNodeView<T> pushedParentNode = node.getParent();
+	@Override
+	protected void initializeListSteps() {
+		this.steps = new ArrayList<Command>();
+		StackNodeView<T> pushedParentNode = node.getParent();
 
-        //display the new pushed item.
-        this.steps.add(new MakeVisibleCommand(view, node));
+		// display the new pushed item.
+		this.steps.add(new MakeVisibleCommand(view, node));
 
-        //move the pushed item to the final position.
-        this.moveNodeToList(node);
+		// move the pushed item to the final position.
+		this.moveNodeToList(node);
 
-        if (pushedParentNode != null) {
-            //link the pushed item as bottom of the stack.
-            this.steps.add(new LinkMobilesCommand(node, true));
+		if (pushedParentNode != null) {
+			// link the pushed item as bottom of the stack.
+			this.steps.add(new LinkMobilesCommand(node, true));
 
-            //assign new role to the pushed parent item.
-            this.steps.add(new AssignNodeRoleCommand<T>(pushedParentNode, (pushedParentNode.getParent() == null) ? StackNodeRoles.bottom : null));
-        }
+			// assign new role to the pushed parent item.
+			this.steps
+					.add(new AssignNodeRoleCommand<T>(
+							pushedParentNode,
+							(pushedParentNode.getParent() == null) ? StackNodeRoles.bottom
+									: null));
+		}
 
-        //assign the role to the pushed item.
-        this.steps.add(new AssignNodeRoleCommand<T>(node, StackNodeRoles.top));
+		// assign the role to the pushed item.
+		this.steps.add(new AssignNodeRoleCommand<T>(node, StackNodeRoles.top));
 
-        this.steps.add(new ShowMessageCommand(view, MessageFormat.format("Item insertado: {0}", node.getItem().toString())));
-        this.steps.add(new StepFinishedCommand(view, true));
-    }
+		this.steps.add(new ShowMessageCommand(view, MessageFormat.format(
+				"Item insertado: {0}", node.getItem().toString())));
+		this.steps.add(new StepFinishedCommand(view, true));
+	}
 
-    private void moveNodeToList(StackNodeView<T> node) {
-        //first move to the right to the final horizontal position.
-//        Point2D initialPosition = (Point2D) node.getPosition().clone();
-//        initialPosition.setLocation(initialPosition.getX(), initialPosition.getY() - (this.getNodeIndex(node) - 1)*(StackNodeShape.DEF_HEIGHT_NODE + DELTA_VERTICAL));
-//
-//        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), initialPosition, 8).getSteps());
+	private void moveNodeToList(StackNodeView<T> node) {
+		// first move to the right to the final horizontal position.
+		// Point2D initialPosition = (Point2D) node.getPosition().clone();
+		// initialPosition.setLocation(initialPosition.getX(),
+		// initialPosition.getY() - (this.getNodeIndex(node) -
+		// 1)*(StackNodeShape.DEF_HEIGHT_NODE + DELTA_VERTICAL));
+		//
+		// steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(),
+		// initialPosition, 8).getSteps());
 
-        //then move to the final vertical position.
-        Point2D finalPosition = (Point2D) node.getPosition().clone();
-        finalPosition.setLocation(finalPosition.getX(), finalPosition.getY() +
-        					(this.getNodeIndex(node)+1)*(StackNodeShape.DEF_HEIGHT_NODE +
-        												 DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES));
+		// then move to the final vertical position.
+		Point2D finalPosition = (Point2D) node.getPosition().clone();
+		finalPosition
+				.setLocation(
+						finalPosition.getX(),
+						finalPosition.getY()
+								+ (this.getNodeIndex(node) + 1)
+								* (StackNodeShape.DEF_HEIGHT_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES));
 
-        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), finalPosition, 2).getSteps());
-    }
+		steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(),
+				finalPosition, 2).getSteps());
+	}
 
-    private int getNodeIndex(StackNodeView<T> node) {
-        return view.getStructureCapacity() - view.getStackNodes().size();
-    }
+	private int getNodeIndex(StackNodeView<T> node) {
+		return view.getStructureCapacity() - view.getStackNodes().size();
+	}
 }

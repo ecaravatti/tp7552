@@ -27,67 +27,82 @@ import view.shape.DefaultShapeSettings;
  */
 public class ItemEnqueuedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private QueueView<T> view;
-    private QueueNodeView<T> node;
+	private QueueView<T> view;
+	private QueueNodeView<T> node;
 
-    public ItemEnqueuedAnimation(QueueView<T> view, QueueNodeView<T> node) {
-        this.view = view;
-        this.node = node;
-    }
+	public ItemEnqueuedAnimation(QueueView<T> view, QueueNodeView<T> node) {
+		this.view = view;
+		this.node = node;
+	}
 
-    @Override
-    protected void initializeListUndoSteps() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected void initializeListUndoSteps() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
-    @Override
-    protected void initializeListSteps() {
-        this.steps = new ArrayList<Command>();
-        QueueNodeView<T> enqueuedParentNode = node.getParent();
+	@Override
+	protected void initializeListSteps() {
+		this.steps = new ArrayList<Command>();
+		QueueNodeView<T> enqueuedParentNode = node.getParent();
 
-        //display the new enqueued item.
-        this.steps.add(new MakeVisibleCommand(view, node));
+		// display the new enqueued item.
+		this.steps.add(new MakeVisibleCommand(view, node));
 
-        //move the enqueued item to the final position.
-        this.moveNodeToList(node);
+		// move the enqueued item to the final position.
+		this.moveNodeToList(node);
 
-        if (enqueuedParentNode != null) {
-            //link the enqueued item as bottom of the stack.
-            this.steps.add(new LinkMobilesCommand(node, true));
+		if (enqueuedParentNode != null) {
+			// link the enqueued item as bottom of the stack.
+			this.steps.add(new LinkMobilesCommand(node, true));
 
-            //assign new role to the enqueued parent item.
-            this.steps.add(new AssignNodeRoleCommand<T>(enqueuedParentNode, (enqueuedParentNode.getParent() == null) ? QueueNodeRoles.head : null));
-        }
+			// assign new role to the enqueued parent item.
+			this.steps
+					.add(new AssignNodeRoleCommand<T>(
+							enqueuedParentNode,
+							(enqueuedParentNode.getParent() == null) ? QueueNodeRoles.head
+									: null));
+		}
 
-        //assign the role to the enqueued item.
-        this.steps.add(new AssignNodeRoleCommand<T>(node, (enqueuedParentNode == null) ? QueueNodeRoles.head : QueueNodeRoles.tail));
+		// assign the role to the enqueued item.
+		this.steps.add(new AssignNodeRoleCommand<T>(node,
+				(enqueuedParentNode == null) ? QueueNodeRoles.head
+						: QueueNodeRoles.tail));
 
-        this.steps.add(new ShowMessageCommand(view, MessageFormat.format("Item insertado: {0}", node.getItem().toString())));
-        this.steps.add(new StepFinishedCommand(view, false));
-    }
+		this.steps.add(new ShowMessageCommand(view, MessageFormat.format(
+				"Item insertado: {0}", node.getItem().toString())));
+		this.steps.add(new StepFinishedCommand(view, false));
+	}
 
-    private void moveNodeToList(QueueNodeView<T> node) {
-        //first move to the right to the final horizontal position.
-        Point2D horizontalPosition = (Point2D) node.getPosition().clone();
-        horizontalPosition.setLocation(horizontalPosition.getX() + ((this.getNodeIndex(node) - 1) * (QueueNodeShape.DEF_WIDTH_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES)), horizontalPosition.getY());
+	private void moveNodeToList(QueueNodeView<T> node) {
+		// first move to the right to the final horizontal position.
+		Point2D horizontalPosition = (Point2D) node.getPosition().clone();
+		horizontalPosition
+				.setLocation(
+						horizontalPosition.getX()
+								+ ((this.getNodeIndex(node) - 1) * (QueueNodeShape.DEF_WIDTH_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES)),
+						horizontalPosition.getY());
 
-        steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(), horizontalPosition, 8).getSteps());
+		steps.addAll(new MobileAnimationSteps(view, node, node.getPosition(),
+				horizontalPosition, 8).getSteps());
 
-        //then move to the final vertical position.
-        Point2D verticalPosition = (Point2D) horizontalPosition.clone();
-        verticalPosition.setLocation(verticalPosition.getX(), verticalPosition.getY() + DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES * 2);
+		// then move to the final vertical position.
+		Point2D verticalPosition = (Point2D) horizontalPosition.clone();
+		verticalPosition
+				.setLocation(verticalPosition.getX(), verticalPosition.getY()
+						+ DefaultShapeSettings.DISTANCE_BETWEEN_QUEUE_NODES * 2);
 
-        steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition, verticalPosition, 8).getSteps());
-    }
+		steps.addAll(new MobileAnimationSteps(view, node, horizontalPosition,
+				verticalPosition, 8).getSteps());
+	}
 
-    private int getNodeIndex(QueueNodeView<T> node) {
-        int index = 1;
-        QueueNodeView<T> parentNode = node.getParent();
-        while (parentNode != null) {
-            index++;
-            parentNode = parentNode.getParent();
-        }
+	private int getNodeIndex(QueueNodeView<T> node) {
+		int index = 1;
+		QueueNodeView<T> parentNode = node.getParent();
+		while (parentNode != null) {
+			index++;
+			parentNode = parentNode.getParent();
+		}
 
-        return index;
-    }
+		return index;
+	}
 }

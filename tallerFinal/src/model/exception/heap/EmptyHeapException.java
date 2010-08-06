@@ -2,7 +2,7 @@ package model.exception.heap;
 
 /**
  * Excepcion indicando que el heap se encuentra vacío.
- *
+ * 
  */
 public class EmptyHeapException extends Exception {
 

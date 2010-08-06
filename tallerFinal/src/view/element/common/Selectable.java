@@ -9,21 +9,22 @@ import java.awt.Color;
  */
 public interface Selectable {
 
-  /**
-   * Cambia el color de seleccion.
-   * 
-   * @param color nuevo color de seleccion.
-   */
-  public void setSelectionColor(Color color);
+	/**
+	 * Cambia el color de seleccion.
+	 * 
+	 * @param color
+	 *            nuevo color de seleccion.
+	 */
+	public void setSelectionColor(Color color);
 
-  /**
-   * Cambia el color durante la seleccion.
-   */
-  public void changeColor();
+	/**
+	 * Cambia el color durante la seleccion.
+	 */
+	public void changeColor();
 
-  /**
-   * Restaura los colores a los establecidos antes de la seleccion
-   */
-  public void restoreColor();
+	/**
+	 * Restaura los colores a los establecidos antes de la seleccion
+	 */
+	public void restoreColor();
 
 }

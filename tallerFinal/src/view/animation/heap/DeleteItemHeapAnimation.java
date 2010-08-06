@@ -18,24 +18,25 @@ import view.command.common.StepFinishedCommand;
  */
 public class DeleteItemHeapAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private HeapView<T> view;
-    private T item;
+	private HeapView<T> view;
+	private T item;
 
-    public DeleteItemHeapAnimation(HeapView<T> view, T item) {
-        this.view = view;
-        this.item = item;
-    }
-    
-    @Override
-    protected void initializeListUndoSteps() {        
-    }
+	public DeleteItemHeapAnimation(HeapView<T> view, T item) {
+		this.view = view;
+		this.item = item;
+	}
 
-    @Override
-    protected void initializeListSteps() {
-        steps = new ArrayList<Command>();
-        
-        steps.add(new ShowMessageCommand(view, "Eliminando elemento " + item.toString()));
-        steps.add(new StepFinishedCommand(view, false));
-    }
+	@Override
+	protected void initializeListUndoSteps() {
+	}
+
+	@Override
+	protected void initializeListSteps() {
+		steps = new ArrayList<Command>();
+
+		steps.add(new ShowMessageCommand(view, "Eliminando elemento "
+				+ item.toString()));
+		steps.add(new StepFinishedCommand(view, false));
+	}
 
 }

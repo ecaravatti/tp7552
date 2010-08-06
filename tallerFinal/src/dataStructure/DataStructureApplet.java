@@ -24,8 +24,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -66,17 +66,17 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 
 	public final static Font DEF_FONT = new Font("Courier", Font.PLAIN, 12);
 	public final static String DEF_LAF = "Nimbus";
-	
+
 	public static Image HELP_IMAGE;
 	public static Image BACK_IMAGE;
 	public static Image HEADER_IMAGE;
-	
+
 	public static Image BUTTON_ADD_IMAGE;
 	public static Image BUTTON_DELETE_IMAGE;
 	public static Image BUTTON_RANDOM_IMAGE;
 	public static Image BUTTON_REFRESH_IMAGE;
 	public static Image BUTTON_TRAVERSE_IMAGE;
-	
+
 	public static Image BUTTON_PLAY_IMAGE;
 	public static Image BUTTON_PAUSE_IMAGE;
 	public static Image BUTTON_FAST_FORWARD_IMAGE;
@@ -145,9 +145,9 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 		interactivePanel = null;
 
 		UIManager.put("control", new Color(220, 224, 235));
-		UIManager.put("textForeground", new Color(59,59,59));
+		UIManager.put("textForeground", new Color(59, 59, 59));
 
-		try {		
+		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if (DEF_LAF.equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
@@ -155,7 +155,8 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 				}
 			}
 		} catch (UnsupportedLookAndFeelException e) {
-			// Si Nimbus no está instalado, se utiliza el default Look and Feel (Metal)
+			// Si Nimbus no está instalado, se utiliza el default Look and Feel
+			// (Metal)
 		} catch (Exception e) {
 			// No debe ocurrir.
 		}
@@ -163,9 +164,10 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 		/**
 		 * Header y logo
 		 */
-		JLabel headerLabel = new JLabel(new ImageIcon(HEADER_IMAGE), SwingConstants.CENTER);
+		JLabel headerLabel = new JLabel(new ImageIcon(HEADER_IMAGE),
+				SwingConstants.CENTER);
 		headerLabel.setBackground(new Color(220, 224, 235));
-		
+
 		header = new JPanel();
 		header.add(Box.createHorizontalStrut(10));
 		header.setLayout(new BoxLayout(header, BoxLayout.LINE_AXIS));
@@ -188,11 +190,14 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 					mainPanel.add(tabbedPane);
 					mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 				}
-				
+
 				// Update the button text and icon
-				helpButton.setIcon(helpVisible ? new ImageIcon(BACK_IMAGE) : new ImageIcon(HELP_IMAGE));
-				//helpButton.setText(helpVisible ? "Volver" : "Ayuda");
-				helpButton.setToolTipText(helpVisible ? "Volver a la aplicación" : "Mostrar la ayuda");
+				helpButton.setIcon(helpVisible ? new ImageIcon(BACK_IMAGE)
+						: new ImageIcon(HELP_IMAGE));
+				// helpButton.setText(helpVisible ? "Volver" : "Ayuda");
+				helpButton
+						.setToolTipText(helpVisible ? "Volver a la aplicación"
+								: "Mostrar la ayuda");
 
 				// Repaint the whole applet
 				getRootPane().revalidate();
@@ -200,10 +205,9 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 			}
 		});
 		header.add(Box.createHorizontalGlue());
-		//helpButton.setAlignmentY(BOTTOM_ALIGNMENT);
+		// helpButton.setAlignmentY(BOTTOM_ALIGNMENT);
 		header.add(helpButton);
 		header.add(Box.createHorizontalStrut(20));
-		
 
 		/**
 		 * Componentes del Trie
@@ -213,23 +217,29 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 		triePanel = new TriePanel(trieView);
 		trieController = new TrieController(trie, triePanel);
 		triePanel.getButtonsPanel().setEnabledButtons(true);
-		StructurePane<TriePanel> trieStructurePanel = new StructurePane<TriePanel>(triePanel);
+		StructurePane<TriePanel> trieStructurePanel = new StructurePane<TriePanel>(
+				triePanel);
 
 		/**
 		 * Componentes de BST
 		 */
 		treeHeightBalanced = new BSTHeightBalanced<Integer>(1);
 		treeHeightBalancedView = new BinarySearchTreeView();
-		treeHeightPanel = new BSTPanel(treeHeightBalancedView, true, "Altura máxima");
-		treeHeightBalancedController = new BSTHeightBalancedController(treeHeightBalanced, treeHeightPanel);
-		StructurePane<BSTPanel> treeHeightBalancedStructurePanel = new StructurePane<BSTPanel>(treeHeightPanel);
+		treeHeightPanel = new BSTPanel(treeHeightBalancedView, true,
+				"Altura máxima");
+		treeHeightBalancedController = new BSTHeightBalancedController(
+				treeHeightBalanced, treeHeightPanel);
+		StructurePane<BSTPanel> treeHeightBalancedStructurePanel = new StructurePane<BSTPanel>(
+				treeHeightPanel);
 		treeHeightPanel.getButtonsPanel().enableComponents(true);
 
 		treeWeightBalanced = new BSTWeightBalanced<Integer>(1);
 		treeWeightBalancedView = new BinarySearchTreeView();
 		treeWeightPanel = new BSTPanel(treeWeightBalancedView, false, "Alpha");
-		treeWeightBalancedController = new BSTWeightBalancedController(treeWeightBalanced, treeWeightPanel);
-		StructurePane<BSTPanel> treeWeightBalancedStructurePanel = new StructurePane<BSTPanel>(treeWeightPanel);
+		treeWeightBalancedController = new BSTWeightBalancedController(
+				treeWeightBalanced, treeWeightPanel);
+		StructurePane<BSTPanel> treeWeightBalancedStructurePanel = new StructurePane<BSTPanel>(
+				treeWeightPanel);
 		treeWeightPanel.getButtonsPanel().enableComponents(true);
 
 		/**
@@ -308,25 +318,26 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 				updateInteractivePanel(selectedTabIndex);
 				bottomPanel.repaint();
 			}
-			
+
 		});
 		tabbedPane.setSelectedIndex(5);
 		updateInteractivePanel(5);
 
 		Dimension screenResolution = this.getToolkit().getScreenSize();
 		this.setSize(new Double(screenResolution.getWidth()).intValue() - 15,
-					 new Double(screenResolution.getHeight()).intValue() - 125);
+				new Double(screenResolution.getHeight()).intValue() - 125);
 		this.add(header, BorderLayout.NORTH);
 		this.add(mainPanel);
 		this.addComponentListener(this);
 	}
-	
+
 	private void updateInteractivePanel(int selectedTabIndex) {
 		if (interactivePanel != null) {
 			bottomPanel.remove(interactivePanel);
 		}
 
-		interactivePanel = controllers.get(selectedTabIndex).getInteractivePanel();
+		interactivePanel = controllers.get(selectedTabIndex)
+				.getInteractivePanel();
 		SwingUtilities.updateComponentTreeUI(interactivePanel);
 		bottomPanel.add(interactivePanel);
 		controllers.get(selectedTabIndex).setWait(Boolean.FALSE);
@@ -372,16 +383,19 @@ public class DataStructureApplet extends JApplet implements ComponentListener {
 		HELP_IMAGE = getImage(getCodeBase(), "Info-icon-big.png");
 		BACK_IMAGE = getImage(getCodeBase(), "Return-icon.png");
 		HEADER_IMAGE = getImage(getCodeBase(), "head-taller-small.png");
-		
+
 		BUTTON_ADD_IMAGE = getImage(getCodeBase(), "Add-icon-big.png");
 		BUTTON_DELETE_IMAGE = getImage(getCodeBase(), "Delete-icon-big.png");
 		BUTTON_RANDOM_IMAGE = getImage(getCodeBase(), "Random-icon-big.png");
 		BUTTON_REFRESH_IMAGE = getImage(getCodeBase(), "Refresh-icon-big.png");
-		BUTTON_TRAVERSE_IMAGE = getImage(getCodeBase(), "Configure-icon-big.png");		
-		
+		BUTTON_TRAVERSE_IMAGE = getImage(getCodeBase(),
+				"Configure-icon-big.png");
+
 		BUTTON_PLAY_IMAGE = getImage(getCodeBase(), "Play-Enabled-icon-big.png");
-		BUTTON_PAUSE_IMAGE = getImage(getCodeBase(), "Play-Disabled-icon-big.png");
-		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(), "Forward-icon-big.png");
+		BUTTON_PAUSE_IMAGE = getImage(getCodeBase(),
+				"Play-Disabled-icon-big.png");
+		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(),
+				"Forward-icon-big.png");
 		BUTTON_REWIND_IMAGE = getImage(getCodeBase(), "Back-icon-big.png");
 	}
 }

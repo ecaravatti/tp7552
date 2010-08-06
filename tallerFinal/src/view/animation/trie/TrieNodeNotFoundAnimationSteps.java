@@ -19,45 +19,54 @@ import view.element.trie.AbstractTrieNodeView;
  * 
  */
 public class TrieNodeNotFoundAnimationSteps extends AbstractUndoAnimationSteps {
-  private TrieView trieView;
-  private AbstractTrieNodeView node;
+	private TrieView trieView;
+	private AbstractTrieNodeView node;
 
-  /**
-   * @param trieView el trieView al que pertenece el nodo
-   * @param node nodo no encontrado
-   */
-  public TrieNodeNotFoundAnimationSteps(TrieView trieView, AbstractTrieNodeView node) {
-    super();
-    this.trieView = trieView;
-    this.node = node;
-    this.setRedoPause(false);
-    this.setUndoPause(false);
-  }
+	/**
+	 * @param trieView
+	 *            el trieView al que pertenece el nodo
+	 * @param node
+	 *            nodo no encontrado
+	 */
+	public TrieNodeNotFoundAnimationSteps(TrieView trieView,
+			AbstractTrieNodeView node) {
+		super();
+		this.trieView = trieView;
+		this.node = node;
+		this.setRedoPause(false);
+		this.setUndoPause(false);
+	}
 
-  @Override
-  protected void initializeListSteps() {
-    steps = new ArrayList<Command>();
-    
-    if (node.hasParent()) {
-      steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-          .getInstance().getMessageSearchTrieNode(node.getData())));
-      steps.add( new StopFlashingElementViewCommand(trieView, trieView.getWord()) );
-      steps.add( new SelectElementViewCommand(trieView, trieView.getFlashingDelay(),
-              node.getParent(), node.getParent().getFlashingColor()));
-      steps.addAll( trieView.getPaintCommands() );;
-    }
-    
-    steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-        .getInstance().getMessageTrieNodeNotFound()));
-    steps.add( new StopFlashingElementViewCommand(trieView, trieView.getWord()) );
-    steps.add( new SelectElementViewCommand(trieView, trieView.getFlashingDelay(),
-            node, AbstractTrieNodeView.Colors.SELECT_NODE_NOT_FOUND.getColor()));
-    steps.addAll( trieView.getPaintCommands() );
-    steps.add( new AddExecutedAnimationCommand(trieView, this) );
-  }
+	@Override
+	protected void initializeListSteps() {
+		steps = new ArrayList<Command>();
 
-  @Override
-  protected void initializeListUndoSteps() {
-    undoSteps = new ArrayList<Command>();
-  }
+		if (node.hasParent()) {
+			steps.add(new ShowMessageCommand(trieView.getController(),
+					TrieMessages.getInstance().getMessageSearchTrieNode(
+							node.getData())));
+			steps.add(new StopFlashingElementViewCommand(trieView, trieView
+					.getWord()));
+			steps.add(new SelectElementViewCommand(trieView, trieView
+					.getFlashingDelay(), node.getParent(), node.getParent()
+					.getFlashingColor()));
+			steps.addAll(trieView.getPaintCommands());
+			;
+		}
+
+		steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
+				.getInstance().getMessageTrieNodeNotFound()));
+		steps.add(new StopFlashingElementViewCommand(trieView, trieView
+				.getWord()));
+		steps.add(new SelectElementViewCommand(trieView, trieView
+				.getFlashingDelay(), node,
+				AbstractTrieNodeView.Colors.SELECT_NODE_NOT_FOUND.getColor()));
+		steps.addAll(trieView.getPaintCommands());
+		steps.add(new AddExecutedAnimationCommand(trieView, this));
+	}
+
+	@Override
+	protected void initializeListUndoSteps() {
+		undoSteps = new ArrayList<Command>();
+	}
 }

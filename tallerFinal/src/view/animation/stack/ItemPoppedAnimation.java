@@ -28,52 +28,57 @@ import view.shape.DefaultShapeSettings;
  */
 public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
 
-    private StackView<T> view;
+	private StackView<T> view;
 
-    public ItemPoppedAnimation(StackView<T> view) {
-        this.view = view;
-    }
+	public ItemPoppedAnimation(StackView<T> view) {
+		this.view = view;
+	}
 
-    @Override
-    protected void initializeListUndoSteps() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected void initializeListUndoSteps() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
-    @Override
-    protected void initializeListSteps() {
-        steps = new ArrayList<Command>();
+	@Override
+	protected void initializeListSteps() {
+		steps = new ArrayList<Command>();
 
-        List<StackNodeView<T>> stackNodes = view.getStackNodes();
-        int stackSize = stackNodes.size();
-        StackNodeView<T> poppedNode = stackNodes.get(stackSize - 1);
+		List<StackNodeView<T>> stackNodes = view.getStackNodes();
+		int stackSize = stackNodes.size();
+		StackNodeView<T> poppedNode = stackNodes.get(stackSize - 1);
 
-        //remove top role of the popped item.
-        steps.add(new AssignNodeRoleCommand<T>(poppedNode, null));
-        final StackNodeView<T> poppedParentNode = poppedNode.getParent();
+		// remove top role of the popped item.
+		steps.add(new AssignNodeRoleCommand<T>(poppedNode, null));
+		final StackNodeView<T> poppedParentNode = poppedNode.getParent();
 
-        if (poppedParentNode != null) {
-        	//assign top role to the parent popped item.
-            steps.add(new AssignNodeRoleCommand<T>(poppedNode.getParent(), StackNodeRoles.top));
-        }
+		if (poppedParentNode != null) {
+			// assign top role to the parent popped item.
+			steps.add(new AssignNodeRoleCommand<T>(poppedNode.getParent(),
+					StackNodeRoles.top));
+		}
 
-        //unlink the popped item as bottom of the queue.
-        steps.add(new LinkMobilesCommand(poppedNode, false));
-        
-        //move the popped item to the final position.
-        MobileAnimationSteps moveSteps = new MobileAnimationSteps(view, poppedNode, poppedNode.getPosition(), this.moveNodeToInitialPosition(poppedNode), 8);
-        steps.addAll(moveSteps.getSteps());
+		// unlink the popped item as bottom of the queue.
+		steps.add(new LinkMobilesCommand(poppedNode, false));
 
-        //remove the popped item of the stack.
-        steps.add(new RemoveNodeCommand<T>(view, poppedNode));
-        steps.add(new ShowMessageCommand(view, MessageFormat.format("Item eliminado: {0}", poppedNode.getItem().toString())));
-        steps.add(new StepFinishedCommand(view, true));
-    }
+		// move the popped item to the final position.
+		MobileAnimationSteps moveSteps = new MobileAnimationSteps(view,
+				poppedNode, poppedNode.getPosition(),
+				this.moveNodeToInitialPosition(poppedNode), 8);
+		steps.addAll(moveSteps.getSteps());
 
-    private Point2D moveNodeToInitialPosition(StackNodeView<T> node) {
-        Point2D newPosition = (Point2D) node.getPosition().clone();
-        newPosition.setLocation(newPosition.getX(), newPosition.getY()
-        		- StackNodeShape.DEF_HEIGHT_NODE - DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES);
+		// remove the popped item of the stack.
+		steps.add(new RemoveNodeCommand<T>(view, poppedNode));
+		steps.add(new ShowMessageCommand(view, MessageFormat.format(
+				"Item eliminado: {0}", poppedNode.getItem().toString())));
+		steps.add(new StepFinishedCommand(view, true));
+	}
 
-        return newPosition;
-    }
+	private Point2D moveNodeToInitialPosition(StackNodeView<T> node) {
+		Point2D newPosition = (Point2D) node.getPosition().clone();
+		newPosition.setLocation(newPosition.getX(), newPosition.getY()
+				- StackNodeShape.DEF_HEIGHT_NODE
+				- DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES);
+
+		return newPosition;
+	}
 }

@@ -7,24 +7,25 @@ import javax.swing.JComponent;
  * 
  */
 public class PaintCommand implements Command {
-  private JComponent component;
+	private JComponent component;
 
-  /**
-   * 
-   * @param component el trie a re-pintar.
-   */
-  public PaintCommand(JComponent component) {
-    super();
-    this.component = component;
-  }
+	/**
+	 * 
+	 * @param component
+	 *            el trie a re-pintar.
+	 */
+	public PaintCommand(JComponent component) {
+		super();
+		this.component = component;
+	}
 
-  @Override
-  public boolean canExecute() {
-    return true;
-  }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 
-  @Override
-  public void execute() {
-    component.repaint();
-  }
+	@Override
+	public void execute() {
+		component.repaint();
+	}
 }

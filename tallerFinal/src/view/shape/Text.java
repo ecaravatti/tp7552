@@ -16,92 +16,99 @@ import view.element.common.Mobile;
 
 public class Text implements Mobile {
 
-    private Point2D position = null;
-    private String title = null;
-    private Color color = Color.BLACK;
-    private Font font = null;
+	private Point2D position = null;
+	private String title = null;
+	private Color color = Color.BLACK;
+	private Font font = null;
 
-    public Text(String title, Font font, Point2D position) {
-        this.title = title;
-        this.position = position;
-        this.font = font;
-    }
+	public Text(String title, Font font, Point2D position) {
+		this.title = title;
+		this.position = position;
+		this.font = font;
+	}
 
-    /**
-     * Dibuja un string centrado en el rectangulo que contiene al texto
-     * 
-     * @param graphics contexto sobre el que se dibuja el string.
-     * @param text texto a pintar
-     * @param font fuente con que debe dibujarse el texto
-     * @param rect rectangulo en que debe centrarse el texto
-     */
-    public static void paintCenterString(Graphics2D graphics, String text,
-            Font font, Rectangle2D rect, Color color) {
+	/**
+	 * Dibuja un string centrado en el rectangulo que contiene al texto
+	 * 
+	 * @param graphics
+	 *            contexto sobre el que se dibuja el string.
+	 * @param text
+	 *            texto a pintar
+	 * @param font
+	 *            fuente con que debe dibujarse el texto
+	 * @param rect
+	 *            rectangulo en que debe centrarse el texto
+	 */
+	public static void paintCenterString(Graphics2D graphics, String text,
+			Font font, Rectangle2D rect, Color color) {
 
-        Font prevFnt = graphics.getFont();
-        graphics.setFont(font);
-        FontMetrics fontMetrics = graphics.getFontMetrics();
-        Rectangle stringBounds = fontMetrics.getStringBounds(text, graphics).getBounds();
-        FontRenderContext renderContext = graphics.getFontRenderContext();
-        GlyphVector glyphVector = font.createGlyphVector(renderContext, text);
-        Rectangle visualBounds = glyphVector.getVisualBounds().getBounds();
+		Font prevFnt = graphics.getFont();
+		graphics.setFont(font);
+		FontMetrics fontMetrics = graphics.getFontMetrics();
+		Rectangle stringBounds = fontMetrics.getStringBounds(text, graphics)
+				.getBounds();
+		FontRenderContext renderContext = graphics.getFontRenderContext();
+		GlyphVector glyphVector = font.createGlyphVector(renderContext, text);
+		Rectangle visualBounds = glyphVector.getVisualBounds().getBounds();
 
-        int centX = new Double(rect.getCenterX() - stringBounds.width / 2).intValue();
-        int centY = new Double(rect.getCenterY() - visualBounds.height / 2 - visualBounds.y).intValue();
+		int centX = new Double(rect.getCenterX() - stringBounds.width / 2)
+				.intValue();
+		int centY = new Double(rect.getCenterY() - visualBounds.height / 2
+				- visualBounds.y).intValue();
 
-        Color prevColor = graphics.getColor();
-        graphics.setColor(color);
-        
-        graphics.drawString(text, centX, centY);
-        
-        graphics.setFont(prevFnt);
-        graphics.setColor(prevColor);
-    }
+		Color prevColor = graphics.getColor();
+		graphics.setColor(color);
 
-    public void paint(Graphics graphics) {
-        Graphics2D g2 = (Graphics2D) graphics;
-        g2.setFont(font);
-        Paint prevPaint = g2.getPaint();
-        g2.setPaint(color);
-        g2.drawString(title, (int) position.getX(), (int) position.getY());
-        g2.setPaint(prevPaint);
-    }
+		graphics.drawString(text, centX, centY);
 
-    public Color getColor() {
-        return color;
-    }
+		graphics.setFont(prevFnt);
+		graphics.setColor(prevColor);
+	}
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+	public void paint(Graphics graphics) {
+		Graphics2D g2 = (Graphics2D) graphics;
+		g2.setFont(font);
+		Paint prevPaint = g2.getPaint();
+		g2.setPaint(color);
+		g2.drawString(title, (int) position.getX(), (int) position.getY());
+		g2.setPaint(prevPaint);
+	}
 
-    public Font getFont() {
-        return font;
-    }
+	public Color getColor() {
+		return color;
+	}
 
-    public void setFont(Font font) {
-        this.font = font;
-    }
+	public void setColor(Color color) {
+		this.color = color;
+	}
 
-    @Override
-    public Point2D getPosition() {
-        return position;
-    }
+	public Font getFont() {
+		return font;
+	}
 
-    public void setPosition(Point2D position) {
-        this.position = position;
-    }
+	public void setFont(Font font) {
+		this.font = font;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	@Override
+	public Point2D getPosition() {
+		return position;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setPosition(Point2D position) {
+		this.position = position;
+	}
 
-    @Override
-    public void moveTo(Point2D position) {
-        setPosition(position);
-    }
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	@Override
+	public void moveTo(Point2D position) {
+		setPosition(position);
+	}
 }

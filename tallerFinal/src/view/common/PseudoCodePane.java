@@ -6,7 +6,6 @@ import javax.swing.JTextArea;
 
 import dataStructure.DataStructureApplet;
 
-
 /**
  * Panel que muestra el pseudocodigo de las operaciones realizadas sobre las
  * estructuras.

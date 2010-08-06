@@ -13,39 +13,39 @@ import event.heap.HeapListener;
  */
 public abstract class HeapObservable<T> extends ObservableBase<HeapListener<T>> {
 
-    protected void fireItemAdded(T item) {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.itemAdded(item);
-        }
-    }
+	protected void fireItemAdded(T item) {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.itemAdded(item);
+		}
+	}
 
-    protected void fireAddingItem(T item) {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.addingItem(item);
-        }
-    }
+	protected void fireAddingItem(T item) {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.addingItem(item);
+		}
+	}
 
-    protected void fireItemDeleted(T item) {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.itemDeleted(item);
-        }
-    }
+	protected void fireItemDeleted(T item) {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.itemDeleted(item);
+		}
+	}
 
-    protected void fireDeletingItem(T item) {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.deletingItem(item);
-        }
-    }
+	protected void fireDeletingItem(T item) {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.deletingItem(item);
+		}
+	}
 
-    protected void fireItemsSwapped(Integer item1, Integer item2) {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.itemsSwapped(item1, item2);
-        }
-    }
-    
-    protected void fireEmptyHeap() {
-        for (HeapListener<T> listener : this.getListeners()) {
-            listener.emptyHeap();
-        }
-    }
+	protected void fireItemsSwapped(Integer item1, Integer item2) {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.itemsSwapped(item1, item2);
+		}
+	}
+
+	protected void fireEmptyHeap() {
+		for (HeapListener<T> listener : this.getListeners()) {
+			listener.emptyHeap();
+		}
+	}
 }

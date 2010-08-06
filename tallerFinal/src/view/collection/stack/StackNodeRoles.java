@@ -10,29 +10,29 @@ package view.collection.stack;
  */
 public enum StackNodeRoles {
 
-    top() {
+	top() {
 
-        private static final String TOP_ROLE = "tope";
+		private static final String TOP_ROLE = "tope";
 
-        @Override
-        public String getRoleName() {
-            return TOP_ROLE;
-        }
-    },
-    bottom() {
+		@Override
+		public String getRoleName() {
+			return TOP_ROLE;
+		}
+	},
+	bottom() {
 
-        private static final String BOTTOM_ROLE = "final";
+		private static final String BOTTOM_ROLE = "final";
 
-        @Override
-        public String getRoleName() {
-            return BOTTOM_ROLE;
-        }
-    };
+		@Override
+		public String getRoleName() {
+			return BOTTOM_ROLE;
+		}
+	};
 
-    @Override
-    public String toString() {
-        return this.getRoleName();
-    }
+	@Override
+	public String toString() {
+		return this.getRoleName();
+	}
 
-    public abstract String getRoleName();
+	public abstract String getRoleName();
 }

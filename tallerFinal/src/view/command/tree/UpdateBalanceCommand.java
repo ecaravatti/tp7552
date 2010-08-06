@@ -4,24 +4,23 @@ import view.collection.tree.BSTNodeView;
 import view.command.common.Command;
 
 public class UpdateBalanceCommand implements Command {
-  private BSTNodeView node;
-  private Integer balance;
-  
-  
-  public UpdateBalanceCommand(BSTNodeView node, Integer balance) {
-    super();
-    this.node = node;
-    this.balance = balance;
-  }
+	private BSTNodeView node;
+	private Integer balance;
 
-  @Override
-  public boolean canExecute() {
-    return true;
-  }
+	public UpdateBalanceCommand(BSTNodeView node, Integer balance) {
+		super();
+		this.node = node;
+		this.balance = balance;
+	}
 
-  @Override
-  public void execute() {
-    node.updateBalance(balance);
-  }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
+
+	@Override
+	public void execute() {
+		node.updateBalance(balance);
+	}
 
 }

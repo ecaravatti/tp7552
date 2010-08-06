@@ -27,11 +27,11 @@ import event.stack.StackListener;
 public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final int INITIAL_HORIZONTAL = 250;
 	private static final int INITIAL_VERTICAL = 20;
 
-	//private GroupLayout
+	// private GroupLayout
 	private List<Shape> capacityPreviewNodes = new ArrayList<Shape>();
 	private List<StackNodeView<T>> stackNodes;
 
@@ -43,10 +43,11 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 	@Override
 	public void itemPushed(T item) {
 		int stackSize = this.stackNodes.size();
-		
-		StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes.get(stackSize - 1) : null;
-		StackNodeView<T> node = new StackNodeView<T>(item, stackSize, INITIAL_HORIZONTAL,
-													 INITIAL_VERTICAL, parentNode);
+
+		StackNodeView<T> parentNode = (stackSize > 0) ? this.stackNodes
+				.get(stackSize - 1) : null;
+		StackNodeView<T> node = new StackNodeView<T>(item, stackSize,
+				INITIAL_HORIZONTAL, INITIAL_VERTICAL, parentNode);
 
 		this.stackNodes.add(node);
 
@@ -83,27 +84,28 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 			node.paintElement(graphics);
 		}
 	}
-	
+
 	public void initCapacity(Integer capacity) {
 		capacityPreviewNodes.clear();
 		stackNodes.clear();
-		
+
 		for (int i = 0; i < capacity; i++) {
-			capacityPreviewNodes.add(new Rectangle(INITIAL_HORIZONTAL,
-												   INITIAL_VERTICAL +
-												   (StackNodeShape.DEF_HEIGHT_NODE +
-													DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES)*(i+1),
-												   StackNodeShape.DEF_WIDTH_NODE,
-												   StackNodeShape.DEF_HEIGHT_NODE));
+			capacityPreviewNodes
+					.add(new Rectangle(
+							INITIAL_HORIZONTAL,
+							INITIAL_VERTICAL
+									+ (StackNodeShape.DEF_HEIGHT_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES)
+									* (i + 1), StackNodeShape.DEF_WIDTH_NODE,
+							StackNodeShape.DEF_HEIGHT_NODE));
 		}
-		
+
 		setStructureCapacity(capacity);
 	}
-	
+
 	public void clear() {
 		this.stackNodes.clear();
 	}
-	
+
 	/**
 	 * @return the stackNodes
 	 */
@@ -113,11 +115,12 @@ public class StackView<T> extends AnimatedPanel implements StackListener<T> {
 
 	@Override
 	protected void adjustGraphicDimensionForScrolling() {
-		this.graphicDimension = new Dimension(2*INITIAL_HORIZONTAL + StackNodeShape.DEF_WIDTH_NODE,
-											  2*INITIAL_VERTICAL + 
-											  (StackNodeShape.DEF_HEIGHT_NODE +
-											   DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES) *
-											   (structureCapacity+1));
+		this.graphicDimension = new Dimension(
+				2 * INITIAL_HORIZONTAL + StackNodeShape.DEF_WIDTH_NODE,
+				2
+						* INITIAL_VERTICAL
+						+ (StackNodeShape.DEF_HEIGHT_NODE + DefaultShapeSettings.DISTANCE_BETWEEN_STACK_NODES)
+						* (structureCapacity + 1));
 	}
 
 }

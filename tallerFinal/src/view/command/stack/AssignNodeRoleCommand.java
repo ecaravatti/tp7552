@@ -14,23 +14,23 @@ import view.command.common.Command;
  * 
  */
 public class AssignNodeRoleCommand<T> implements Command {
-    
-    private StackNodeView<T> node;
-    private StackNodeRoles role;
 
-    public AssignNodeRoleCommand(StackNodeView<T> node, StackNodeRoles role) {
-        this.node = node;
-        this.role = role;
-    }
+	private StackNodeView<T> node;
+	private StackNodeRoles role;
 
-    @Override
-    public boolean canExecute() {
-        return true;
-    }
+	public AssignNodeRoleCommand(StackNodeView<T> node, StackNodeRoles role) {
+		this.node = node;
+		this.role = role;
+	}
 
-    @Override
-    public void execute() {
-        this.node.assignRole(this.role);
-    }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
+
+	@Override
+	public void execute() {
+		this.node.assignRole(this.role);
+	}
 
 }

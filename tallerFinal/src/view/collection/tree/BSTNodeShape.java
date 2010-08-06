@@ -20,101 +20,110 @@ import view.shape.Text;
  */
 public class BSTNodeShape implements Selectable, Mobile {
 
-    private Ellipse2D circle;
-    private Font fontData;
-    private Font fontBalance;
-    private Stroke stroke;
-    private String data;
-    private String balance;
-    private Dimension2D dimension;
-    private Color color;
-    private Point2D position;
+	private Ellipse2D circle;
+	private Font fontData;
+	private Font fontBalance;
+	private Stroke stroke;
+	private String data;
+	private String balance;
+	private Dimension2D dimension;
+	private Color color;
+	private Point2D position;
 
-    private static final Color DEF_COLOR = DefaultShapeSettings.GREEN_COLOR;
-    private static final Color DEF_COLOR_BORDER = Color.BLACK;
-    private static final Color DEF_COLOR_BALANCE = new Color(196, 0, 0);
-    private static final Color DEF_COLOR_SHADOW = Color.LIGHT_GRAY;
-    private static final int DEF_SHADOW_WIDTH = 3;
+	private static final Color DEF_COLOR = DefaultShapeSettings.GREEN_COLOR;
+	private static final Color DEF_COLOR_BORDER = Color.BLACK;
+	private static final Color DEF_COLOR_BALANCE = new Color(196, 0, 0);
+	private static final Color DEF_COLOR_SHADOW = Color.LIGHT_GRAY;
+	private static final int DEF_SHADOW_WIDTH = 3;
 
-    public BSTNodeShape(String data, String balance, int diameter, Font fontData, Font fontBalance, Stroke stroke) {
-        this.data = data;
-        this.balance = balance;
-        this.fontData = fontData;
-        this.fontBalance = fontBalance;
-        this.stroke = stroke;
-        this.circle = new Ellipse2D.Double(0, 0, diameter, diameter);
-        this.dimension = new Dimension(diameter, diameter);
-        this.color = DEF_COLOR;
-    }
+	public BSTNodeShape(String data, String balance, int diameter,
+			Font fontData, Font fontBalance, Stroke stroke) {
+		this.data = data;
+		this.balance = balance;
+		this.fontData = fontData;
+		this.fontBalance = fontBalance;
+		this.stroke = stroke;
+		this.circle = new Ellipse2D.Double(0, 0, diameter, diameter);
+		this.dimension = new Dimension(diameter, diameter);
+		this.color = DEF_COLOR;
+	}
 
-    public void setBalance(String balance) {
-        this.balance = balance;
-    }
+	public void setBalance(String balance) {
+		this.balance = balance;
+	}
 
-    /**
-     * Pinta el nodo en el contexto g
-     * @param g contexto sobre el que se dibuja
-     */
-    public void paint(Graphics2D g2, int side) {
-        // Sombra
-        g2.translate(DEF_SHADOW_WIDTH, DEF_SHADOW_WIDTH);
-        g2.setPaint(DEF_COLOR_SHADOW);
-        g2.fill(circle);
-        g2.translate(-DEF_SHADOW_WIDTH, -DEF_SHADOW_WIDTH);
+	/**
+	 * Pinta el nodo en el contexto g
+	 * 
+	 * @param g
+	 *            contexto sobre el que se dibuja
+	 */
+	public void paint(Graphics2D g2, int side) {
+		// Sombra
+		g2.translate(DEF_SHADOW_WIDTH, DEF_SHADOW_WIDTH);
+		g2.setPaint(DEF_COLOR_SHADOW);
+		g2.fill(circle);
+		g2.translate(-DEF_SHADOW_WIDTH, -DEF_SHADOW_WIDTH);
 
-        // Interior
-        g2.setStroke(this.stroke);
-        g2.setColor(color);
-        g2.fill(circle);
+		// Interior
+		g2.setStroke(this.stroke);
+		g2.setColor(color);
+		g2.fill(circle);
 
-        // Borde y texto
-        g2.setColor(DEF_COLOR_BORDER);
-        g2.draw(circle);
-        Text.paintCenterString(g2, data, fontData, circle.getFrame(), Color.WHITE);
+		// Borde y texto
+		g2.setColor(DEF_COLOR_BORDER);
+		g2.draw(circle);
+		Text.paintCenterString(g2, data, fontData, circle.getFrame(),
+				Color.WHITE);
 
-        if (this.balance != null) {
-            Font previous = g2.getFont();
-            g2.setFont(fontBalance);
-            g2.setColor(DEF_COLOR_BALANCE);
-            g2.drawString(balance, (int)circle.getX() + (side == 1 ? (int)dimension.getHeight() : -fontBalance.getSize()/2), (int)circle.getY());
-            g2.setFont(previous);
-        }
-    }
+		if (this.balance != null) {
+			Font previous = g2.getFont();
+			g2.setFont(fontBalance);
+			g2.setColor(DEF_COLOR_BALANCE);
+			g2.drawString(
+					balance,
+					(int) circle.getX()
+							+ (side == 1 ? (int) dimension.getHeight()
+									: -fontBalance.getSize() / 2),
+					(int) circle.getY());
+			g2.setFont(previous);
+		}
+	}
 
-    @Override
-    public void setSelectionColor(Color color) {
-        if (color == null)
-            restoreColor();
-        else
-            this.color = color;
-    }
+	@Override
+	public void setSelectionColor(Color color) {
+		if (color == null)
+			restoreColor();
+		else
+			this.color = color;
+	}
 
-    @Override
-    public void changeColor() {
-/*        if (color == DEF_COLOR)
-            color = DEF_SELECTION_COLOR;
-        else
-            color = DEF_COLOR;*/
-    }
+	@Override
+	public void changeColor() {
+		/*
+		 * if (color == DEF_COLOR) color = DEF_SELECTION_COLOR; else color =
+		 * DEF_COLOR;
+		 */
+	}
 
-    @Override
-    public void restoreColor() {
-        color = DEF_COLOR;
-    }
+	@Override
+	public void restoreColor() {
+		color = DEF_COLOR;
+	}
 
-    @Override
-    public Point2D getPosition() {
-        return position;
-    }
+	@Override
+	public Point2D getPosition() {
+		return position;
+	}
 
-    @Override
-    public void moveTo(Point2D position) {
-        this.position = position;
-        this.circle.setFrame(position, this.dimension);
-    }
+	@Override
+	public void moveTo(Point2D position) {
+		this.position = position;
+		this.circle.setFrame(position, this.dimension);
+	}
 
-    public String getBalance() {
-      return balance;
-    }
+	public String getBalance() {
+		return balance;
+	}
 
 }

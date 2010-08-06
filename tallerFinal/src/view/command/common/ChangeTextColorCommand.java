@@ -14,21 +14,21 @@ import view.shape.Text;
  */
 public class ChangeTextColorCommand implements Command {
 
-    private Text text;
-    private Color color;
+	private Text text;
+	private Color color;
 
-    public ChangeTextColorCommand(Text text, Color color) {
-        this.text = text;
-        this.color = color;
-    }
+	public ChangeTextColorCommand(Text text, Color color) {
+		this.text = text;
+		this.color = color;
+	}
 
-    @Override
-    public boolean canExecute() {
-        return true;
-    }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 
-    @Override
-    public void execute() {
-        text.setColor(color);
-    }
+	@Override
+	public void execute() {
+		text.setColor(color);
+	}
 }

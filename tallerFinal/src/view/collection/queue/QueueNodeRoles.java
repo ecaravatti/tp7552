@@ -10,29 +10,29 @@ package view.collection.queue;
  */
 public enum QueueNodeRoles {
 
-    head() {
+	head() {
 
-        private static final String HEAD_ROLE = "frente";
+		private static final String HEAD_ROLE = "frente";
 
-        @Override
-        public String getRoleName() {
-            return HEAD_ROLE;
-        }
-    },
-    tail() {
+		@Override
+		public String getRoleName() {
+			return HEAD_ROLE;
+		}
+	},
+	tail() {
 
-        private static final String TAIL_ROLE = "final";
+		private static final String TAIL_ROLE = "final";
 
-        @Override
-        public String getRoleName() {
-            return TAIL_ROLE;
-        }
-    };
+		@Override
+		public String getRoleName() {
+			return TAIL_ROLE;
+		}
+	};
 
-    @Override
-    public String toString() {
-        return this.getRoleName();
-    }
+	@Override
+	public String toString() {
+		return this.getRoleName();
+	}
 
-    public abstract String getRoleName();
+	public abstract String getRoleName();
 }

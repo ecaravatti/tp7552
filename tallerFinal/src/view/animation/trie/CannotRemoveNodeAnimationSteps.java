@@ -24,57 +24,66 @@ import view.element.trie.WordView;
  * 
  */
 public class CannotRemoveNodeAnimationSteps extends AbstractUndoAnimationSteps {
-  private TrieView trieView;
-  private int index;
+	private TrieView trieView;
+	private int index;
 
-  /**
-   * @param trieView vista del trie.
-   * @param index indice le letra a eliminar
-   */
-  public CannotRemoveNodeAnimationSteps(TrieView trieView, int index) {
-    super();
-    this.trieView = trieView;
-    this.index = index;
-  }
+	/**
+	 * @param trieView
+	 *            vista del trie.
+	 * @param index
+	 *            indice le letra a eliminar
+	 */
+	public CannotRemoveNodeAnimationSteps(TrieView trieView, int index) {
+		super();
+		this.trieView = trieView;
+		this.index = index;
+	}
 
-  @Override
-  protected void initializeListSteps() {
-    steps = new ArrayList<Command>();
+	@Override
+	protected void initializeListSteps() {
+		steps = new ArrayList<Command>();
 
-    // Seleccion del nodo que no puede ser eliminado
-    WordView word = this.trieView.getWord();
-    AbstractTrieNodeView node = word.getAssociateNode(index);
+		// Seleccion del nodo que no puede ser eliminado
+		WordView word = this.trieView.getWord();
+		AbstractTrieNodeView node = word.getAssociateNode(index);
 
-    Color finalColor = AbstractTrieNodeView.Colors.NODE_CANNOT_REMOVE.getColor();
+		Color finalColor = AbstractTrieNodeView.Colors.NODE_CANNOT_REMOVE
+				.getColor();
 
-    steps.add(new StopFlashingElementViewCommand(trieView, trieView.getWord()));
-    steps.add(new SelectElementViewCommand(trieView, trieView.getFlashingDelay(), node, finalColor));
-    steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-        .getInstance().getMessageCannotRemoveNode(node.getData())));
-    steps.addAll( trieView.getPaintCommands() );
-    steps.add(new ChangeColorNodeShapeCommand(word.getLetter(index), finalColor));
-    steps.add(new ChangeColorNodeCommand(node, finalColor));
-    steps.add(new PaintCommand(trieView));
-    steps.add(new StepFinishedCommand(trieView, this, index - 1, node, false,
-        false));
+		steps.add(new StopFlashingElementViewCommand(trieView, trieView
+				.getWord()));
+		steps.add(new SelectElementViewCommand(trieView, trieView
+				.getFlashingDelay(), node, finalColor));
+		steps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
+				.getInstance().getMessageCannotRemoveNode(node.getData())));
+		steps.addAll(trieView.getPaintCommands());
+		steps.add(new ChangeColorNodeShapeCommand(word.getLetter(index),
+				finalColor));
+		steps.add(new ChangeColorNodeCommand(node, finalColor));
+		steps.add(new PaintCommand(trieView));
+		steps.add(new StepFinishedCommand(trieView, this, index - 1, node,
+				false, false));
 
-  }
+	}
 
-  @Override
-  protected void initializeListUndoSteps() {
-    undoSteps = new ArrayList<Command>();
+	@Override
+	protected void initializeListUndoSteps() {
+		undoSteps = new ArrayList<Command>();
 
-    Color color = AbstractTrieNodeView.Colors.NODE_FOUND.getColor();
-    WordView word = this.trieView.getWord();
-    AbstractTrieNodeView node = word.getAssociateNode(index);
+		Color color = AbstractTrieNodeView.Colors.NODE_FOUND.getColor();
+		WordView word = this.trieView.getWord();
+		AbstractTrieNodeView node = word.getAssociateNode(index);
 
-    undoSteps.add(new ShowMessageCommand(trieView.getController(), TrieMessages
-        .getInstance().getMessageUndoCannotRemoveNode(node.getData())));
-    undoSteps.add(new ChangeColorNodeShapeCommand(word.getLetter(index), color));
-    undoSteps.add(new ChangeColorNodeCommand(node, color));
-    undoSteps.add(new PaintCommand(trieView));
-    undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node, false, true));
+		undoSteps.add(new ShowMessageCommand(trieView.getController(),
+				TrieMessages.getInstance().getMessageUndoCannotRemoveNode(
+						node.getData())));
+		undoSteps.add(new ChangeColorNodeShapeCommand(word.getLetter(index),
+				color));
+		undoSteps.add(new ChangeColorNodeCommand(node, color));
+		undoSteps.add(new PaintCommand(trieView));
+		undoSteps.add(new StepFinishedCommand(trieView, this, index + 1, node,
+				false, true));
 
-  }
+	}
 
 }

@@ -11,32 +11,36 @@ import view.element.common.Mobile;
  * 
  */
 public class MoveCommand implements Command {
-  private Point2D point;
-  private Mobile mobile;
-  private JComponent component;
+	private Point2D point;
+	private Mobile mobile;
+	private JComponent component;
 
-  /**
-   * @param component componente al que pertenece el elemento que debe moverse
-   * @param mobile el elemento a mover.
-   * @param finalPos la posicion final del elemento a mover.
-   */
-  public MoveCommand(JComponent component, Mobile mobile, Point2D finalPos) {
-    super();
-    this.point = finalPos;
-    this.mobile = mobile;
-    this.component = component;
-  }
+	/**
+	 * @param component
+	 *            componente al que pertenece el elemento que debe moverse
+	 * @param mobile
+	 *            el elemento a mover.
+	 * @param finalPos
+	 *            la posicion final del elemento a mover.
+	 */
+	public MoveCommand(JComponent component, Mobile mobile, Point2D finalPos) {
+		super();
+		this.point = finalPos;
+		this.mobile = mobile;
+		this.component = component;
+	}
 
-  @Override
-  public boolean canExecute() {
-    return true;
-  }
+	@Override
+	public boolean canExecute() {
+		return true;
+	}
 
-  @Override
-  public void execute() {
-    mobile.moveTo(point);
-//    component.scrollRectToVisible(new Rectangle(new Double(point.getX()).intValue(),
-//    											new Double(point.getY()).intValue(), 50, 50));
-    component.repaint();
-  }
+	@Override
+	public void execute() {
+		mobile.moveTo(point);
+		// component.scrollRectToVisible(new Rectangle(new
+		// Double(point.getX()).intValue(),
+		// new Double(point.getY()).intValue(), 50, 50));
+		component.repaint();
+	}
 }
