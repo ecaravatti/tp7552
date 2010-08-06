@@ -95,7 +95,7 @@ public class BSTButtonsPanel extends JPanel {
         //setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         //setPreferredSize(new java.awt.Dimension(840, 32));        
 
-        jLabel1 = new JLabel("Ingresá un número de " + BSTController.MIN_VALUE + " a " + BSTController.MAX_VALUE);
+        jLabel1 = new JLabel("(" + BSTController.MIN_VALUE + " a " + BSTController.MAX_VALUE + ")");
         jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 
 		textField = new JTextField();

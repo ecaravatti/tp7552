@@ -79,7 +79,7 @@ public class StackButtonsPanel extends JPanel {
             }
         });
         
-        jLabel1 = new JLabel("Ingresá un número de " + StackController.MIN_VALUE + " a " + StackController.MAX_VALUE);
+        jLabel1 = new JLabel("(" + StackController.MIN_VALUE + " a " + StackController.MAX_VALUE + ")");
         jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 
 		textField = new JTextField();

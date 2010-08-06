@@ -82,7 +82,7 @@ public class QueueButtonsPanel extends javax.swing.JPanel {
             }
         });
         
-        jLabel1 = new JLabel("Ingresá un número de " + QueueController.MIN_VALUE + " a " + QueueController.MAX_VALUE);
+        jLabel1 = new JLabel("(" + QueueController.MIN_VALUE + " a " + QueueController.MAX_VALUE + ")");
         jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         
 		textField = new JTextField();

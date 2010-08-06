@@ -82,7 +82,7 @@ public class HeapButtonsPanel extends JPanel {
             }
         });        
 
-        jLabel1 = new JLabel("Ingresá un número de " + HeapController.MIN_VALUE + " a " + HeapController.MAX_VALUE);
+        jLabel1 = new JLabel("(" + HeapController.MIN_VALUE + " a " + HeapController.MAX_VALUE + ")");
         jLabel1.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 
 		integerTextField = new JTextField();
