@@ -26,7 +26,7 @@ Ejemplos:
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
-    * Achicar header al orden del botón de ayuda para liberar espacio._(Nico)_ *(Done)*
+    * Achicar header al orden del botón de ayuda para liberar espacio. _(Nico)_ *(Done)*
   * Ayuda
     * Agregar info sobre cola circular _(Lau)_*(Done)*
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(Done)*
@@ -39,15 +39,15 @@ Ejemplos:
       * Nodo de lista _(Dami / Nico)_ *(In Progress)*
       * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
     * Stack
-      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(Done)*
     * Queue
-      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(Done)*
       * Nodo de cola circular _(Dami / Nico)_ *(In Progress)*
     * Heap
-      * Nodo cuadrado (array) _(Dami / Nico)_ *(In Progress)*
-      * Nodo circular (árbol) _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado (array) _(Dami / Nico)_ *(Done)*
+      * Nodo circular (árbol) _(Dami / Nico)_ *(Done)*
     * Árboles
-      * Nodo circular _(Dami / Nico)_ *(In Progress)*
+      * Nodo circular _(Dami / Nico)_ *(Done)*
   * Pila
     * Armar estructura en forma vertical _(Lau)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(Done)*
@@ -74,21 +74,21 @@ Ejemplos:
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
-    * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura._(Lau)_ *(Done)*
-    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo._(Nico)_ *(Cancelled?)*
+    * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura. _(Lau)_ *(Done)*
+    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo. _(Nico)_ *(Cancelled?)*
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Dami)_ *(Cancelled)*
-    * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar. _(Tifi)_ *(In Progress)*
-    * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío._(Nico)_ *(Done)*
+    * Modificar la animación, por ej., hacer que no quede armada a la izquierda la palabra que se acaba de insertar. _(Dami / Tifi)_ *(Done)*
+    * Deshabilitar botones Eliminar y Limpiar cuando el trie esté vacío. _(Nico)_ *(Done)*
   * Heap
     * Mostrar cartel de aviso de heap vacío _(Manu)_ *(Done)*
     * Hacer que no elimine nada si no se ingresó ningún número. Actualmente se está eliminando la raíz y es medio confuso. Tampoco es consistente con el resto de las estructuras. _(Manu)_ *(Cancelled)* (estaba bien como estaba)
   * Frame Principal
     * Agregar scroll _(Dami / Tifi)_ *(Done)*
     * Styles  _(Nico)_ *(Done)*
-    * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc._(Lau)_ *(Done)*
+    * Arreglar el nombre y el orden de los botones de operaciones, para mantener coherencia. En algunos dice "limpiar", en otros "vaciar", en la mayoría aparece primero "random" y después "vaciar", en otros aparece primero "vaciar" y después "random", etc. _(Lau)_ *(Done)*
   * Frame de Operaciones Realizadas
     * Limpiar log de operaciones realizadas cuando se usa una nueva estructura (Voy a poner un log de operaciones por estructura) _(Tifi)_ *(Done)*
     * Styles  _(Nico)_ *(Done)*
