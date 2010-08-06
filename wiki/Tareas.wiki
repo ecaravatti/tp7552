@@ -11,7 +11,7 @@ Ejemplos:
 
 = Details =
   * Common
-    * Uniformizar el idioma. Usar español (Ej, top, tail, etc). _(Tifi)_ *(In Progress)*
+    * Uniformizar el idioma. Usar español (Ej, top, tail, etc). _(Tifi)_ *(Done)*
   * Paquetes *(Done)*
     * Refactor de nombres _(Dami)_ *(Done)*
     * Refactor de orden _(Dami)_ *(Done)*
