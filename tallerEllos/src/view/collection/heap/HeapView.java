@@ -93,7 +93,7 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
     private Text createLabel(String title) {
         Point2D currentPosition = new Point2D.Double(labelPosX[current], labelPosY);
         Text label = new Text(title, DEF_FONT_BALANCE, currentPosition);
-        label.setColor(Color.WHITE);
+//        label.setColor(Color.WHITE);
         return label;
     }
 
@@ -119,6 +119,7 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
 
         //Nodo rectangular con colores por defecto
         NodeShape node = new NodeShape(label, position, width, height, FONT, STROKE, false);
+        node.setGradientBackground(new Color(255, 219, 111), DefaultShapeSettings.ORANGE_COLOR);
         
         return node;
     }

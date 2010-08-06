@@ -11,6 +11,7 @@ import java.awt.geom.Point2D;
 
 import view.element.common.Mobile;
 import view.element.common.Selectable;
+import view.shape.DefaultShapeSettings;
 import view.shape.Text;
 
 /**
@@ -29,9 +30,9 @@ public class BSTNodeShape implements Selectable, Mobile {
     private Color color;
     private Point2D position;
 
-    private static final Color DEF_COLOR = Color.YELLOW;
+    private static final Color DEF_COLOR = DefaultShapeSettings.GREEN_COLOR;
     private static final Color DEF_COLOR_BORDER = Color.BLACK;
-    private static final Color DEF_COLOR_BALANCE = Color.RED;
+    private static final Color DEF_COLOR_BALANCE = new Color(196, 0, 0);
     private static final Color DEF_COLOR_SHADOW = Color.LIGHT_GRAY;
     private static final int DEF_SHADOW_WIDTH = 3;
 
@@ -69,7 +70,7 @@ public class BSTNodeShape implements Selectable, Mobile {
         // Borde y texto
         g2.setColor(DEF_COLOR_BORDER);
         g2.draw(circle);
-        Text.paintCenterString(g2, data, fontData, circle.getFrame());
+        Text.paintCenterString(g2, data, fontData, circle.getFrame(), Color.WHITE);
 
         if (this.balance != null) {
             Font previous = g2.getFont();

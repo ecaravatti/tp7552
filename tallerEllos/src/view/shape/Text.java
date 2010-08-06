@@ -36,7 +36,7 @@ public class Text implements Mobile {
      * @param rect rectangulo en que debe centrarse el texto
      */
     public static void paintCenterString(Graphics2D graphics, String text,
-            Font font, Rectangle2D rect) {
+            Font font, Rectangle2D rect, Color color) {
 
         Font prevFnt = graphics.getFont();
         graphics.setFont(font);
@@ -49,8 +49,13 @@ public class Text implements Mobile {
         int centX = new Double(rect.getCenterX() - stringBounds.width / 2).intValue();
         int centY = new Double(rect.getCenterY() - visualBounds.height / 2 - visualBounds.y).intValue();
 
+        Color prevColor = graphics.getColor();
+        graphics.setColor(color);
+        
         graphics.drawString(text, centX, centY);
+        
         graphics.setFont(prevFnt);
+        graphics.setColor(prevColor);
     }
 
     public void paint(Graphics graphics) {

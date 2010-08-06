@@ -18,6 +18,7 @@ import view.command.common.ChangeTextColorCommand;
 import view.command.common.Command;
 import view.command.common.ShowMessageCommand;
 import view.command.common.StepFinishedCommand;
+import view.shape.DefaultShapeSettings;
 import view.shape.Text;
 
 /**
@@ -97,7 +98,7 @@ public class SwapElementsAnimation<T> extends AbstractUndoAnimationSteps {
         moveElements(undoSteps);
         
         changeLabelColor(Color.BLACK, undoSteps);
-        changeNodeColor(Color.YELLOW, undoSteps);
+        changeNodeColor(DefaultShapeSettings.GREEN_COLOR, undoSteps);
         
         this.undoSteps.add(new StepFinishedCommand(view, false, this));
     }
@@ -114,13 +115,13 @@ public class SwapElementsAnimation<T> extends AbstractUndoAnimationSteps {
 
         steps = new ArrayList<Command>();
 
-        changeLabelColor(Color.RED, steps);
-        changeNodeColor(Color.RED, steps);
+        changeLabelColor(DefaultShapeSettings.RED_COLOR, steps);
+        changeNodeColor(DefaultShapeSettings.RED_COLOR, steps);
         
         moveElements(steps);
 
-        changeLabelColor(Color.WHITE, steps);
-        changeNodeColor(Color.YELLOW, steps);
+        changeLabelColor(Color.BLACK, steps);
+        changeNodeColor(DefaultShapeSettings.GREEN_COLOR, steps);
 
         steps.add(new StepFinishedCommand(view, false, this));
     }

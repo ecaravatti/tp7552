@@ -27,7 +27,7 @@ public class NodeShape implements Selectable, Mobile {
   private final static Color DEF_SECONDARY_NODE_COLOR = new Color(0, 100, 50);
   private final static Color DEF_MODIFIED_NODE_COLOR1 = new Color(196, 0, 0);
   private final static Color DEF_MODIFIED_NODE_COLOR2 = new Color(128, 0, 0);
-  private final static Color DEF_SELECTION_COLOR = Color.YELLOW.brighter();
+  private final static Color DEF_SELECTION_COLOR = DefaultShapeSettings.ORANGE_COLOR;
   private final static Color DEF_LINE_COLOR = Color.BLACK;
   private final static Color DEF_TEXT_COLOR = Color.WHITE;
   private final static int DEF_BORDER = 4;
@@ -229,10 +229,19 @@ public class NodeShape implements Selectable, Mobile {
 
   /**
    * Cambia el color del nodo
-   * @param primaryNodeColor nuevo color del nodo
+   * @param nodeColor nuevo color del nodo
    */
   public void setNodeColor(Color nodeColor) {
     this.primaryNodeColor = nodeColor;
+  }
+  
+  /**
+   * Cambia el color del nodo
+   * @param nodeColor nuevo color del nodo
+   */
+  public void setGradientBackground(Color primaryNodeColor, Color secondaryNodeColor) {
+    this.primaryNodeColor = primaryNodeColor;
+    this.secondaryNodeColor = secondaryNodeColor;
   }
 
   /**
@@ -295,6 +304,10 @@ public class NodeShape implements Selectable, Mobile {
   public void setStroke(Stroke stroke) {
     this.stroke = stroke;
   }
+  
+  public void setTextColor(Color textColor) {
+	  this.textColor = textColor;
+  }
 
   /**
    * Determina si de usarse gradiente para rellenar el nodo
@@ -303,6 +316,10 @@ public class NodeShape implements Selectable, Mobile {
    */
   public void setUseGradientPaint(boolean useGradientPaint) {
     this.useGradientPaint = useGradientPaint;
+  }
+  
+  public boolean getUseGradientPaint() {
+    return useGradientPaint;
   }
 
   /**
@@ -314,10 +331,7 @@ public class NodeShape implements Selectable, Mobile {
 
     g2.setStroke(stroke);
     paintRectNode(g2);
-    Paint prevPaint = g2.getPaint();
-    g2.setPaint(textColor);
-    Text.paintCenterString(g2, data, font, getTextRect());
-    g2.setPaint(prevPaint);
+    Text.paintCenterString(g2, data, font, getTextRect(), textColor);
   }
 
   protected RectangularShape getBorderRect() {

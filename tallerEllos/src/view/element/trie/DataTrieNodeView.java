@@ -1,5 +1,6 @@
 package view.element.trie;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -7,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 
+import view.shape.DefaultShapeSettings;
 import view.shape.NodeShape;
 
 /**
@@ -30,8 +32,6 @@ public class DataTrieNodeView extends AbstractTrieNodeView {
   public DataTrieNodeView(String data, Point2D position, PointerView parent,
           TrieViewPrimitives trieView) {
     super(data, position, parent, trieView);
-    this.shape = new NodeShape(data, getPosition(), getWidth(), getHeight(),
-        DEF_FONT, DEF_STROKE, true);
     this.defaultSizeChanged = false;
     this.setDepthSibling(1);
   }
@@ -85,8 +85,12 @@ public class DataTrieNodeView extends AbstractTrieNodeView {
   
   @Override
   protected NodeShape createShape(){
-    return new NodeShape(getData(), getPosition(), getWidth(), getHeight(),
-        DEF_FONT, DEF_STROKE, true);
+    NodeShape node = new NodeShape(	getData(), getPosition(), getWidth(),
+    								getHeight(), DEF_FONT, DEF_STROKE, true);
+    node.setGradientBackground(new Color(255, 219, 111), DefaultShapeSettings.ORANGE_COLOR);
+    node.setDefaultNodeColor(new Color(255, 219, 111));
+    node.setTextColor(Color.BLACK);
+    return node;
   }
   
   @Override

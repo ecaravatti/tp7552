@@ -5,9 +5,11 @@
 package view.collection.queue;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -70,7 +72,7 @@ public class QueueNodeShape extends NodeShape {
         				(int) (this.getPosition().getY() + verticalRoleOffset));
         	// Para la cola circular
         	Text.paintCenterString((Graphics2D)g, role.toString(), g.getFont(),
-        							getTextRectForCircularNode(false));
+        							getTextRectForCircularNode(false), Color.BLACK);
         }
 
         // Index para la cola lineal
@@ -82,7 +84,9 @@ public class QueueNodeShape extends NodeShape {
         }
         
         // Contenido del nodo para la cola circular
-    	Text.paintCenterString((Graphics2D)g, getData(), DEF_FONT_NODE, getTextRectForCircularNode(true));
+        paintCircularNode((Graphics2D)g);
+    	Text.paintCenterString((Graphics2D)g, getData(), DEF_FONT_NODE,
+    							getTextRectForCircularNode(true), Color.WHITE);
     }
     
     @Override
@@ -124,4 +128,30 @@ public class QueueNodeShape extends NodeShape {
     	
     	return new Rectangle(minX, minY, maxX - minX, maxY - minY);
     }
+    
+    private void paintCircularNode(Graphics2D g) {
+    	
+    	double startAngleInDegrees = Math.toDegrees(Math.PI - circularQueueIndex * arcAngle) - 1;
+    	double arcAngleInDegrees = -Math.toDegrees(arcAngle) + 2;
+        
+        Paint prevPaint = g.getPaint();
+        
+        g.setPaint(getNodeColor());
+        g.fillArc(DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL,
+        		  DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL,
+        		  DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS * 2,
+        		  DefaultShapeSettings.CIRCULAR_QUEUE_MAX_RADIUS * 2,
+        		  (int) Math.round(startAngleInDegrees), (int) Math.round(arcAngleInDegrees));
+        
+        g.setPaint(new Color(255, 255, 255));
+        g.fillOval(DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL
+        			+ DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS,
+        		   DefaultShapeSettings.INITIAL_CIRCULAR_QUEUE_VERTICAL
+        			+ DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS,
+        		   DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS * 2,
+        		   DefaultShapeSettings.CIRCULAR_QUEUE_MIN_RADIUS * 2);
+        
+        g.setPaint(prevPaint);
+    }
+    
 }

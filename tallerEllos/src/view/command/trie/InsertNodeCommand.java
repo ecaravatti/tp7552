@@ -1,10 +1,9 @@
 package view.command.trie;
 
-import java.awt.Color;
-
 import view.collection.trie.TrieView;
 import view.command.common.Command;
 import view.element.trie.AbstractTrieNodeView;
+import view.shape.DefaultShapeSettings;
 
 
 /**
@@ -38,7 +37,7 @@ public class InsertNodeCommand implements Command {
 	trie.getWord().setVisible(letterIndex, false);
     node.setVisible(true);
     node.setInvisible(false);
-    node.setFlashingColor(Color.yellow.brighter());
+    node.setFlashingColor(DefaultShapeSettings.ORANGE_COLOR);
     node.setFlashing(trie.getFlashingDelay());
     trie.repaint();
   }

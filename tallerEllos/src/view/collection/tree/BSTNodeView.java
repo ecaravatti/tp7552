@@ -26,9 +26,9 @@ public class BSTNodeView extends AbstractElementView implements
     private final static Font DEF_FONT_NODE = new Font("SansSerif", Font.BOLD, 12);
     private final static Font DEF_FONT_BALANCE = new Font("SansSerif", Font.PLAIN, 11);
     private final static Color DEF_COLOR_ARROW = new Color(100, 100, 200);
-    public final static Color DEF_COLOR_VISITED = Color.ORANGE;
-    public final static Color DEF_COLOR_SELECTION = Color.GREEN;
-    public final static Color DEF_COLOR_FOUND = Color.RED;
+    public final static Color DEF_COLOR_VISITED = DefaultShapeSettings.ORANGE_COLOR;
+    public final static Color DEF_COLOR_SELECTION = DefaultShapeSettings.GREEN_COLOR;
+    public final static Color DEF_COLOR_FOUND = DefaultShapeSettings.RED_COLOR;
     public static final int LEFT = -1;
     public static final int RIGHT = 1;
     public static final int DELTA_VERTICAL = 50;

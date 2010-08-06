@@ -1,13 +1,10 @@
 package view.animation.tree;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import view.animation.common.AbstractUndoAnimationSteps;
-import view.animation.common.AnimationSteps;
-import view.animation.common.MobileAnimationSteps;
-import view.collection.tree.BinarySearchTreeView;
 import view.collection.tree.BSTNodeView;
+import view.collection.tree.BinarySearchTreeView;
 import view.command.common.Command;
 import view.command.common.SelectElementViewCommand;
 import view.command.common.ShowMessageCommand;
@@ -62,9 +59,9 @@ public class BSTNodeRemovedAnimation extends AbstractUndoAnimationSteps {
         steps.addAll(bstView.getPaintCommands());
         //steps.add(new UpdateParentCommand(bstView));
 
-        Point2D finalPos = new Point2D.Double(node.getPosition().getX(), bstView.getHeight() + node.getHeight());
-        AnimationSteps animation = new MobileAnimationSteps(bstView, node, node.getPosition(), finalPos, bstView.getDelta());
-        steps.addAll(animation.getSteps());
+//        Point2D finalPos = new Point2D.Double(node.getPosition().getX(), bstView.getHeight() + node.getHeight());
+//        AnimationSteps animation = new MobileAnimationSteps(bstView, node, node.getPosition(), finalPos, bstView.getDelta());
+//        steps.addAll(animation.getSteps());
         //steps.addAll(bstView.getPaintCommands());
         
         steps.add(new ShowMessageCommand(bstView, s + "fue eliminado"));

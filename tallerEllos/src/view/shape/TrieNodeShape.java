@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D;
  * 
  */
 public class TrieNodeShape extends NodeShape {
-  private final static Color DEF_NODE_COLOR = Color.gray.brighter();
+//  private final static Color DEF_NODE_COLOR = Color.gray.brighter();
   
   private Rectangle2D rectDataPtr;
   private Rectangle2D rectChildPtr;
@@ -34,8 +34,8 @@ public class TrieNodeShape extends NodeShape {
   public TrieNodeShape(String data, Point2D pos, int width, int height, Font font, Stroke stroke) {
     super(data, pos, width, height, font, stroke, false);
     this.visibleData = false;
-    this.setNodeColor(DEF_NODE_COLOR);
-    this.setDefaultNodeColor(DEF_NODE_COLOR);
+//    this.setNodeColor(DEF_NODE_COLOR);
+//    this.setDefaultNodeColor(DEF_NODE_COLOR);
     this.createDefRectChildPtr();
     this.createDefRectSiblPtr();
   }
@@ -131,7 +131,7 @@ public class TrieNodeShape extends NodeShape {
    */
   protected void paintRectPointers(Graphics graphics) {
     Graphics2D g2 = (Graphics2D) graphics;
-    Paint paint = new Color(255, 127, 39);
+    Paint paint = new Color(0, 100, 50);
 //    GradientPaint grad1 = new GradientPaint((float) rectChildPtr.getCenterX(),
 //        (float) rectChildPtr.getCenterY(), Color.black, (float) rectChildPtr
 //            .getMaxX(), (float) rectChildPtr.getCenterY(), Color.WHITE
@@ -164,9 +164,9 @@ public class TrieNodeShape extends NodeShape {
    */
   protected void createRectChildPtr() {
     Rectangle2D bounds = getRectNode();
-    this.rectChildPtr = new Rectangle2D.Double(bounds.getX()
+    this.rectChildPtr = new Rectangle2D.Double(bounds.getX() - 1
         + bounds.getWidth() / 4, bounds.getMaxY() - bounds.getHeight() / 5,
-        bounds.getWidth() / 2, bounds.getHeight() / 5);
+        (bounds.getWidth() / 2) + 3, bounds.getHeight() / 5);
   }
 
   /**

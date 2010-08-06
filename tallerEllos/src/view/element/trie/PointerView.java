@@ -8,6 +8,7 @@ import java.awt.geom.Point2D;
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
 import view.shape.Arrow;
+import view.shape.DefaultShapeSettings;
 
 /**
  * Esta define como se representa visualmente un puntero.
@@ -15,7 +16,7 @@ import view.shape.Arrow;
  * 
  */
 public abstract class PointerView extends AbstractElementView implements Selectable {
-  private final static Color DEF_COLOR = Color.YELLOW.brighter();
+  private final static Color DEF_COLOR = DefaultShapeSettings.ORANGE_COLOR;
     
   private TrieNodeView srcNode;
   private AbstractTrieNodeView trgNode;

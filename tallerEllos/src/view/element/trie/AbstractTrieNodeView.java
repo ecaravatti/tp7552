@@ -7,16 +7,17 @@ import java.awt.geom.Point2D;
 
 import view.element.common.AbstractElementView;
 import view.element.common.Selectable;
+import view.shape.DefaultShapeSettings;
 import view.shape.NodeShape;
 
 public abstract class AbstractTrieNodeView extends AbstractElementView {
 
   public enum Colors {
-    NODE_ADDED(new Color(238, 232, 170)),
-    NODE_FOUND(Color.green.darker()),
-    NODE_CANNOT_REMOVE(new Color(255, 69, 0)),
-    SELECT_NODE_FOUND(Color.GREEN.brighter()),
-    SELECT_NODE_NOT_FOUND(Color.RED.brighter());
+    NODE_ADDED(DefaultShapeSettings.GREEN_COLOR), // Verde
+    NODE_FOUND(DefaultShapeSettings.ORANGE_COLOR), // Naranja
+    NODE_CANNOT_REMOVE(DefaultShapeSettings.RED_COLOR), // Rojo
+    SELECT_NODE_FOUND(DefaultShapeSettings.ORANGE_COLOR), // Naranja
+    SELECT_NODE_NOT_FOUND(DefaultShapeSettings.RED_COLOR); // Rojo
     
     private Color color;
 
