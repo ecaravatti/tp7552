@@ -163,19 +163,18 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		/**
 		 * Header y logo
 		 */
-		JLabel headerLabel;
-
-		headerLabel = new JLabel(new ImageIcon(HEADER_IMAGE), SwingConstants.CENTER);
+		JLabel headerLabel = new JLabel(new ImageIcon(HEADER_IMAGE), SwingConstants.CENTER);
 		headerLabel.setBackground(new Color(220, 224, 235));
 		
 		header = new JPanel();
 		header.add(Box.createHorizontalStrut(10));
-		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
+		header.setLayout(new BoxLayout(header, BoxLayout.LINE_AXIS));
 		header.setBackground(new Color(220, 224, 235));
 		header.add(headerLabel);
 
 		final NewHelpPanel helpPanel = new NewHelpPanel();
-		final JButton helpButton = new JButton("Ayuda", new ImageIcon(HELP_IMAGE));
+		final JButton helpButton = new JButton(new ImageIcon(HELP_IMAGE));
+		helpButton.setToolTipText("Mostrar la Ayuda");
 		helpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -192,7 +191,8 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 				
 				// Update the button text and icon
 				helpButton.setIcon(helpVisible ? new ImageIcon(BACK_IMAGE) : new ImageIcon(HELP_IMAGE));
-				helpButton.setText(helpVisible ? "Volver" : "Ayuda");
+				//helpButton.setText(helpVisible ? "Volver" : "Ayuda");
+				helpButton.setToolTipText(helpVisible ? "Volver a la aplicación" : "Mostrar la ayuda");
 
 				// Repaint the whole applet
 				getRootPane().revalidate();
@@ -200,9 +200,9 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 			}
 		});
 		header.add(Box.createHorizontalGlue());
-		helpButton.setAlignmentY(BOTTOM_ALIGNMENT);
+		//helpButton.setAlignmentY(BOTTOM_ALIGNMENT);
 		header.add(helpButton);
-		header.add(Box.createHorizontalStrut(10));
+		header.add(Box.createHorizontalStrut(20));
 		
 
 		/**
@@ -212,7 +212,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		trieView = new TrieView();
 		triePanel = new TriePanel(trieView);
 		trieController = new TrieController(trie, triePanel);
-
+		triePanel.getButtonsPanel().setEnabledButtons(true);
 		StructurePane<TriePanel> trieStructurePanel = new StructurePane<TriePanel>(triePanel);
 
 		/**
@@ -370,7 +370,7 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 	public void initImages() {
 		HELP_IMAGE = getImage(getCodeBase(), "Info-icon-big.png");
 		BACK_IMAGE = getImage(getCodeBase(), "Return-icon.png");
-		HEADER_IMAGE = getImage(getCodeBase(), "head-taller2.png");
+		HEADER_IMAGE = getImage(getCodeBase(), "head-taller-small.png");
 		
 		BUTTON_ADD_IMAGE = getImage(getCodeBase(), "Add-icon-big.png");
 		BUTTON_DELETE_IMAGE = getImage(getCodeBase(), "Delete-icon-big.png");
@@ -383,22 +383,4 @@ public class StructuresAnimator extends JApplet implements ComponentListener {
 		BUTTON_FAST_FORWARD_IMAGE = getImage(getCodeBase(), "Forward-icon-big.png");
 		BUTTON_REWIND_IMAGE = getImage(getCodeBase(), "Back-icon-big.png");
 	}
-	// TODO solo esta para hacer mas facil la depuracion
-	/*public static void main(String s[]) {
-	    JFrame f = new JFrame("StructuresAnimator");
-	    f.setSize(new Dimension(1024, 800));
-	    f.addWindowListener(new WindowAdapter() {
-	
-	        @Override
-	        public void windowClosing(WindowEvent e) {
-	            System.exit(0);
-	        }
-	    });
-	    JApplet applet = new StructuresAnimator();
-	    f.getContentPane().add("Center", applet);
-	    applet.init();
-	    f.setVisible(true);
-	    //f.pack();
-	    applet.start();
-	}*/
 }

@@ -95,6 +95,9 @@ public class TriePanel extends javax.swing.JPanel implements InteractivelyContro
 		add(new JScrollPane(trieView), BorderLayout.CENTER);
 	}// </editor-fold>//GEN-END:initComponents
 	
+	public TrieButtonsPanel getButtonsPanel() {
+		return trieButtonsPanel;
+	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private TrieButtonsPanel trieButtonsPanel;

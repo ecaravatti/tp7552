@@ -48,8 +48,6 @@ public class TrieController extends InteractiveController {
     this.generator = new TrieGenerator(this);
     getInteractivePanel().setValueSlider(triePanel.getTrieView().getDelayValue());
     triePanel.addController(this);
-    triePanel.getMainButtonPanel().setEnabledButtons(true);
-    //this.getInteractivePanel().setMaximumSlider( 190 );
   }
 
   /**
