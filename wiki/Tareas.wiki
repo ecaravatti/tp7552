@@ -27,10 +27,10 @@ Ejemplos:
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
   * Ayuda
-    * Agregar info sobre cola circular _(Lau)_*(In Progress)*
-    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(In Progress)*
-    * Styles_(Lau)_*(In Progress)*
-    * Acerca de…
+    * Agregar info sobre cola circular _(Lau)_*(Done)*
+    * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(Done)*
+    * Styles_(Lau)_*(Done)*
+    * Acerca de…_(Lau)_*(Done)*
     * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Tifi)_ *(Done)*
   * Imágenes
     * Trie
