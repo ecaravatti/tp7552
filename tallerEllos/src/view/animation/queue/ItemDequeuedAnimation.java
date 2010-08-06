@@ -52,8 +52,8 @@ public class ItemDequeuedAnimation<T> extends AbstractUndoAnimationSteps {
         if (queueSize > 1) {
             steps.add(new LinkMobilesCommand(queueNodes.get(1), false));
         }
-
-        //remove head role of the popped item.
+        
+        //remove head role of the dequeued item.
         steps.add(new AssignNodeRoleCommand<T>(dequeuedNode, null));
 
         //remove zero index of the dequeued item.

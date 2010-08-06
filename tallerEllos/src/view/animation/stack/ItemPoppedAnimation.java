@@ -51,14 +51,14 @@ public class ItemPoppedAnimation<T> extends AbstractUndoAnimationSteps {
         steps.add(new AssignNodeRoleCommand<T>(poppedNode, null));
         final StackNodeView<T> poppedParentNode = poppedNode.getParent();
 
-        //assign top role to the parent popped item.
-        if ((poppedParentNode != null) && (stackSize > 2)) {
+        if (poppedParentNode != null) {
+        	//assign top role to the parent popped item.
             steps.add(new AssignNodeRoleCommand<T>(poppedNode.getParent(), StackNodeRoles.top));
         }
 
         //unlink the popped item as bottom of the queue.
         steps.add(new LinkMobilesCommand(poppedNode, false));
-
+        
         //move the popped item to the final position.
         MobileAnimationSteps moveSteps = new MobileAnimationSteps(view, poppedNode, poppedNode.getPosition(), this.moveNodeToInitialPosition(poppedNode), 8);
         steps.addAll(moveSteps.getSteps());

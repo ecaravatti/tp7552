@@ -23,10 +23,13 @@ import view.element.common.Selectable;
 public class NodeShape implements Selectable, Mobile {
   private final static Color DEF_COLOR = new Color(1.0f, 1.0f, 1.0f, 0f);
   private final static Color DEF_BORDER_COLOR = Color.WHITE;
-  private final static Color DEF_NODE_COLOR = new Color(0, 204, 102);
+  private final static Color DEF_PRIMARY_NODE_COLOR = new Color(0, 204, 102);
+  private final static Color DEF_SECONDARY_NODE_COLOR = new Color(0, 100, 50);
+  private final static Color DEF_MODIFIED_NODE_COLOR1 = new Color(196, 0, 0);
+  private final static Color DEF_MODIFIED_NODE_COLOR2 = new Color(128, 0, 0);
   private final static Color DEF_SELECTION_COLOR = Color.YELLOW.brighter();
   private final static Color DEF_LINE_COLOR = Color.BLACK;
-  private final static Color DEF_TEXT_COLOR = Color.black;
+  private final static Color DEF_TEXT_COLOR = Color.WHITE;
   private final static int DEF_BORDER = 4;
   private final static float DEF_ARC = 15.0f;
   private final static int ALPHA = 100;
@@ -36,7 +39,8 @@ public class NodeShape implements Selectable, Mobile {
   private String data;
   private Color actBorderColor;
   private Color selectionColor;
-  private Color nodeColor;
+  private Color primaryNodeColor;
+  private Color secondaryNodeColor;
   private Color defNodeColor;
   private Color lineColor;
   private Color textColor;
@@ -62,8 +66,9 @@ public class NodeShape implements Selectable, Mobile {
     super();
     this.data = data;
     this.rectNode = new Rectangle2D.Double(pos.getX(), pos.getY(), width, height);
-    this.nodeColor = DEF_NODE_COLOR;
-    this.defNodeColor = DEF_NODE_COLOR;
+    this.primaryNodeColor = DEF_PRIMARY_NODE_COLOR;
+    this.secondaryNodeColor = DEF_SECONDARY_NODE_COLOR;
+    this.defNodeColor = DEF_PRIMARY_NODE_COLOR;
     this.actBorderColor = DEF_BORDER_COLOR;
     this.selectionColor = DEF_SELECTION_COLOR;
     this.lineColor = DEF_LINE_COLOR;
@@ -86,19 +91,20 @@ public class NodeShape implements Selectable, Mobile {
    * @param font fuente usada para escribir el dato
    * @param stroke trazo usado pora dibujar el nodo
    * @param rounded true si los bordes deben ser redondeados
-   * @param nodeColor color del nodo
+   * @param primaryNodeColor color del nodo
    * @param lineColor color de linea
    * @param textColor color del texto
    */
   public NodeShape(String data, Point2D pos, int width, int height, Font font,
-      Stroke stroke, boolean rounded, Color nodeColor, Color lineColor,
+      Stroke stroke, boolean rounded, Color primaryNodeColor, Color secondaryNodeColor, Color lineColor,
       Color textColor) {
     super();
     this.data = data;
     this.rectNode = new Rectangle2D.Double(pos.getX(), pos.getY(), width,
         height);
-    this.nodeColor = nodeColor;
-    this.defNodeColor = nodeColor;
+    this.primaryNodeColor = primaryNodeColor;
+    this.secondaryNodeColor = secondaryNodeColor;
+    this.defNodeColor = primaryNodeColor;
     this.actBorderColor = DEF_BORDER_COLOR;
     this.selectionColor = DEF_SELECTION_COLOR;
     this.lineColor = lineColor;
@@ -178,6 +184,22 @@ public class NodeShape implements Selectable, Mobile {
     this.actBorderColor = DEF_COLOR;
     this.selected = false;
   }
+  
+  /**
+   * Restaura los colores primarios y secundarios del fondo del nodo
+   */
+  public void restoreBackgroundNodeColors() {
+    this.primaryNodeColor = DEF_PRIMARY_NODE_COLOR;
+    this.secondaryNodeColor = DEF_SECONDARY_NODE_COLOR;
+  }
+  
+  /**
+   * Cambia los colores primarios y secundarios del fondo del nodo para resaltar la modificación
+   */
+  public void restoreModifiedNodeColors() {
+    this.primaryNodeColor = DEF_MODIFIED_NODE_COLOR1;
+    this.secondaryNodeColor = DEF_MODIFIED_NODE_COLOR2;
+  }
 
   /**
    * Obtiene el color de seleccion
@@ -202,15 +224,15 @@ public class NodeShape implements Selectable, Mobile {
    * @return el color del nodo
    */
   public Color getNodeColor() {
-    return nodeColor;
+    return primaryNodeColor;
   }
 
   /**
    * Cambia el color del nodo
-   * @param nodeColor nuevo color del nodo
+   * @param primaryNodeColor nuevo color del nodo
    */
   public void setNodeColor(Color nodeColor) {
-    this.nodeColor = nodeColor;
+    this.primaryNodeColor = nodeColor;
   }
 
   /**
@@ -233,7 +255,7 @@ public class NodeShape implements Selectable, Mobile {
    * Cambia el color del nodo al establecido por defecto
    */
   public void changeNodeColor() {
-    this.nodeColor = this.defNodeColor;
+    this.primaryNodeColor = this.defNodeColor;
   }
 
   /**
@@ -292,8 +314,10 @@ public class NodeShape implements Selectable, Mobile {
 
     g2.setStroke(stroke);
     paintRectNode(g2);
+    Paint prevPaint = g2.getPaint();
     g2.setPaint(textColor);
     Text.paintCenterString(g2, data, font, getTextRect());
+    g2.setPaint(prevPaint);
   }
 
   protected RectangularShape getBorderRect() {
@@ -316,12 +340,12 @@ public class NodeShape implements Selectable, Mobile {
   protected void paintRectNode(Graphics graphics) {
     Graphics2D g2 = (Graphics2D) graphics;
     Rectangle2D bounds = this.rectNode;
-    Paint paint = nodeColor;
+    Paint paint = primaryNodeColor;
     
     if (useGradientPaint) {
       paint = new GradientPaint((float) bounds.getCenterX(),
-          (float) bounds.getY(), nodeColor, (float) bounds.getCenterX(),
-          (float) bounds.getMaxY(), new Color(0, 100, 50), true);
+          (float) bounds.getY(), primaryNodeColor, (float) bounds.getCenterX(),
+          (float) bounds.getMaxY(), secondaryNodeColor, true);
     }
       
     paintRectGrad(g2, paint, bounds);

@@ -41,6 +41,7 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
 
     public void assignRole(QueueNodeRoles role) {
         this.shape.setRole(role);
+        this.shape.restoreBackgroundNodeColors();
     }
 
     @Override
@@ -55,6 +56,9 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
 
     public void setIndex(Integer index) {
         this.shape.setIndex(index);
+        if (index == null) {
+        	this.shape.restoreModifiedNodeColors();
+        }
     }
 
     @Override
@@ -84,5 +88,11 @@ public class QueueNodeView<T> extends AbstractElementView implements LinkableMob
     
     public void removeParent() {
     	this.parent = null;
+    }
+    
+    @Override
+    public void setVisible(boolean visible) {
+    	super.setVisible(visible);
+    	this.shape.restoreModifiedNodeColors();
     }
 }

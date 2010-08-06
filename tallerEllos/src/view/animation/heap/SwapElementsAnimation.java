@@ -119,7 +119,7 @@ public class SwapElementsAnimation<T> extends AbstractUndoAnimationSteps {
         
         moveElements(steps);
 
-        changeLabelColor(Color.BLACK, steps);
+        changeLabelColor(Color.WHITE, steps);
         changeNodeColor(Color.YELLOW, steps);
 
         steps.add(new StepFinishedCommand(view, false, this));

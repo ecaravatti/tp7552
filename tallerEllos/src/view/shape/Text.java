@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
@@ -17,7 +18,7 @@ public class Text implements Mobile {
 
     private Point2D position = null;
     private String title = null;
-    private Color color = Color.black;
+    private Color color = Color.BLACK;
     private Font font = null;
 
     public Text(String title, Font font, Point2D position) {
@@ -54,9 +55,11 @@ public class Text implements Mobile {
 
     public void paint(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;
-        g2.setPaint(color);
         g2.setFont(font);
+        Paint prevPaint = g2.getPaint();
+        g2.setPaint(color);
         g2.drawString(title, (int) position.getX(), (int) position.getY());
+        g2.setPaint(prevPaint);
     }
 
     public Color getColor() {

@@ -156,7 +156,7 @@ public class TrieNodeShape extends NodeShape {
   protected void createDefRectChildPtr() {
     Rectangle2D bounds = getRectNode();
     this.rectChildPtr = new Rectangle2D.Double(bounds.getX(), bounds.getMaxY()
-        - bounds.getHeight() / 5, bounds.getWidth(), bounds.getHeight() / 5);
+        - bounds.getHeight() / 5, bounds.getWidth()  - bounds.getWidth() / 5, bounds.getHeight() / 5);
   }
 
   /**
@@ -186,7 +186,7 @@ public class TrieNodeShape extends NodeShape {
     Rectangle2D bounds = getRectNode();
     this.rectSiblPtr = new Rectangle2D.Double(bounds.getMaxX()
         - bounds.getWidth() / 5, bounds.getY(), bounds.getWidth() / 5,
-        bounds.getHeight() - bounds.getHeight() / 5);
+        bounds.getHeight());
   }
   
   /**

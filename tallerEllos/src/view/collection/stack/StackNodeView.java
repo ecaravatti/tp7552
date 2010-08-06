@@ -34,6 +34,7 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
 
     public void assignRole(StackNodeRoles role) {
         this.shape.setRole(role);
+        this.shape.restoreBackgroundNodeColors();
     }
 
     public T getItem() {
@@ -52,6 +53,7 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
     @Override
     public void markAsUnlinked() {
         this.linked = false;
+        this.shape.restoreModifiedNodeColors();
     }
 
 
@@ -79,5 +81,11 @@ public class StackNodeView<T> extends AbstractElementView implements LinkableMob
     @Override
     protected Selectable getSelectable() {
         return shape;
+    }
+    
+    @Override
+    public void setVisible(boolean visible) {
+    	super.setVisible(visible);
+    	this.shape.restoreModifiedNodeColors();
     }
 }

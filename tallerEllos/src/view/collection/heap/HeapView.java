@@ -39,7 +39,7 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
     private static final Stroke STROKE = new BasicStroke(1.0f);
     private final static BasicStroke ARROW_STROKE = new BasicStroke(2.0f);
     private static final Integer SQUARESIZE = 25;
-    private static final Font DEF_FONT_BALANCE = new Font(Font.SANS_SERIF, Font.PLAIN, 12);
+    private static final Font DEF_FONT_BALANCE = new Font(Font.SANS_SERIF, Font.BOLD, 12);
     private static final Color DEF_COLOR_ARROW = Color.GRAY;
     private static final int INITIAL_HORIZONTAL = 50;
     private static final int INITIAL_VERTICAL = 30;
@@ -92,7 +92,9 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
 
     private Text createLabel(String title) {
         Point2D currentPosition = new Point2D.Double(labelPosX[current], labelPosY);
-        return new Text(title, DEF_FONT_BALANCE, currentPosition);
+        Text label = new Text(title, DEF_FONT_BALANCE, currentPosition);
+        label.setColor(Color.WHITE);
+        return label;
     }
 
     private BSTNodeShape createNode(String title) {
@@ -116,7 +118,9 @@ public class HeapView<T> extends AnimatedPanel implements HeapListener<T>, Inter
         Point2D position = new Point2D.Double(x, y);
 
         //Nodo rectangular con colores por defecto
-        return new NodeShape(label, position, width, height, FONT, STROKE, false);
+        NodeShape node = new NodeShape(label, position, width, height, FONT, STROKE, false);
+        
+        return node;
     }
 
     @Override
