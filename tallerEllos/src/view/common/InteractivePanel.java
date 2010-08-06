@@ -14,10 +14,11 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import view.exception.common.CannotUndoException;
 import controller.InteractiveController;
+import dataStructure.DataStructureApplet;
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;

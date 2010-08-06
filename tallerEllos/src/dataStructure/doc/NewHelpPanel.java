@@ -1,4 +1,4 @@
-package ar.uba.fi.structuresAnimator.doc;
+package dataStructure.doc;
 
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -27,7 +27,7 @@ import javax.swing.text.html.parser.ParserDelegator;
 public class NewHelpPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final String HTML_RESOURCE = "/ar/uba/fi/structuresAnimator/doc/index.html";
+	private static final String HTML_RESOURCE = "/dataStructure/doc/index.html";
 
 	public NewHelpPanel() {
 

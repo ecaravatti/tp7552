@@ -1,4 +1,4 @@
-package ar.uba.fi.structuresAnimator;
+package dataStructure;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -49,7 +49,6 @@ import view.collection.trie.TriePanel;
 import view.collection.trie.TrieView;
 import view.common.InteractivePanel;
 import view.common.StructurePane;
-import ar.uba.fi.structuresAnimator.doc.NewHelpPanel;
 import controller.BSTHeightBalancedController;
 import controller.BSTWeightBalancedController;
 import controller.HeapController;
@@ -57,6 +56,7 @@ import controller.InteractiveController;
 import controller.QueueController;
 import controller.StackController;
 import controller.TrieController;
+import dataStructure.doc.NewHelpPanel;
 
 /**
  *

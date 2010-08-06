@@ -16,9 +16,9 @@ import javax.swing.SwingConstants;
 
 import view.common.JTextFieldLimit;
 
-import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import controller.TrieController;
+import dataStructure.DataStructureApplet;
 
 /**
  * Representa al panel que contiene los botones de operaciones para el Trie.

@@ -18,9 +18,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import view.common.JTextFieldLimit;
 
-import ar.uba.fi.structuresAnimator.DataStructureApplet;
 
 import controller.HeapController;
+import dataStructure.DataStructureApplet;
 
 /**
  *

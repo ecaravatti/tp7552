@@ -1,4 +1,4 @@
-package ar.uba.fi.structuresAnimator.doc;
+package dataStructure.doc;
 
 import javax.swing.text.html.StyleSheet;
 

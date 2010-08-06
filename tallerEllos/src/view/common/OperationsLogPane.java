@@ -4,7 +4,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ar.uba.fi.structuresAnimator.DataStructureApplet;
+import dataStructure.DataStructureApplet;
+
 
 /**
  * Panel que logea las operaciones realizadas sobre una estructura.
