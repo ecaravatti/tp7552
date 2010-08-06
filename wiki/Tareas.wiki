@@ -26,6 +26,7 @@ Ejemplos:
     * Reorganizar paneles (ver ejemplo en la ppt) _(Dami)_ *(Done)*
     * Arreglar re renderizado de la ventana en el resize _(Tifi)_ *(Done)*
     * Agregar Tab de Home, con el nombre del programa, alguna imagen y una descripción del mismo. Esta descripción se puede armar con los objetivos del tp: http://10459262283478758358-a-g.googlegroups.com/web/temas_tp.doc?gda=HuaqPT4AAACeejbg5RaIPOYr0yFdGONLN35wCPL_XRdo3jIdZVFa5Bi8qu_3zAQauRQAq_u4hFHjsKXVs-X7bdXZc5buSfmx
+    * Achicar header al orden del botón de ayuda para liberar espacio.
   * Ayuda
     * Agregar info sobre cola circular _(Lau)_*(Done)*
     * Actualizar las imágenes de los nodos, los nombres de los botones, los colores, textos, etc._(Lau)_*(Done)*
@@ -73,6 +74,7 @@ Ejemplos:
     * Mostrar cartel de aviso de árbol vacío _(Manu)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío.
+    * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura.
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
