@@ -35,19 +35,19 @@ Ejemplos:
     * Cambiar tab ayuda por botoncito con signo de pregunta o algo similar _(Nico)_ *(Done)*
   * Imágenes
     * Trie
-      * Nodo cuadrado _(Dami / Nico)_ *(In Progress)*
-      * Nodo de lista _(Dami / Nico)_ *(In Progress)*
-      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado _(Dami)_ *(Done)*
+      * Nodo de lista _(Dami)_ *(Done)*
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(Done)*
     * Stack
-      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(Done)*
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(Done)*
     * Queue
-      * Nodo cuadrado con bordes redondeados _(Dami / Nico)_ *(Done)*
-      * Nodo de cola circular _(Dami / Nico)_ *(In Progress)*
+      * Nodo cuadrado con bordes redondeados _(Dami)_ *(Done)*
+      * Nodo de cola circular _(Dami)_ *(Done)*
     * Heap
-      * Nodo cuadrado (array) _(Dami / Nico)_ *(Done)*
-      * Nodo circular (árbol) _(Dami / Nico)_ *(Done)*
+      * Nodo cuadrado (array) _(Dami)_ *(Done)*
+      * Nodo circular (árbol) _(Dami)_ *(Done)*
     * Árboles
-      * Nodo circular _(Dami / Nico)_ *(Done)*
+      * Nodo circular _(Dami)_ *(Done)*
   * Pila
     * Armar estructura en forma vertical _(Lau)_ *(Done)*
     * Permitir especificar el tamaño de la estructura al inicio _(Lau)_ *(Done)*
@@ -75,7 +75,7 @@ Ejemplos:
     * Permitir especificar el tamaño de la estructura al inicio (esto no se si tiene sentido) _(Manu)_ *(Cancelled)*
     * Deshabilitar botones Eliminar, Vaciar y Recorrer cuando el árbol esté vacío._(Nico)_ *(Done)*
     * Acortar o sacar la instrucción de "Ingrese un número..." para que se vea el combo de selección de altura. _(Lau)_ *(Done)*
-    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo. _(Nico)_ *(Cancelled?)*
+    * Modificar la animación de nodo eliminado, en vez de hacer que caiga fuera de la pantallar, hacer que desaparezca con un fade o algo por el estilo. _(Dami)_ *(Done)*
   * Trie
     * Cambiar “Demo” por “Random” _(Dami)_ *(Done)*
     * Cambiar ejemplos (del random) _(Dami)_ *(Done)*
